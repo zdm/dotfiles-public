@@ -17,7 +17,6 @@ export HISTCONTROL=ignoreboth:erasedups
 export PROMPT_COMMAND="history -n; history -w; history -c; history -r"
 
 # postgresql
-mkdir -p /var/run/postgresql
 if [ -z ${PGUSER+x} ]; then export PGUSER=postgres; fi
 
 # root user
