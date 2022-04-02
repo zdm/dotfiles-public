@@ -1,0 +1,16 @@
+{
+    "name": "dotfiles-public",
+    "version": "0.0.0",
+    "private": true,
+    "homepage": "https://github.com/zdm/dotfiles-public",
+    "bugs": {
+        "url": "https://github.com/zdm/dotfiles-public/issues",
+        "email": "zdm <zdm@softvisio.net>"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/zdm/dotfiles-public.git"
+    },
+    "license": "Proprietary Software",
+    "author": "zdm <zdm@softvisio.net>"
+}

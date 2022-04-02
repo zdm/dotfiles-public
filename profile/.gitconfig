@@ -1,0 +1,110 @@
+# vim: ft=dosini
+# https://git-scm.com/docs/git-config
+
+[advice]
+detachedHead = false
+
+[alias]
+bc = difftool --tool bcompare --dir-diff
+b  = branch
+ci = commit
+co = checkout
+d  = diff
+l  = log --pretty='format:%h - %C(brightgreen)%ad [%C(brightcyan)%an] -%C(auto)%d%C(reset) %C(brightwhite)%s%C(reset)' --graph --all --date=human -n20
+l1 = log --pretty='format:%h%C(auto)%d%C(reset) - %C(brightwhite)%s%C(reset)' --graph --all -n20
+ll = log --graph --decorate --date=relative --all --oneline -n20
+p  = push
+s  = status --short --branch
+sw = switch
+t  = tag
+vd = difftool --tool vdiff
+
+[color]
+ui = auto
+
+[color "branch"] # https://git-scm.com/docs/git-config#Documentation/git-config.txt-colorbranchltslotgt
+current  = bold yellow
+local    = bold green
+remote   = bold cyan
+upstream = bold magenta
+plain    = bold red
+
+[color "decorate"] # https://git-scm.com/docs/git-config#Documentation/git-config.txt-colordecorateltslotgt
+branch       = white bold red
+head         = white bold red
+remoteBranch = white bold red
+tag          = bold red
+
+[color "diff"] # https://git-scm.com/docs/git-config#Documentation/git-config.txt-colordiffltslotgt
+context    = white bold
+frag       = magenta bold
+old        = red bold
+new        = green bold
+commit     = cyan bold
+whitespace = white red
+
+[color "grep"] # TODO https://git-scm.com/docs/git-config#Documentation/git-config.txt-colorgrepltslotgt
+
+[color "status"] # https://git-scm.com/docs/git-config#Documentation/git-config.txt-colorstatusltslotgt
+added        = bold green
+changed      = bold cyan
+untracked    = bold white
+unmerged     = bold red
+nobranch     = bold red
+branch       = bold green
+localBranch  = bold green
+remoteBranch = bold cyan
+
+[core]
+unsetenvvars =
+autocrlf     = false
+hookspath    = ~/.dotfiles/git-hooks
+editor       = nvim
+pager        = less --no-init --raw-control-chars --ignore-case --quit-on-intr --squeeze-blank-lines --quit-if-one-screen
+; unsetenvvars =
+
+[diff]
+tool = vdiff
+
+[difftool]
+prompt = false
+
+[difftool "bcompare"]
+cmd = d:/apps/bcomp/bcompare.exe "$LOCAL" "$REMOTE"
+
+[difftool "vdiff"]
+cmd = vim -d "$LOCAL" "$REMOTE"
+
+[filter "lfs"]
+process = git-lfs filter-process
+required = true
+clean = git-lfs clean -- %f
+smudge = git-lfs smudge -- %f
+
+[init]
+defaultBranch = main
+
+[lfs]
+; allowincompletepush = true
+
+[merge]
+tool = bcompare
+
+[mergetool]
+prompt = false
+keepBackup = true
+trustExitCode = false
+
+[mergetool "bcompare"]
+cmd = d:/apps/bcomp/bcompare.exe "$REMOTE" "$BASE" "$LOCAL" "$MERGED"
+
+[pull]
+rebase = false # merge (the default strategy)
+
+[push]
+default = simple
+followTags = true
+
+[user]
+email = zdm@softvisio.net
+name = zdm

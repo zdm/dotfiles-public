@@ -1,0 +1,9 @@
+{
+    "shebang": {
+        "prefix": [
+            "#!",
+            "shebang"
+        ],
+        "body": "#!/usr/bin/bash"
+    }
+}
