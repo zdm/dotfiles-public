@@ -58,5 +58,5 @@ function update() {
 }
 
 function update-profile() {
-    source <(curl -fsSL https://raw.githubusercontent.com/softvisio/scripts/main/setup-profile.sh)
+    source <(curl -fsSL https://raw.githubusercontent.com/softvisio/scripts/main/update-profile.sh)
 }
