@@ -1,0 +1,46 @@
+{
+    "shebang": {
+        "prefix": [
+            "#!",
+            "shebang"
+        ],
+        "body": "#!/usr/bin/env lua"
+    },
+    "vim.print( $1 )": {
+        "prefix": [
+            "vim.print",
+            "print"
+        ],
+        "body": "vim.print( $1 )"
+    },
+    "vim.json.encode( $1 )": {
+        "prefix": [
+            "vim.json.encode",
+            "json.encode"
+        ],
+        "body": "vim.json.encode( $1 )"
+    },
+    "vim.json.decode( $1 )": {
+        "prefix": [
+            "vim.json.decode",
+            "json.decode"
+        ],
+        "body": "vim.json.decode( $1 )"
+    },
+    "function": {
+        "prefix": "function ",
+        "body": "function $1 ()\n    $2\nend"
+    },
+    "if-else": {
+        "prefix": "if ",
+        "body": "if $1 then\n    $2\nelseif $3 then\n    $4\nelse\n    $5\nend"
+    },
+    "for-pairs": {
+        "prefix": "for pairs",
+        "body": "for key, value in pairs( $1 ) do\n    $2\nend"
+    },
+    "for-index": {
+        "prefix": "for index",
+        "body": "for n = $1, $2, 1 do\n    $3\nend"
+    }
+}

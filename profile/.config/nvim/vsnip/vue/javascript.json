@@ -1,0 +1,21 @@
+{
+    "mount component": {
+        "prefix": "mount dialog",
+        "body": "const cmp = await this.$mount( ${1:component} );"
+    },
+    "upload": {
+        "prefix": "upload",
+        "body": [
+            "async upload ( e ) {",
+            "    const button = e.detail.sender,",
+            "        file = button.getFiles()[0];",
+            "",
+            "    const upload = this.$api.upload( \"test/upload\", file, {}, upload => {",
+            "        console.log( upload.progressText );",
+            "    } );",
+            "",
+            "    const res = await upload.start();",
+            "}"
+        ]
+    }
+}
