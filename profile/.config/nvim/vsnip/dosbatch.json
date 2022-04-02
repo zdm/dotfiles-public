@@ -1,0 +1,34 @@
+{
+    "%~dp0": {
+        "prefix": "%~dp0",
+        "body": "%~dp0"
+    },
+    "%~sf0": {
+        "prefix": "%~sf0",
+        "body": "%~sf0"
+    },
+    "%APPDATA%": {
+        "prefix": "%APPDATA%",
+        "body": "%APPDATA%"
+    },
+    "%LOCALAPPDATA%": {
+        "prefix": "%LOCALAPPDATA%",
+        "body": "%LOCALAPPDATA%"
+    },
+    "%ProgramData%": {
+        "prefix": "%ProgramData%",
+        "body": "%ProgramData%"
+    },
+    "%ProgramFiles%": {
+        "prefix": "%ProgramFiles%",
+        "body": "%ProgramFiles%"
+    },
+    "%USERNAME%": {
+        "prefix": "%USERNAME%",
+        "body": "%USERNAME%"
+    },
+    "%USERPROFILE%": {
+        "prefix": "%USERPROFILE%",
+        "body": "%USERPROFILE%"
+    }
+}

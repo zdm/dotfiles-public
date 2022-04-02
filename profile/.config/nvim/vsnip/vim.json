@@ -1,0 +1,10 @@
+{
+    "function": {
+        "prefix": "function ",
+        "body": "function! $1 ()\n    $2\nendfunction"
+    },
+    "if-else": {
+        "prefix": "if ",
+        "body": "if $1\n    $2\nelseif $3\n    $4\nelse\n    $5\nendif"
+    }
+}

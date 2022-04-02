@@ -1,0 +1,7 @@
+releasable: false
+
+meta:
+  executables:
+    - "**/*.sh"
+    - "profile/.bashrc"
+    - "profile/.config/git/hooks/**/*"

@@ -1,0 +1,14 @@
+<template>
+    <ext-panel>
+
+    </ext-panel>
+</template>
+
+<script>
+export default {
+    methods: {
+
+    },
+};
+</script>
+" cursor: 3 1

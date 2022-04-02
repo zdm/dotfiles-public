@@ -1,0 +1,14 @@
+{
+    "ext-dialog": {
+        "prefix": "ext-dialog",
+        "body": "<ext-dialog title=\"\" width=\"90%\" height=\"90%\" scrollable=\"true\" closable=\"true\" draggable=\"false\" closeAction=\"hide\" hideOnMaskTap=\"true\" layout=\"fit\">\n\t$1\n</ext-dialog>"
+    },
+    "grid": {
+        "prefix": "ext-grid",
+        "body": "<ext-grid layout=\"fit\" plugins='[{\"type\":\"gridviewoptions\"},{\"type\":\"gridsummaryrow\"},{\"type\":\"listpaging\",\"noMoreRecordsText\":\"\",\"autoPaging\":false}]' itemConfig='{\"viewmodel\":true}' multicolumnSort=\"true\" @ready=\"gridReady\">\n\t$1\n</ext-grid>"
+    },
+    "ext-file": {
+        "prefix": "ext-file",
+        "body": "<ext-filebutton text=\"Upload\" @change=\"upload\"/>"
+    }
+}

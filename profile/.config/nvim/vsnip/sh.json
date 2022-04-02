@@ -1,0 +1,21 @@
+{
+    "shebang": {
+        "prefix": [
+            "#!",
+            "shebang"
+        ],
+        "body": "#!/usr/bin/env bash"
+    },
+    "if-else": {
+        "prefix": "if ",
+        "body": "if $1; then\n    $2\nelif $3; then\n    $4\nelse\n    $6\nfi"
+    },
+    "case": {
+        "prefix": "case ",
+        "body": "case \"\\$1\" in\n    \\$command$1)\n        command$2\n        ;;\n    *)\n        return 1\n        ;;\nesac"
+    },
+    "function": {
+        "prefix": "function ",
+        "body": "function $1() {\n    $2\n}"
+    }
+}
