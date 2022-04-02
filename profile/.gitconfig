@@ -58,7 +58,7 @@ remoteBranch = bold cyan
 [core]
 unsetenvvars =
 autocrlf     = false
-hookspath    = ~/.dotfiles/git-hooks
+hookspath    = ~/.git-hooks
 editor       = nvim
 pager        = less --no-init --raw-control-chars --ignore-case --quit-on-intr --squeeze-blank-lines --quit-if-one-screen
 ; unsetenvvars =
