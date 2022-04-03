@@ -57,6 +57,6 @@ function update() {
     apt autoremove -y
 }
 
-function update-profile() {
-    source <(curl -fsSL https://raw.githubusercontent.com/softvisio/scripts/main/update-profile.sh)
+function update-dotfiles() {
+    source <(curl -fsSL https://raw.githubusercontent.com/softvisio/scripts/main/update-dotfiles.sh)
 }
