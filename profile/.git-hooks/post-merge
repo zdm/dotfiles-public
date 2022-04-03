@@ -2,6 +2,6 @@
 
 set -e
 
-if [[ -x "$(command -v git-lfs)" ]]; then
+if [ -x "$(command -v git-lfs)" ]; then
     git lfs post-merge "$@"
 fi
