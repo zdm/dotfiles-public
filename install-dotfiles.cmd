@@ -31,11 +31,9 @@ del "%APPDATA%\postgresql\psqlrc.conf"
 mklink "%APPDATA%\postgresql\psqlrc.conf" "%~dp0\profile\.psqlrc"
 
 :: neovim
-:: link nvim config dir
 rmdir /S /Q "%LOCALAPPDATA%\nvim"
 mklink /D "%LOCALAPPDATA%\nvim" "%~dp0\profile\.config\nvim"
 
-:: link profile
 mkdir "%LOCALAPPDATA%\nvim-data"
 
 rmdir /S /Q "%LOCALAPPDATA%\nvim-data\bundle-local"
