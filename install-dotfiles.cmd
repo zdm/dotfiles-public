@@ -36,8 +36,8 @@ mklink /D "%LOCALAPPDATA%\nvim" "%~dp0\profile\.config\nvim"
 
 mkdir "%LOCALAPPDATA%\nvim-data"
 
-rmdir /S /Q "%LOCALAPPDATA%\nvim-data\bundle-local"
-mklink /D "%LOCALAPPDATA%\nvim-data\bundle-local" "%~dp0\profile\.local\share\nvim\bundle-local"
+rmdir /S /Q "%LOCALAPPDATA%\nvim-data\bundle.local"
+mklink /D "%LOCALAPPDATA%\nvim-data\bundle.local" "%~dp0\profile\.local\share\nvim\bundle.local"
 
 rmdir /S /Q "%LOCALAPPDATA%\nvim-data\vsnip"
 mklink /D "%LOCALAPPDATA%\nvim-data\vsnip" "%~dp0\profile\.local\share\nvim\vsnip"

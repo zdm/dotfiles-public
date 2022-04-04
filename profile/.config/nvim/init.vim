@@ -125,9 +125,9 @@ if dein#load_state(expand(g:bundle_path)) " {{{
     " call dein#add(highlight.vim")
     " call dein#add("tpope/vim-surround")
 
-    " add local bunfles
-    exec "set rtp=" . stdpath("data") . "/bundle-local" . "," . &rtp
-    exec "set rtp+=" . stdpath("data") . "/bundle-local/after"
+    " add local bundle
+    exec "set rtp=" . stdpath("data") . "/bundle.local" . "," . &rtp
+    exec "set rtp+=" . stdpath("data") . "/bundle.local/after"
     exec "set rtp=" . stdpath("data") . "/vsnip" . "," . &rtp
 
     call dein#end()
