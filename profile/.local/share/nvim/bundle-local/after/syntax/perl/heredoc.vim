@@ -135,7 +135,7 @@ endif
 "     syntax region perlHereDocTT2JS matchgroup=perlStringStartEnd start='<<\s*\z(\%(END_\)\=TT2JS\)'   end='^\z1$' contains=@perlInterpDQ,@TT2JS
 " endif
 
-" " NGINX
+" " nginx
 " runtime! syntax/nginx.vim
 " unlet b:current_syntax
 " syntax include @NGINX syntax/nginx.vim
