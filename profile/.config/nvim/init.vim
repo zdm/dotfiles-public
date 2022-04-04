@@ -82,8 +82,11 @@ if dein#load_state(expand(g:bundle_path)) " {{{
     call dein#add("zdm/vim-javascript", {"autoload":{"filetypes":["javascript"]}})
     " call dein#add("pangloss/vim-javascript", {"autoload":{"filetypes":["javascript"]}})
 
-    " C
+    " c
     call dein#add("justinmk/vim-syntax-extra")
+
+    " nginx
+    call dein#add("zdm/vim-nginx")
 
     " other plugins
     " call dein#add("arecarn/vim-crunch")
