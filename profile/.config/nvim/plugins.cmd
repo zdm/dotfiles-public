@@ -73,3 +73,6 @@ git submodule add https://github.com/hrsh7th/vim-vsnip
 
 :: update plugins
 git submodule update --remote --merge
+
+:: :helptags ~/.vim/pack/plugins/start/foo
+:: :helptags ALL
