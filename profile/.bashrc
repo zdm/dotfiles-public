@@ -4,6 +4,8 @@ export LANGUAGE=C.UTF-8
 export LANG=C.UTF-8
 export LC_ALL=C.UTF-8
 
+shopt -s dotglob extglob nocaseglob
+
 # if not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
@@ -17,7 +19,7 @@ export HISTCONTROL=ignoreboth:erasedups
 export PROMPT_COMMAND="history -n; history -w; history -c; history -r"
 
 # postgresql
-if [ -z ${PGUSER+x} ]; then export PGUSER=postgres; fi
+[ -z "$PGUSER" ] && export PGUSER=postgres
 
 # root user
 if [ "$(id -u)" == "0" ]; then
@@ -28,10 +30,7 @@ else
     export PS1="[\[\e[1;32m\]\u\[\e[0;32m\]@\[\e[1;32m\]\H\[\e[0m\]\w]\[\e[1;33m\]>\[\e[0m\] "
 fi
 
-shopt -s cdspell cmdhist dirspell histappend nocaseglob no_empty_cmd_completion
-
-# check the window size after each command and, if necessary, update the values of LINES and COLUMNS.
-shopt -s checkwinsize
+shopt -s cdspell checkwinsize cmdhist dirspell histappend no_empty_cmd_completion
 
 bind "set completion-ignore-case on" 2> /dev/null
 
