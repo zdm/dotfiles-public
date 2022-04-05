@@ -34,16 +34,4 @@ mklink "%APPDATA%\postgresql\psqlrc.conf" "%~dp0\profile\.psqlrc"
 rmdir /S /Q "%LOCALAPPDATA%\nvim"
 mklink /D "%LOCALAPPDATA%\nvim" "%~dp0\profile\.config\nvim"
 
-mkdir "%LOCALAPPDATA%\nvim-data"
-
-rmdir /S /Q "%LOCALAPPDATA%\nvim-data\bundle.local"
-mklink /D "%LOCALAPPDATA%\nvim-data\bundle.local" "%~dp0\profile\.local\share\nvim\bundle.local"
-
-rmdir /S /Q "%LOCALAPPDATA%\nvim-data\vsnip"
-mklink /D "%LOCALAPPDATA%\nvim-data\vsnip" "%~dp0\profile\.local\share\nvim\vsnip"
-
-mkdir "%LOCALAPPDATA%\nvim-data\unite\bookmark"
-del "%LOCALAPPDATA%\nvim-data\unite\bookmark\default.windows"
-mklink "%LOCALAPPDATA%\nvim-data\unite\bookmark\default.windows" "%~dp0\profile\.local\share\nvim\unite\bookmark\default.windows"
-
 pause
