@@ -135,6 +135,7 @@ endif " }}}
 " plugins settings
 " unite {{{
 let g:unite_data_directory = stdpath("data") . "/unite"
+let g:unite_source_bookmark_directory = stdpath("config") . "/unite/bookmark"
 let g:unite_force_overwrite_statusline = 0
 let g:unite_cursor_line_highlight = 'CursorLine'
 let g:unite_source_menu_menus = {}
