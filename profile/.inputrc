@@ -9,14 +9,13 @@ set output-meta on
 # completed names which are symbolic links to directories have a slash appended
 set mark-symlinked-directories on
 
-set editing-mode vi
-set keymap vi
+set editing-mode emacs
 
 # Home / End
 "\e[1~": beginning-of-line
 "\e[4~": end-of-line
 
-# PgUp / PgDown search history
+# PgUp / PgdOwn search history
 "\e[5~": history-search-backward
 "\e[6~": history-search-forward
 
