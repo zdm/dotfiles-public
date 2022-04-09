@@ -11,6 +11,8 @@ set mark-symlinked-directories on
 
 set editing-mode emacs
 
+$if mode=emacs
+
 # Home / End
 "\e[1~": beginning-of-line
 "\e[4~": end-of-line
@@ -28,3 +30,5 @@ set editing-mode emacs
 "\e[5D": backward-word
 "\e[1;5C": forward-word
 "\e[1;5D": backward-word
+
+$endif
