@@ -14,6 +14,7 @@ let g:unite_source_menu_menus.helper = {}
 let g:unite_source_menu_menus.helper.command_candidates = [
 \    ["update bundles                       - :silent! DeinUpdate", "silent! DeinUpdate"],
 \    ["set ft=javascript                    - :set ft=javascript", "set ft=javascript"],
+\    ["set ft=json                          - :set ft=json", "set ft=json"],
 \    ["delete all hidden buffers            - call helper#cleanupBuffers()", "call helper#cleanupBuffers()"],
 \    ["edit snippets                        - :VsnipOpen", "VsnipOpen"],
 \    ["browser print                        - :BrowserPrint", "BrowserPrint"],
