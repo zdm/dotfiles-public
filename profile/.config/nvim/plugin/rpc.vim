@@ -82,7 +82,7 @@ func! s:check_channel() " {{{
 endfunc " }}}
 
 func! s:src(type) " {{{
-    let l:buf = join(getline(1,'$'), "\n")
+    let l:buf = join( getline( 1, '$' ), "\n" )
 
     silent! redraw
 
@@ -102,7 +102,7 @@ func! s:src(type) " {{{
         echo a:type . ":  run source filter..."
 
         let l:type = get( s:ft_type, &ft )
-        let l:path = expand('%:p')
+        let l:path = expand( '%:p' )
 
         if ( l:type == v:null ) | let l:type = "" | endif
         if ( l:path == "" ) | let l:path = "test" | endif
@@ -111,17 +111,17 @@ func! s:src(type) " {{{
         if ( &ft == "make" )
             let l:path = fnamemodify( l:path, ":h" ) . "/Makefile"
 
-        " add &ft as extension if mime type wasn't found
-        elseif ( l:type == "" && expand( "%:e" ) != &ft )
+        " add &ft as extension if mime type wasn't found and extension ne &ft
+        elseif ( l:type == "" && &ft != "" && expand( "%:e" ) != &ft )
             let l:path .= "." . &ft
         endif
 
-        let l:res = rpcrequest(s:channel, "lint", {"content": l:buf, "action": a:type, "path": l:path, "type": l:type})
+        let l:res = rpcrequest( s:channel, "lint", { "action": a:type, "path": l:path, "type": l:type, "content": l:buf } )
 
         if l:res.meta.isModified
             set syntax=off
 
-            let l:cursor_pos = getpos(".")
+            let l:cursor_pos = getpos( "." )
 
             %delete
             put =l:res.data
@@ -131,7 +131,7 @@ func! s:src(type) " {{{
             set ff=unix
             set fenc=utf-8
 
-            call setpos(".", l:cursor_pos)
+            call setpos( ".", l:cursor_pos )
 
             if g:loaded_fastfold
                 FastFoldUpdate
