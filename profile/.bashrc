@@ -55,7 +55,7 @@ function update() {
     apt full-upgrade -y
     apt autoremove -y
 
-    if [[ ! -x "$(command -v update-core)" ]]; then
+    if [[ -x "$(command -v update-core)" ]]; then
         update-core
     fi
 }
