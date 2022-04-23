@@ -130,6 +130,7 @@ func! s:src(type) " {{{
             set syntax=on
             set ff=unix
             set fenc=utf-8
+            syn sync fromstart
 
             call setpos( ".", l:cursor_pos )
 
