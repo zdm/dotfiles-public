@@ -45,6 +45,7 @@ alias d="docker"
 alias g="git"
 alias gc="gcloud"
 alias gcc="gcloud config configurations"
+alias gce="gcloud compute"
 alias s="softvisio-cli"
 
 if [ -f ~/.bash_aliases ]; then
