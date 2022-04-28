@@ -44,6 +44,7 @@ alias pscp="source <( curl -fsSL https://raw.githubusercontent.com/softvisio/scr
 alias d="docker"
 alias g="git"
 alias gc="gcloud"
+alias gcc="gcloud config configurations"
 alias s="softvisio-cli"
 
 if [ -f ~/.bash_aliases ]; then
