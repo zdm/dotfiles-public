@@ -43,9 +43,8 @@ alias autossh="autossh -M 0 -o 'ServerAliveInterval 30' -o 'ServerAliveCountMax 
 alias pscp="source <( curl -fsSL https://raw.githubusercontent.com/softvisio/scripts/main/pscp.sh )"
 alias d="docker"
 alias g="git"
-alias gc="gcloud"
-alias gcc="gcloud config configurations"
 alias gce="gcloud compute"
+alias gcp="gcloud config configurations"
 alias s="softvisio-cli"
 
 if [ -f ~/.bash_aliases ]; then
