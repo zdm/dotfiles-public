@@ -53,9 +53,9 @@ if [ -f ~/.bash_aliases ]; then
 fi
 
 function update() {
-    apt update
-    apt full-upgrade -y
-    apt autoremove -y
+    apt-get update
+    apt-get full-upgrade -y
+    apt-get autoremove -y
 
     if [[ -x "$(command -v update-core)" ]]; then
         update-core
