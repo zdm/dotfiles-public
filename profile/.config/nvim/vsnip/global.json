@@ -4,11 +4,11 @@
         "body": "zdm@softvisio.net"
     },
     "proxy softvisio://": {
-        "prefix": "proxy softvisio://",
-        "body": "softvisios://zdm:fdOdAC6bdfxU58zL@proxy.softvisio.net?zone=direct"
+        "prefix": "proxy softvisio+tls:",
+        "body": "softvisio+tls://zdm:fdOdAC6bdfxU58zL@proxy.softvisio.net?zone=direct"
     },
     "proxy http://": {
-        "prefix": "proxy http://",
+        "prefix": "proxy https:",
         "body": "https://username=zdm&zone=hola&country=us:fdOdAC6bdfxU58zL@proxy.softvisio.net"
     }
 }
