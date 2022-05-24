@@ -13,6 +13,7 @@ shopt -s dotglob extglob nocaseglob
 
 export TERM=putty-256color
 export CLICOLOR=1
+export EDITOR=nvim
 export HISTSIZE=1000
 export HISTFILESIZE=2000
 export HISTCONTROL=ignoreboth:erasedups
@@ -20,6 +21,7 @@ export PROMPT_COMMAND="history -n; history -w; history -c; history -r"
 
 # postgresql
 [ -z "$PGUSER" ] && export PGUSER=postgres
+# [ -z "$PGSSLMODER" ] && export PGSSLMODE=verify-full
 
 # root user
 if [ "$(id -u)" == "0" ]; then
