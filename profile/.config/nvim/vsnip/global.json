@@ -5,10 +5,10 @@
     },
     "proxy softvisio://": {
         "prefix": "proxy softvisio+tls:",
-        "body": "softvisio+tls://zdm:fdOdAC6bdfxU58zL@proxy.softvisio.net?zone=direct"
+        "body": "softvisios://zdm:fdOdAC6bdfxU58zL@proxy.softvisio.net?zone=direct"
     },
     "proxy http://": {
         "prefix": "proxy https:",
-        "body": "https://username=zdm&zone=hola&country=us:fdOdAC6bdfxU58zL@proxy.softvisio.net"
+        "body": "https://username=zdm&zone=direct&country=us:fdOdAC6bdfxU58zL@proxy.softvisio.net:8099"
     }
 }
