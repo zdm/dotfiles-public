@@ -21,7 +21,6 @@ export PROMPT_COMMAND="history -n; history -w; history -c; history -r"
 
 # postgresql
 [ -z "$PGUSER" ] && export PGUSER=postgres
-# [ -z "$PGSSLMODER" ] && export PGSSLMODE=verify-full
 
 # root user
 if [ "$(id -u)" == "0" ]; then
