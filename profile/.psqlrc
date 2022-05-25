@@ -8,7 +8,11 @@
 \set HISTCONTROL ignoreboth
 \set HISTFILE ~/.psql_history-:DBNAME
 \set HISTSIZE 2000
-\set PROMPT1 '[pg://%x%[%033[1;31m%]%n%[%033[0;31m%]@%[%033[1;31m%]%M%[%033[0;31m%]/%[%033[0;37m%]%/]%[%033[1;33m%]%#%[%033[0m%] '
+\if :PROMPT_HOST
+	\set PROMPT1 '[pg://%x%[%033[1;31m%]%n%[%033[0;31m%]@%[%033[1;31m%]%:PROMPT_HOST:%[%033[0;31m%]/%[%033[0;37m%]%/]%[%033[1;33m%]%#%[%033[0m%] '
+\else
+	\set PROMPT1 '[pg://%x%[%033[1;31m%]%n%[%033[0;31m%]@%[%033[1;31m%]%M%[%033[0;31m%]/%[%033[0;37m%]%/]%[%033[1;33m%]%#%[%033[0m%] '
+\endif
 \unset PROMPT2
 
 \pset border 2
