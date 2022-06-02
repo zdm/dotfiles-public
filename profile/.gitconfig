@@ -63,6 +63,9 @@ editor       = nvim
 pager        = less --no-init --raw-control-chars --ignore-case --quit-on-intr --squeeze-blank-lines --quit-if-one-screen
 ; unsetenvvars =
 
+[credential "helperselector"]
+selected = <no helper>
+
 [diff]
 tool = vdiff
 
