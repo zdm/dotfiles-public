@@ -1,6 +1,6 @@
 [ -z "$DEBIAN_FRONTEND" ] && [ -z "$PS1" ] && export DEBIAN_FRONTEND=noninteractive
 
-if [ `uname` = "Darwin" ]; then
+if [ $(uname) = "Darwin" ]; then
     export LANGUAGE=en_GB.UTF-8
     export LANG=en_GB.UTF-8
     export LC_ALL=en_GB.UTF-8
@@ -65,12 +65,30 @@ if [ -f ~/.bash_aliases ]; then
 fi
 
 function update() {
-    apt-get update
-    apt-get full-upgrade -y
-    apt-get autoremove -y
 
-    if [[ -x "$(command -v update-core)" ]]; then
-        update-core
+    # darwin
+    if [ $(uname) = "Darwin" ]; then
+        brew update
+
+        # update brew packages to the latest varions
+        brew upgrade
+
+        # update cocoapods repositories
+        pod repo update
+
+        # update global node packages
+        npm up -g
+
+    else
+
+        # debian / ubuntu
+        apt-get update
+        apt-get full-upgrade -y
+        apt-get autoremove -y
+
+        if [[ -x "$(command -v update-core)" ]]; then
+            update-core
+        fi
     fi
 }
 
