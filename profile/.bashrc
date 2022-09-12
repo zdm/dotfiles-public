@@ -1,8 +1,8 @@
 [ -z "$DEBIAN_FRONTEND" ] && [ -z "$PS1" ] && export DEBIAN_FRONTEND=noninteractive
 
-export LANGUAGE=en_GB.UTF-8
-export LANG=en_GB.UTF-8
-export LC_ALL=en_GB.UTF-8
+export LANGUAGE=C
+export LANG=C
+export LC_ALL=UTF-8
 
 shopt -s dotglob extglob nocaseglob
 
