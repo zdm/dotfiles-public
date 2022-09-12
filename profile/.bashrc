@@ -1,12 +1,14 @@
 [ -z "$DEBIAN_FRONTEND" ] && [ -z "$PS1" ] && export DEBIAN_FRONTEND=noninteractive
 
-# export LANGUAGE=C.UTF-8
-# export LANG=C.UTF-8
-# export LC_ALL=C.UTF-8
-
-export LANGUAGE=en_GB.UTF-8
-export LANG=en_GB.UTF-8
-export LC_ALL=en_GB.UTF-8
+if [ "$TERM_PROGRAM" = "Apple_Terminal" ]; then
+    export LANGUAGE=en_GB.UTF-8
+    export LANG=en_GB.UTF-8
+    export LC_ALL=en_GB.UTF-8
+else
+    export LANGUAGE=C.UTF-8
+    export LANG=C.UTF-8
+    export LC_ALL=C.UTF-8
+fi
 
 shopt -s dotglob extglob nocaseglob
 
