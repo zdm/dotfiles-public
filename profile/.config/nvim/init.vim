@@ -10,7 +10,7 @@ if has('win16') || has('win32') || has('win64')
     language English
 else
     " language C.UTF-8
-    language en_GB.UTF-8
+    " language en_GB.UTF-8
 endif
 
 set langmenu=none
