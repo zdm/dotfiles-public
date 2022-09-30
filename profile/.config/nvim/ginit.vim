@@ -13,9 +13,9 @@ hi PmenuThumb guifg=grey100
 set mouse=a
 
 " set editor font
-" if exists(':GuiFont')
-"     GuiFont {font_name}:h{size}
-" endif
+if exists(':GuiFont')
+	GuiFont Liberation Mono:h8
+endif
 
 " disable GUI tabline
 if exists(':GuiTabline')
