@@ -57,6 +57,7 @@ if dein#load_state(expand(g:bundle_path)) " {{{
 
     " call dein#add("Shougo/vimproc.vim", {"build": "gmake"})
     call dein#add("Shougo/unite.vim")
+    call dein#add("Shougo/unite-dein")
     call dein#add("Shougo/neomru.vim")
     " call dein#add("easymotion/vim-easymotion")
     call dein#add("Shougo/unite-outline")
