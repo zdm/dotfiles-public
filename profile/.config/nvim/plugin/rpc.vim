@@ -36,6 +36,8 @@ func! s:check_socket() " {{{
     if s:channel
         return v:true
     else
+        silent! redraw!
+
         return v:false
     endif
 endfunc " }}}
