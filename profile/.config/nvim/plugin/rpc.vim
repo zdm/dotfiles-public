@@ -153,27 +153,27 @@ func! s:src(type) " {{{
             " multi-line error
             if len( split( res.status_text, '\n' ) ) > 1
                 echohl ErrorMsg
-                echo a:type . ":  Errors"
+                echo a:type . " errors:"
                 echohl None
                 echo res.status_text
 
             " single-line error
             else
                 echohl ErrorMsg
-                echo a:type . ":  " . res.status_text
+                echo a:type . ": " . res.status_text
                 echohl None
             endif
 
         " warning
         elseif l:res.status >= 201
             echohl WarningMsg
-            echo a:type . ":  " . res.status_text
+            echo a:type . ": " . res.status_text
             echohl None
 
         " ok
         else
             echohl Comment
-            echo a:type . ":  " . res.status_text
+            echo a:type . ": " . res.status_text
             echohl None
         endif
     endif
