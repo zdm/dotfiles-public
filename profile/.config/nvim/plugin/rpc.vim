@@ -36,6 +36,8 @@ func! s:check_socket() " {{{
     if s:channel
         return v:true
     else
+
+        " clear connection error message
         silent! redraw!
 
         return v:false
@@ -145,14 +147,30 @@ func! s:src(type) " {{{
 
         silent! redraw
 
+        " error
         if l:res.status >= 300
-            echohl ErrorMsg
-            echo a:type . ":  " . res.status_text
-            echohl None
+
+            " multi-line error
+            if len( split( res.status_text, '\n' ) ) > 1
+                echohl ErrorMsg
+                echo a:type . ":  Errors"
+                echohl None
+                echo res.status_text
+
+            " single-line error
+            else
+                echohl ErrorMsg
+                echo a:type . ":  " . res.status_text
+                echohl None
+            endif
+
+        " warning
         elseif l:res.status >= 201
             echohl WarningMsg
             echo a:type . ":  " . res.status_text
             echohl None
+
+        " ok
         else
             echohl Comment
             echo a:type . ":  " . res.status_text
