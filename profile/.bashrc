@@ -64,7 +64,7 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
-function up() {
+function update() {
 
     # darwin
     if [ $(uname) = "Darwin" ]; then
