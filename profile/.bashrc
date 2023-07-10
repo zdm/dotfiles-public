@@ -85,10 +85,6 @@ function update() {
         apt-get update
         apt-get full-upgrade -y
         apt-get autoremove -y
-
-        if [[ -x "$(command -v update-core)" ]]; then
-            update-core
-        fi
     fi
 }
 
