@@ -48,7 +48,7 @@ git submodule add https://github.com/zhimsel/vim-stay
 
 git submodule add https://github.com/pedrohdz/vim-yaml-folds
 
-:: pgsql syntax
+:: postgresql syntax
 git submodule add https://github.com/lifepillar/pgsql.vim
 
 git submodule add https://github.com/editorconfig/editorconfig-vim

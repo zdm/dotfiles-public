@@ -105,7 +105,7 @@ if dein#load_state(expand(g:bundle_path)) " {{{
 
     call dein#add("pedrohdz/vim-yaml-folds")
 
-    " pgsql syntax
+    " postgresql syntax
     call dein#add("lifepillar/pgsql.vim")
 
     call dein#add("editorconfig/editorconfig-vim")
@@ -372,7 +372,7 @@ if has("autocmd")
 endif
 " }}}
 
-" pgsql
+" postgresql
 let g:sql_type_default = "pgsql"
 let g:pgsql_fold_functions_only = 1
 

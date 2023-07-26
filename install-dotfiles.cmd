@@ -24,7 +24,7 @@ mklink "%USERPROFILE%\.gitconfig" "%~dp0\profile\.gitconfig"
 rmdir /S /Q "%USERPROFILE%\.git-hooks"
 mklink /D "%USERPROFILE%\.git-hooks" "%~dp0\profile\.git-hooks"
 
-:: pgsql
+:: postgresqll
 mkdir "%APPDATA%\postgresql"
 
 del "%APPDATA%\postgresql\psqlrc.conf"
