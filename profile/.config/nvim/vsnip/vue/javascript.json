@@ -3,10 +3,6 @@
         "prefix": "mount dialog",
         "body": "const cmp = await this.$mount( ${1:component} );"
     },
-    "define async component": {
-        "prefix": "async component",
-        "body": "defineAsyncComponent( () => import( \"@/$1.vue\" ) );"
-    },
     "upload": {
         "prefix": "upload",
         "body": [
