@@ -54,7 +54,6 @@ alias less='less --no-init --raw-control-chars --ignore-case --quit-on-intr --sq
 alias autossh="autossh -M 0 -o 'ServerAliveInterval 30' -o 'ServerAliveCountMax 3'"
 alias pscp="source <( curl -fsSL https://raw.githubusercontent.com/softvisio/scripts/main/pscp.sh )"
 alias d="docker"
-alias dps="docker ps --format \"table {{.ID}}\t{{.Image}}\t{{.Status}}\""
 # alias dsp="docker system prune -af"
 alias g="git"
 alias gc="gcloud"
