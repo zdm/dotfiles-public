@@ -114,7 +114,8 @@ if dein#load_state(expand(g:bundle_path)) " {{{
     call dein#add("foalford/vim-markdown-folding")
 
     " completion
-    call dein#add("hrsh7th/nvim-compe")
+    call dein#add("hrsh7th/nvim-cmp")
+    call dein#add("hrsh7th/cmp-vsnip")
     call dein#add("hrsh7th/vim-vsnip")
     " call dein#add("rafamadriz/friendly-snippets")
 
@@ -339,6 +340,29 @@ vnoremap <silent> <Leader>ii <ESC>:IndentLinesToggle<CR>gv
 " }}}
 
 " completion {{{
+lua <<EOF
+    local cmp = require'cmp'
+
+    cmp.setup({
+        snippet = {
+            expand = function(args)
+                vim.fn["vsnip#anonymous"](args.body)
+            end,
+        },
+        mapping = cmp.mapping.preset.insert({
+            ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+            ['<C-f>'] = cmp.mapping.scroll_docs(4),
+            ['<C-Space>'] = cmp.mapping.complete(),
+            ['<C-e>'] = cmp.mapping.abort(),
+            ['<CR>'] = cmp.mapping.confirm({ select = true }),
+        }),
+        sources = cmp.config.sources({
+            { name = 'vsnip' },
+        })
+    })
+
+EOF
+
 set omnifunc=syntaxcomplete#Complete
 set complete-=i
 set iskeyword+=:
@@ -354,12 +378,6 @@ let g:compe.source.vsnip = v:true
 " let g:compe.source.buffer = v:true
 " let g:compe.source.tags = v:true
 " let g:compe.source.spell = v:true
-
-inoremap <silent><expr> <C-Space> compe#complete()
-inoremap <silent><expr> <CR>      compe#confirm("<CR>")
-inoremap <silent><expr> <C-e>     compe#close("<C-e>")
-inoremap <silent><expr> <C-f>     compe#scroll({ "delta": +4 })
-inoremap <silent><expr> <C-d>     compe#scroll({ "delta": -4 })
 
 let g:vsnip_snippet_dir = stdpath("config") . "/vsnip"
 " }}}
