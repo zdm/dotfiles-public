@@ -350,6 +350,12 @@ lua <<EOF
             end,
         },
         mapping = cmp.mapping.preset.insert({
+            ['<Up>'] = function( fallback )
+                fallback()
+            end,
+            ['<Down>'] = function( fallback )
+                fallback()
+            end,
             ['<C-Up>'] = cmp.mapping.select_prev_item( { behavior = cmp.SelectBehavior.Select } ),
             ['<C-Down>'] = cmp.mapping.select_next_item( { behavior = cmp.SelectBehavior.Select } ),
             ['<C-Space>'] = cmp.mapping.complete(),
