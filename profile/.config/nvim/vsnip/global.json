@@ -5,7 +5,7 @@
     },
     "proxy softvisio://": {
         "prefix": "proxy softvisio https:",
-        "body": "softvisios://zdm:fdOdAC6bdfxU58zL@proxy.softvisio.net?zone=direct"
+        "body": "softvisio+ssl://zdm:fdOdAC6bdfxU58zL@proxy.softvisio.net?zone=direct"
     },
     "proxy http://": {
         "prefix": "proxy https:",
