@@ -35,14 +35,14 @@ endif
 
 " init dein
 " {{{
-let g:bundle_path = stdpath("data") . "/bundle"
+let g:bundle_path = stdpath( "data" ) . "/bundle"
 
 " clone dein if not extists
-if !isdirectory(g:bundle_path . "/repos/github.com/Shougo/dein.vim")
+if !isdirectory( g:bundle_path . "/repos/github.com/Shougo/dein.vim" )
     silent exec "!git clone https://github.com/Shougo/dein.vim " . g:bundle_path . "/repos/github.com/Shougo/dein.vim"
 endif
 
-if has('win16') || has('win32') || has('win64')
+if has( 'win16' ) || has( 'win32' ) || has( 'win64' )
     let g:dein#types#git#command_path="git.exe"
 endif
 
@@ -603,8 +603,8 @@ nnoremap <Up>     gk
 nnoremap <Down>   gj
 nnoremap <S-Up>   gh<C-o>gk
 nnoremap <S-Down> gh<C-o>gj
-inoremap <Up>     <C-o>gk
-inoremap <Down>   <C-o>gj
+" inoremap <Up>     <C-o>gk
+" inoremap <Down>   <C-o>gj
 inoremap <S-Up>   <C-o>gh<C-o>gk
 inoremap <S-Down> <C-o>gh<C-o>gj
 xnoremap <Up>     gk
