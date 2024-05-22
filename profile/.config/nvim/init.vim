@@ -599,22 +599,22 @@ nnoremap <C-W>t <C-W>T
 " }}}
 
 " remap Up and Down {{{
-nnoremap <Up>     gk
-nnoremap <Down>   gj
-nnoremap <S-Up>   gh<C-o>gk
-nnoremap <S-Down> gh<C-o>gj
+" nnoremap <Up>     gk
+" nnoremap <Down>   gj
+" nnoremap <S-Up>   gh<C-o>gk
+" nnoremap <S-Down> gh<C-o>gj
 " inoremap <Up>     <C-o>gk
 " inoremap <Down>   <C-o>gj
-inoremap <S-Up>   <C-o>gh<C-o>gk
-inoremap <S-Down> <C-o>gh<C-o>gj
-xnoremap <Up>     gk
-xnoremap <Down>   gj
-xnoremap <S-Up>   k
-xnoremap <S-Down> j
-xnoremap <Left>   h
-xnoremap <Right>  l
-snoremap <S-Up>   <C-o>gk
-snoremap <S-Down> <C-o>gj
+" inoremap <S-Up>   <C-o>gh<C-o>gk
+" inoremap <S-Down> <C-o>gh<C-o>gj
+" xnoremap <Up>     gk
+" xnoremap <Down>   gj
+" xnoremap <S-Up>   k
+" xnoremap <S-Down> j
+" xnoremap <Left>   h
+" xnoremap <Right>  l
+" snoremap <S-Up>   <C-o>gk
+" snoremap <S-Down> <C-o>gj
 " }}}
 
 " \ss - syntax refresh {{{
