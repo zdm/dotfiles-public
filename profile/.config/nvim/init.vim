@@ -341,15 +341,15 @@ vnoremap <silent> <Leader>ii <ESC>:IndentLinesToggle<CR>gv
 
 " completion {{{
 lua <<EOF
-    local cmp = require'cmp'
+    local cmp = require 'cmp'
 
-    cmp.setup({
+    cmp.setup( {
         snippet = {
-            expand = function(args)
-                vim.fn["vsnip#anonymous"](args.body)
+            expand = function( args )
+                vim.fn["vsnip#anonymous"]( args.body )
             end,
         },
-        mapping = cmp.mapping.preset.insert({
+        mapping = cmp.mapping.preset.insert( {
             ['<Up>'] = function( fallback )
                 fallback()
             end,
@@ -360,13 +360,12 @@ lua <<EOF
             ['<C-Down>'] = cmp.mapping.select_next_item( { behavior = cmp.SelectBehavior.Select } ),
             ['<C-Space>'] = cmp.mapping.complete(),
             ['<C-e>'] = cmp.mapping.abort(),
-            ['<CR>'] = cmp.mapping.confirm({ select = false }),
-        }),
-        sources = cmp.config.sources({
+            ['<CR>'] = cmp.mapping.confirm( { select = false } ),
+        } ),
+        sources = cmp.config.sources( {
             { name = 'vsnip' },
-        })
-    })
-
+        } )
+    } )
 EOF
 
 set omnifunc=syntaxcomplete#Complete
@@ -598,6 +597,7 @@ nnoremap <C-W><C-Down> <C-W>J
 nnoremap <C-W>t <C-W>T
 " }}}
 
+" XXX
 " remap Up and Down {{{
 " nnoremap <Up>     gk
 " nnoremap <Down>   gj
