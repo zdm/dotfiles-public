@@ -351,9 +351,17 @@ lua <<EOF
         },
         mapping = cmp.mapping.preset.insert( {
             ['<Up>'] = function( fallback )
+                if cmp.visible() then
+                    cmp.abort()
+                end
+
                 fallback()
             end,
             ['<Down>'] = function( fallback )
+                if cmp.visible() then
+                    cmp.abort()
+                end
+
                 fallback()
             end,
             ['<C-Up>'] = cmp.mapping.select_prev_item( { behavior = cmp.SelectBehavior.Select } ),
