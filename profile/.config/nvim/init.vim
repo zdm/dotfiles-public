@@ -597,7 +597,6 @@ nnoremap <C-W><C-Down> <C-W>J
 nnoremap <C-W>t <C-W>T
 " }}}
 
-" XXX
 " remap Up and Down {{{
 " nnoremap <Up>     gk
 " nnoremap <Down>   gj
