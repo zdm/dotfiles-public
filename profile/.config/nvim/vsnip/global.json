@@ -9,6 +9,6 @@
     },
     "proxy http://": {
         "prefix": "proxy https:",
-        "body": "https://username=zdm&zone=direct&country=us:fdOdAC6bdfxU58zL@proxy.softvisio.net:8085"
+        "body": "http+connect+socks5+ssl://username=zdm&zone=direct&country=us:fdOdAC6bdfxU58zL@proxy.softvisio.net:8085"
     }
 }
