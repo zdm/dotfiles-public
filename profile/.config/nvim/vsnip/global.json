@@ -7,8 +7,8 @@
         "prefix": "proxy softvisio+ssl:",
         "body": "softvisio+ssl://zdm:fdOdAC6bdfxU58zL@proxy.softvisio.net?zone=direct"
     },
-    "proxy connect+ssl:": {
-        "prefix": "proxy connect+ssl:",
-        "body": "connect+ssl://username=zdm&zone=direct&country=us:fdOdAC6bdfxU58zL@proxy.softvisio.net:8085"
+    "proxy https+ssl:": {
+        "prefix": "proxy https+ssl:",
+        "body": "https+ssl://username=zdm&zone=direct&country=us:fdOdAC6bdfxU58zL@proxy.softvisio.net:8085"
     }
 }
