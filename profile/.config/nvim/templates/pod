@@ -80,11 +80,11 @@ Patches are welcome.
 
 =head1 AUTHOR
 
-zdm (zdm@softvisio.net)
+root (root@softvisio.net)
 
 =head1 LICENCE AND COPYRIGHT
 
-Copyright (c) <year> zdm (zdm@softvisio.net). All rights reserved.
+Copyright (c) <year> root (root@softvisio.net). All rights reserved.
 
 This module is free software; you can redistribute it and/or
 modify it under the same terms as Perl itself. See perldoc perlartistic.
