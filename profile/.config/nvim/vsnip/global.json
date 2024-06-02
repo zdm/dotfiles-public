@@ -1,14 +1,10 @@
 {
-    "zdm@softvisio.net": {
-        "prefix": "zdm@softvisio.net",
-        "body": "zdm@softvisio.net"
+    "proxy softvisio+tls:": {
+        "prefix": "proxy softvisio+tls:",
+        "body": "softvisio+tls://zdm:fdOdAC6bdfxU58zL@proxy.softvisio.net?zone=direct"
     },
-    "proxy softvisio+ssl:": {
-        "prefix": "proxy softvisio+ssl:",
-        "body": "softvisio+ssl://zdm:fdOdAC6bdfxU58zL@proxy.softvisio.net?zone=direct"
-    },
-    "proxy https+ssl:": {
-        "prefix": "proxy https+ssl:",
-        "body": "https+ssl://username=zdm&zone=direct&country=us:fdOdAC6bdfxU58zL@proxy.softvisio.net:8085"
+    "proxy https+tls:": {
+        "prefix": "proxy https+tls:",
+        "body": "https+tls://username=zdm&zone=direct&country=us:fdOdAC6bdfxU58zL@proxy.softvisio.net:8085"
     }
 }
