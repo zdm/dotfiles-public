@@ -11,6 +11,9 @@ mklink /D "%USERPROFILE%\Downloads" "d:\downloads"
 rmdir /S /Q "%USERPROFILE%\Documents"
 mklink /D "%USERPROFILE%\Documents" "d:\documents"
 
+rmdir /S /Q "%USERPROFILE%\music"
+mklink /D "%USERPROFILE%\music" "d:\music"
+
 rmdir /S /Q "%USERPROFILE%\Pictures"
 mklink /D "%USERPROFILE%\Pictures" "d:\pictures"
 
