@@ -3,8 +3,8 @@
         "prefix": "proxy softvisio+tls:",
         "body": "softvisio+tls://zdm:fdOdAC6bdfxU58zL@proxy.softvisio.net?zone=direct"
     },
-    "proxy https+tls:": {
-        "prefix": "proxy https+tls:",
-        "body": "https+tls://username=zdm&zone=direct&country=us:fdOdAC6bdfxU58zL@proxy.softvisio.net:8085"
+    "proxy http+socks5+tls:": {
+        "prefix": "proxy http+socks5+tls:",
+        "body": "http+socks5+tls://username=zdm&zone=direct&country=us:fdOdAC6bdfxU58zL@proxy.softvisio.net:8085"
     }
 }
