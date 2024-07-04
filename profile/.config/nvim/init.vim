@@ -114,10 +114,11 @@ if dein#load_state(expand(g:bundle_path)) " {{{
     call dein#add("foalford/vim-markdown-folding")
 
     " completion
-    call dein#add("hrsh7th/nvim-cmp")
-    call dein#add("hrsh7th/cmp-vsnip")
-    call dein#add("hrsh7th/vim-vsnip")
-    " call dein#add("rafamadriz/friendly-snippets")
+    call dein#add( "hrsh7th/nvim-cmp" )
+    call dein#add( "hrsh7th/cmp-vsnip" )
+    call dein#add( "hrsh7th/vim-vsnip" )
+    call dein#add( "hrsh7th/cmp-calc" )
+    " call dein#add( "rafamadriz/friendly-snippets" )
 
     " XXX disabled, because syntax/javascript.vim conflicted when used with dein
     " call dein#add("mattn/emmet-vim")
@@ -372,6 +373,7 @@ lua <<EOF
         } ),
         sources = cmp.config.sources( {
             { name = 'vsnip' },
+            { name = 'calc' },
         } )
     } )
 EOF
@@ -380,17 +382,6 @@ set omnifunc=syntaxcomplete#Complete
 set complete-=i
 set iskeyword+=:
 set completeopt=menuone,noselect
-
-let g:compe = {}
-let g:compe.enabled = v:true
-let g:compe.documentation = v:true
-
-let g:compe.source = {}
-let g:compe.source.calc = v:true
-let g:compe.source.vsnip = v:true
-" let g:compe.source.buffer = v:true
-" let g:compe.source.tags = v:true
-" let g:compe.source.spell = v:true
 
 let g:vsnip_snippet_dir = stdpath("config") . "/vsnip"
 " }}}
