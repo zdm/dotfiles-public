@@ -230,13 +230,11 @@ let g:airline#extensions#tabline#close_symbol = '×'
 let g:airline#extensions#tabline#show_close_button = 0
 let g:airline#extensions#xkblayout#enabled = 0
 
-" default formatter
+let g:airline#extensions#tabline#formatter = "short_path"
 " let g:airline#extensions#tabline#fnamecollapse = 0
-let g:airline#extensions#tabline#fnamemod = ':t'
+" let g:airline#extensions#tabline#fnamemod = ':t'
 
-let g:airline#extensions#tabline#formatter = 'short_path'
-
-" " customize airline sections
+" customize airline sections
 " function! AirlineInit()
     " let g:airline_section_x = airline#section#create_left(['session'])
 " endf
@@ -664,37 +662,4 @@ vnoremap <silent> <Leader>sc <ESC>:SrcCompress<CR>
 nnoremap <silent> <Leader>so :SrcObfuscate<CR>
 inoremap <silent> <Leader>so <ESC>:SrcObfuscate<CR>
 vnoremap <silent> <Leader>so <ESC>:SrcObfuscate<CR>
-" }}}
-
-" set titlestring {{{
-function! SetTitleString()
-    let _ = ''
-
-    let name = expand('%F')
-
-    if empty(name)
-        let _ .= '[No Name]'
-
-        if &mod | let _ .= '+' | endif
-    else
-        if name =~ 'term://'
-            " Neovim Terminal
-            let _ = substitute(name, '\(term:\)//.*:\(.*\)', '\1 \2', '')
-
-            if &mod | let _ .= '+' | endif
-        else
-            let _ .= fnamemodify(name, ':p:h:t') . '/' . fnamemodify(name, ':t')
-
-            if &mod | let _ .= '+' | endif
-
-            let _ .= ' (' . fnamemodify(name, ':p:h:h') . ')'
-        endif
-    endif
-
-    return _
-endfunction
-
-" set titlestring=%{SetTitleString()}
-
-set title " mandatory for neovim-qt
 " }}}
