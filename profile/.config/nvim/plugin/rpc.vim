@@ -12,8 +12,8 @@ let g:rpc#socket_ready = v:null
 let s:job = 0
 let s:channel = 0
 let s:ft_type = {
-    \ "javascript": "application/javascript",
-    \ "typescript": "application/typescript",
+    \ "javascript": "text/javascript",
+    \ "typescript": "application/x-typescript",
     \ "ant": "text/xml"
 \ }
 
