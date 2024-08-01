@@ -109,7 +109,7 @@ func! s:src(type) " {{{
         let l:path = expand( '%:p' )
 
         if ( l:type == v:null ) | let l:type = "" | endif
-        if ( l:path == "" ) | let l:path = "test" | endif
+        if ( l:path == "" ) | let l:path = "no-name" | endif
 
         " special case for makefiles
         if ( &ft == "make" )
