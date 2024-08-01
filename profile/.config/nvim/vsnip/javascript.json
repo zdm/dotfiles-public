@@ -11,27 +11,27 @@
         "body": "process.exit()"
     },
     "console.log( $1 )": {
-        "prefix": "console.log( $1 )",
+        "prefix": "console.log",
         "body": "console.log( $1 )"
     },
     "JSON.stringify": {
-        "prefix": "JSON.stringify( $1 )",
+        "prefix": "json.stringify( $1 )",
         "body": "JSON.stringify( $1 )"
     },
     "JSON.parse": {
-        "prefix": "JSON.parse( $1 )",
+        "prefix": "json.parse( $1 )",
         "body": "JSON.parse( $1 )"
     },
     "eslint-disable-next-line": {
-        "prefix": "// eslint-disable-next-line",
+        "prefix": "eslint-disable-next-line",
         "body": "// eslint-disable-next-line $1"
     },
     "eslint-disable-line": {
-        "prefix": "// eslint-disable-line ",
+        "prefix": "eslint-disable-line ",
         "body": "// eslint-disable-line $1"
     },
     "eslint-disable": {
-        "prefix": "/* eslint-disable */",
+        "prefix": "eslint-disable",
         "body": "/* eslint-disable $1 */"
     },
     "for": {
