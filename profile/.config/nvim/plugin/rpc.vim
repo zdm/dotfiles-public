@@ -120,7 +120,7 @@ func! s:src(type) " {{{
             let l:path .= "." . &ft
         endif
 
-        let l:res = rpcrequest( s:channel, "lint", { "action": a:type, "path": l:path, "type": l:type, "buffer": l:buf } )
+        let l:res = rpcrequest( s:channel, "lint", { "action": a:type, "cwd": getcwd(), "path": l:path, "type": l:type, "buffer": l:buf } )
 
         if l:res.meta.isModified
             set syntax=off
