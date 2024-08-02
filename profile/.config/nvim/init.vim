@@ -598,13 +598,15 @@ nnoremap <C-W>t <C-W>T
 nnoremap <expr> <Up>   v:count ? 'k' : 'gk'
 nnoremap <expr> <Down> v:count ? 'j' : 'gj'
 
-nnoremap <S-Up>   gh<C-o>gk
-nnoremap <S-Down> gh<C-o>gj
+" nnoremap <S-Up>   gh<C-o>gk
+" nnoremap <S-Down> gh<C-o>gj
 
-inoremap <Up>     <C-o>gk
-inoremap <Down>   <C-o>gj
-inoremap <S-Up>   <C-o>gh<C-o>gk
-inoremap <S-Down> <C-o>gh<C-o>gj
+" XXX produces garbage
+" inoremap <Up>     <C-o>gk
+" inoremap <Down>   <C-o>gj
+
+" inoremap <S-Up>   <C-o>gh<C-o>gk
+" inoremap <S-Down> <C-o>gh<C-o>gj
 
 " xnoremap <Up>     gk
 " xnoremap <Down>   gj
