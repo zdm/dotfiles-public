@@ -594,15 +594,18 @@ nnoremap <C-W><C-Down> <C-W>J
 nnoremap <C-W>t <C-W>T
 " }}}
 
-" remap Up and Down {{{
-" nnoremap <Up>     gk
-" nnoremap <Down>   gj
-" nnoremap <S-Up>   gh<C-o>gk
-" nnoremap <S-Down> gh<C-o>gj
-" inoremap <Up>     <C-o>gk
-" inoremap <Down>   <C-o>gj
-" inoremap <S-Up>   <C-o>gh<C-o>gk
-" inoremap <S-Down> <C-o>gh<C-o>gj
+" remap Up and Down to move inside visible lines {{{
+nnoremap <expr> <Up>   v:count ? 'k' : 'gk'
+nnoremap <expr> <Down> v:count ? 'j' : 'gj'
+
+nnoremap <S-Up>   gh<C-o>gk
+nnoremap <S-Down> gh<C-o>gj
+
+inoremap <Up>     <C-o>gk
+inoremap <Down>   <C-o>gj
+inoremap <S-Up>   <C-o>gh<C-o>gk
+inoremap <S-Down> <C-o>gh<C-o>gj
+
 " xnoremap <Up>     gk
 " xnoremap <Down>   gj
 " xnoremap <S-Up>   k
