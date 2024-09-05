@@ -59,7 +59,8 @@ alias g="git"
 alias gc="gcloud"
 alias gce="gcloud compute"
 alias gcp="gcloud config configurations"
-alias s="softvisio-cli"
+alias a="softvisio-api"
+alias c="softvisio-cli"
 
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases

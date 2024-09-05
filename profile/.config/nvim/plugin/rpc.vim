@@ -62,9 +62,9 @@ func! s:check_channel() " {{{
         echom "Starting softvisio cli"
 
         if has('win16') || has('win32') || has('win64')
-            let s:job = jobstart( "softvisio-cli.cmd rpc", {"on_exit": function("s:OnExit")} )
+            let s:job = jobstart( "softvisio-cli.cmd rpc", { "on_exit": function( "s:OnExit" ) } )
         else
-            let s:job = jobstart( "softvisio-cli rpc" )
+            let s:job = jobstart( "softvisio-cli rpc", { "on_exit": function( "s:OnExit" ) } )
         endif
 
         silent! redraw
