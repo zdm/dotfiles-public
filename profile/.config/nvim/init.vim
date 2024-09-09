@@ -656,17 +656,21 @@ vnoremap <silent> <F2> <ESC>:Unite -buffer-name=helper -toggle -prompt-direction
 " }}}
 
 " rpc lint mappings {{{
-nnoremap <silent> <Leader>sd :SrcLint<CR>
-inoremap <silent> <Leader>sd <ESC>:SrcLint<CR>
-vnoremap <silent> <Leader>sd <ESC>:SrcLint<CR>
+nnoremap <silent> <Leader>sd :Lint<CR>
+inoremap <silent> <Leader>sd <ESC>:Lint<CR>
+vnoremap <silent> <Leader>sd <ESC>:Lint<CR>
 
-nnoremap <silent> <Leader>sc :SrcCompress<CR>
-inoremap <silent> <Leader>sc <ESC>:SrcCompress<CR>
-vnoremap <silent> <Leader>sc <ESC>:SrcCompress<CR>
+nnoremap <silent> <Leader>sf :LintFormat<CR>
+inoremap <silent> <Leader>sf <ESC>:LintFormat<CR>
+vnoremap <silent> <Leader>sf <ESC>:LintFormat<CR>
 
-nnoremap <silent> <Leader>so :SrcObfuscate<CR>
-inoremap <silent> <Leader>so <ESC>:SrcObfuscate<CR>
-vnoremap <silent> <Leader>so <ESC>:SrcObfuscate<CR>
+nnoremap <silent> <Leader>sc :LintCompress<CR>
+inoremap <silent> <Leader>sc <ESC>:LintCompress<CR>
+vnoremap <silent> <Leader>sc <ESC>:LintCompress<CR>
+
+nnoremap <silent> <Leader>so :LintObfuscate<CR>
+inoremap <silent> <Leader>so <ESC>:LintObfuscate<CR>
+vnoremap <silent> <Leader>so <ESC>:LintObfuscate<CR>
 " }}}
 
 " set titlestring {{{

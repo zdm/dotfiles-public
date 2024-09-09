@@ -17,9 +17,10 @@ let s:ft_type = {
     \ "ant": "text/xml"
 \ }
 
-command! SrcLint call s:src('lint')
-command! SrcCompress call s:src('compress')
-command! SrcObfuscate call s:src('obfuscate')
+command! Lint call s:lint( 'lint' )
+command! LintFormat call s:lint( 'format' )
+command! LintCompress call s:lint( 'compress' )
+command! LintObfuscate call s:lint( 'obfuscate' )
 
 command! BrowserPrint call s:browser_print()
 
@@ -85,7 +86,7 @@ func! s:check_channel() " {{{
 
 endfunc " }}}
 
-func! s:src(type) " {{{
+func! s:lint( type ) " {{{
     let l:buf = join( getline( 1, '$' ), "\n" )
 
     silent! redraw
