@@ -1,38 +1,31 @@
 " vim:foldmethod=marker
 
-if exists('g:rpc#loaded')
+if exists( 'g:rpc#loaded' )
     finish
 endif
 
 let g:rpc#hostname = get( g:, "rpc#hostname", "127.0.0.1" )
-let g:rpc#port = get( g:, "rpc#port", 55555 )
+let g:rpc#port = get( g:, "rpc#port", 55556 )
 
 let g:rpc#loaded = 1
 let g:rpc#socket_ready = v:null
-let s:job = 0
 let s:channel = 0
+let s:job
 let s:ft_type = {
     \ "javascript": "text/javascript",
     \ "typescript": "application/x-typescript",
     \ "ant": "text/xml"
 \ }
 
-command! Lint call s:lint( 'lint' )
-command! LintFormat call s:lint( 'format' )
-command! LintCompress call s:lint( 'compress' )
-command! LintObfuscate call s:lint( 'obfuscate' )
+command! Lint call s:lint_file( 'lint' )
+command! LintFormat call s:lint_file( 'format' )
+command! LintCompress call s:lint_file( 'compress' )
+command! LintObfuscate call s:lint_file( 'obfuscate' )
 
 command! BrowserPrint call s:browser_print()
 
-func! s:OnExit(job_id, code, event) " {{{
-    if s:channel
-        call chanclose(s:channel)
-        let s:channel = 0
-    endif
-endfunc " }}}
-
-func! s:check_socket() " {{{
-    let s:channel = sockconnect("tcp", g:rpc#hostname . ":" . g:rpc#port, {"rpc": v:true})
+func! s:check_socket () " {{{
+    let s:channel = sockconnect( "tcp", g:rpc#hostname . ":" . g:rpc#port, { "rpc": v:true } )
 
     if s:channel
         return v:true
@@ -45,13 +38,13 @@ func! s:check_socket() " {{{
     endif
 endfunc " }}}
 
-func! s:check_channel() " {{{
+func! s:check_channel () " {{{
 
     " check channel
     if s:channel
         for channel in nvim_list_chans()
 
-            " already connected, return
+            " socket already connected, return
             if channel.id == s:channel | return | endif
         endfor
 
@@ -60,12 +53,12 @@ func! s:check_channel() " {{{
 
     " run job
     if !s:check_socket()
-        echom "Starting softvisio cli"
+        echom "Starting RPC server"
 
-        if has('win16') || has('win32') || has('win64')
-            let s:job = jobstart( "softvisio-cli.cmd rpc", { "on_exit": function( "s:OnExit" ) } )
+        if has( 'win16' ) || has( 'win32' ) || has( 'win64' )
+            let s:job = jobstart( "softvisio-cli.cmd rpc --daemon" )
         else
-            let s:job = jobstart( "softvisio-cli rpc", { "on_exit": function( "s:OnExit" ) } )
+            let s:job = jobstart( "softvisio-cli rpc --daemon" )
         endif
 
         silent! redraw
@@ -74,19 +67,19 @@ func! s:check_channel() " {{{
     endif
 
     if !s:channel
-        let s:channel = sockconnect("tcp", g:rpc#hostname . ":" . g:rpc#port, {"rpc": v:true})
+        let s:channel = sockconnect( "tcp", g:rpc#hostname . ":" . g:rpc#port, { "rpc": v:true } )
 
         " unable to connect
         if !s:channel
             echohl ErrorMsg
-            echo "Failed to connect to softvisio cli"
+            echo "Failed to connect to the RPC server"
             echohl None
         endif
     endif
 
 endfunc " }}}
 
-func! s:lint( type ) " {{{
+func! s:lint_file ( type ) " {{{
     let l:buf = join( getline( 1, '$' ), "\n" )
 
     silent! redraw
@@ -121,7 +114,7 @@ func! s:lint( type ) " {{{
             let l:path .= "." . &ft
         endif
 
-        let l:res = rpcrequest( s:channel, "lint", { "action": a:type, "cwd": getcwd(), "path": l:path, "type": l:type, "buffer": l:buf } )
+        let l:res = rpcrequest( s:channel, "lint-file", { "action": a:type, "cwd": getcwd(), "path": l:path, "type": l:type, "buffer": l:buf } )
 
         if l:res.meta.isModified
             set syntax=off
@@ -182,8 +175,8 @@ func! s:lint( type ) " {{{
     return
 endfunc " }}}
 
-func! s:browser_print() " {{{
-    let l:buf = join(getline(1,'$'), "\n")
+func! s:browser_print () " {{{
+    let l:buf = join( getline( 1,'$' ), "\n" )
 
     if l:buf == ''
         echohl Comment
@@ -198,7 +191,7 @@ func! s:browser_print() " {{{
     if s:channel
         let l:buf .= "\n"
 
-        let l:res = rpcrequest(s:channel, "browserPrint", {"encoding": &encoding, "font": &gfn, "data": l:buf})
+        let l:res = rpcrequest( s:channel, "browser-print", { "encoding": &encoding, "font": &gfn, "data": l:buf } )
     endif
 
     return
