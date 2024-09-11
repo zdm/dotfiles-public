@@ -9,8 +9,8 @@ let g:rpc#port = get( g:, "rpc#port", 55556 )
 
 let g:rpc#loaded = 1
 let g:rpc#socket_ready = v:null
+let s:job = 0
 let s:channel = 0
-let s:job
 let s:ft_type = {
     \ "javascript": "text/javascript",
     \ "typescript": "application/x-typescript",
