@@ -56,9 +56,9 @@ func! s:check_channel () " {{{
         echom "Starting RPC server"
 
         if has( 'win16' ) || has( 'win32' ) || has( 'win64' )
-            let s:job = jobstart( "softvisio-cli.cmd rpc --daemon" )
+            let s:job = jobstart( "softvisio-cli.cmd rpc" )
         else
-            let s:job = jobstart( "softvisio-cli rpc --daemon" )
+            let s:job = jobstart( "softvisio-cli rpc" )
         endif
 
         silent! redraw
