@@ -37,4 +37,8 @@ mklink "%APPDATA%\postgresql\psqlrc.conf" "%~dp0\profile\.psqlrc"
 rmdir /S /Q "%LOCALAPPDATA%\nvim"
 mklink /D "%LOCALAPPDATA%\nvim" "%~dp0\profile\.config\nvim"
 
+:: .wslconfig
+del "%USERPROFILE%\.wslconfig"
+mklink "%USERPROFILE%\.wslconfig" "%~dp0\.wslconfig"
+
 pause
