@@ -73,7 +73,7 @@ tool = vdiff
 prompt = false
 
 [difftool "bcompare"]
-cmd = d:/apps/bcomp/bcompare.exe "$LOCAL" "$REMOTE"
+cmd = d:/apps/bcompare/bcompare.exe "$LOCAL" "$REMOTE"
 
 [difftool "vdiff"]
 cmd = vim -d "$LOCAL" "$REMOTE"
@@ -99,7 +99,7 @@ keepBackup = true
 trustExitCode = false
 
 [mergetool "bcompare"]
-cmd = d:/apps/bcomp/bcompare.exe "$REMOTE" "$BASE" "$LOCAL" "$MERGED"
+cmd = d:/apps/bcompare/bcompare.exe "$REMOTE" "$BASE" "$LOCAL" "$MERGED"
 
 [pull]
 rebase = false # merge (the default strategy)
