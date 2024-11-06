@@ -5,19 +5,20 @@
 detachedHead = false
 
 [alias]
-bc = difftool --tool bcompare --dir-diff
-b  = branch
-ci = commit
-co = checkout
-d  = diff
-l  = log --pretty='format:%h - %C(brightgreen)%ad [%C(brightcyan)%an] -%C(auto)%d%C(reset) %C(brightwhite)%s%C(reset)' --graph --all --date=human -n20
-l1 = log --pretty='format:%h%C(auto)%d%C(reset) - %C(brightwhite)%s%C(reset)' --graph --all -n20
-ll = log --graph --decorate --date=relative --all --oneline -n20
-p  = push
-s  = status --short --branch
-sw = switch
-t  = tag
-vd = difftool --tool vdiff
+bd    = difftool --tool bcompare --dir-diff
+b     = branch
+ci    = commit
+co    = checkout
+d     = diff
+l     = log --pretty='format:%h - %C(brightgreen)%ad [%C(brightcyan)%an] -%C(auto)%d%C(reset) %C(brightwhite)%s%C(reset)' --graph --all --date=human -n20
+l1    = log --pretty='format:%h%C(auto)%d%C(reset) - %C(brightwhite)%s%C(reset)' --graph --all -n20
+ll    = log --graph --decorate --date=relative --all --oneline -n20
+nd    = difftool --tool nvim
+p     = push
+s     = status --short --branch
+sw    = switch
+t     = tag
+vd    = difftool --tool vim
 
 [color]
 ui = auto
@@ -69,7 +70,7 @@ pager        = less --no-init --raw-control-chars --ignore-case --quit-on-intr -
 selected = <no helper>
 
 [diff]
-tool = vdiff
+tool = nvim
 
 [difftool]
 prompt = false
@@ -77,14 +78,17 @@ prompt = false
 [difftool "bcompare"]
 cmd = d:/apps/bcompare/bcompare.exe "$LOCAL" "$REMOTE"
 
-[difftool "vdiff"]
+[difftool "vim"]
 cmd = vim -d "$LOCAL" "$REMOTE"
 
+[difftool "nvim"]
+cmd = nvim -d "$LOCAL" "$REMOTE"
+
 [filter "lfs"]
-process = git-lfs filter-process
+process  = git-lfs filter-process
 required = true
-clean = git-lfs clean -- %f
-smudge = git-lfs smudge -- %f
+clean    = git-lfs clean -- %f
+smudge   = git-lfs smudge -- %f
 
 [format]
 signoff = true
@@ -102,8 +106,8 @@ defaultBranch = main
 tool = bcompare
 
 [mergetool]
-prompt = false
-keepBackup = true
+prompt        = false
+keepBackup    = true
 trustExitCode = false
 
 [mergetool "bcompare"]
@@ -113,13 +117,13 @@ cmd = d:/apps/bcompare/bcompare.exe "$REMOTE" "$BASE" "$LOCAL" "$MERGED"
 rebase = false # merge (the default strategy)
 
 [push]
-default = simple
+default    = simple
 followTags = true
 
 [tag]
 gpgsign = true
 
 [user]
-email = zdm@softvisio.net
-name = zdm
+email      = zdm@softvisio.net
+name       = zdm
 signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKgGl5iJafIaKHlqRu3u04xn90lU9mmbiiZmFYugfcol
