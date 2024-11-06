@@ -55,13 +55,15 @@ branch       = bold green
 localBranch  = bold green
 remoteBranch = bold cyan
 
+[commit]
+gpgsign = true
+
 [core]
 unsetenvvars =
 autocrlf     = false
 hookspath    = ~/.git-hooks
 editor       = nvim
 pager        = less --no-init --raw-control-chars --ignore-case --quit-on-intr --squeeze-blank-lines --quit-if-one-screen
-; unsetenvvars =
 
 [credential "helperselector"]
 selected = <no helper>
@@ -83,6 +85,12 @@ process = git-lfs filter-process
 required = true
 clean = git-lfs clean -- %f
 smudge = git-lfs smudge -- %f
+
+[format]
+signoff = true
+
+[gpg]
+format = ssh
 
 [init]
 defaultBranch = main
@@ -108,6 +116,10 @@ rebase = false # merge (the default strategy)
 default = simple
 followTags = true
 
+[tag]
+gpgsign = true
+
 [user]
 email = zdm@softvisio.net
 name = zdm
+signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKgGl5iJafIaKHlqRu3u04xn90lU9mmbiiZmFYugfcol
