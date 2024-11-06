@@ -22,20 +22,20 @@ mklink /D "%USERPROFILE%\Videos" "d:\pictures"
 
 :: git
 del "%USERPROFILE%\.gitconfig"
-mklink "%USERPROFILE%\.gitconfig" "%~dp0\profile\.gitconfig"
+mklink "%USERPROFILE%\.gitconfig" "%~dp0\..\profile\.gitconfig"
 
 rmdir /S /Q "%USERPROFILE%\.git-hooks"
-mklink /D "%USERPROFILE%\.git-hooks" "%~dp0\profile\.git-hooks"
+mklink /D "%USERPROFILE%\.git-hooks" "%~dp0\..\profile\.git-hooks"
 
 :: postgresqll
 mkdir "%APPDATA%\postgresql"
 
 del "%APPDATA%\postgresql\psqlrc.conf"
-mklink "%APPDATA%\postgresql\psqlrc.conf" "%~dp0\profile\.psqlrc"
+mklink "%APPDATA%\postgresql\psqlrc.conf" "%~dp0\..\profile\.psqlrc"
 
 :: neovim
 rmdir /S /Q "%LOCALAPPDATA%\nvim"
-mklink /D "%LOCALAPPDATA%\nvim" "%~dp0\profile\.config\nvim"
+mklink /D "%LOCALAPPDATA%\nvim" "%~dp0\..\profile\.config\nvim"
 
 :: .wslconfig
 del "%USERPROFILE%\.wslconfig"
