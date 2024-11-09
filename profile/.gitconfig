@@ -62,7 +62,7 @@ gpgsign = true
 [core]
 unsetenvvars =
 autocrlf     = false
-hookspath    = ~/.git-hooks
+hooksPath    = ~/.config/git/hooks
 editor       = nvim
 pager        = less --no-init --raw-control-chars --ignore-case --quit-on-intr --squeeze-blank-lines --quit-if-one-screen
 
@@ -96,6 +96,10 @@ signoff = true
 [gpg]
 format = ssh
 
+[gpg "ssh"]
+allowedSignersFile = ~/.config/git/ssh/allowed-signatures
+revocationFile     = ~/.config/git/ssh/revocatied-signatures
+
 [init]
 defaultBranch = main
 
@@ -126,4 +130,4 @@ gpgsign = true
 [user]
 email      = zdm@softvisio.net
 name       = zdm
-signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKgGl5iJafIaKHlqRu3u04xn90lU9mmbiiZmFYugfcol
+signingkey = key::ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKgGl5iJafIaKHlqRu3u04xn90lU9mmbiiZmFYugfcol

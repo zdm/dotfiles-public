@@ -24,8 +24,13 @@ mklink /D "%USERPROFILE%\Videos" "d:\pictures"
 del "%USERPROFILE%\.gitconfig"
 mklink "%USERPROFILE%\.gitconfig" "%~dp0\..\profile\.gitconfig"
 
-rmdir /S /Q "%USERPROFILE%\.git-hooks"
-mklink /D "%USERPROFILE%\.git-hooks" "%~dp0\..\profile\.git-hooks"
+mkdir "%USERPROFILE%\.config\git"
+
+rmdir /S /Q "%USERPROFILE%\.config\git\hooks"
+mklink /D "%USERPROFILE%\.config\git\hooks" "%~dp0\..\profile\.config\git\hooks"
+
+rmdir /S /Q "%USERPROFILE%\.config\git\ssh"
+mklink /D "%USERPROFILE%\.config\git\ssh" "%~dp0\..\profile\.config\git\ssh"
 
 :: postgresqll
 mkdir "%APPDATA%\postgresql"
