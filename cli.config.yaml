@@ -1,5 +1,6 @@
 private: true
 
-metadata:
+meta:
   executables:
+    - /**/*.sh
     - /profile/.config/git/hooks/**/*
