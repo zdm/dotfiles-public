@@ -6,7 +6,7 @@
 \set COMP_KEYWORD_CASE upper
 \set ECHO_HIDDEN off
 \set HISTCONTROL ignoreboth
-\set HISTFILE ~/.local/share/psql/history/-:DBNAME
+\set HISTFILE ~/.local/share/psql/history/:DBNAME
 \set HISTSIZE 2000
 
 \if :{?REAL_HOST}
