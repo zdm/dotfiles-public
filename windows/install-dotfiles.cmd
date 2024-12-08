@@ -46,4 +46,9 @@ mklink /D "%LOCALAPPDATA%\nvim" "%~dp0\..\profile\.config\nvim"
 del "%USERPROFILE%\.wslconfig"
 mklink "%USERPROFILE%\.wslconfig" "%~dp0\.wslconfig"
 
+:: ssh
+del "%USERPROFILE%\.ssh\config"
+mkdir "%USERPROFILE%\.ssh"
+mklink "%USERPROFILE%\.ssh\config" "%~dp0\.ssh\config"
+
 pause
