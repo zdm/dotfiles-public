@@ -47,8 +47,12 @@ del "%USERPROFILE%\.wslconfig"
 mklink "%USERPROFILE%\.wslconfig" "%~dp0\.wslconfig"
 
 :: ssh
-del "%USERPROFILE%\.ssh\config"
 mkdir "%USERPROFILE%\.ssh"
+
+del "%USERPROFILE%\.ssh\config"
 mklink "%USERPROFILE%\.ssh\config" "%~dp0\.ssh\config"
+
+del "%USERPROFILE%\.ssh\authorized_keys"
+mklink "%USERPROFILE%\.ssh\authorized_keys" "%~dp0\.ssh\authorized_keys"
 
 pause
