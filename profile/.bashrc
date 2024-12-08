@@ -17,12 +17,7 @@ shopt -s dotglob extglob nocaseglob
 
 [ -z "$DEBIAN_FRONTEND" ] && export DEBIAN_FRONTEND=teletype
 
-if [ "$TERM_PROGRAM" = "Apple_Terminal" ]; then
-    export TERM=xterm-256color
-else
-    export TERM=putty-256color
-fi
-
+export TERM=xterm-256color
 export CLICOLOR=1
 export EDITOR=nvim
 export HISTSIZE=1000
