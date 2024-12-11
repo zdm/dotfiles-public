@@ -50,55 +50,35 @@
         },
         "list": [
             {
-                "commandline": "%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
-                "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
-                "hidden": false,
-                "name": "powershell"
-            },
-            {
-                "commandline": "%SystemRoot%\\System32\\cmd.exe",
+                "name": "cmd",
                 "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
-                "hidden": false,
-                "name": "cmd"
-            },
-            {
-                "guid": "{51855cb2-8cce-5362-8f54-464b92b32386}",
-                "hidden": false,
-                "name": "wsl",
-                "source": "CanonicalGroupLimited.Ubuntu_79rhkp1fndgsc"
-            },
-            {
-                "altGrAliasing": true,
-                "antialiasingMode": "grayscale",
-                "closeOnExit": "automatic",
-                "colorScheme": "Campbell",
-                "commandline": "ssh root@devel",
-                "cursorShape": "bar",
-                "guid": "{c056adfe-c634-4583-b294-0ae0ba1fdb7d}",
-                "hidden": false,
-                "historySize": 9001,
-                "icon": "ms-appx:///ProfileIcons/{0caa0dad-35be-5f56-a8ff-afceeeaa6101}.png",
-                "name": "root@devel",
-                "padding": "8, 8, 8, 8",
-                "snapOnInput": true,
-                "useAcrylic": false
-            },
-            {
-                "altGrAliasing": true,
-                "antialiasingMode": "grayscale",
-                "closeOnExit": "automatic",
-                "colorScheme": "Campbell",
                 "commandline": "%SystemRoot%\\System32\\cmd.exe",
-                "cursorShape": "bar",
-                "elevate": true,
-                "guid": "{e96ad77e-24ae-4c73-ab89-a7b7c787ef87}",
-                "hidden": false,
-                "historySize": 9001,
-                "icon": "ms-appx:///ProfileIcons/{0caa0dad-35be-5f56-a8ff-afceeeaa6101}.png",
+                "hidden": false
+            },
+            {
                 "name": "cmda",
-                "padding": "8, 8, 8, 8",
-                "snapOnInput": true,
-                "useAcrylic": false
+                "guid": "{e96ad77e-24ae-4c73-ab89-a7b7c787ef87}",
+                "commandline": "%SystemRoot%\\System32\\cmd.exe",
+                "elevate": true,
+                "hidden": false
+            },
+            {
+                "name": "powershell",
+                "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
+                "commandline": "%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+                "hidden": false
+            },
+            {
+                "name": "root@devel",
+                "guid": "{c056adfe-c634-4583-b294-0ae0ba1fdb7d}",
+                "commandline": "ssh root@devel",
+                "hidden": false
+            },
+            {
+                "name": "wsl",
+                "guid": "{51855cb2-8cce-5362-8f54-464b92b32386}",
+                "source": "CanonicalGroupLimited.Ubuntu_79rhkp1fndgsc",
+                "hidden": false
             }
         ]
     },
