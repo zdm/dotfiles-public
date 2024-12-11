@@ -41,7 +41,7 @@
     ],
     "profiles": {
         "defaults": {
-            "cursorShape": "emptyBox",
+            "cursorShape": "bar",
             "experimental.repositionCursorWithMouse": true,
             "experimental.rightClickContextMenu": true,
             "font": {
@@ -65,11 +65,13 @@
                 "name": "cmda"
             },
             {
+                "colorScheme": "Campbell Powershell",
                 "commandline": "%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
                 "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
                 "name": "powershell"
             },
             {
+                "colorScheme": "Ubuntu-ColorScheme",
                 "commandline": "ssh root@devel",
                 "guid": "{c056adfe-c634-4583-b294-0ae0ba1fdb7d}",
                 "name": "root@devel"
