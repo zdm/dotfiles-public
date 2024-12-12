@@ -60,9 +60,4 @@ mkdir "%ProgramData%\ssh"
 del "%ProgramData%\ssh\sshd_config"
 mklink "%ProgramData%\ssh\sshd_config" "%~dp0\.ssh\sshd_config"
 
-:: windows terminal
-mkdir "%LOCALAPPDATA%\Microsoft\Windows Terminal"
-del "%LOCALAPPDATA%\Microsoft\Windows Terminal\settings.json"
-mklink "%LOCALAPPDATA%\Microsoft\Windows Terminal\settings.json" "%~dp0\windows-terminal\settings.json"
-
 pause
