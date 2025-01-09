@@ -60,21 +60,32 @@ func! s:check_channel () " {{{
         else
             let s:job = jobstart( "softvisio-cli rpc start" )
         endif
-
-        silent! redraw
-
-        sleep 3
     endif
 
-    if !s:channel
-        let s:channel = sockconnect( "tcp", g:rpc#hostname . ":" . g:rpc#port, { "rpc": v:true } )
+    let n = 10
 
-        " unable to connect
-        if !s:channel
-            echohl ErrorMsg
-            echo "Failed to connect to the RPC server"
-            echohl None
+    while n > 0
+        let n -= 1
+
+        if s:channel
+            break
+        else
+            let s:channel = sockconnect( "tcp", g:rpc#hostname . ":" . g:rpc#port, { "rpc": v:true } )
+
+            silent! redraw
+            echom "Starting RPC server"
+
+            sleep 1
         endif
+    endwhile
+
+    " unable to connect
+    if s:channel
+        silent! redraw
+    else
+        echohl ErrorMsg
+        echo "Failed to connect to the RPC server"
+        echohl None
     endif
 
 endfunc " }}}
