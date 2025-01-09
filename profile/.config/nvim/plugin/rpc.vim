@@ -25,6 +25,18 @@ command! LintObfuscate call s:lint_file( 'obfuscate' )
 command! BrowserPrint call s:browser_print()
 
 func! s:check_socket () " {{{
+
+    " check socket connected
+    if s:channel
+        for channel in nvim_list_chans()
+
+            " socket connected
+            if channel.id == s:channel | return v:true | endif
+        endfor
+
+        let s:channel = 0
+    endif
+
     let s:channel = sockconnect( "tcp", g:rpc#hostname . ":" . g:rpc#port, { "rpc": v:true } )
 
     if s:channel
@@ -40,18 +52,7 @@ endfunc " }}}
 
 func! s:check_channel () " {{{
 
-    " check channel
-    if s:channel
-        for channel in nvim_list_chans()
-
-            " socket already connected, return
-            if channel.id == s:channel | return | endif
-        endfor
-
-        let s:channel = 0
-    endif
-
-    " run job
+    " start RPC server
     if !s:check_socket()
         echom "Starting RPC server"
 
@@ -60,6 +61,8 @@ func! s:check_channel () " {{{
         else
             let s:job = jobstart( "softvisio-cli rpc start" )
         endif
+
+        sleep 3
     endif
 
     let n = 10
@@ -67,13 +70,10 @@ func! s:check_channel () " {{{
     while n > 0
         let n -= 1
 
-        if s:channel
+        if s:check_socket()
             break
         else
-            let s:channel = sockconnect( "tcp", g:rpc#hostname . ":" . g:rpc#port, { "rpc": v:true } )
-
-            silent! redraw
-            echom "Starting RPC server"
+            echom "Connecting to the RPC server"
 
             sleep 1
         endif
