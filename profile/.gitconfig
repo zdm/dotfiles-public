@@ -131,4 +131,4 @@ gpgsign = true
 [user]
 email      = zdm@softvisio.net
 name       = zdm
-signingkey = key::ecdsa-sha2-nistp521 AAAAE2VjZHNhLXNoYTItbmlzdHA1MjEAAAAIbmlzdHA1MjEAAACFBAHxTsx4kSEnxw83QPe8aBfIihbXsjtVM4fAdyCi4wCmMiqkowrynLd/f4eFsTQXARa4hA1ZbmiQ1L7AzTh9e3+MTgDWb7xXGvuP7EOuJimmG5xV/EtKjKGealVwgIxBDmFLp0VrtFsJBRhPVHZz8WWL499Sxw9a2+XYSBSoNbW943+nMQ==
+signingkey = key::ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIP/nPzEIJ9FvODTzjuTvrk+h6b3mq1ilgsm7wQpYLVRP
