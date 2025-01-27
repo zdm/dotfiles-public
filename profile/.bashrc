@@ -10,7 +10,7 @@ else
     export LC_ALL=C.UTF-8
 fi
 
-shopt -s dotglob extglob nocaseglob
+# shopt -s dotglob extglob nocaseglob
 
 # if not running interactively, don't do anything
 [ -z "$PS1" ] && return
