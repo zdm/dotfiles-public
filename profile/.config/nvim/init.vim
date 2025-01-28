@@ -706,4 +706,4 @@ endfunction
 set title " mandatory for neovim-qt
 " }}}
 
-exec "runtime ginit.vim"
+" exec "runtime ginit.vim"
