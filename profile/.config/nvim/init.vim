@@ -131,7 +131,7 @@ if dein#load_state(expand(g:bundle_path)) " {{{
     " call dein#add("tpope/vim-surround")
 
     " add vsnip
-    exec "set rtp=" . stdpath("config") . "/vsnip," . &rtp
+    exec "set rtp=" . substitute( stdpath( "config" ) . "/vsnip," . &rtp, " ", '\\\ ', "g" )
 
     call dein#end()
     call dein#save_state()
@@ -705,3 +705,5 @@ endfunction
 
 set title " mandatory for neovim-qt
 " }}}
+
+exec "runtime ginit.vim"
