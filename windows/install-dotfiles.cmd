@@ -56,7 +56,11 @@ del "%USERPROFILE%\.ssh\authorized_keys"
 mklink "%USERPROFILE%\.ssh\authorized_keys" "%~dp0\.ssh\authorized_keys"
 
 mkdir "%ProgramData%\ssh"
+
 del "%ProgramData%\ssh\sshd_config"
 mklink "%ProgramData%\ssh\sshd_config" "%~dp0\.ssh\sshd_config"
+
+del "%ProgramData%\ssh\administrators_authorized_keys"
+mklink "%ProgramData%\ssh\administrators_authorized_keys" "%~dp0\.ssh\authorized_keys"
 
 pause
