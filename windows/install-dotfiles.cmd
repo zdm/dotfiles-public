@@ -42,25 +42,4 @@ mklink "%APPDATA%\postgresql\psqlrc.conf" "%~dp0\..\profile\.psqlrc"
 rmdir /S /Q "%LOCALAPPDATA%\nvim"
 mklink /D "%LOCALAPPDATA%\nvim" "%~dp0\..\profile\.config\nvim"
 
-:: wsl
-del "%USERPROFILE%\.wslconfig"
-mklink "%USERPROFILE%\.wslconfig" "%~dp0\.wslconfig"
-
-:: ssh
-mkdir "%USERPROFILE%\.ssh"
-
-del "%USERPROFILE%\.ssh\config"
-mklink "%USERPROFILE%\.ssh\config" "%~dp0\.ssh\config"
-
-del "%USERPROFILE%\.ssh\authorized_keys"
-mklink "%USERPROFILE%\.ssh\authorized_keys" "%~dp0\.ssh\authorized_keys"
-
-mkdir "%ProgramData%\ssh"
-
-del "%ProgramData%\ssh\sshd_config"
-mklink "%ProgramData%\ssh\sshd_config" "%~dp0\.ssh\sshd_config"
-
-del "%ProgramData%\ssh\administrators_authorized_keys"
-mklink "%ProgramData%\ssh\administrators_authorized_keys" "%~dp0\.ssh\authorized_keys"
-
 pause
