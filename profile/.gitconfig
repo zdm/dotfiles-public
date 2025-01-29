@@ -77,7 +77,7 @@ tool = nvim
 prompt = false
 
 [difftool "bcompare"]
-cmd = d:/apps/bcompare/bcompare.exe "$LOCAL" "$REMOTE"
+cmd = bcompare "$LOCAL" "$REMOTE"
 
 [difftool "vim"]
 cmd = vim -d "$LOCAL" "$REMOTE"
@@ -108,7 +108,7 @@ defaultBranch = main
 ; allowincompletepush = true
 
 [merge]
-tool = bcompare
+tool = nvim
 
 [mergetool]
 prompt        = false
@@ -116,7 +116,7 @@ keepBackup    = true
 trustExitCode = false
 
 [mergetool "bcompare"]
-cmd = d:/apps/bcompare/bcompare.exe "$REMOTE" "$BASE" "$LOCAL" "$MERGED"
+cmd = bcompare "$REMOTE" "$BASE" "$LOCAL" "$MERGED"
 
 [pull]
 rebase = false # merge (the default strategy)
