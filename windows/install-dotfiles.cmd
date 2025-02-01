@@ -1,6 +1,7 @@
 @echo off
 
-call elevate.cmd "%~sf0" %* & if errorlevel 1 exit /B 1
+:: elevate script
+call is-elevated.cmd || ( sudo -E "%~sf0" %* & exit /B )
 
 setlocal
 
