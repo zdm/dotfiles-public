@@ -11,7 +11,8 @@ else
 fi
 
 # if not running interactively, don't do anything
-[ -z "$PS1" ] && return
+# [ -z "$PS1" ] && return
+[[ "$-" != *i* ]] && return
 
 shopt -s histappend no_empty_cmd_completion
 
@@ -32,17 +33,22 @@ export PROMPT_COMMAND="history -n; history -w; history -c; history -r"
 if [ "$(id -u)" == "0" ]; then
     export PS1="[\[\e[1;31m\]\u\[\e[0;31m\]@\[\e[1;31m\]\H\[\e[0m\]\w]\[\e[1;33m\]\043\[\e[0m\] "
 
-# regular user
+# non-root user
 else
     export PS1="[\[\e[1;32m\]\u\[\e[0;32m\]@\[\e[1;32m\]\H\[\e[0m\]\w]\[\e[1;33m\]>\[\e[0m\] "
 fi
 
 bind "set completion-ignore-case on" 2> /dev/null
 
+# to override the alias instruction use a `\` before
+# ie: `\rm` will call the real `rm` not the alias
+alias ls='ls -hFv --color=auto --group-directories-first'
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
 alias grep='grep --color=auto'
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
 alias less='less --no-init --raw-control-chars --ignore-case --quit-on-intr --squeeze-blank-lines --quit-if-one-screen'
 alias autossh="autossh -M 0 -o 'ServerAliveInterval 30' -o 'ServerAliveCountMax 3'"
 alias d="docker"
