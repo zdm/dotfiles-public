@@ -34,7 +34,7 @@ if [ "$(id -u)" == "0" ]; then
 
 # non-root user
 else
-    export PS1="[\[\e[1;32m\]\u\[\e[0;32m\]@\[\e[1;32m\]\H\[\e[0m\]\w]\[\e[1;33m\]>\[\e[0m\] "
+    export PS1="[\[\e[1;32m\]\u\[\e[0;32m\]@\[\e[1;32m\]\H\[\e[0m\]\w]\[\e[1;33m\]\$\[\e[0m\] "
 fi
 
 bind "set completion-ignore-case on" 2> /dev/null
