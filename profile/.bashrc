@@ -42,15 +42,17 @@ bind "set completion-ignore-case on" 2> /dev/null
 
 # to override the alias instruction use a `\` before
 # ie: `\rm` will call the real `rm` not the alias
-alias ls='ls -hFv --color=auto --group-directories-first'
-alias rm='rm -i'
-alias cp='cp -i'
-alias mv='mv -i'
-alias grep='grep --color=auto'
-alias egrep='egrep --color=auto'
-alias fgrep='fgrep --color=auto'
-alias less='less --no-init --raw-control-chars --ignore-case --quit-on-intr --squeeze-blank-lines --quit-if-one-screen'
+alias ls="ls -hFv --color=auto --group-directories-first"
+alias rm="rm -i"
+alias cp="cp -i"
+alias mv="mv -i"
+alias grep="grep --color=auto"
+alias egrep="egrep --color=auto"
+alias fgrep="fgrep --color=auto"
+alias less="less --no-init --raw-control-chars --ignore-case --quit-on-intr --squeeze-blank-lines --quit-if-one-screen"
 alias autossh="autossh -M 0 -o 'ServerAliveInterval 30' -o 'ServerAliveCountMax 3'"
+alias df="df -h"
+alias du="du -h"
 alias d="docker"
 alias g="git"
 alias gc="gcloud"
