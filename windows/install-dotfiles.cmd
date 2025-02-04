@@ -43,4 +43,13 @@ mklink "%APPDATA%\postgresql\psqlrc.conf" "%~dp0\..\profile\.psqlrc"
 rmdir /S /Q "%LOCALAPPDATA%\nvim"
 mklink /D "%LOCALAPPDATA%\nvim" "%~dp0\..\profile\.config\nvim"
 
+:: msys2
+if exist "c:\msys64\home\%USERNAME%" (
+    del "c:\msys64\home\%USERNAME%\.bashrc"
+    mklink "c:\msys64\home\%USERNAME%\.bashrc" "%~dp0\..\profile\.bashrc"
+
+    del "c:\msys64\home\%USERNAME%\.inputrc"
+    mklink "c:\msys64\home\%USERNAME%\.inputrc" "%~dp0\..\profile\.inputrc"
+)
+
 pause
