@@ -1,0 +1,14 @@
+-                  Battery   Plugged
+Turn off display   5         5
+Sleep              10        Never || 10
+Hibernate          20        Never
+
+Screensaver        None, wait 5 min, on resume display log-on screen
+
+Не имеет значения, какой таймер установлен для скринсейвера, если установлена "on resume display log-on screen" компьютер блокируется всегда при выключении монитора.
+
+Control panel/Power options/Choose what the power button does/Change settings that are currently unvailable/Turn on fast start-up = Disable
+
+gpedit.msc:
+Local Computer Policy/Computer Configuration/Administrative Templates/Windows Components/OneDrive/Prevent the usage of OneDrive for file storage = Enable
+Local Computer Policy/Computer Configuration/Administrative Templates/Windows Components/Windows Defender/Turn off Windows Defender = Enable
