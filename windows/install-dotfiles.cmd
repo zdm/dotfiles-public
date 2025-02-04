@@ -51,5 +51,3 @@ if exist "c:\msys64\home\%USERNAME%" (
     del "c:\msys64\home\%USERNAME%\.inputrc"
     mklink "c:\msys64\home\%USERNAME%\.inputrc" "%~dp0\..\profile\.inputrc"
 )
-
-pause
