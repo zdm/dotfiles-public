@@ -39,6 +39,7 @@ else
 fi
 
 bind "set completion-ignore-case on" 2> /dev/null
+[[ -f /etc/bash_completion ]] && . /etc/bash_completion
 
 # to override the alias instruction use a `\` before
 # ie: `\rm` will call the real `rm` not the alias
