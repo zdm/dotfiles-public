@@ -11,8 +11,7 @@ else
 fi
 
 # if not running interactively, don't do anything
-# [ -z "$PS1" ] && return
-[[ "$-" != *i* ]] && return
+[ -z "$PS1" ] && return
 
 shopt -s histappend no_empty_cmd_completion
 
@@ -39,8 +38,13 @@ else
 fi
 
 bind "set completion-ignore-case on" 2> /dev/null
+
+# bash completion
+COMP_CONFIGURE_HINTS=1
+COMP_TAR_INTERNAL_PATHS=1
 [[ -f /etc/bash_completion ]] && . /etc/bash_completion
 
+# aliases
 # to override the alias instruction use a `\` before
 # ie: `\rm` will call the real `rm` not the alias
 alias ls="ls -hFv --color=auto --group-directories-first"
@@ -62,9 +66,7 @@ alias gcp="gcloud config configurations"
 alias a="softvisio-api"
 alias s="softvisio-cli"
 
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
+[[ -f ~/.bash_aliases ]] && . ~/.bash_aliases
 
 function update() {
 
