@@ -81,14 +81,29 @@ function update() {
         pod repo update
 
         # update global node packages
+        npm ou -g
         npm up -g
 
+    # debian / ubuntu
     else
 
-        # debian / ubuntu
+        # apt
         apt-get update
         apt-get full-upgrade -y
         apt-get autoremove -y
+
+        # update resources
+        [[ -x "$(command -v softvisio-cli)" ]] && softvisio-cli workspace update-resources
+
+        # npm
+        if [[ -x "$(command -v npm)" ]]; then
+
+            # update global node packages
+            npm ou -g
+            npm up -g
+
+            npm cache clear --force
+        fi
     fi
 }
 
