@@ -88,20 +88,29 @@ function update() {
     else
 
         # apt
+        echo "### Updating: apt"
         apt-get update
         apt-get full-upgrade -y
         apt-get autoremove -y
 
         # update resources
-        [[ -x "$(command -v softvisio-cli)" ]] && softvisio-cli workspace update-resources
+        if [[ -x "$(command -v softvisio-cli)" ]]; then
+
+            echo
+            echo "### Updating: resources"
+            softvisio-cli workspace update-resources
+        fi
 
         # npm
         if [[ -x "$(command -v npm)" ]]; then
 
-            # update global node packages
+            echo
+            echo "### Updating: npm global packages"
             npm ou -g
             npm up -g
 
+            echo
+            echo "### Clearing npm cache"
             npm cache clear --force
         fi
     fi
