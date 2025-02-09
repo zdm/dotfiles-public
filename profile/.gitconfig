@@ -66,6 +66,7 @@ autocrlf     = false
 hooksPath    = ~/.config/git/hooks
 editor       = nvim
 pager        = less --no-init --raw-control-chars --ignore-case --quit-on-intr --squeeze-blank-lines --quit-if-one-screen
+sshCommand   = ssh
 
 [credential "helperselector"]
 selected = <no helper>
@@ -124,6 +125,9 @@ rebase = false # merge (the default strategy)
 [push]
 default    = simple
 followTags = true
+
+[ssh]
+variant = ssh
 
 [tag]
 gpgsign = true
