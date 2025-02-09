@@ -56,13 +56,9 @@ setx.exe /M PATH "%SystemRoot%\system32;%SystemRoot%;s:\bin;d:\apps\bin;%USERPRO
 :: setx /M LANG "en_US"
 
 :: git
-setx /M GIT_SSH_VARIANT ssh
 setx /M GIT_CONFIG_COUNT 1
 setx /M GIT_CONFIG_KEY_0 merge.tool
 setx /M GIT_CONFIG_VALUE_0 bcompare
-:: setx /M GIT_SSH "%ProgramFiles%\openssh\ssh.exe"
-:: setx /M GIT_CONFIG_KEY_1 gpg.ssh.program
-:: setx /M GIT_CONFIG_VALUE_1 "%ProgramFiles%\openssh\ssh-keygen.exe"
 
 :: perl
 :: setx /M PERL_CPANM_HOME "%TEMP%\.cpanm"
