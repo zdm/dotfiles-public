@@ -54,11 +54,11 @@ AuthorizedKeysFile    .ssh/authorized_keys
 #IgnoreRhosts yes
 
 # To disable tunneled clear text passwords, change to no here!
-#PasswordAuthentication yes
+PasswordAuthentication no
 #PermitEmptyPasswords no
 
 # Change to no to disable s/key passwords
-#KbdInteractiveAuthentication yes
+KbdInteractiveAuthentication no
 
 # Kerberos options
 #KerberosAuthentication no
@@ -83,7 +83,7 @@ AuthorizedKeysFile    .ssh/authorized_keys
 
 #AllowAgentForwarding yes
 #AllowTcpForwarding yes
-#GatewayPorts no
+GatewayPorts yes
 #X11Forwarding no
 #X11DisplayOffset 10
 #X11UseLocalhost yes
