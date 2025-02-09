@@ -99,6 +99,7 @@ signoff = true
 format = ssh
 
 [gpg "ssh"]
+program            = ssh-keygen
 allowedSignersFile = ~/.config/git/ssh/allowed-signatures
 revocationFile     = ~/.config/git/ssh/revocatied-signatures
 
