@@ -29,19 +29,20 @@ rmdir /S /Q "%PROFILE%\.config\git\ssh"
 mklink /D "%PROFILE%\.config\git\ssh" "%~dp0\..\profile\.config\git\ssh"
 
 :: gpg
-mkdir "%PROFILE%\.gnupg"
+rmdir /S /Q "%PROFILE%\.gnupg"
+mklink /D "%PROFILE%\.gnupg" "s:\gpg"
 
-del "c:\msys64\home\%USERNAME%\.gnupg\dirmngr.conf"
-mklink "c:\msys64\home\%USERNAME%\.gnupg\dirmngr.conf" "%~dp0\..\profile\.gnupg\dirmngr.conf"
+del "s:\gpg\dirmngr.conf"
+mklink "s:\gpg\dirmngr.conf" "%~dp0\..\profile\.gnupg\dirmngr.conf"
 
-del "c:\msys64\home\%USERNAME%\.gnupg\gpg.conf"
-mklink "c:\msys64\home\%USERNAME%\.gnupg\gpg.conf" "%~dp0\..\profile\.gnupg\gpg.conf"
+del "s:\gpg\gpg.conf"
+mklink "s:\gpg\gpg.conf" "%~dp0\..\profile\.gnupg\gpg.conf"
 
-del "c:\msys64\home\%USERNAME%\.gnupg\gpg-agent.conf"
-mklink "c:\msys64\home\%USERNAME%\.gnupg\gpg-agent.conf" "%~dp0\..\profile\.gnupg\gpg-agent.conf"
+del "s:\gpg\gpg-agent.conf"
+mklink "s:\gpg\gpg-agent.conf" "%~dp0\..\profile\.gnupg\gpg-agent.conf"
 
-del "c:\msys64\home\%USERNAME%\.gnupg\sshcontrol"
-mklink "c:\msys64\home\%USERNAME%\.gnupg\sshcontrol" "%~dp0\..\profile\.gnupg\sshcontrol"
+del "s:\gpg\sshcontrol"
+mklink "s:\gpg\sshcontrol" "%~dp0\..\profile\.gnupg\sshcontrol"
 
 :: ssh
 mkdir "%PROFILE%\.ssh"
