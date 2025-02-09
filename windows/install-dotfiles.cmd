@@ -66,4 +66,17 @@ if exist "c:\msys64\home\%USERNAME%" (
 
     del "c:\msys64\home\%USERNAME%\.gnupg\sshcontrol"
     mklink "c:\msys64\home\%USERNAME%\.gnupg\sshcontrol" "%~dp0\..\profile\.gnupg\sshcontrol"
+
+    rem ### ssh
+    mkdir "c:\msys64\home\%USERNAME%\.ssh"
+
+    del "c:\msys64\home\%USERNAME%\.ssh\authorized_keys"
+    mklink "c:\msys64\home\%USERNAME%\.ssh\authorized_keys" "%~dp0\ssh\authorized_keys"
+
+    del "c:\msys64\home\%USERNAME%\.ssh\config"
+    mklink "c:\msys64\home\%USERNAME%\.ssh\config" "%~dp0\ssh\config"
+
+    setx /M SSH_AUTH_SOCK "/home/%USERNAME%/.gnupg/S.gpg-agent.ssh"
+    rem export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+
 )
