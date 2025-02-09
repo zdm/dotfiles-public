@@ -53,6 +53,13 @@ mklink "%PROFILE%\.ssh\authorized_keys" "%~dp0\ssh\authorized_keys"
 del "%PROFILE%\.ssh\config"
 mklink "%PROFILE%\.ssh\config" "%~dp0\ssh\config"
 
+:: generate sshd host keys
+ssh-keygen -A
+
+:: sshd
+del "c:\msys64\etc\ssh\sshd_config"
+mklink "c:\msys64\etc\ssh\sshd_config" "%~dp0\ssh\sshd_config"
+
 setx /M LANGUAGE C.UTF-8
 setx /M LANG C.UTF-8
 setx /M LC_ALL C.UTF-8
