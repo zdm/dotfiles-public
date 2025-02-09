@@ -46,7 +46,7 @@ setx.exe /M PATHEXT ".com;.exe;.lnk;.bat;.cmd;.ps1;.js;.cjs;.mjs"
 :: %LOCALAPPDATA%\Microsoft\WindowsApps
 :: %ProgramFiles%\openssh
 :: %ProgramFiles%\git\cmd
-setx.exe /M PATH "%SystemRoot%\system32;%SystemRoot%;s:\bin;d:\apps\bin;%USERPROFILE%\.npm;d:\apps\node;c:\msys64\usr\bin"
+setx.exe /M PATH "%SystemRoot%\system32;%SystemRoot%;s:\bin;d:\apps\bin;%USERPROFILE%\.npm;d:\apps\node;c:\msys64\usr\bin;c:\msys64\mingw64\bin"
 
 :: disable native language support for unix tools
 :: setx /M LANG "en"
