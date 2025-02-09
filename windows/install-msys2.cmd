@@ -18,6 +18,12 @@ mklink "%PROFILE%\.bashrc" "%~dp0\..\profile\.bashrc"
 del "%PROFILE%\.inputrc"
 mklink "%PROFILE%\.inputrc" "%~dp0\..\profile\.inputrc"
 
+:: mc
+mkdir "%PROFILE%\.config\mc"
+
+del "%PROFILE%\.config\mc\ini"
+mklink "%PROFILE%\.config\mc\ini" "%~dp0\..\profile\.config\mc\ini"
+
 :: git
 del "%PROFILE%\.gitconfig"
 mklink "%PROFILE%\.gitconfig" "%~dp0\..\profile\.gitconfig"
