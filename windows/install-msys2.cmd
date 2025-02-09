@@ -44,6 +44,16 @@ mklink "s:\gpg\gpg-agent.conf" "%~dp0\..\profile\.gnupg\gpg-agent.conf"
 del "s:\gpg\sshcontrol"
 mklink "s:\gpg\sshcontrol" "%~dp0\..\profile\.gnupg\sshcontrol"
 
+:: generate sshd host keys
+ssh-keygen -A
+
+:: sshd
+del "c:\msys64\etc\ssh\ssh_config"
+mklink "c:\msys64\etc\ssh\ssh_config" "%~dp0\ssh\ssh_config"
+
+del "c:\msys64\etc\ssh\sshd_config"
+mklink "c:\msys64\etc\ssh\sshd_config" "%~dp0\ssh\sshd_config"
+
 :: ssh
 mkdir "%PROFILE%\.ssh"
 
@@ -52,13 +62,6 @@ mklink "%PROFILE%\.ssh\authorized_keys" "%~dp0\ssh\authorized_keys"
 
 del "%PROFILE%\.ssh\config"
 mklink "%PROFILE%\.ssh\config" "%~dp0\ssh\config"
-
-:: generate sshd host keys
-ssh-keygen -A
-
-:: sshd
-del "c:\msys64\etc\ssh\sshd_config"
-mklink "c:\msys64\etc\ssh\sshd_config" "%~dp0\ssh\sshd_config"
 
 setx /M LANGUAGE C.UTF-8
 setx /M LANG C.UTF-8
