@@ -63,4 +63,7 @@ if exist "c:\msys64\home\%USERNAME%" (
 
     del "c:\msys64\home\%USERNAME%\.gnupg\gpg-agent.conf"
     mklink "c:\msys64\home\%USERNAME%\.gnupg\gpg-agent.conf" "%~dp0\..\profile\.gnupg\gpg-agent.conf"
+
+    del "c:\msys64\home\%USERNAME%\.gnupg\sshcontrol"
+    mklink "c:\msys64\home\%USERNAME%\.gnupg\sshcontrol" "%~dp0\..\profile\.gnupg\sshcontrol"
 )
