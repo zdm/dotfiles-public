@@ -76,6 +76,9 @@ if exist "c:\msys64\home\%USERNAME%" (
     del "c:\msys64\home\%USERNAME%\.ssh\config"
     mklink "c:\msys64\home\%USERNAME%\.ssh\config" "%~dp0\ssh\config"
 
+    setx /M LANGUAGE C.UTF-8
+    setx /M LANG C.UTF-8
+    setx /M LC_ALL C.UTF-8
     setx /M SSH_AUTH_SOCK "/home/%USERNAME%/.gnupg/S.gpg-agent.ssh"
     rem export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 
