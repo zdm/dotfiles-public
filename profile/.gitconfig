@@ -67,6 +67,7 @@ hooksPath    = ~/.config/git/hooks
 editor       = nvim
 pager        = less --no-init --raw-control-chars --ignore-case --quit-on-intr --squeeze-blank-lines --quit-if-one-screen
 sshCommand   = ssh
+quotePath    = false
 
 [credential "helperselector"]
 selected = <no helper>
