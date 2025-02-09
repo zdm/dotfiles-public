@@ -51,4 +51,16 @@ if exist "c:\msys64\home\%USERNAME%" (
 
     rmdir /S /Q "c:\msys64\home\%USERNAME%\.config\git\ssh"
     mklink /D "c:\msys64\home\%USERNAME%\.config\git\ssh" "%~dp0\..\profile\.config\git\ssh"
+
+    rem ### gpg
+    mkdir "c:\msys64\home\%USERNAME%\.gnupg"
+
+    del "c:\msys64\home\%USERNAME%\.gnupg\dirmngr.conf"
+    mklink "c:\msys64\home\%USERNAME%\.gnupg\dirmngr.conf" "%~dp0\..\profile\.gnupg\dirmngr.conf"
+
+    del "c:\msys64\home\%USERNAME%\.gnupg\gpg.conf"
+    mklink "c:\msys64\home\%USERNAME%\.gnupg\gpg.conf" "%~dp0\..\profile\.gnupg\gpg.conf"
+
+    del "c:\msys64\home\%USERNAME%\.gnupg\gpg-agent.conf"
+    mklink "c:\msys64\home\%USERNAME%\.gnupg\gpg-agent.conf" "%~dp0\..\profile\.gnupg\gpg-agent.conf"
 )
