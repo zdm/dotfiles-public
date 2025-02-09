@@ -21,18 +21,6 @@ mklink /D "%USERPROFILE%\Pictures" "d:\pictures"
 rmdir /S /Q "%USERPROFILE%\Videos"
 mklink /D "%USERPROFILE%\Videos" "d:\pictures"
 
-:: git
-del "%USERPROFILE%\.gitconfig"
-mklink "%USERPROFILE%\.gitconfig" "%~dp0\..\profile\.gitconfig"
-
-mkdir "%USERPROFILE%\.config\git"
-
-rmdir /S /Q "%USERPROFILE%\.config\git\hooks"
-mklink /D "%USERPROFILE%\.config\git\hooks" "%~dp0\..\profile\.config\git\hooks"
-
-rmdir /S /Q "%USERPROFILE%\.config\git\ssh"
-mklink /D "%USERPROFILE%\.config\git\ssh" "%~dp0\..\profile\.config\git\ssh"
-
 :: postgresqll
 mkdir "%APPDATA%\postgresql"
 
@@ -45,9 +33,22 @@ mklink /D "%LOCALAPPDATA%\nvim" "%~dp0\..\profile\.config\nvim"
 
 :: msys2
 if exist "c:\msys64\home\%USERNAME%" (
+
     del "c:\msys64\home\%USERNAME%\.bashrc"
     mklink "c:\msys64\home\%USERNAME%\.bashrc" "%~dp0\..\profile\.bashrc"
 
     del "c:\msys64\home\%USERNAME%\.inputrc"
     mklink "c:\msys64\home\%USERNAME%\.inputrc" "%~dp0\..\profile\.inputrc"
+
+    rem ### git
+    del "c:\msys64\home\%USERNAME%\.gitconfig"
+    mklink "c:\msys64\home\%USERNAME%\.gitconfig" "%~dp0\..\profile\.gitconfig"
+
+    mkdir "c:\msys64\home\%USERNAME%\.config\git"
+
+    rmdir /S /Q "c:\msys64\home\%USERNAME%\.config\git\hooks"
+    mklink /D "c:\msys64\home\%USERNAME%\.config\git\hooks" "%~dp0\..\profile\.config\git\hooks"
+
+    rmdir /S /Q "c:\msys64\home\%USERNAME%\.config\git\ssh"
+    mklink /D "c:\msys64\home\%USERNAME%\.config\git\ssh" "%~dp0\..\profile\.config\git\ssh"
 )
