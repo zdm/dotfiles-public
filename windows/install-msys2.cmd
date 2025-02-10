@@ -74,7 +74,7 @@ del "%PROFILE%\.ssh\authorized_keys"
 mklink "%PROFILE%\.ssh\authorized_keys" "%~dp0\ssh\authorized_keys"
 
 del "%PROFILE%\.ssh\config"
-mklink "%PROFILE%\.ssh\config" "%~dp0\ssh\config"
+mklink "%PROFILE%\.ssh\config" "%~dp0\..\profile\.ssh\config"
 
 setx /M LANGUAGE C.UTF-8
 setx /M LANG C.UTF-8
