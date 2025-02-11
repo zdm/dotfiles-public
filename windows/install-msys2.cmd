@@ -7,6 +7,32 @@ setlocal
 
 winget install MSYS2.MSYS2
 
+:: start msys2 shell
+:: initialize pacman environment, needed to run once
+:: msys2_shell.bat
+
+:: sync package list and perform system upgrade
+pacman -S --noconfirm --needed --refresh --sysupgrade
+
+:: tools
+pacman -S --noconfirm --needed bash pacman pacman-mirrors msys2-runtime diffutils man tar curl wget ctags whois patch mc
+
+:: git
+pacman -S --noconfirm --needed git git-filter-repo
+:: mingw-w64-x86_64-git-lfs
+
+:: gpg
+pacman -S --noconfirm --needed gnupg
+
+:: ssh
+pacman -S --noconfirm --needed openssh cygrunsrv
+
+:: remove orphan packages
+sh -c "pacman -Rsn $(pacman -Qqdt)"
+
+:: cleanup cache
+sh -c "yes | pacman -S --clean --clean"
+
 set MSYS64_LOCATION="c:\msys64"
 set PROFILE="%MSYS64_LOCATION%\home\%USERNAME%"
 set GPG_PROFILE="s:\gpg"
