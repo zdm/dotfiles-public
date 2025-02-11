@@ -28,8 +28,7 @@ pacman -S --noconfirm --needed gnupg
 pacman -S --noconfirm --needed openssh cygrunsrv
 
 :: remove unused packages
-:: pacman -Qqdt | pacman --noconfirm -Rsn
-pacman -Qqd | pacman --noconfirm -Rsu
+pacman -Qqdt | pacman --noconfirm -Rns -
 
 :: cleanup cache
 pacman --noconfirm -S --clean --clean
