@@ -27,11 +27,12 @@ pacman -S --noconfirm --needed gnupg
 :: ssh
 pacman -S --noconfirm --needed openssh cygrunsrv
 
-:: remove orphan packages
-sh -c "pacman -Rsn $(pacman -Qqdt)"
+:: remove unused packages
+:: pacman -Qqdt | pacman --noconfirm -Rsn
+pacman -Qqd | pacman --noconfirm -Rsu
 
 :: cleanup cache
-sh -c "yes | pacman -S --clean --clean"
+pacman --noconfirm -S --clean --clean
 
 set MSYS64_LOCATION="c:\msys64"
 set PROFILE="%MSYS64_LOCATION%\home\%USERNAME%"
