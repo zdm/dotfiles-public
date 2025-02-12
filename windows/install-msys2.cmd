@@ -5,6 +5,10 @@ call is-elevated.cmd || ( sudo -E "%~sf0" %* & exit /B )
 
 setlocal
 
+set MSYS64_LOCATION="c:\msys64"
+set PROFILE="%MSYS64_LOCATION%\home\%USERNAME%"
+set GPG_PROFILE="s:\gpg"
+
 winget install MSYS2.MSYS2
 
 :: start msys2 shell
@@ -32,10 +36,6 @@ pacman -Qqdt | pacman --noconfirm -Rns -
 
 :: cleanup cache
 pacman --noconfirm -S --clean --clean
-
-set MSYS64_LOCATION="c:\msys64"
-set PROFILE="%MSYS64_LOCATION%\home\%USERNAME%"
-set GPG_PROFILE="s:\gpg"
 
 :: bash
 del "%PROFILE%\.bashrc"
