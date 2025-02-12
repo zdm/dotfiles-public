@@ -78,8 +78,8 @@ mklink "%GPG_PROFILE%\gpg-agent.conf" "%~dp0\..\profile\.gnupg\gpg-agent.conf"
 del "%GPG_PROFILE%\sshcontrol"
 mklink "%GPG_PROFILE%\sshcontrol" "%~dp0\..\profile\.gnupg\sshcontrol"
 
-:: export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
-setx /M SSH_AUTH_SOCK "/home/%USERNAME%/.gnupg/S.gpg-agent.ssh"
+FOR /F "delims=" %i IN ( 'gpgconf --list-dirs agent-ssh-socket' ) DO set SSH_AUTH_SOCK=%i
+setx /M SSH_AUTH_SOCK "%SSH_AUTH_SOCK%"
 
 :: generate sshd host keys
 ssh-keygen -A
