@@ -73,13 +73,16 @@ function update() {
     # Msys
     if [ $(uname -o) = "Msys" ]; then
 
-        # sync package list and perform system upgrade
+        echo
+        echo "#### Sync package list and perform system upgrade"
         pacman -S --noconfirm --needed --refresh --sysupgrade
 
-        # remove unused packages
+        echo
+        echo "#### Remove unused packages"
         pacman -Qqdt | pacman --noconfirm -Rns -
 
-        # cleanup cache
+        echo
+        echo "#### Cleanup cache"
         pacman --noconfirm -S --clean --clean
 
     # Darwin
