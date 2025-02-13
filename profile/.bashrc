@@ -70,8 +70,20 @@ alias s="softvisio-cli"
 
 function update() {
 
-    # darwin
-    if [ $(uname) = "Darwin" ]; then
+    # Msys
+    if [ $(uname -o) = "Msys" ]; then
+
+        # sync package list and perform system upgrade
+        pacman -S --noconfirm --needed --refresh --sysupgrade
+
+        # remove unused packages
+        pacman -Qqdt | pacman --noconfirm -Rns -
+
+        # cleanup cache
+        pacman --noconfirm -S --clean --clean
+
+    # Darwin
+    elif [ $(uname) = "Darwin" ]; then
         brew update
 
         # update brew packages to the latest varions
@@ -84,8 +96,8 @@ function update() {
         npm ou -g
         npm up -g
 
-    # debian / ubuntu
-    else
+    # Debian / Ubuntu
+    elif [ $(source /etc/os-release && echo $ID_LIKE) = "debian" ]; then
 
         # apt
         echo "### Updating: apt"
