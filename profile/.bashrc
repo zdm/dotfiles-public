@@ -129,5 +129,15 @@ function update() {
 }
 
 function update-dotfiles() {
-    source <(curl -fsSL https://raw.githubusercontent.com/softvisio/scripts/main/update-dotfiles.sh)
+
+    # Msys
+    if [ $(uname -o) = "Msys" ]; then
+
+        echo Msys is not supported
+
+    # other
+    else
+
+        source <(curl -fsSL https://raw.githubusercontent.com/softvisio/scripts/main/update-dotfiles.sh)
+    fi
 }
