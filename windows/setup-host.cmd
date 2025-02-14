@@ -42,10 +42,7 @@ mklink /D "d:\pictures" "g:\my drive\pictures"
 
 setx.exe /M PATHEXT ".com;.exe;.lnk;.bat;.cmd;.ps1;.js;.cjs;.mjs"
 
-:: PATH
-:: %LOCALAPPDATA%\Microsoft\WindowsApps
-:: %ProgramFiles%\openssh
-:: %ProgramFiles%\git\cmd
+:: path
 setx.exe /M PATH "%SystemRoot%\system32;%SystemRoot%;s:\bin;d:\apps\bin;%USERPROFILE%\.npm;d:\apps\node;c:\msys64\usr\bin;c:\msys64\mingw64\bin"
 
 :: disable native language support for unix tools
@@ -72,7 +69,7 @@ setx /M GIT_CONFIG_VALUE_0 bcompare
 :: assoc .t=PerlScript
 
 :: powershell
-ftype PowerShellScript="%LOCALAPPDATA%\Microsoft\WindowsApps/pwsh.exe" "%%1" %%*
+ftype PowerShellScript="%LOCALAPPDATA%\Microsoft\WindowsApps\pwsh.exe" "%%1" %%*
 assoc .ps1=PowerShellScript
 
 :: javascript
