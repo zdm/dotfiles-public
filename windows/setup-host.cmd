@@ -91,7 +91,7 @@ assoc .sqlite=SQLite3
 :: ftype MHTWebArchive="d:\apps\firefox\firefox.exe" "%%1" %%*
 :: assoc .mht=MHTWebArchive
 
-:: ftype XNView="d:\apps\xnviewmp\xnviewmp.exe" "%%1" %%*
+:: ftype XNView="d:\apps\bin\xnviewmp.lnk" "%%1" %%*
 :: assoc .bmp=XNView
 :: assoc .cur=XNView
 :: assoc .emf=XNView
@@ -104,7 +104,7 @@ assoc .sqlite=SQLite3
 :: assoc .tiff=XNView
 :: assoc .wmf=XNView
 
-:: remap CAPSLOCK => F13
+:: remap "CAPSLOCK" to "F13"
 reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Keyboard Layout" /f /v "Scancode Map" /t REG_BINARY /d 00000000000000000200000064003a0000000000
 
 :: allow ping
