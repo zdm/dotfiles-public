@@ -45,13 +45,6 @@ setx.exe /M PATHEXT ".com;.exe;.lnk;.bat;.cmd;.ps1;.js;.cjs;.mjs"
 :: path
 setx.exe /M PATH "%SystemRoot%\system32;%SystemRoot%;s:\bin;d:\apps\bin;%USERPROFILE%\.npm;d:\apps\node;c:\msys64\usr\bin;c:\msys64\mingw64\bin"
 
-:: disable native language support for unix tools
-:: setx /M LANG "en"
-:: setx /M LANGUAGE "en"
-
-:: mandatory for google drive
-:: setx /M LANG "en_US"
-
 :: git
 setx /M GIT_CONFIG_COUNT 1
 setx /M GIT_CONFIG_KEY_0 merge.tool
