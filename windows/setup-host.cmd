@@ -57,17 +57,6 @@ setx /M GIT_CONFIG_COUNT 1
 setx /M GIT_CONFIG_KEY_0 merge.tool
 setx /M GIT_CONFIG_VALUE_0 bcompare
 
-:: perl
-:: setx /M PERL_CPANM_HOME "%TEMP%\.cpanm"
-:: setx /M PERL_CPANM_OPT "--metacpan --from https://cpan.metacpan.org/"
-:: setx /M HARNESS_OPTIONS "c"
-:: setx /M HARNESS_SUMMARY_COLOR_SUCCESS "GREEN"
-:: setx /M HARNESS_SUMMARY_COLOR_FAIL "RED"
-
-:: ftype PerlScript="d:\apps\perl\perl\bin\perl.exe" "%%1" %%*
-:: assoc .pl=PerlScript
-:: assoc .t=PerlScript
-
 :: powershell
 ftype PowerShellScript="%LOCALAPPDATA%\Microsoft\WindowsApps\pwsh.exe" "%%1" %%*
 assoc .ps1=PowerShellScript
@@ -85,14 +74,26 @@ assoc .tsx=TypeScript
 assoc .mts=TypeScript
 assoc .cts=TypeScript
 
+:: sqlite
+ftype SQLite3="d:\apps\bin\sqlite3.exe" %%1 %%*
+assoc .sqlite=SQLite3
+
+:: perl
+:: setx /M PERL_CPANM_HOME "%TEMP%\.cpanm"
+:: setx /M PERL_CPANM_OPT "--metacpan --from https://cpan.metacpan.org/"
+:: setx /M HARNESS_OPTIONS "c"
+:: setx /M HARNESS_SUMMARY_COLOR_SUCCESS "GREEN"
+:: setx /M HARNESS_SUMMARY_COLOR_FAIL "RED"
+
+:: ftype PerlScript="d:\apps\perl\perl\bin\perl.exe" "%%1" %%*
+:: assoc .pl=PerlScript
+:: assoc .t=PerlScript
+
 :: ftype PythonScript="d:\apps\python\python.exe" %%1 %%*
 :: assoc .py=PythonScript
 
 :: ftype ShockwaveFlash="d:\apps\bin\flash.exe" %%1 %%*
 :: assoc .swf=ShockwaveFlash
-
-ftype SQLite3DB="d:\apps\bin\sqlite3.exe" %%1 %%*
-assoc .sqlite=SQLite3DB
 
 :: ftype MHTWebArchive="d:\apps\firefox\firefox.exe" "%%1" %%*
 :: assoc .mht=MHTWebArchive
@@ -110,17 +111,11 @@ assoc .sqlite=SQLite3DB
 :: assoc .tiff=XNView
 :: assoc .wmf=XNView
 
-:: reg.exe add "HKLM\Software\Microsoft\Command Processor" /f /v "Autorun" /t REG_SZ /d "@chcp 1251>nul"
-
 :: remap CAPSLOCK => F13
 reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Keyboard Layout" /f /v "Scancode Map" /t REG_BINARY /d 00000000000000000200000064003a0000000000
 
-:: enable hibernate
-:: powercfg /H /TYPE FULL
-
-:: make I/O redirection work
-:: !!!WARNING!!! do not apply under Windows 10
-:: reg.exe add "HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer" /f /v "InheritConsoleHandles" /t REG_DWORD /d "1"
+:: allow ping
+netsh advfirewall firewall add rule name="All ICMP V4" protocol=icmpv4:any,any dir=in action=allow
 
 :: set default suffix for single-lable domains names, reboot is required
 reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\DNSClient" /f /v "SearchList" /t REG_SZ /d "localhost"
@@ -143,11 +138,17 @@ reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\DNSClient" /f /v "Searc
 :: NOTE: install only "Liberation Mono" before change console font. After configure console install others fonts.
 reg.exe add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Console\TrueTypeFont" /f /v "0" /t REG_SZ /d "Liberation Mono"
 
+:: reg.exe add "hklm\software\microsoft\command processor" /f /v "autorun" /t reg_sz /d "@chcp 1251>nul"
+
+:: enable hibernate
+:: powercfg /h /type full
+
+:: make i/o redirection work
+:: !!!warning!!! do not apply under windows 10
+:: reg.exe add "hklm\software\microsoft\windows\currentversion\policies\explorer" /f /v "inheritconsolehandles" /t reg_dword /d "1"
+
 :: disable 8.3 names creation
 :: reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FileSystem" /f /v "NtfsDisable8dot3NameCreation" /t REG_DWORD /d 1
-
-:: allow ping
-netsh advfirewall firewall add rule name="All ICMP V4" protocol=icmpv4:any,any dir=in action=allow
 
 :: allow RDP connections from public networks
 :: netsh advfirewall firewall set rule group="Remote Desktop" new enable=Yes
