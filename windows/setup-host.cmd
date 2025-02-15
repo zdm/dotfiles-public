@@ -91,18 +91,18 @@ assoc .sqlite=SQLite3
 :: ftype MHTWebArchive="d:\apps\firefox\firefox.exe" "%%1" %%*
 :: assoc .mht=MHTWebArchive
 
-:: ftype XNView="d:\apps\bin\xnviewmp.lnk" "%%1" %%*
-:: assoc .bmp=XNView
-:: assoc .cur=XNView
-:: assoc .emf=XNView
-:: assoc .gif=XNView
-:: assoc .ico=XNView
-:: assoc .jpeg=XNView
-:: assoc .jpg=XNView
-:: assoc .png=XNView
-:: assoc .tif=XNView
-:: assoc .tiff=XNView
-:: assoc .wmf=XNView
+:: ftype XNViewMP="d:\apps\bin\xnviewmp.lnk" "%%1" %%*
+:: assoc .bmp=XNViewMP
+:: assoc .cur=XNViewMP
+:: assoc .emf=XNViewMP
+:: assoc .gif=XNViewMP
+:: assoc .ico=XNViewMP
+:: assoc .jpeg=XNViewMP
+:: assoc .jpg=XNViewMP
+:: assoc .png=XNViewMP
+:: assoc .tif=XNViewMP
+:: assoc .tiff=XNViewMP
+:: assoc .wmf=XNViewMP
 
 :: remap "CAPSLOCK" to "F13"
 reg.exe add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Keyboard Layout" /f /v "Scancode Map" /t REG_BINARY /d 00000000000000000200000064003a0000000000
