@@ -10,6 +10,7 @@ set MSYS64_USERPROFILE="%MSYS64_LOCATION%\home\%USERNAME%"
 set GPG_USERPROFILE="s:\gpg"
 
 winget install MSYS2.MSYS2
+winget pin add -q MSYS2.MSYS2
 
 :: start msys2 shell
 :: initialize pacman environment, needed to run once
