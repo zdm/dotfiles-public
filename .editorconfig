@@ -11,7 +11,3 @@ max_line_length = off
 
 [Makefile]
 indent_style = tab
-
-[*.unite-bookmarks]
-indent_style = tab
-trim_trailing_whitespace = false
