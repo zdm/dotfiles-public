@@ -173,13 +173,13 @@ inoremap <silent> <F4> <C-o>:Unite -buffer-name=buffers -toggle -prompt-directio
 vnoremap <silent> <F4> <ESC>:Unite -buffer-name=buffers -toggle -prompt-direction=top -start-insert -no-restore buffer<CR>
 
 if has('win16') || has('win32') || has('win64')
-    nnoremap <silent> <F3> :Unite -buffer-name=MRU -toggle -prompt-direction=top -start-insert -no-restore bookmark:default.windows neomru/file<CR>
-    inoremap <silent> <F3> <C-o>:Unite -buffer-name=MRU -toggle -prompt-direction=top -start-insert -no-restore bookmark:default.windows neomru/file<CR>
-    vnoremap <silent> <F3> <ESC>:Unite -buffer-name=MRU -toggle -prompt-direction=top -start-insert -no-restore bookmark:default.windows neomru/file<CR>
+    nnoremap <silent> <F3> :Unite -buffer-name=MRU -toggle -prompt-direction=top -start-insert -no-restore bookmark:default.windows.unite-bookmarks neomru/file<CR>
+    inoremap <silent> <F3> <C-o>:Unite -buffer-name=MRU -toggle -prompt-direction=top -start-insert -no-restore bookmark:default.windows.unite-bookmarks neomru/file<CR>
+    vnoremap <silent> <F3> <ESC>:Unite -buffer-name=MRU -toggle -prompt-direction=top -start-insert -no-restore bookmark:default.windows.unite-bookmarks neomru/file<CR>
 else
-    nnoremap <silent> <F3> :Unite -buffer-name=MRU -toggle -prompt-direction=top -start-insert -no-restore bookmark:default.linux neomru/file<CR>
-    inoremap <silent> <F3> <C-o>:Unite -buffer-name=MRU -toggle -prompt-direction=top -start-insert -no-restore bookmark:default.linux neomru/file<CR>
-    vnoremap <silent> <F3> <ESC>:Unite -buffer-name=MRU -toggle -prompt-direction=top -start-insert -no-restore bookmark:default.linux neomru/file<CR>
+    nnoremap <silent> <F3> :Unite -buffer-name=MRU -toggle -prompt-direction=top -start-insert -no-restore bookmark:default.linux.unite-bookmarks neomru/file<CR>
+    inoremap <silent> <F3> <C-o>:Unite -buffer-name=MRU -toggle -prompt-direction=top -start-insert -no-restore bookmark:default.linux.unite-bookmarks neomru/file<CR>
+    vnoremap <silent> <F3> <ESC>:Unite -buffer-name=MRU -toggle -prompt-direction=top -start-insert -no-restore bookmark:default.linux.unite-bookmarks neomru/file<CR>
 endif
 " }}}
 
