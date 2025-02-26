@@ -118,13 +118,13 @@ func! s:lint_file ( type ) " {{{
         if ( l:path == "" ) | let l:path = "no-name" | endif
 
         " special case for makefiles
-        if ( &ft == "make" )
-            let l:path = fnamemodify( l:path, ":h" ) . "/Makefile"
+        " if ( &ft == "make" )
+        "     let l:path = fnamemodify( l:path, ":h" ) . "/Makefile"
 
         " add &ft as extension if mime type wasn't found and extension ne &ft
-        elseif ( l:type == "" && &ft != "" && expand( "%:e" ) != &ft )
-            let l:path .= "." . &ft
-        endif
+        " elseif ( l:type == "" && &ft != "" && expand( "%:e" ) != &ft )
+        "     let l:path .= "." . &ft
+        " endif
 
         let l:res = rpcrequest( s:channel, "lint-file", { "action": a:type, "cwd": getcwd(), "path": l:path, "type": l:type, "buffer": l:buf } )
 
