@@ -91,7 +91,8 @@ func! s:check_channel () " {{{
 endfunc " }}}
 
 func! s:lint_file ( type ) " {{{
-    let l:buf = join( getline( 1, '$' ), "\n" )
+    let l:eol = { "unix": "\n", "dos": "\r\n", "mac": "\r" }[ &fileformat ]
+    let l:buf = join( getline( 1, '$' ), l:eol )
 
     silent! redraw
 
@@ -106,7 +107,7 @@ func! s:lint_file ( type ) " {{{
     call s:check_channel()
 
     if s:channel
-        let l:buf .= "\n"
+        let l:buf .= l:eol
 
         echo a:type . ":  run source filter..."
 
@@ -131,6 +132,8 @@ func! s:lint_file ( type ) " {{{
             set syntax=off
 
             let l:cursor_pos = getpos( "." )
+
+            let l:res.data = substitute( l:res.data, '\(\r\n\|\r\|\n\)', "\n", "g" )
 
             %delete
             put =l:res.data
