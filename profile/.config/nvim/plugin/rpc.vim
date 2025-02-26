@@ -137,8 +137,6 @@ func! s:lint_file ( type ) " {{{
             1delete 1
 
             set syntax=on
-            set ff=unix
-            set fenc=utf-8
             syn sync fromstart
 
             call setpos( ".", l:cursor_pos )
