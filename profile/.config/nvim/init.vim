@@ -108,7 +108,7 @@ if dein#load_state(expand(g:bundle_path)) " {{{
     " postgresql syntax
     call dein#add("lifepillar/pgsql.vim")
 
-    call dein#add("editorconfig/editorconfig-vim")
+    " call dein#add("editorconfig/editorconfig-vim")
 
     " markdown
     call dein#add("foalford/vim-markdown-folding")
