@@ -1,6 +1,6 @@
 releasable: false
 
 meta:
-    executables:
-        - "**/*.sh"
-        - profile/.config/git/hooks/**/*
+  executables:
+    - "**/*.sh"
+    - profile/.config/git/hooks/**/*
