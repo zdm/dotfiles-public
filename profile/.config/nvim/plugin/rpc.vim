@@ -108,7 +108,11 @@ func! s:lint_file ( type ) " {{{
     call s:check_channel()
 
     if s:channel
-        let l:buf .= l:eol
+
+        " insert final newline
+        if type( b:editorconfig ) != v:t_dict || b:editorconfig.insert_final_newline == "true"
+            let l:buf .= l:eol
+        endif
 
         echo a:type . ":  run source filter..."
 
