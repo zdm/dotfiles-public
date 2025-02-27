@@ -14,6 +14,7 @@ let s:channel = 0
 let s:ft_type = {
     \ "javascript": "text/javascript",
     \ "typescript": "application/x-typescript",
+    \ "sh": "application/x-sh",
     \ "ant": "text/xml"
 \ }
 
@@ -133,7 +134,7 @@ func! s:lint_file ( type ) " {{{
 
             let l:cursor_pos = getpos( "." )
 
-            let l:res.data = substitute( l:res.data, '\(\r\n\|\r\|\n\)', "\n", "g" )
+            let l:res.data = substitute( l:res.data, '\r\n\?', "\n", "g" )
 
             %delete
             put =l:res.data
