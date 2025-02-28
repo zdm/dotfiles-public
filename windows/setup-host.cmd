@@ -54,6 +54,10 @@ setx /M GIT_CONFIG_VALUE_0 bcompare
 ftype PowerShellScript="%LOCALAPPDATA%\Microsoft\WindowsApps\pwsh.exe" "%%1" %%*
 assoc .ps1=PowerShellScript
 
+:: bash
+ftype ShellScript="c:\msys64\usr\bin\bash.exe" "%%1" %%*
+assoc .sh=ShellScript
+
 :: javascript
 ftype JavaScript="d:\apps\node\node.exe" "%%1" %%*
 assoc .js=JavaScript
