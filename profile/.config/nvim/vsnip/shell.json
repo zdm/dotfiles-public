@@ -4,6 +4,6 @@
             "#!",
             "shebang"
         ],
-        "body": "#!/usr/bin/bash"
+        "body": "#!/usr/bin/env bash"
     }
 }
