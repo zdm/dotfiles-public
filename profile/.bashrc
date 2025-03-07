@@ -1,3 +1,5 @@
+#!/usr/bin/bash
+
 [ -z "$DEBIAN_FRONTEND" ] && [ -z "$PS1" ] && export DEBIAN_FRONTEND=noninteractive
 
 if [ $(uname) = "Darwin" ]; then
