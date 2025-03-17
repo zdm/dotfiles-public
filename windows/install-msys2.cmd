@@ -17,10 +17,10 @@ winget pin add -q MSYS2.MSYS2
 :: msys2_shell.bat
 
 :: sync package list and perform system upgrade
-pacman -S --noconfirm --needed --refresh --sysupgrade
+pacman --sync --noconfirm --needed --refresh --sysupgrade
 
 :: tools
-pacman -S --noconfirm --needed bash pacman pacman-mirrors msys2-runtime diffutils man tar curl wget ctags whois patch mc
+pacman --sync --noconfirm --needed bash pacman pacman-mirrors msys2-runtime diffutils man tar curl wget ctags whois patch mc
 
 :: bash
 del "%MSYS64_USERPROFILE%\.bashrc"
@@ -36,7 +36,7 @@ del "%MSYS64_USERPROFILE%\.config\mc\ini"
 mklink "%MSYS64_USERPROFILE%\.config\mc\ini" "%~dp0\..\profile\.config\mc\ini"
 
 :: git
-pacman -S --noconfirm --needed git git-filter-repo
+pacman --sync --noconfirm --needed git git-filter-repo
 :: mingw-w64-x86_64-git-lfs
 
 del "%MSYS64_USERPROFILE%\.gitconfig"
@@ -51,7 +51,7 @@ rmdir /S /Q "%MSYS64_USERPROFILE%\.config\git\ssh"
 mklink /D "%MSYS64_USERPROFILE%\.config\git\ssh" "%~dp0\..\profile\.config\git\ssh"
 
 :: gpg
-pacman -S --noconfirm --needed gnupg
+pacman --sync --noconfirm --needed gnupg
 
 rmdir /S /Q "%MSYS64_USERPROFILE%\.gnupg"
 mklink /D "%MSYS64_USERPROFILE%\.gnupg" "%GPG_USERPROFILE%"
@@ -69,7 +69,7 @@ del "%GPG_USERPROFILE%\sshcontrol"
 mklink "%GPG_USERPROFILE%\sshcontrol" "%~dp0\..\profile\.gnupg\sshcontrol"
 
 :: ssh
-pacman -S --noconfirm --needed openssh
+pacman --sync --noconfirm --needed openssh
 
 mkdir "%MSYS64_USERPROFILE%\.ssh"
 
