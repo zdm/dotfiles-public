@@ -81,7 +81,8 @@ if dein#load_state( expand( g:bundle_path ) ) " {{{
     call dein#add( "vim-perl/vim-perl" )
 
     " javascript
-    call dein#add( "zdm/vim-javascript", { "autoload": { "filetypes": [ "javascript" ] } } )
+    call dein#add( "nvim-treesitter/nvim-treesitter", { "hook_post_update": "TSUpdate" } )
+    " call dein#add( "zdm/vim-javascript", { "autoload": { "filetypes": [ "javascript" ] } } )
     " call dein#add( "pangloss/vim-javascript", { "autoload": { "filetypes": [ "javascript" ] } } )
 
     " c
