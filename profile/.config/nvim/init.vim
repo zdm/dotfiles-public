@@ -50,68 +50,67 @@ exec "set rtp+=" . g:bundle_path . "/repos/github.com/Shougo/dein.vim"
 " }}}
 
 " add plugins
-if dein#load_state(expand(g:bundle_path)) " {{{
-    call dein#begin(expand(g:bundle_path))
+if dein#load_state( expand( g:bundle_path ) ) " {{{
+    call dein#begin( expand( g:bundle_path ) )
 
-    call dein#add(g:bundle_path . "/repos/github.com/Shougo/dein.vim")
+    call dein#add( g:bundle_path . "/repos/github.com/Shougo/dein.vim" )
 
-    " call dein#add("Shougo/vimproc.vim", {"build": "gmake"})
-    call dein#add("Shougo/unite.vim")
-    call dein#add("Shougo/unite-dein")
-    call dein#add("Shougo/neomru.vim")
-    " call dein#add("easymotion/vim-easymotion")
-    call dein#add("Shougo/unite-outline")
-    call dein#add("mbbill/undotree")
-    call dein#add("powerman/vim-plugin-viewdoc")
-    call dein#add("tomtom/tcomment_vim")
-    " call dein#add("nathanaelkane/vim-indent-guides.git")
-    call dein#add("mhinz/vim-signify")
-    call dein#add("Konfekt/FastFold")
-    call dein#add("Yggdroot/indentLine")
+    " call dein#add( "Shougo/vimproc.vim", { "build": "gmake" } )
+    call dein#add( "Shougo/unite.vim" )
+    call dein#add( "Shougo/unite-dein" )
+    call dein#add( "Shougo/neomru.vim" )
+    " call dein#add( "easymotion/vim-easymotion" )
+    call dein#add( "Shougo/unite-outline" )
+    call dein#add( "mbbill/undotree" )
+    call dein#add( "powerman/vim-plugin-viewdoc" )
+    call dein#add( "tomtom/tcomment_vim" )
+    " call dein#add( "nathanaelkane/vim-indent-guides.git" )
+    call dein#add( "mhinz/vim-signify" )
+    call dein#add( "Konfekt/FastFold" )
+    call dein#add( "Yggdroot/indentLine" )
 
     " airline
-    call dein#add("vim-airline/vim-airline")
-    call dein#add("vim-airline/vim-airline-themes")
+    call dein#add( "vim-airline/vim-airline" )
+    call dein#add( "vim-airline/vim-airline-themes" )
 
     " xkbd
-    call dein#add("lyokha/vim-xkbswitch", {"depends": "DeXP/xkb-switch-win"})
-    call dein#add("DeXP/xkb-switch-win")
+    call dein#add( "lyokha/vim-xkbswitch", { "depends": "DeXP/xkb-switch-win" } )
+    call dein#add( "DeXP/xkb-switch-win" )
 
     " perl
-    call dein#add("zdm/vim-perl")
-    " call dein#add("vim-perl/vim-perl")
+    call dein#add( "vim-perl/vim-perl" )
 
     " javascript
-    call dein#add("zdm/vim-javascript", {"autoload":{"filetypes":["javascript"]}})
-    " call dein#add("pangloss/vim-javascript", {"autoload":{"filetypes":["javascript"]}})
+    call dein#add( "zdm/vim-javascript", { "autoload": { "filetypes": [ "javascript" ] } } )
+    " call dein#add( "pangloss/vim-javascript", { "autoload": { "filetypes": [ "javascript" ] } } )
 
     " c
-    call dein#add("justinmk/vim-syntax-extra")
+    call dein#add( "justinmk/vim-syntax-extra" )
 
     " nginx
-    call dein#add("zdm/vim-nginx")
+    call dein#add( "zdm/vim-nginx" )
 
     " other plugins
-    " call dein#add("arecarn/vim-crunch")
-    call dein#add("tpope/vim-fugitive")
-    call dein#add("chrisyip/Better-CSS-Syntax-for-Vim", {"autoload":{"filetypes":["css"]}})
-    " call dein#add("vim-scripts/autocorrect.vim")
-    call dein#add("uguu-org/vim-matrix-screensaver")
-    call dein#add("vim-scripts/forth.vim")
-    call dein#add("vim-scripts/DirDiff.vim")
-    " call dein#add("chrisbra/NrrwRgn")
-    call dein#add("joelfrederico/vim-HiLinkTrace")
-    call dein#add("zhimsel/vim-stay")
+    " call dein#add( "arecarn/vim-crunch" )
+    call dein#add( "tpope/vim-fugitive" )
+    call dein#add( "chrisyip/Better-CSS-Syntax-for-Vim", { "autoload": { "filetypes": [ "css" ] } } )
+    " call dein#add( "vim-scripts/autocorrect.vim" )
+    call dein#add( "uguu-org/vim-matrix-screensaver" )
+    call dein#add( "vim-scripts/forth.vim" )
+    call dein#add( "vim-scripts/DirDiff.vim" )
+    " call dein#add( "chrisbra/NrrwRgn" )
+    call dein#add( "joelfrederico/vim-HiLinkTrace" )
+    call dein#add( "zhimsel/vim-stay" )
 
-    call dein#add("pedrohdz/vim-yaml-folds")
+    call dein#add( "pedrohdz/vim-yaml-folds" )
 
     " postgresql syntax
-    call dein#add("lifepillar/pgsql.vim")
+    call dein#add( "lifepillar/pgsql.vim" )
 
-    " call dein#add("editorconfig/editorconfig-vim")
+    " call dein#add( "editorconfig/editorconfig-vim" )
 
     " markdown
-    call dein#add("foalford/vim-markdown-folding")
+    call dein#add( "foalford/vim-markdown-folding" )
 
     " completion
     call dein#add( "hrsh7th/nvim-cmp" )
@@ -121,14 +120,14 @@ if dein#load_state(expand(g:bundle_path)) " {{{
     " call dein#add( "rafamadriz/friendly-snippets" )
 
     " XXX disabled, because syntax/javascript.vim conflicted when used with dein
-    " call dein#add("mattn/emmet-vim")
+    " call dein#add( "mattn/emmet-vim" )
 
-    " call dein#add("vim-scripts/Marks-Browser")
-    " call dein#add("w0rp/ale")
-    " call dein#add("hexman.vim")
-    " call dein#add("motemen/xslate-vim")
-    " call dein#add(highlight.vim")
-    " call dein#add("tpope/vim-surround")
+    " call dein#add( "vim-scripts/Marks-Browser" )
+    " call dein#add( "w0rp/ale" )
+    " call dein#add( "hexman.vim" )
+    " call dein#add( "motemen/xslate-vim" )
+    " call dein#add( "highlight.vim" )
+    " call dein#add( "tpope/vim-surround" )
 
     " add vsnip
     exec "set rtp=" . substitute( stdpath( "config" ) . "/vsnip," . &rtp, " ", '\\\ ', "g" )
