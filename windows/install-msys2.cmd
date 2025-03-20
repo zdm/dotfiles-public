@@ -55,8 +55,10 @@ mklink /D "%MSYS64_USERPROFILE%\.config\git\ssh" "%~dp0\..\profile\.config\git\s
 :: github-cli
 pacman --sync --noconfirm --needed mingw-w64-x86_64-github-cli
 
-rmdir /S /Q "%APPDATA%\GitHub CLI"
-mklink /D "%APPDATA%\GitHub CLI" "%~dp0\..\profile\.config\gh"
+mkdir "%APPDATA%\GitHub CLI"
+
+del "%APPDATA%\GitHub CLI\config.yml"
+mklink "%APPDATA%\GitHub CLI\config.yml" "%~dp0\..\profile\.config\gh\config.yml"
 
 :: gpg
 pacman --sync --noconfirm --needed gnupg
