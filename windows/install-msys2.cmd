@@ -36,7 +36,10 @@ del "%MSYS64_USERPROFILE%\.config\mc\ini"
 mklink "%MSYS64_USERPROFILE%\.config\mc\ini" "%~dp0\..\profile\.config\mc\ini"
 
 :: git
-pacman --sync --noconfirm --needed git git-filter-repo
+pacman --sync --noconfirm --needed ^
+    git ^
+    git-filter-repo ^
+    mingw-w64-x86_64-github-cli
 :: mingw-w64-x86_64-git-lfs
 
 del "%MSYS64_USERPROFILE%\.gitconfig"
