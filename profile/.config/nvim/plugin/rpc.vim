@@ -1,5 +1,3 @@
-" vim:foldmethod=marker
-
 if exists( 'g:rpc#loaded' )
     finish
 endif
@@ -25,7 +23,7 @@ command! LintObfuscate call s:lint_file( 'obfuscate' )
 
 command! BrowserPrint call s:browser_print()
 
-func! s:check_socket () " {{{
+func! s:check_socket ()
 
     " check socket connected
     if s:channel
@@ -49,9 +47,9 @@ func! s:check_socket () " {{{
 
         return v:false
     endif
-endfunc " }}}
+endfunc
 
-func! s:check_channel () " {{{
+func! s:check_channel ()
 
     " start RPC server
     if !s:check_socket()
@@ -89,9 +87,9 @@ func! s:check_channel () " {{{
         echohl None
     endif
 
-endfunc " }}}
+endfunc
 
-func! s:lint_file ( type ) " {{{
+func! s:lint_file ( type )
     let l:eol = { "unix": "\n", "dos": "\r\n", "mac": "\r" }[ &fileformat ]
     let l:buf = join( getline( 1, '$' ), l:eol )
 
@@ -144,16 +142,22 @@ func! s:lint_file ( type ) " {{{
             put =l:res.data
             1delete 1
 
-            set syntax=on
-            syn sync fromstart
+            if getbufvar( "%", "&syntax" ) == "on"
+                set syntax=on
+                syn sync fromstart
+
+                " if g:loaded_fastfold
+                "     FastFoldUpdate
+                " endif
+            endif
 
             call setpos( ".", l:cursor_pos )
 
-            if g:loaded_fastfold
-                FastFoldUpdate
-            endif
-            normal zv " unfold lines under cursor
-            normal zz " center cursor on screen
+            " unfold lines under cursor
+            normal zv
+
+            " center cursor on screen
+            normal zz
         endif
 
         silent! redraw
@@ -190,9 +194,9 @@ func! s:lint_file ( type ) " {{{
     endif
 
     return
-endfunc " }}}
+endfunc
 
-func! s:browser_print () " {{{
+func! s:browser_print ()
     let l:buf = join( getline( 1,'$' ), "\n" )
 
     if l:buf == ''
@@ -212,4 +216,4 @@ func! s:browser_print () " {{{
     endif
 
     return
-endfunc " }}}
+endfunc
