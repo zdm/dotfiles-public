@@ -110,7 +110,7 @@ func! s:lint_file ( type ) " {{{
     if s:channel
 
         " insert final newline
-        if type( b:editorconfig ) != v:t_dict || b:editorconfig.insert_final_newline == "true"
+        if !exists( "b:editorconfig" ) || type( b:editorconfig ) != v:t_dict || b:editorconfig.insert_final_newline == "true"
             let l:buf .= l:eol
         endif
 
