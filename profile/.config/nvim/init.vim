@@ -83,7 +83,6 @@ if dein#load_state( expand( g:bundle_path ) ) " {{{
 
     else
 
-        call dein#add( "Konfekt/FastFold" )
         call dein#add( "vim-perl/vim-perl" )
 
         " javascript
@@ -104,6 +103,7 @@ if dein#load_state( expand( g:bundle_path ) ) " {{{
     endif
 
     " other plugins
+    call dein#add( "Konfekt/FastFold" )
     " call dein#add( "arecarn/vim-crunch" )
     call dein#add( "tpope/vim-fugitive" )
     " call dein#add( "vim-scripts/autocorrect.vim" )
@@ -364,6 +364,10 @@ set completeopt=menuone,noselect
 let g:vsnip_snippet_dir = stdpath("config") . "/vsnip"
 " }}}
 
+" Konfekt/FastFold {{{
+let g:fastfold_savehook = 0
+" }}}
+
 " treesitter {{{
 if v:true
 lua <<EOF
@@ -498,10 +502,6 @@ let perl_sub_signatures = 1
 
 " pangloss/vim-javascript {{{
 let g:javascript_plugin_jsdoc = 1
-" }}}
-
-" Konfekt/FastFold {{{
-let g:fastfold_savehook = 0
 " }}}
 
 " foalford/vim-markdown-folding {{{
@@ -751,7 +751,11 @@ func! SyntaxRefresh()
         set syntax=off
         set syntax=on
         syn sync fromstart
-        set foldmethod=syntax
+    endif
+
+    exec( "set foldmethod=" . &foldmethod )
+    if exists( g:loaded_fastfold ) && g:loaded_fastfold
+        FastFoldUpdate
     endif
 
     call setpos(".", l:cursor_pos)

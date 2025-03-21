@@ -145,10 +145,11 @@ func! s:lint_file ( type )
             if getbufvar( "%", "&syntax" ) == "on"
                 set syntax=on
                 syn sync fromstart
+            endif
 
-                " if g:loaded_fastfold
-                "     FastFoldUpdate
-                " endif
+            exec( "set foldmethod=" . &foldmethod )
+            if exists( g:loaded_fastfold ) && g:loaded_fastfold
+                FastFoldUpdate
             endif
 
             call setpos( ".", l:cursor_pos )
