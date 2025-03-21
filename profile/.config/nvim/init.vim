@@ -320,9 +320,11 @@ autocmd ColorScheme * highlight DiffDelete term=bold cterm=bold ctermbg=124 cter
 " }}}
 
 " treesitter {{{
-if v:false
+if v:true
 lua <<EOF
 require( "nvim-treesitter.install" ).prefer_git = false
+
+-- require( "nvim-treesitter.install" ).compilers = { "clang" }
 
 require( "nvim-treesitter.configs" ).setup( {
 
