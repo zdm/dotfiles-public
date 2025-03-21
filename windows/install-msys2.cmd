@@ -22,6 +22,9 @@ pacman --sync --noconfirm --needed --refresh --sysupgrade
 :: tools
 pacman --sync --noconfirm --needed bash pacman pacman-mirrors msys2-runtime diffutils man tar curl wget ctags whois patch mc
 
+:: gcc
+pacman --sync --noconfirm --needed mingw-w64-x86_64-gcc
+
 :: bash
 del "%MSYS64_USERPROFILE%\.bashrc"
 mklink "%MSYS64_USERPROFILE%\.bashrc" "%~dp0\..\profile\.bashrc"
