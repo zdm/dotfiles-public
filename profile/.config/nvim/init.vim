@@ -66,7 +66,6 @@ if dein#load_state( expand( g:bundle_path ) ) " {{{
     call dein#add( "tomtom/tcomment_vim" )
     " call dein#add( "nathanaelkane/vim-indent-guides.git" )
     call dein#add( "mhinz/vim-signify" )
-    call dein#add( "Konfekt/FastFold" )
     call dein#add( "Yggdroot/indentLine" )
 
     " airline
@@ -78,42 +77,40 @@ if dein#load_state( expand( g:bundle_path ) ) " {{{
     call dein#add( "DeXP/xkb-switch-win" )
 
     " treesitter
-    call dein#add( "nvim-treesitter/nvim-treesitter", { "hook_post_update": "TSUpdate" } )
+    if v:true
 
-    " perl
-    call dein#add( "vim-perl/vim-perl" )
+        call dein#add( "nvim-treesitter/nvim-treesitter", { "hook_post_update": "TSUpdate" } )
 
-    " javascript
-    call dein#add( "zdm/vim-javascript", { "autoload": { "filetypes": [ "javascript" ] } } )
-    " call dein#add( "pangloss/vim-javascript", { "autoload": { "filetypes": [ "javascript" ] } } )
+    else
 
-    " c
-    call dein#add( "justinmk/vim-syntax-extra" )
+        call dein#add( "Konfekt/FastFold" )
+        call dein#add( "vim-perl/vim-perl" )
 
-    " nginx
-    call dein#add( "zdm/vim-nginx" )
+        " javascript
+        call dein#add( "zdm/vim-javascript", { "autoload": { "filetypes": [ "javascript" ] } } )
+        " call dein#add( "pangloss/vim-javascript", { "autoload": { "filetypes": [ "javascript" ] } } )
+
+        " c
+        call dein#add( "justinmk/vim-syntax-extra" )
+
+        call dein#add( "zdm/vim-nginx" )
+        call dein#add( "chrisyip/Better-CSS-Syntax-for-Vim", { "autoload": { "filetypes": [ "css" ] } } )
+        call dein#add( "vim-scripts/forth.vim" )
+        call dein#add( "joelfrederico/vim-HiLinkTrace" )
+        call dein#add( "pedrohdz/vim-yaml-folds" )
+        call dein#add( "lifepillar/pgsql.vim" )
+        call dein#add( "foalford/vim-markdown-folding" )
+
+    endif
 
     " other plugins
     " call dein#add( "arecarn/vim-crunch" )
     call dein#add( "tpope/vim-fugitive" )
-    call dein#add( "chrisyip/Better-CSS-Syntax-for-Vim", { "autoload": { "filetypes": [ "css" ] } } )
     " call dein#add( "vim-scripts/autocorrect.vim" )
     call dein#add( "uguu-org/vim-matrix-screensaver" )
-    call dein#add( "vim-scripts/forth.vim" )
     call dein#add( "vim-scripts/DirDiff.vim" )
     " call dein#add( "chrisbra/NrrwRgn" )
-    call dein#add( "joelfrederico/vim-HiLinkTrace" )
     call dein#add( "zhimsel/vim-stay" )
-
-    call dein#add( "pedrohdz/vim-yaml-folds" )
-
-    " postgresql syntax
-    call dein#add( "lifepillar/pgsql.vim" )
-
-    " call dein#add( "editorconfig/editorconfig-vim" )
-
-    " markdown
-    call dein#add( "foalford/vim-markdown-folding" )
 
     " completion
     call dein#add( "hrsh7th/nvim-cmp" )
@@ -258,17 +255,6 @@ elseif has('win32')
 endif
 " }}}
 
-" zdm/vim-perl {{{
-let perl_sync_dist = 250
-let perl_fold = 1
-let perl_fold_anonymous_subs = 1
-let perl_fold_do_blocks = 1
-let perl_nofold_packages = 1
-let perl_include_pod = 1
-let perl_sub_signatures = 1
-" let perl_no_sync_on_sub = 1 " TODO maybe this prevent unfold on new block create
-" }}}
-
 " powerman/vim-plugin-viewdoc {{{
 let g:viewdoc_openempty = 1
 " if !exists('g:no_plugin_abbrev') && !exists('g:no_viewdoc_abbrev')
@@ -317,6 +303,65 @@ let g:signify_realtime = 1
 autocmd ColorScheme * highlight DiffAdd    term=bold cterm=bold ctermbg=22  ctermfg=Green gui=bold guibg=DarkGreen guifg=Green
 autocmd ColorScheme * highlight DiffChange term=bold cterm=bold ctermbg=24  ctermfg=Cyan  gui=bold guibg=DarkCyan  guifg=Cyan
 autocmd ColorScheme * highlight DiffDelete term=bold cterm=bold ctermbg=124 ctermfg=Red   gui=bold guibg=DarkRed   guifg=Red
+" }}}
+
+" Yggdroot/indentLine {{{
+let g:indentLine_enabled = 1 " enabled by default
+" let g:indentLine_char = '│'
+" let g:indentLine_showFirstIndentLevel = 1
+" let g:indentLine_fileType = ['pl', 'pm', 'perl', 'js']
+let g:indentLine_fileTypeExclude = ['json', 'markdown']
+let g:indentLine_faster = 1 " works faster, but issues are possible
+
+nnoremap <silent> <Leader>ii :IndentLinesToggle<CR>
+inoremap <silent> <Leader>ii <ESC>:IndentLinesToggle<CR>a
+vnoremap <silent> <Leader>ii <ESC>:IndentLinesToggle<CR>gv
+" }}}
+
+" completion {{{
+lua <<EOF
+    local cmp = require( "cmp" )
+
+    cmp.setup( {
+        snippet = {
+            expand = function( args )
+                vim.fn["vsnip#anonymous"]( args.body )
+            end,
+        },
+        mapping = cmp.mapping.preset.insert( {
+            ['<Up>'] = function( fallback )
+                if cmp.visible() then
+                    cmp.abort()
+                end
+
+                fallback()
+            end,
+            ['<Down>'] = function( fallback )
+                if cmp.visible() then
+                    cmp.abort()
+                end
+
+                fallback()
+            end,
+            ['<C-Up>'] = cmp.mapping.select_prev_item( { behavior = cmp.SelectBehavior.Select } ),
+            ['<C-Down>'] = cmp.mapping.select_next_item( { behavior = cmp.SelectBehavior.Select } ),
+            ['<C-Space>'] = cmp.mapping.complete(),
+            ['<C-e>'] = cmp.mapping.abort(),
+            ['<CR>'] = cmp.mapping.confirm( { select = false } ),
+        } ),
+        sources = cmp.config.sources( {
+            { name = 'vsnip' },
+            { name = 'calc' },
+        } )
+    } )
+EOF
+
+set omnifunc=syntaxcomplete#Complete
+set complete-=i
+set iskeyword+=:
+set completeopt=menuone,noselect
+
+let g:vsnip_snippet_dir = stdpath("config") . "/vsnip"
 " }}}
 
 " treesitter {{{
@@ -416,10 +461,20 @@ require( "nvim-treesitter.configs" ).setup( {
 } )
 EOF
 
-" set foldmethod=expr
-" set foldexpr=nvim_treesitter#foldexpr()
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
 
-endif
+else
+
+" zdm/vim-perl {{{
+let perl_sync_dist = 250
+let perl_fold = 1
+let perl_fold_anonymous_subs = 1
+let perl_fold_do_blocks = 1
+let perl_nofold_packages = 1
+let perl_include_pod = 1
+let perl_sub_signatures = 1
+" let perl_no_sync_on_sub = 1 " TODO maybe this prevent unfold on new block create
 " }}}
 
 " pangloss/vim-javascript {{{
@@ -430,65 +485,6 @@ let g:javascript_plugin_jsdoc = 1
 let g:fastfold_savehook = 0
 " }}}
 
-" Yggdroot/indentLine {{{
-let g:indentLine_enabled = 1 " enabled by default
-" let g:indentLine_char = '│'
-" let g:indentLine_showFirstIndentLevel = 1
-" let g:indentLine_fileType = ['pl', 'pm', 'perl', 'js']
-let g:indentLine_fileTypeExclude = ['json', 'markdown']
-let g:indentLine_faster = 1 " works faster, but issues are possible
-
-nnoremap <silent> <Leader>ii :IndentLinesToggle<CR>
-inoremap <silent> <Leader>ii <ESC>:IndentLinesToggle<CR>a
-vnoremap <silent> <Leader>ii <ESC>:IndentLinesToggle<CR>gv
-" }}}
-
-" completion {{{
-lua <<EOF
-    local cmp = require( "cmp" )
-
-    cmp.setup( {
-        snippet = {
-            expand = function( args )
-                vim.fn["vsnip#anonymous"]( args.body )
-            end,
-        },
-        mapping = cmp.mapping.preset.insert( {
-            ['<Up>'] = function( fallback )
-                if cmp.visible() then
-                    cmp.abort()
-                end
-
-                fallback()
-            end,
-            ['<Down>'] = function( fallback )
-                if cmp.visible() then
-                    cmp.abort()
-                end
-
-                fallback()
-            end,
-            ['<C-Up>'] = cmp.mapping.select_prev_item( { behavior = cmp.SelectBehavior.Select } ),
-            ['<C-Down>'] = cmp.mapping.select_next_item( { behavior = cmp.SelectBehavior.Select } ),
-            ['<C-Space>'] = cmp.mapping.complete(),
-            ['<C-e>'] = cmp.mapping.abort(),
-            ['<CR>'] = cmp.mapping.confirm( { select = false } ),
-        } ),
-        sources = cmp.config.sources( {
-            { name = 'vsnip' },
-            { name = 'calc' },
-        } )
-    } )
-EOF
-
-set omnifunc=syntaxcomplete#Complete
-set complete-=i
-set iskeyword+=:
-set completeopt=menuone,noselect
-
-let g:vsnip_snippet_dir = stdpath("config") . "/vsnip"
-" }}}
-
 " foalford/vim-markdown-folding {{{
 if has("autocmd")
     filetype plugin indent on
@@ -497,27 +493,32 @@ if has("autocmd")
 endif
 " }}}
 
+" disable hide of double quotes in json syntax
+let g:vim_json_conceal = 0
+
 " postgresql
 let g:sql_type_default = "pgsql"
 let g:pgsql_fold_functions_only = 1
 
 " disable highlight for html comments
-let html_wrong_comments=1
-
-" disable redefining tab width for yaml in default fs plugin
-" let g:yaml_recommended_style=0
+let html_wrong_comments = 1
 
 " for .sh files highlight (make compatible with .bash)
-let g:is_posix=1
+let g:is_posix = 1
 
 " configure folding for .sh scripts
 let g:sh_fold_enabled = 3
 
-" prevent create .netrwhist
-let g:netrw_dirhistmax=0
+set foldmethod=marker
 
-" disable hide of double quotes in json syntax
-let g:vim_json_conceal=0
+endif
+" }}}
+
+" disable redefining tab width for yaml in default fs plugin
+" let g:yaml_recommended_style = 0
+
+" prevent create .netrwhist
+let g:netrw_dirhistmax = 0
 
 " install missed plugins
 if dein#check_install() | call dein#install() | endif
@@ -538,7 +539,7 @@ set cursorline
 set nocursorcolumn
 set hlsearch
 
-syntax on
+syntax off
 
 hi Pmenu guifg=#c0c0c0 guibg=#404080
 hi PmenuSel gui=bold guifg=#c0c0c0 guibg=#2050d0
@@ -599,7 +600,7 @@ set nobomb
 " folding {{{
 " set nofoldenable
 " set foldlevelstart=99
-set foldmethod=marker
+" set foldmethod=marker
 " set foldcolumn=0
 " }}}
 
@@ -727,11 +728,13 @@ nnoremap <expr> <Down> v:count ? 'j' : 'gj'
 func! SyntaxRefresh()
     let l:cursor_pos = getpos(".")
 
+    set foldmethod=expr
+    set foldexpr=nvim_treesitter#foldexpr()
+
     set syntax=off
 
-    set syntax=on
-
-    syn sync fromstart
+    " set syntax=on
+    " syn sync fromstart
 
     call setpos(".", l:cursor_pos)
 
