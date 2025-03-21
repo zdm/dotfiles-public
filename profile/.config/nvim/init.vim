@@ -486,6 +486,10 @@ vim.api.nvim_create_autocmd( { "FileType" }, {
         end
     end,
 } )
+
+-- XXX
+-- vim.api.nvim_set_hl( 0, "@comment.note", { link = "Todo" } )
+
 EOF
 
 else
