@@ -380,11 +380,15 @@ require( "nvim-treesitter.configs" ).setup( {
         "cpp",
         "css",
         "csv",
+        "diff",
+        "dockerfile",
+        "editorconfig",
         "forth",
         "git_config",
         "gitattributes",
         "gitignore",
         "gpg",
+        "graphql",
         "html",
         "ini",
         "javascript",
@@ -395,14 +399,17 @@ require( "nvim-treesitter.configs" ).setup( {
         "markdown",
         "markdown_inline",
         "nginx",
+        "pem",
         "perl",
         "powershell",
         "query",
+        "scss",
         "sql",
         "typescript",
         "vim",
         "vimdoc",
         "vue",
+        "xml",
         "yaml"
     },
 
@@ -459,10 +466,22 @@ require( "nvim-treesitter.configs" ).setup( {
     --     },
     },
 } )
-EOF
 
-set foldmethod=expr
-set foldexpr=nvim_treesitter#foldexpr()
+vim.api.nvim_create_autocmd( { "FileType" }, {
+    callback = function ()
+        if require( "nvim-treesitter.parsers" ).has_parser() then
+            vim.opt.syntax = "off"
+
+            vim.opt.foldmethod = "expr"
+            vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+        else
+            vim.opt.syntax = "on"
+
+            vim.opt.foldmethod = "syntax"
+        end
+    end,
+} )
+EOF
 
 else
 
@@ -539,7 +558,7 @@ set cursorline
 set nocursorcolumn
 set hlsearch
 
-syntax off
+syntax manual
 
 hi Pmenu guifg=#c0c0c0 guibg=#404080
 hi PmenuSel gui=bold guifg=#c0c0c0 guibg=#2050d0
@@ -728,18 +747,20 @@ nnoremap <expr> <Down> v:count ? 'j' : 'gj'
 func! SyntaxRefresh()
     let l:cursor_pos = getpos(".")
 
-    set foldmethod=expr
-    set foldexpr=nvim_treesitter#foldexpr()
-
-    set syntax=off
-
-    " set syntax=on
-    " syn sync fromstart
+    if getbufvar( "%", "&syntax" ) == "on"
+        set syntax=off
+        set syntax=on
+        syn sync fromstart
+        set foldmethod=syntax
+    endif
 
     call setpos(".", l:cursor_pos)
 
-    normal zv " unfold lines under cursor
-    normal zz " center cursor on screen
+    " unfold lines under cursor
+    normal zv
+
+    " center cursor on screen
+    normal zz
 
     return
 endfunc
