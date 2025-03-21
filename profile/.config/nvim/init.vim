@@ -78,7 +78,7 @@ if dein#load_state( expand( g:bundle_path ) ) " {{{
     call dein#add( "DeXP/xkb-switch-win" )
 
     " treesitter
-    " call dein#add( "nvim-treesitter/nvim-treesitter", { "hook_post_update": "TSUpdate" } )
+    call dein#add( "nvim-treesitter/nvim-treesitter", { "hook_post_update": "TSUpdate" } )
 
     " perl
     call dein#add( "vim-perl/vim-perl" )
@@ -322,7 +322,7 @@ autocmd ColorScheme * highlight DiffDelete term=bold cterm=bold ctermbg=124 cter
 " treesitter {{{
 if v:false
 lua <<EOF
-require 'nvim-treesitter.configs'.setup {
+require( "nvim-treesitter.configs" ).setup( {
 
     -- A list of parser names, or "all" (the listed parsers MUST always be installed)
     ensure_installed = {
@@ -395,7 +395,7 @@ require 'nvim-treesitter.configs'.setup {
         -- Instead of true it can also be a list of languages
         additional_vim_regex_highlighting = false,
     },
-}
+} )
 EOF
 
 " set foldmethod=expr
@@ -427,7 +427,7 @@ vnoremap <silent> <Leader>ii <ESC>:IndentLinesToggle<CR>gv
 
 " completion {{{
 lua <<EOF
-    local cmp = require 'cmp'
+    local cmp = require( "cmp" )
 
     cmp.setup( {
         snippet = {
