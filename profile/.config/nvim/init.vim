@@ -84,10 +84,6 @@ if dein#load_state( expand( g:bundle_path ) ) " {{{
     call dein#add( "kevinhwang91/nvim-ufo" )
     call dein#add( "foalford/vim-markdown-folding" )
 
-    " call dein#add( "chrisyip/Better-CSS-Syntax-for-Vim", { "autoload": { "filetypes": [ "css" ] } } )
-    " call dein#add( "vim-scripts/forth.vim" )
-    " call dein#add( "lifepillar/pgsql.vim" )
-
     " other plugins
     " call dein#add( "arecarn/vim-crunch" )
     call dein#add( "tpope/vim-fugitive" )
@@ -349,7 +345,6 @@ set completeopt=menuone,noselect
 let g:vsnip_snippet_dir = stdpath("config") . "/vsnip"
 " }}}
 
-" XXX
 " treesitter {{{
 lua <<EOF
 require( "nvim-treesitter.install" ).prefer_git = false
@@ -478,30 +473,6 @@ vim.keymap.set( "n", "zM", require( "ufo" ).closeAllFolds )
 
 EOF
 " }}}
-
-" XXX
-" do not hide double quotes in json
-" let g:vim_json_conceal = 0
-
-" XXX
-" postgresql
-" let g:sql_type_default = "pgsql"
-" let g:pgsql_fold_functions_only = 1
-
-" XXX
-" disable highlight for html comments
-" let html_wrong_comments = 1
-
-" XXX
-" for .sh files highlight (make compatible with .bash)
-" let g:is_posix = 1
-
-" XXX
-" configure folding for .sh scripts
-" let g:sh_fold_enabled = 3
-
-" disable redefining tab width for yaml in default fs plugin
-" let g:yaml_recommended_style = 0
 
 " prevent create .netrwhist
 let g:netrw_dirhistmax = 0
@@ -713,7 +684,6 @@ nnoremap <expr> <Down> v:count ? 'j' : 'gj'
 " snoremap <S-Down> <C-o>gj
 " }}}
 
-" XXX
 " \ss - syntax refresh {{{
 func! SyntaxRefresh()
     let l:cursor_pos = getpos(".")
