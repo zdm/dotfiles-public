@@ -370,8 +370,6 @@ let g:fastfold_savehook = 0
 
 " XXX
 " treesitter {{{
-if v:true
-
 lua <<EOF
 require( "nvim-treesitter.install" ).prefer_git = false
 
@@ -475,8 +473,7 @@ vim.api.nvim_create_autocmd( { "FileType" }, {
 } )
 
 EOF
-
-else
+" }}}
 
 " zdm/vim-perl {{{
 let perl_sync_dist = 250
@@ -516,11 +513,6 @@ let g:is_posix = 1
 
 " configure folding for .sh scripts
 let g:sh_fold_enabled = 3
-
-set foldmethod=marker
-
-endif
-" }}}
 
 " disable redefining tab width for yaml in default fs plugin
 " let g:yaml_recommended_style = 0
@@ -610,7 +602,7 @@ set nobomb
 " folding {{{
 " set nofoldenable
 " set foldlevelstart=99
-" set foldmethod=marker
+set foldmethod=marker
 " set foldcolumn=0
 " }}}
 
