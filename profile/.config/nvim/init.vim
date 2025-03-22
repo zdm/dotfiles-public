@@ -83,7 +83,7 @@ if dein#load_state( expand( g:bundle_path ) ) " {{{
     " call dein#add( "vim-scripts/forth.vim" )
     " call dein#add( "pedrohdz/vim-yaml-folds" )
     " call dein#add( "lifepillar/pgsql.vim" )
-    " call dein#add( "foalford/vim-markdown-folding" )
+    call dein#add( "foalford/vim-markdown-folding" )
 
     " other plugins
     call dein#add( "Konfekt/FastFold" )
@@ -305,15 +305,6 @@ vnoremap <silent> <Leader>ii <ESC>:IndentLinesToggle<CR>gv
 let g:fastfold_savehook = 0
 " }}}
 
-" XXX
-" foalford/vim-markdown-folding {{{
-if has("autocmd")
-    filetype plugin indent on
-
-    " autocmd FileType markdown set foldexpr=NestedMarkdownFolds()
-endif
-" }}}
-
 " completion {{{
 lua <<EOF
     local cmp = require( "cmp" )
@@ -404,19 +395,18 @@ require( "nvim-treesitter.configs" ).setup( {
         "xml",
         "yaml"
     },
+
     sync_install = false,
+
     auto_install = true,
 
     highlight = {
         enable = true,
 
-        -- NOTE: these are the names of the parsers and not the filetype. (for example if you want to
-        -- disable highlighting for the `tex` filetype, you need to include `latex` in this list as this is
-        -- the name of the parser)
-        -- list of language that will be disabled
-        -- disable = { "c", "rust" },
+        disable = {
+            -- "markdown",
+        },
 
-        -- Or use a function for more flexibility, e.g. to disable slow treesitter highlight for large files
         disable = function(lang, buf)
             local max_filesize = 1024 * 1024 -- 1 MB
             local ok, stats = pcall( vim.loop.fs_stat, vim.api.nvim_buf_get_name( buf ) )
@@ -426,10 +416,6 @@ require( "nvim-treesitter.configs" ).setup( {
             end
         end,
 
-        -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-        -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-        -- Using this option may slow down your editor, and you may see some duplicate highlights.
-        -- Instead of true it can also be a list of languages
         additional_vim_regex_highlighting = false,
     },
 
@@ -454,7 +440,12 @@ vim.api.nvim_create_autocmd( { "FileType" }, {
             vim.opt.syntax = "off"
 
             vim.opt.foldmethod = "expr"
-            vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+
+            if vim.bo.filetype == "markdown" then
+                vim.opt.foldexpr = "StackedMarkdownFolds()"
+            else
+                vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+            end
         else
             vim.opt.syntax = "on"
 
