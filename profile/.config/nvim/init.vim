@@ -259,39 +259,39 @@ require( "Comment" ).setup( {
     sticky = true,
 
     -- Lines to be ignored while (un)comment
-    ignore = nil,
+    ignore = "^$", -- nil
 
     -- LHS of toggle mappings in NORMAL mode
     toggler = {
 
         -- Line-comment toggle keymap
-        line = 'gcc',
+        line = "c",
 
         -- Block-comment toggle keymap
-        block = 'gbc',
+        block = "bc",
     },
 
     -- LHS of operator-pending mappings in NORMAL and VISUAL mode
     opleader = {
 
         -- Line-comment keymap
-        line = 'gc',
+        line = "gc",
 
         -- Block-comment keymap
-        block = 'gb',
+        block = "gb",
     },
 
     -- LHS of extra mappings
     extra = {
 
         -- Add comment on the line above
-        above = 'gcO',
+        above = "gcO",
 
         -- Add comment on the line below
-        below = 'gco',
+        below = "gco",
 
         -- Add comment at the end of line
-        eol = 'gcA',
+        eol = "gcA",
     },
 
     -- Enable keybindings
@@ -302,7 +302,7 @@ require( "Comment" ).setup( {
         basic = true,
 
         -- Extra mapping; `gco`, `gcO`, `gcA`
-        extra = true,
+        extra = false,
     },
 
     -- Function to call before (un)comment
