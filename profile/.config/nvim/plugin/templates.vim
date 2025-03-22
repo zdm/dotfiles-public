@@ -1,15 +1,12 @@
-" vim:foldmethod=marker
-
 if exists( 'g:loaded_template' ) | finish | endif
 let g:loaded_template = 1
 
-augroup template " {{{1
+augroup template
     autocmd!
     autocmd FileType * if line2byte( line( '$' ) + 1 ) == -1 | call s:loadtemplate( &filetype, expand('<afile>:e') ) | endif
 augroup END
-" }}}
 
-function! s:globpathlist( path, ... ) " {{{1
+function! s:globpathlist( path, ... )
     let i = 1
     let result = a:path
     while i <= a:0
@@ -19,9 +16,8 @@ function! s:globpathlist( path, ... ) " {{{1
     endwhile
     return result
 endfunction
-" }}}
 
-function! s:loadtemplate( filetype, fext ) " {{{1
+function! s:loadtemplate( filetype, fext )
     if a:fext != ''
         let templatefile = matchstr( s:globpathlist( &runtimepath, 'templates', a:fext ), '\(\\.\|[^,]\)*', 0 )
         if strlen( templatefile ) == 0
@@ -54,6 +50,5 @@ function! s:loadtemplate( filetype, fext ) " {{{1
 
     set nomodified
 endfunction
-" }}}
 
 command -nargs=1 New new | set ft=<args>

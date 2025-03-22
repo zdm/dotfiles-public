@@ -1,10 +1,8 @@
-if exists("b:did_JAVASCRIPT_ftplugin")
+if exists( "b:did_JAVASCRIPT_ftplugin" )
     finish
 endif
 
 let b:did_JAVASCRIPT_ftplugin = 1
-
-setlocal foldmethod=syntax
 
 " {<CR> always opens a block
 inoremap <buffer> {<CR>  {<CR>}<Esc>O
