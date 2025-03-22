@@ -89,6 +89,7 @@ func! s:check_channel ()
 
 endfunc
 
+" XXX
 func! s:lint_file ( type )
     let l:eol = { "unix": "\n", "dos": "\r\n", "mac": "\r" }[ &fileformat ]
     let l:buf = join( getline( 1, '$' ), l:eol )
@@ -150,6 +151,7 @@ func! s:lint_file ( type )
 
             call setpos( ".", l:cursor_pos )
 
+            " XXX
             " unfold block under the cursor
             normal zv
 
