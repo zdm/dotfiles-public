@@ -485,6 +485,13 @@ require( "vim.treesitter.query" ).set( "lua", "folds", [[
     ] @fold
 ]] )
 
+require( "vim.treesitter.query" ).set( "bash", "folds", [[
+    [
+        (function_definition)
+        (heredoc_redirect)
+    ] @fold
+]] )
+
 vim.api.nvim_create_autocmd( { "FileType" }, {
     callback = function ()
         if require( "nvim-treesitter.parsers" ).has_parser() then
