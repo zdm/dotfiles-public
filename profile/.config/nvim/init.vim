@@ -63,7 +63,6 @@ if dein#load_state( expand( g:bundle_path ) ) " {{{
     call dein#add( "Shougo/unite-outline" )
     call dein#add( "mbbill/undotree" )
     call dein#add( "powerman/vim-plugin-viewdoc" )
-    call dein#add( "numToStr/Comment.nvim" )
     " call dein#add( "nathanaelkane/vim-indent-guides.git" )
     call dein#add( "mhinz/vim-signify" )
     call dein#add( "Yggdroot/indentLine" )
@@ -79,10 +78,14 @@ if dein#load_state( expand( g:bundle_path ) ) " {{{
     " treesitter
     call dein#add( "nvim-treesitter/nvim-treesitter", { "hook_post_update": "TSUpdate" } )
 
-    " ufo
+    " folding
     call dein#add( "kevinhwang91/promise-async" )
     call dein#add( "kevinhwang91/nvim-ufo" )
     call dein#add( "foalford/vim-markdown-folding" )
+
+    " comments
+    call dein#add( "numToStr/Comment.nvim" )
+    call dein#add( "JoosepAlviste/nvim-ts-context-commentstring" )
 
     " other plugins
     " call dein#add( "arecarn/vim-crunch" )
@@ -248,8 +251,12 @@ let g:viewdoc_openempty = 1
 " }}}
 
 " XXX
-" numToStr/Comment.nvim {{{
+" comments {{{
 lua <<EOF
+require( "ts_context_commentstring" ).setup( {
+    enable_autocmd = false,
+} )
+
 require( "Comment" ).setup( {
     padding = true,
     sticky = true,
@@ -258,12 +265,7 @@ require( "Comment" ).setup( {
         basic = false,
         extra = false,
     },
-
-    -- Function to call before (un)comment
-    pre_hook = nil,
-
-    -- Function to call after (un)comment
-    post_hook = nil,
+    pre_hook = require( "ts_context_commentstring.integrations.comment_nvim" ).create_pre_hook(),
 } )
 
 local api = require( "Comment.api" )
@@ -365,7 +367,7 @@ set completeopt=menuone,noselect
 let g:vsnip_snippet_dir = stdpath("config") . "/vsnip"
 " }}}
 
-" treesitter {{{
+" treesitter, foldind {{{
 lua <<EOF
 require( "nvim-treesitter.install" ).prefer_git = false
 
