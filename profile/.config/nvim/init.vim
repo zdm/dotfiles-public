@@ -299,7 +299,7 @@ require( "Comment" ).setup( {
     mappings = {
 
         -- Operator-pending mapping; `gcc` `gbc` `gc[count]{motion}` `gb[count]{motion}`
-        basic = true,
+        basic = false,
 
         -- Extra mapping; `gco`, `gcO`, `gcA`
         extra = false,
@@ -312,38 +312,28 @@ require( "Comment" ).setup( {
     post_hook = nil,
 } )
 
+local api = require( "Comment.api" )
+local config = require( "Comment.config" ):get()
+
+-- XXX move to next line
+vim.keymap.set( "n", "<Leader>c", api.toggle.linewise.current )
+vim.keymap.set( "i", "<Leader>c", api.toggle.linewise.current )
+
+vim.keymap.set( "v", "<Leader>c", api.call( "toggle.linewise", "g@" ), { expr = true } )
+vim.keymap.set( "v", "<Leader>cc", api.call( "toggle.blockwise", "g@" ), { expr = true } )
+
+local ft = require( "Comment.ft" )
+
+ft.set( "dosbatch", ":: %s" )
+
+-- XXX
+-- let g:tcomment#replacements_xml = {
+-- \   '<!--': '<!-&#45;',
+-- \   '-->': '&#45;->'
+-- \ }
+
 EOF
 
-" nnoremap <silent> <Leader>c :TComment<CR>j
-" inoremap <silent> <Leader>c <C-o>:TComment<CR><C-o>j
-" vnoremap <silent> <Leader>c :TComment<CR>
-" vnoremap <silent> <Leader>C :TCommentBlock<CR>
-
-" }}}
-
-" XXX
-" tomtom/tcomment_vim {{{
-let g:tcomment_maps = 0
-let g:tcomment#blank_lines = 0
-let g:tcomment#filetype#guess_perl = 1
-let g:tcomment#filetype#syntax_map = {
-\   'perlHereDocSQL': 'sql',
-\   'perlHereDocJS': 'javascript',
-\   'perlHereDocC': 'c',
-\   'perlHereDocCPP': 'cpp'
-\ }
-
-let g:tcomment#replacements_xml = {
-\   '<!--': '<!-&#45;',
-\   '-->': '&#45;->'
-\ }
-
-" call tcomment#type#Define('dosbatch', ':: %s')
-
-" nnoremap <silent> <Leader>c :TComment<CR>j
-" inoremap <silent> <Leader>c <C-o>:TComment<CR><C-o>j
-" vnoremap <silent> <Leader>c :TComment<CR>
-" vnoremap <silent> <Leader>C :TCommentBlock<CR>
 " }}}
 
 " nathanaelkane/vim-indent-guides.git {{{
