@@ -150,10 +150,10 @@ func! s:lint_file ( type )
 
             call setpos( ".", l:cursor_pos )
 
-            " unfold lines under cursor
+            " unfold block under the cursor
             normal zv
 
-            " center cursor on screen
+            " center cursor on the screen
             normal zz
         endif
 

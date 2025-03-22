@@ -725,10 +725,11 @@ func! SyntaxRefresh()
 
     call setpos(".", l:cursor_pos)
 
-    " unfold lines under cursor
+    " unfold block under the cursor
+    normal zM
     normal zv
 
-    " center cursor on screen
+    " center cursor on the screen
     normal zz
 
     return
