@@ -318,6 +318,33 @@ inoremap <silent> <Leader>ii <ESC>:IndentLinesToggle<CR>a
 vnoremap <silent> <Leader>ii <ESC>:IndentLinesToggle<CR>gv
 " }}}
 
+" Konfekt/FastFold {{{
+let g:fastfold_savehook = 0
+" }}}
+
+" zdm/vim-perl {{{
+let perl_sync_dist = 250
+let perl_fold = 1
+let perl_fold_anonymous_subs = 1
+let perl_fold_do_blocks = 1
+let perl_nofold_packages = 1
+let perl_include_pod = 1
+let perl_sub_signatures = 1
+" let perl_no_sync_on_sub = 1 " TODO maybe this prevent unfold on new block create
+" }}}
+
+" pangloss/vim-javascript {{{
+let g:javascript_plugin_jsdoc = 1
+" }}}
+
+" foalford/vim-markdown-folding {{{
+if has("autocmd")
+    filetype plugin indent on
+
+    " autocmd FileType markdown set foldexpr=NestedMarkdownFolds()
+endif
+" }}}
+
 " completion {{{
 lua <<EOF
     local cmp = require( "cmp" )
@@ -364,11 +391,6 @@ set completeopt=menuone,noselect
 let g:vsnip_snippet_dir = stdpath("config") . "/vsnip"
 " }}}
 
-" Konfekt/FastFold {{{
-let g:fastfold_savehook = 0
-" }}}
-
-" XXX
 " treesitter {{{
 lua <<EOF
 require( "nvim-treesitter.install" ).prefer_git = false
@@ -473,29 +495,6 @@ vim.api.nvim_create_autocmd( { "FileType" }, {
 } )
 
 EOF
-" }}}
-
-" zdm/vim-perl {{{
-let perl_sync_dist = 250
-let perl_fold = 1
-let perl_fold_anonymous_subs = 1
-let perl_fold_do_blocks = 1
-let perl_nofold_packages = 1
-let perl_include_pod = 1
-let perl_sub_signatures = 1
-" let perl_no_sync_on_sub = 1 " TODO maybe this prevent unfold on new block create
-" }}}
-
-" pangloss/vim-javascript {{{
-let g:javascript_plugin_jsdoc = 1
-" }}}
-
-" foalford/vim-markdown-folding {{{
-if has("autocmd")
-    filetype plugin indent on
-
-    " autocmd FileType markdown set foldexpr=NestedMarkdownFolds()
-endif
 " }}}
 
 " disable hide of double quotes in json syntax
