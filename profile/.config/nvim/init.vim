@@ -452,21 +452,26 @@ vim.api.nvim_create_autocmd( { "FileType" }, {
 EOF
 " }}}
 
+" XXX
 " disable hide of double quotes in json syntax
-let g:vim_json_conceal = 0
+" let g:vim_json_conceal = 0
 
+" XXX
 " postgresql
-let g:sql_type_default = "pgsql"
-let g:pgsql_fold_functions_only = 1
+" let g:sql_type_default = "pgsql"
+" let g:pgsql_fold_functions_only = 1
 
+" XXX
 " disable highlight for html comments
-let html_wrong_comments = 1
+" let html_wrong_comments = 1
 
+" XXX
 " for .sh files highlight (make compatible with .bash)
-let g:is_posix = 1
+" let g:is_posix = 1
 
+" XXX
 " configure folding for .sh scripts
-let g:sh_fold_enabled = 3
+" let g:sh_fold_enabled = 3
 
 " disable redefining tab width for yaml in default fs plugin
 " let g:yaml_recommended_style = 0
