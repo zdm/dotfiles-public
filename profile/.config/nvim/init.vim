@@ -405,6 +405,8 @@ require( "nvim-treesitter.configs" ).setup( {
         "query",
         "scss",
         "sql",
+        "ssh_config",
+        "toml",
         "typescript",
         "vim",
         "vimdoc",
