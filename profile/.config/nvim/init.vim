@@ -77,30 +77,24 @@ if dein#load_state( expand( g:bundle_path ) ) " {{{
     call dein#add( "DeXP/xkb-switch-win" )
 
     " treesitter
-    if v:true
+    call dein#add( "nvim-treesitter/nvim-treesitter", { "hook_post_update": "TSUpdate" } )
 
-        call dein#add( "nvim-treesitter/nvim-treesitter", { "hook_post_update": "TSUpdate" } )
+    " call dein#add( "vim-perl/vim-perl" )
 
-    else
+    " javascript
+    " call dein#add( "zdm/vim-javascript", { "autoload": { "filetypes": [ "javascript" ] } } )
+    " call dein#add( "pangloss/vim-javascript", { "autoload": { "filetypes": [ "javascript" ] } } )
 
-        call dein#add( "vim-perl/vim-perl" )
+    " c
+    " call dein#add( "justinmk/vim-syntax-extra" )
 
-        " javascript
-        call dein#add( "zdm/vim-javascript", { "autoload": { "filetypes": [ "javascript" ] } } )
-        " call dein#add( "pangloss/vim-javascript", { "autoload": { "filetypes": [ "javascript" ] } } )
-
-        " c
-        call dein#add( "justinmk/vim-syntax-extra" )
-
-        call dein#add( "zdm/vim-nginx" )
-        call dein#add( "chrisyip/Better-CSS-Syntax-for-Vim", { "autoload": { "filetypes": [ "css" ] } } )
-        call dein#add( "vim-scripts/forth.vim" )
-        call dein#add( "joelfrederico/vim-HiLinkTrace" )
-        call dein#add( "pedrohdz/vim-yaml-folds" )
-        call dein#add( "lifepillar/pgsql.vim" )
-        call dein#add( "foalford/vim-markdown-folding" )
-
-    endif
+    " call dein#add( "zdm/vim-nginx" )
+    " call dein#add( "chrisyip/Better-CSS-Syntax-for-Vim", { "autoload": { "filetypes": [ "css" ] } } )
+    " call dein#add( "vim-scripts/forth.vim" )
+    " call dein#add( "joelfrederico/vim-HiLinkTrace" )
+    " call dein#add( "pedrohdz/vim-yaml-folds" )
+    " call dein#add( "lifepillar/pgsql.vim" )
+    " call dein#add( "foalford/vim-markdown-folding" )
 
     " other plugins
     call dein#add( "Konfekt/FastFold" )
@@ -322,6 +316,7 @@ vnoremap <silent> <Leader>ii <ESC>:IndentLinesToggle<CR>gv
 let g:fastfold_savehook = 0
 " }}}
 
+" XXX
 " zdm/vim-perl {{{
 let perl_sync_dist = 250
 let perl_fold = 1
@@ -333,10 +328,12 @@ let perl_sub_signatures = 1
 " let perl_no_sync_on_sub = 1 " TODO maybe this prevent unfold on new block create
 " }}}
 
+" XXX
 " pangloss/vim-javascript {{{
 let g:javascript_plugin_jsdoc = 1
 " }}}
 
+" XXX
 " foalford/vim-markdown-folding {{{
 if has("autocmd")
     filetype plugin indent on
