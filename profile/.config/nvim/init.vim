@@ -368,6 +368,7 @@ let g:vsnip_snippet_dir = stdpath("config") . "/vsnip"
 let g:fastfold_savehook = 0
 " }}}
 
+" XXX
 " treesitter {{{
 if v:true
 lua <<EOF
@@ -487,9 +488,6 @@ vim.api.nvim_create_autocmd( { "FileType" }, {
     end,
 } )
 
--- XXX
--- vim.api.nvim_set_hl( 0, "@comment.note", { link = "Todo" } )
-
 EOF
 
 else
@@ -556,6 +554,8 @@ set background=dark
 autocmd ColorScheme * highlight CursorLine term=NONE cterm=bold ctermbg=NONE ctermfg=NONE gui=bold guibg=Grey10 guifg=NONE
 autocmd ColorScheme * highlight SignColumn term=NONE cterm=bold ctermbg=NONE ctermfg=NONE gui=bold guibg=NONE   guifg=NONE
 autocmd ColorScheme * highlight Folded     term=NONE cterm=bold ctermbg=NONE ctermfg=NONE gui=bold guibg=NONE   guifg=Gold
+
+autocmd ColorScheme * highlight link @comment.note Todo
 
 colorscheme default
 
@@ -748,6 +748,7 @@ nnoremap <expr> <Down> v:count ? 'j' : 'gj'
 " snoremap <S-Down> <C-o>gj
 " }}}
 
+" XXX
 " \ss - syntax refresh {{{
 func! SyntaxRefresh()
     let l:cursor_pos = getpos(".")
