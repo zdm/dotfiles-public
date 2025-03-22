@@ -79,9 +79,6 @@ if dein#load_state( expand( g:bundle_path ) ) " {{{
     " treesitter
     call dein#add( "nvim-treesitter/nvim-treesitter", { "hook_post_update": "TSUpdate" } )
 
-    " c
-    " call dein#add( "justinmk/vim-syntax-extra" )
-
     " call dein#add( "chrisyip/Better-CSS-Syntax-for-Vim", { "autoload": { "filetypes": [ "css" ] } } )
     " call dein#add( "vim-scripts/forth.vim" )
     " call dein#add( "pedrohdz/vim-yaml-folds" )
