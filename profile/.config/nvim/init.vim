@@ -79,13 +79,16 @@ if dein#load_state( expand( g:bundle_path ) ) " {{{
     " treesitter
     call dein#add( "nvim-treesitter/nvim-treesitter", { "hook_post_update": "TSUpdate" } )
 
+    " ufo
+    call dein#add( "kevinhwang91/promise-async" )
+    call dein#add( "kevinhwang91/nvim-ufo" )
+    call dein#add( "foalford/vim-markdown-folding" )
+
     " call dein#add( "chrisyip/Better-CSS-Syntax-for-Vim", { "autoload": { "filetypes": [ "css" ] } } )
     " call dein#add( "vim-scripts/forth.vim" )
     " call dein#add( "lifepillar/pgsql.vim" )
-    call dein#add( "foalford/vim-markdown-folding" )
 
     " other plugins
-    call dein#add( "Konfekt/FastFold" )
     " call dein#add( "arecarn/vim-crunch" )
     call dein#add( "tpope/vim-fugitive" )
     " call dein#add( "vim-scripts/autocorrect.vim" )
@@ -300,10 +303,6 @@ inoremap <silent> <Leader>ii <ESC>:IndentLinesToggle<CR>a
 vnoremap <silent> <Leader>ii <ESC>:IndentLinesToggle<CR>gv
 " }}}
 
-" Konfekt/FastFold {{{
-let g:fastfold_savehook = 0
-" }}}
-
 " completion {{{
 lua <<EOF
     local cmp = require( "cmp" )
@@ -450,6 +449,16 @@ vim.api.nvim_create_autocmd( { "FileType" }, {
     end,
 } )
 
+require( "ufo" ).setup( {
+    provider_selector = function( bufnr, filetype, buftype )
+        return { "treesitter", "indent" }
+    end
+} )
+
+-- XXX
+vim.keymap.set( "n", "zR", require( "ufo" ).openAllFolds )
+vim.keymap.set( "n", "zM", require( "ufo" ).closeAllFolds )
+
 EOF
 " }}}
 
@@ -560,10 +569,11 @@ set nobomb
 " }}}
 
 " folding {{{
-" set nofoldenable
-" set foldlevelstart=99
+set foldenable
+set foldlevel=99
+set foldlevelstart=99
 set foldmethod=marker
-" set foldcolumn=0
+set foldcolumn=1
 " }}}
 
 " session
@@ -692,14 +702,7 @@ func! SyntaxRefresh()
     let l:cursor_pos = getpos(".")
 
     if getbufvar( "%", "&syntax" ) == "on"
-        set syntax=off
-        set syntax=on
         syn sync fromstart
-    endif
-
-    exec( "set foldmethod=" . &foldmethod )
-    if exists( g:loaded_fastfold ) && g:loaded_fastfold
-        FastFoldUpdate
     endif
 
     call setpos(".", l:cursor_pos)

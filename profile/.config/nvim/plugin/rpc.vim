@@ -131,6 +131,7 @@ func! s:lint_file ( type )
 
         let l:res = rpcrequest( s:channel, "lint-file", { "action": a:type, "cwd": getcwd(), "path": l:path, "type": l:type, "buffer": l:buf } )
 
+        " XXX
         if l:res.meta.isModified
             let l:res.data = substitute( l:res.data, '\r\n\?', "\n", "g" )
 
@@ -145,11 +146,6 @@ func! s:lint_file ( type )
             if getbufvar( "%", "&syntax" ) == "on"
                 set syntax=on
                 syn sync fromstart
-            endif
-
-            exec( "set foldmethod=" . &foldmethod )
-            if exists( g:loaded_fastfold ) && g:loaded_fastfold
-                FastFoldUpdate
             endif
 
             call setpos( ".", l:cursor_pos )
