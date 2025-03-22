@@ -63,7 +63,7 @@ if dein#load_state( expand( g:bundle_path ) ) " {{{
     call dein#add( "Shougo/unite-outline" )
     call dein#add( "mbbill/undotree" )
     call dein#add( "powerman/vim-plugin-viewdoc" )
-    call dein#add( "tomtom/tcomment_vim" )
+    call dein#add( "numToStr/Comment.nvim" )
     " call dein#add( "nathanaelkane/vim-indent-guides.git" )
     call dein#add( "mhinz/vim-signify" )
     call dein#add( "Yggdroot/indentLine" )
@@ -247,6 +247,81 @@ let g:viewdoc_openempty = 1
 " endif
 " }}}
 
+" XXX
+" numToStr/Comment.nvim {{{
+lua <<EOF
+require( "Comment" ).setup( {
+
+    -- Add a space b/w comment and the line
+    padding = true,
+
+    -- Whether the cursor should stay at its position
+    sticky = true,
+
+    -- Lines to be ignored while (un)comment
+    ignore = nil,
+
+    -- LHS of toggle mappings in NORMAL mode
+    toggler = {
+
+        -- Line-comment toggle keymap
+        line = 'gcc',
+
+        -- Block-comment toggle keymap
+        block = 'gbc',
+    },
+
+    -- LHS of operator-pending mappings in NORMAL and VISUAL mode
+    opleader = {
+
+        -- Line-comment keymap
+        line = 'gc',
+
+        -- Block-comment keymap
+        block = 'gb',
+    },
+
+    -- LHS of extra mappings
+    extra = {
+
+        -- Add comment on the line above
+        above = 'gcO',
+
+        -- Add comment on the line below
+        below = 'gco',
+
+        -- Add comment at the end of line
+        eol = 'gcA',
+    },
+
+    -- Enable keybindings
+    ---NOTE: If given `false` then the plugin won't create any mappings
+    mappings = {
+
+        -- Operator-pending mapping; `gcc` `gbc` `gc[count]{motion}` `gb[count]{motion}`
+        basic = true,
+
+        -- Extra mapping; `gco`, `gcO`, `gcA`
+        extra = true,
+    },
+
+    -- Function to call before (un)comment
+    pre_hook = nil,
+
+    -- Function to call after (un)comment
+    post_hook = nil,
+} )
+
+EOF
+
+" nnoremap <silent> <Leader>c :TComment<CR>j
+" inoremap <silent> <Leader>c <C-o>:TComment<CR><C-o>j
+" vnoremap <silent> <Leader>c :TComment<CR>
+" vnoremap <silent> <Leader>C :TCommentBlock<CR>
+
+" }}}
+
+" XXX
 " tomtom/tcomment_vim {{{
 let g:tcomment_maps = 0
 let g:tcomment#blank_lines = 0
@@ -263,12 +338,12 @@ let g:tcomment#replacements_xml = {
 \   '-->': '&#45;->'
 \ }
 
-call tcomment#type#Define('dosbatch', ':: %s')
+" call tcomment#type#Define('dosbatch', ':: %s')
 
-nnoremap <silent> <Leader>c :TComment<CR>j
-inoremap <silent> <Leader>c <C-o>:TComment<CR><C-o>j
-vnoremap <silent> <Leader>c :TComment<CR>
-vnoremap <silent> <Leader>C :TCommentBlock<CR>
+" nnoremap <silent> <Leader>c :TComment<CR>j
+" inoremap <silent> <Leader>c <C-o>:TComment<CR><C-o>j
+" vnoremap <silent> <Leader>c :TComment<CR>
+" vnoremap <silent> <Leader>C :TCommentBlock<CR>
 " }}}
 
 " nathanaelkane/vim-indent-guides.git {{{
