@@ -365,6 +365,7 @@ require( "nvim-treesitter.configs" ).setup( {
         "diff",
         "dockerfile",
         "editorconfig",
+        "embedded_template",
         "forth",
         "git_config",
         "gitattributes",
