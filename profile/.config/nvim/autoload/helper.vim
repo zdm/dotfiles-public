@@ -1,5 +1,3 @@
-" vim:foldmethod=indent
-
 function! helper#cleanupBuffers()
     let tablist = []
     for i in range(tabpagenr('$'))
