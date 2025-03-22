@@ -463,6 +463,11 @@ require( "vim.treesitter.query" ).set( "javascript", "folds", [[
 require( "vim.treesitter.query" ).set( "vim", "folds", [[
     [
         (function_definition)
+        (lua_statement)
+        (ruby_statement)
+        (python_statement)
+        (perl_statement)
+        (autocmd_statement)
     ] @fold
 ]] )
 
