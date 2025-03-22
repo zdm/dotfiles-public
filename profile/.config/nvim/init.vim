@@ -269,9 +269,10 @@ require( "Comment" ).setup( {
 local api = require( "Comment.api" )
 local config = require( "Comment.config" ):get()
 
--- XXX move to next line
-vim.keymap.set( "n", "<Leader>c", api.toggle.linewise.current )
-vim.keymap.set( "i", "<Leader>c", api.toggle.linewise.current )
+vim.keymap.set( { "n", "i" }, "<Leader>c", function ()
+    api.toggle.linewise.current()
+    vim.cmd( "normal! j" )
+end )
 
 vim.keymap.set( "v", "<Leader>c", api.call( "toggle.linewise", "g@" ), { expr = true } )
 vim.keymap.set( "v", "<Leader>cc", api.call( "toggle.blockwise", "g@" ), { expr = true } )
