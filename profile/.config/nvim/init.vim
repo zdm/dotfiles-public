@@ -430,6 +430,18 @@ require( "nvim-treesitter.configs" ).setup( {
     },
 } )
 
+-- NOTE https://github.com/nvim-treesitter/nvim-treesitter/tree/master/queries
+require( "vim.treesitter.query" ).set( "javascript", "folds", [[
+    [
+        (arrow_function)
+        (function_expression)
+        (function_declaration)
+        (method_definition)
+        (generator_function)
+        (generator_function_declaration)
+    ] @fold
+]] )
+
 vim.api.nvim_create_autocmd( { "FileType" }, {
     callback = function ()
         if require( "nvim-treesitter.parsers" ).has_parser() then
