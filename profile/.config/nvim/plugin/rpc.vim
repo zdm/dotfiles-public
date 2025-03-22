@@ -132,11 +132,11 @@ func! s:lint_file ( type )
         let l:res = rpcrequest( s:channel, "lint-file", { "action": a:type, "cwd": getcwd(), "path": l:path, "type": l:type, "buffer": l:buf } )
 
         if l:res.meta.isModified
-            set syntax=off
+            let l:res.data = substitute( l:res.data, '\r\n\?', "\n", "g" )
 
             let l:cursor_pos = getpos( "." )
 
-            let l:res.data = substitute( l:res.data, '\r\n\?', "\n", "g" )
+            set syntax=off
 
             %delete
             put =l:res.data
