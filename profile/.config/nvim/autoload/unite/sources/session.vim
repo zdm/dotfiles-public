@@ -1,4 +1,3 @@
-" vim:foldmethod=marker
 let s:save_cpo = &cpo
 set cpo&vim
 
@@ -6,12 +5,11 @@ set cpo&vim
 call unite#util#set_default('g:unite_source_session_default_session_name', 'default')
 call unite#util#set_default('g:unite_source_session_path', g:unite_data_directory . '/session')
 
-function! unite#sources#session#define() " {{{
+function! unite#sources#session#define()
     return [ s:source, s:source_new ]
 endfunction
-" }}}
 
-function! unite#sources#session#_save(filename, ...) " {{{
+function! unite#sources#session#_save(filename, ...)
     if unite#util#is_cmdwin()
         return
     endif
@@ -24,9 +22,8 @@ function! unite#sources#session#_save(filename, ...) " {{{
 
     execute 'silent mksession!' filename
 endfunction
-" }}}
 
-function! unite#sources#session#_load(filename) " {{{
+function! unite#sources#session#_load(filename)
     if unite#util#is_cmdwin()
         return
     endif
@@ -56,13 +53,11 @@ function! unite#sources#session#_load(filename) " {{{
     " refresh syntax for all tabs
     exec 'tabdo syn sync fromstart'
 endfunction
-" }}}
 
-function! unite#sources#session#_complete(arglead, cmdline, cursorpos) " {{{
+function! unite#sources#session#_complete(arglead, cmdline, cursorpos)
     let sessions = split(glob(g:unite_source_session_path.'/*'), '\n')
     return filter(sessions, 'stridx(v:val, a:arglead) == 0')
 endfunction
-" }}}
 
 let s:source = {
 \    'name' : 'session',
@@ -75,7 +70,7 @@ let s:source = {
 \    'hooks' : {}
 \}
 
-function! s:source.gather_candidates(args, context) " {{{
+function! s:source.gather_candidates(args, context)
     let sessions = split(glob(g:unite_source_session_path.'/*'), '\n')
 
     let candidates = []
@@ -106,9 +101,8 @@ function! s:source.gather_candidates(args, context) " {{{
 
     return candidates
 endfunction
-" }}}
 
-function! s:source.hooks.on_syntax(args, context) " {{{
+function! s:source.hooks.on_syntax(args, context)
     syntax match uniteSource__session_current /%/ contained containedin=uniteSource__session
     highlight default link uniteSource__session_current PreProc
 
@@ -118,17 +112,15 @@ function! s:source.hooks.on_syntax(args, context) " {{{
     syntax match uniteSource__session_date /\[.*\]/ contained containedin=uniteSource__session
     highlight default link uniteSource__session_date Function
 endfunction
-" }}}
 
 " actions
 let s:source.action_table.load = {
 \    'description' : 'load this session',
 \}
 
-function! s:source.action_table.load.func(candidate) " {{{
+function! s:source.action_table.load.func(candidate)
     call unite#sources#session#_load(a:candidate.action__path)
 endfunction
-" }}}
 
 let s:source.action_table.delete = {
 \    'description' : 'delete from session list',
@@ -137,14 +129,13 @@ let s:source.action_table.delete = {
 \    'is_selectable' : 1,
 \}
 
-function! s:source.action_table.delete.func(candidates) " {{{
+function! s:source.action_table.delete.func(candidates)
     for candidate in a:candidates
         if input('Really delete session file: ' . candidate.action__path . '? ') =~? 'y\%[es]'
             call delete(candidate.action__path)
         endif
     endfor
 endfunction
-" }}}
 
 let s:source.action_table.rename = {
 \    'description' : 'rename session name',
@@ -153,7 +144,7 @@ let s:source.action_table.rename = {
 \    'is_selectable' : 1,
 \}
 
-function! s:source.action_table.rename.func(candidates) " {{{
+function! s:source.action_table.rename.func(candidates)
     for candidate in a:candidates
         let session_name = input(printf('New session name: %s -> ', candidate.word), candidate.word)
         if session_name != '' && session_name !=# candidate.word
@@ -161,7 +152,6 @@ function! s:source.action_table.rename.func(candidates) " {{{
         endif
     endfor
 endfunction
-" }}}
 
 let s:source.action_table.save = {
 \    'description' : 'save current session as candidate',
@@ -170,14 +160,13 @@ let s:source.action_table.save = {
 \    'is_selectable' : 1,
 \}
 
-function! s:source.action_table.save.func(candidates) " {{{
+function! s:source.action_table.save.func(candidates)
     for candidate in a:candidates
         if input('Really save the current session as: ' . candidate.word . '? ') =~? 'y\%[es]'
             call unite#sources#session#_save(candidate.word)
         endif
     endfor
 endfunction
-" }}}
 
 let s:source_new = {
 \    'name' : 'session/new',
@@ -188,10 +177,9 @@ let s:source_new = {
 \    'hooks' : {},
 \}
 
-function! s:source_new.change_candidates(args, context) " {{{
+function! s:source_new.change_candidates(args, context)
     return [{ 'word': '', 'abbr': 'create new session', 'kind' : 'common' }]
 endfunction
-" }}}
 
 function! s:source_new.hooks.on_syntax(args, context)
     syntax match uniteSource__session_new /create new session/ contained containedin=uniteSource__session
@@ -200,7 +188,7 @@ endfunction
 
 let s:source_new.action_table.save = s:source.action_table.save
 
-function! s:source_new.action_table.save.func(candidates) " {{{
+function! s:source_new.action_table.save.func(candidates)
     let name = input('Save session as: ')
 
     if name != ''
@@ -211,9 +199,8 @@ function! s:source_new.action_table.save.func(candidates) " {{{
         redraw | echohl WarningMsg | echo 'Session creation was cancelled' | echohl None
     endif
 endfunction
-" }}}
 
-function! s:get_session_path(filename) " {{{
+function! s:get_session_path(filename)
     let filename = a:filename
     if filename == ''
         let filename = v:this_session
@@ -236,7 +223,6 @@ function! s:get_session_path(filename) " {{{
 
     return filename
 endfunction
-" }}}
 
 let &cpo = s:save_cpo
 unlet s:save_cpo
