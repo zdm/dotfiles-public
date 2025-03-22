@@ -349,6 +349,7 @@ set completeopt=menuone,noselect
 let g:vsnip_snippet_dir = stdpath("config") . "/vsnip"
 " }}}
 
+" XXX
 " treesitter {{{
 lua <<EOF
 require( "nvim-treesitter.install" ).prefer_git = false
@@ -451,7 +452,11 @@ vim.api.nvim_create_autocmd( { "FileType" }, {
 
 require( "ufo" ).setup( {
     provider_selector = function( bufnr, filetype, buftype )
-        return { "treesitter", "indent" }
+        if filetype == "markdown" then
+            return ""
+        else
+            return { "treesitter", "indent" }
+        end
     end
 } )
 
@@ -463,7 +468,7 @@ EOF
 " }}}
 
 " XXX
-" disable hide of double quotes in json syntax
+" do not hide double quotes in json
 " let g:vim_json_conceal = 0
 
 " XXX
