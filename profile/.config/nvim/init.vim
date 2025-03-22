@@ -81,7 +81,6 @@ if dein#load_state( expand( g:bundle_path ) ) " {{{
 
     " call dein#add( "chrisyip/Better-CSS-Syntax-for-Vim", { "autoload": { "filetypes": [ "css" ] } } )
     " call dein#add( "vim-scripts/forth.vim" )
-    " call dein#add( "pedrohdz/vim-yaml-folds" )
     " call dein#add( "lifepillar/pgsql.vim" )
     call dein#add( "foalford/vim-markdown-folding" )
 
