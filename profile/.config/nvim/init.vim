@@ -460,6 +460,12 @@ require( "vim.treesitter.query" ).set( "javascript", "folds", [[
     ] @fold
 ]] )
 
+require( "vim.treesitter.query" ).set( "vim", "folds", [[
+    [
+        (function_definition)
+    ] @fold
+]] )
+
 vim.api.nvim_create_autocmd( { "FileType" }, {
     callback = function ()
         if require( "nvim-treesitter.parsers" ).has_parser() then
