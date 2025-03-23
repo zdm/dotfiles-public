@@ -412,6 +412,7 @@ require( "nvim-treesitter.configs" ).setup( {
         "sql",
         "ssh_config",
         "toml",
+        "tsv",
         "typescript",
         "vim",
         "vimdoc",
