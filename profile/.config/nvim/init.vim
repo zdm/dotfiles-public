@@ -197,15 +197,6 @@ inoremap <silent> <Leader>ii <ESC>:IndentLinesToggle<CR>a
 vnoremap <silent> <Leader>ii <ESC>:IndentLinesToggle<CR>gv
 " }}}
 
-" completion {{{
-set omnifunc=syntaxcomplete#Complete
-set complete-=i
-set iskeyword+=:
-set completeopt=menuone,noselect
-
-let g:vsnip_snippet_dir = stdpath("config") . "/vsnip"
-" }}}
-
 " foldind {{{
 set foldenable
 set foldlevel=99
