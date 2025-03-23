@@ -518,6 +518,14 @@ vim.keymap.set( "n", "zR", require( "ufo" ).openAllFolds )
 vim.keymap.set( "n", "zM", require( "ufo" ).closeAllFolds )
 
 EOF
+
+" folding
+set foldenable
+set foldlevel=99
+set foldlevelstart=99
+set foldmethod=marker
+set foldcolumn=1
+
 " }}}
 
 " prevent create .netrwhist
@@ -600,14 +608,6 @@ set fileencodings=ucs-bom,utf-8,cp1251
 set fileformats=unix,dos
 set fileformat=unix
 set nobomb
-" }}}
-
-" folding {{{
-set foldenable
-set foldlevel=99
-set foldlevelstart=99
-set foldmethod=marker
-set foldcolumn=1
 " }}}
 
 " session
