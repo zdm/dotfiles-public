@@ -1,5 +1,17 @@
 return {
-    { "Shougo/unite.vim" },
+    {
+        "Shougo/unite.vim",
+        init = function ()
+            vim.g.unite_data_directory = vim.fn.stdpath( "data" ) .. "/unite"
+            vim.g.unite_source_bookmark_directory = vim.fn.stdpath( "config" ) .. "/unite/bookmark"
+            vim.g.unite_force_overwrite_statusline = 0
+            vim.g.unite_cursor_line_highlight = "CursorLine"
+            vim.g.unite_source_menu_menus = vim.empty_dict()
+            vim.g.unite_winheight = 20
+            vim.g.unite_winwidth = 40
+            vim.g.unite_split_rule = "botright"
+        end,
+    },
     { "Shougo/neomru.vim" },
     { "Shougo/unite-outline" },
     { "mbbill/undotree" },
@@ -13,6 +25,9 @@ return {
 
     {
         "nvim-treesitter/nvim-treesitter",
+        dependencies = {
+            "foalford/vim-markdown-folding"
+        },
         config = function ()
             require( "nvim-treesitter.install" ).prefer_git = false
 
@@ -146,8 +161,6 @@ return {
         build = ":TSUpdate",
     },
 
-    { "foalford/vim-markdown-folding" },
-
     -- comments
     {
         "numToStr/Comment.nvim",
@@ -192,7 +205,6 @@ return {
             -- \ }
         end,
     },
-    { "JoosepAlviste/nvim-ts-context-commentstring" },
 
     { "tpope/vim-fugitive" },
     { "uguu-org/vim-matrix-screensaver" },

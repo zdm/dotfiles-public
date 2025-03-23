@@ -33,19 +33,14 @@ if has('win16') || has('win32') || has('win64')
 endif
 " }}}
 
+" XXX
+lua require( "config.lazy" )
+
 " plugins settings
 " unite {{{
-let g:unite_data_directory = stdpath("data") . "/unite"
-let g:unite_source_bookmark_directory = stdpath("config") . "/unite/bookmark"
-let g:unite_force_overwrite_statusline = 0
-let g:unite_cursor_line_highlight = 'CursorLine'
-let g:unite_source_menu_menus = {}
-let g:unite_winheight = 20
-let g:unite_winwidth = 40
-let g:unite_split_rule = 'botright'
-
 autocmd FileType unite call s:uniteCustomization()
-function! s:uniteCustomization()
+
+function! s:uniteCustomization ()
     nmap <silent><buffer> <ESC> <Plug>(unite_exit)
 
     nnoremap <silent><buffer><expr> <C-t> unite#do_action('tabopen')
@@ -78,12 +73,6 @@ else
     vnoremap <silent> <F3> <ESC>:Unite -buffer-name=MRU -toggle -prompt-direction=top -start-insert -no-restore bookmark:default-linux neomru/file<CR>
 endif
 " }}}
-
-" XXX
-lua require( "config.lazy" )
-
-
-
 
 " Shougo/neomru.vim {{{
 let g:neomru#file_mru_path = g:unite_data_directory . "/neomru/file"
