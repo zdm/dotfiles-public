@@ -141,7 +141,7 @@ return {
                     end
                 end
             } )
-        end
+        end,
 
         build = ":TSUpdate",
     },
