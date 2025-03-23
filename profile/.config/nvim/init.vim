@@ -455,6 +455,7 @@ require( "vim.treesitter.query" ).set( "javascript", "folds", [[
         (generator_function)
         (generator_function_declaration)
         (template_string)
+        (comment)
     ] @fold
 ]] )
 
