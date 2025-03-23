@@ -222,8 +222,8 @@ return {
         init = function ()
             vim.o.omnifunc = "syntaxcomplete#Complete"
             vim.o.completeopt = "menuone,noselect"
-            vim.opt.complete:remove { "i" }
-            vim.opt.iskeyword:append { ":" }
+            vim.opt.complete:remove( { "i" } )
+            vim.opt.iskeyword:append( { ":" } )
 
             vim.g.vsnip_snippet_dir = vim.fn.stdpath( "config" ) .. "/vsnip"
         end,
