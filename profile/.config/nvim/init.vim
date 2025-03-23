@@ -424,20 +424,15 @@ require( "nvim-treesitter.configs" ).setup( {
         "xml",
         "yaml"
     },
-
     sync_install = false,
-
     auto_install = true,
-
     highlight = {
         enable = true,
         additional_vim_regex_highlighting = false,
     },
-
     indent = {
         enable = true
     },
-
     incremental_selection = {
         enable = true,
     --     keymaps = {
@@ -491,17 +486,17 @@ require( "vim.treesitter.query" ).set( "bash", "folds", [[
 vim.api.nvim_create_autocmd( { "FileType" }, {
     callback = function ()
         if require( "nvim-treesitter.parsers" ).has_parser() then
-            vim.opt.syntax = "off"
-            vim.opt.foldmethod = "expr"
+            vim.bo.syntax = "off"
+            vim.wo.foldmethod = "expr"
 
             if vim.bo.filetype == "markdown" then
-                vim.opt.foldexpr = "StackedMarkdownFolds()"
+                vim.wo.foldexpr = "StackedMarkdownFolds()"
             else
-                vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+                vim.wo.foldexpr = "nvim_treesitter#foldexpr()"
             end
         else
-            vim.opt.syntax = "on"
-            vim.opt.foldmethod = "syntax"
+            vim.bo.syntax = "on"
+            vim.wo.foldmethod = "syntax"
         end
     end
 } )
