@@ -138,13 +138,17 @@ func! s:lint_file ( type )
 
             let l:cursor_pos = getpos( "." )
 
-            set syntax=off
+            let l:syntax = getbufvar( "%", "&syntax" ) == "on"
+
+            if l:syntax
+                set syntax=off
+            endif
 
             %delete
             put =l:res.data
             1delete 1
 
-            if getbufvar( "%", "&syntax" ) == "on"
+            if l:syntax
                 set syntax=on
                 syn sync fromstart
             endif
