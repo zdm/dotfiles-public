@@ -250,6 +250,34 @@ let g:viewdoc_openempty = 1
 " endif
 " }}}
 
+" nathanaelkane/vim-indent-guides.git {{{
+let g:indent_guides_auto_colors = 1
+let g:indent_guides_start_level = 2
+let g:indent_guides_guide_size = 1
+" }}}
+
+" mhinz/vim-signify {{{
+let g:signify_vcs_list = [ 'git' ]
+let g:signify_realtime = 1
+
+autocmd ColorScheme * highlight DiffAdd    term=bold cterm=bold ctermbg=22  ctermfg=Green gui=bold guibg=DarkGreen guifg=Green
+autocmd ColorScheme * highlight DiffChange term=bold cterm=bold ctermbg=24  ctermfg=Cyan  gui=bold guibg=DarkCyan  guifg=Cyan
+autocmd ColorScheme * highlight DiffDelete term=bold cterm=bold ctermbg=124 ctermfg=Red   gui=bold guibg=DarkRed   guifg=Red
+" }}}
+
+" Yggdroot/indentLine {{{
+let g:indentLine_enabled = 1 " enabled by default
+" let g:indentLine_char = '│'
+" let g:indentLine_showFirstIndentLevel = 1
+" let g:indentLine_fileType = ['pl', 'pm', 'perl', 'js']
+let g:indentLine_fileTypeExclude = ['json', 'markdown']
+let g:indentLine_faster = 1 " works faster, but issues are possible
+
+nnoremap <silent> <Leader>ii :IndentLinesToggle<CR>
+inoremap <silent> <Leader>ii <ESC>:IndentLinesToggle<CR>a
+vnoremap <silent> <Leader>ii <ESC>:IndentLinesToggle<CR>gv
+" }}}
+
 " XXX
 " comments {{{
 lua <<EOF
@@ -291,34 +319,6 @@ ft.set( "dosbatch", ":: %s" )
 
 EOF
 
-" }}}
-
-" nathanaelkane/vim-indent-guides.git {{{
-let g:indent_guides_auto_colors = 1
-let g:indent_guides_start_level = 2
-let g:indent_guides_guide_size = 1
-" }}}
-
-" mhinz/vim-signify {{{
-let g:signify_vcs_list = [ 'git' ]
-let g:signify_realtime = 1
-
-autocmd ColorScheme * highlight DiffAdd    term=bold cterm=bold ctermbg=22  ctermfg=Green gui=bold guibg=DarkGreen guifg=Green
-autocmd ColorScheme * highlight DiffChange term=bold cterm=bold ctermbg=24  ctermfg=Cyan  gui=bold guibg=DarkCyan  guifg=Cyan
-autocmd ColorScheme * highlight DiffDelete term=bold cterm=bold ctermbg=124 ctermfg=Red   gui=bold guibg=DarkRed   guifg=Red
-" }}}
-
-" Yggdroot/indentLine {{{
-let g:indentLine_enabled = 1 " enabled by default
-" let g:indentLine_char = '│'
-" let g:indentLine_showFirstIndentLevel = 1
-" let g:indentLine_fileType = ['pl', 'pm', 'perl', 'js']
-let g:indentLine_fileTypeExclude = ['json', 'markdown']
-let g:indentLine_faster = 1 " works faster, but issues are possible
-
-nnoremap <silent> <Leader>ii :IndentLinesToggle<CR>
-inoremap <silent> <Leader>ii <ESC>:IndentLinesToggle<CR>a
-vnoremap <silent> <Leader>ii <ESC>:IndentLinesToggle<CR>gv
 " }}}
 
 " completion {{{
