@@ -368,6 +368,12 @@ let g:vsnip_snippet_dir = stdpath("config") . "/vsnip"
 " }}}
 
 " treesitter, foldind {{{
+set foldenable
+set foldlevel=99
+set foldlevelstart=99
+set foldmethod=marker
+set foldcolumn=1
+
 lua <<EOF
 require( "nvim-treesitter.install" ).prefer_git = false
 
@@ -518,14 +524,6 @@ vim.keymap.set( "n", "zR", require( "ufo" ).openAllFolds )
 vim.keymap.set( "n", "zM", require( "ufo" ).closeAllFolds )
 
 EOF
-
-" folding
-set foldenable
-set foldlevel=99
-set foldlevelstart=99
-set foldmethod=marker
-set foldcolumn=1
-
 " }}}
 
 " prevent create .netrwhist
