@@ -367,11 +367,12 @@ set completeopt=menuone,noselect
 let g:vsnip_snippet_dir = stdpath("config") . "/vsnip"
 " }}}
 
+" XXX
 " treesitter, foldind {{{
 set foldenable
 set foldlevel=99
 set foldlevelstart=99
-set foldmethod=marker
+set foldmethod=manual
 set foldcolumn=1
 
 lua <<EOF
@@ -490,32 +491,26 @@ require( "vim.treesitter.query" ).set( "bash", "folds", [[
     ] @fold
 ]] )
 
-vim.api.nvim_create_autocmd( { "FileType" }, {
-    callback = function ()
+require( "ufo" ).setup( {
+    provider_selector = function( bufnr, filetype, buftype )
         if require( "nvim-treesitter.parsers" ).has_parser() then
             vim.opt.syntax = "off"
 
-            vim.opt.foldmethod = "expr"
-
-            if vim.bo.filetype == "markdown" then
+            if filetype == "markdown" then
+                vim.opt.foldmethod = "expr"
                 vim.opt.foldexpr = "StackedMarkdownFolds()"
+
+                return ""
             else
                 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+
+                return { "treesitter", "indent" }
             end
         else
             vim.opt.syntax = "on"
-
             vim.opt.foldmethod = "syntax"
-        end
-    end,
-} )
 
-require( "ufo" ).setup( {
-    provider_selector = function( bufnr, filetype, buftype )
-        if filetype == "markdown" then
             return ""
-        else
-            return { "treesitter", "indent" }
         end
     end
 } )
