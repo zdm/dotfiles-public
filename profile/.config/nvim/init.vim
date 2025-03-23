@@ -367,7 +367,6 @@ set completeopt=menuone,noselect
 let g:vsnip_snippet_dir = stdpath("config") . "/vsnip"
 " }}}
 
-" XXX
 " treesitter, foldind {{{
 set foldenable
 set foldlevel=99
