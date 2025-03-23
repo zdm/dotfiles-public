@@ -23,10 +23,6 @@
         "branch": "main",
         "commit": "6c3bda4aca61a13a9c63f1c1d1b16b9d3be90d7a"
     },
-    "marks-browser": {
-        "branch": "master",
-        "commit": "6893727b2d5639430b7b8b6fa15c35fac4e23d19"
-    },
     "neomru.vim": {
         "branch": "master",
         "commit": "d9b92f73f7d9158e803d72f2baeb7da9ea30040e"

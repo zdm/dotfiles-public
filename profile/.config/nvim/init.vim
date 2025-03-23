@@ -197,46 +197,7 @@ inoremap <silent> <Leader>ii <ESC>:IndentLinesToggle<CR>a
 vnoremap <silent> <Leader>ii <ESC>:IndentLinesToggle<CR>gv
 " }}}
 
-" }}}
-
 " completion {{{
-lua <<EOF
-    local cmp = require( "cmp" )
-
-    cmp.setup( {
-        snippet = {
-            expand = function( args )
-                vim.fn["vsnip#anonymous"]( args.body )
-            end,
-        },
-        mapping = cmp.mapping.preset.insert( {
-            ['<Up>'] = function( fallback )
-                if cmp.visible() then
-                    cmp.abort()
-                end
-
-                fallback()
-            end,
-            ['<Down>'] = function( fallback )
-                if cmp.visible() then
-                    cmp.abort()
-                end
-
-                fallback()
-            end,
-            ['<C-Up>'] = cmp.mapping.select_prev_item( { behavior = cmp.SelectBehavior.Select } ),
-            ['<C-Down>'] = cmp.mapping.select_next_item( { behavior = cmp.SelectBehavior.Select } ),
-            ['<C-Space>'] = cmp.mapping.complete(),
-            ['<C-e>'] = cmp.mapping.abort(),
-            ['<CR>'] = cmp.mapping.confirm( { select = false } ),
-        } ),
-        sources = cmp.config.sources( {
-            { name = 'vsnip' },
-            { name = 'calc' },
-        } )
-    } )
-EOF
-
 set omnifunc=syntaxcomplete#Complete
 set complete-=i
 set iskeyword+=:
@@ -245,7 +206,7 @@ set completeopt=menuone,noselect
 let g:vsnip_snippet_dir = stdpath("config") . "/vsnip"
 " }}}
 
-" treesitter, foldind {{{
+" foldind {{{
 set foldenable
 set foldlevel=99
 set foldlevelstart=0
