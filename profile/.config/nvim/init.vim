@@ -79,8 +79,6 @@ if dein#load_state( expand( g:bundle_path ) ) " {{{
     call dein#add( "nvim-treesitter/nvim-treesitter", { "hook_post_update": "TSUpdate" } )
 
     " folding
-    call dein#add( "kevinhwang91/promise-async" )
-    call dein#add( "kevinhwang91/nvim-ufo" )
     call dein#add( "foalford/vim-markdown-folding" )
 
     " comments
@@ -370,7 +368,7 @@ let g:vsnip_snippet_dir = stdpath("config") . "/vsnip"
 " treesitter, foldind {{{
 set foldenable
 set foldlevel=99
-set foldlevelstart=99
+set foldlevelstart=0
 set foldmethod=manual
 set foldcolumn=1
 
@@ -490,32 +488,23 @@ require( "vim.treesitter.query" ).set( "bash", "folds", [[
     ] @fold
 ]] )
 
-require( "ufo" ).setup( {
-    provider_selector = function( bufnr, filetype, buftype )
+vim.api.nvim_create_autocmd( { "FileType" }, {
+    callback = function ()
         if require( "nvim-treesitter.parsers" ).has_parser() then
             vim.opt.syntax = "off"
+            vim.opt.foldmethod = "expr"
 
-            if filetype == "markdown" then
-                vim.opt.foldmethod = "expr"
+            if vim.bo.filetype == "markdown" then
                 vim.opt.foldexpr = "StackedMarkdownFolds()"
-
-                return ""
             else
                 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-
-                return { "treesitter", "indent" }
             end
         else
             vim.opt.syntax = "on"
             vim.opt.foldmethod = "syntax"
-
-            return ""
         end
     end
 } )
-
-vim.keymap.set( "n", "zR", require( "ufo" ).openAllFolds )
-vim.keymap.set( "n", "zM", require( "ufo" ).closeAllFolds )
 
 EOF
 " }}}
@@ -723,16 +712,17 @@ nnoremap <expr> <Down> v:count ? 'j' : 'gj'
 " }}}
 
 " \ss - syntax refresh {{{
-func! SyntaxRefresh()
-    let l:cursor_pos = getpos(".")
+func! SyntaxRefresh ()
+    let l:cursor_pos = getpos( "." )
 
     if getbufvar( "%", "&syntax" ) == "on"
         syn sync fromstart
     endif
 
-    call setpos(".", l:cursor_pos)
+    call setpos( ".", l:cursor_pos )
 
     " unfold block under the cursor
+    exec( "setlocal foldmethod=" . &foldmethod )
     normal zM
     normal zv
 

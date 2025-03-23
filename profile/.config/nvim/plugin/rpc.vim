@@ -89,7 +89,6 @@ func! s:check_channel ()
 
 endfunc
 
-" XXX
 func! s:lint_file ( type )
     let l:eol = { "unix": "\n", "dos": "\r\n", "mac": "\r" }[ &fileformat ]
     let l:buf = join( getline( 1, '$' ), l:eol )
@@ -132,31 +131,34 @@ func! s:lint_file ( type )
 
         let l:res = rpcrequest( s:channel, "lint-file", { "action": a:type, "cwd": getcwd(), "path": l:path, "type": l:type, "buffer": l:buf } )
 
-        " XXX
         if l:res.meta.isModified
             let l:res.data = substitute( l:res.data, '\r\n\?', "\n", "g" )
 
             let l:cursor_pos = getpos( "." )
-
             let l:syntax = getbufvar( "%", "&syntax" ) == "on"
+            let l:foldmethod = getbufvar( "%", "&foldmethod" )
 
             if l:syntax
-                set syntax=off
+                setlocal syntax=off
             endif
+
+            setlocal foldmethod=manual
 
             %delete
             put =l:res.data
             1delete 1
 
             if l:syntax
-                set syntax=on
+                setlocal syntax=on
                 syn sync fromstart
             endif
 
             call setpos( ".", l:cursor_pos )
 
-            " XXX
             " unfold block under the cursor
+            lua vim.treesitter.get_parser():parse()
+            exec( "setlocal foldmethod=" . l:foldmethod )
+            normal zM
             normal zv
 
             " center cursor on the screen
