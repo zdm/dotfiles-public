@@ -33,6 +33,91 @@ if has('win16') || has('win32') || has('win64')
 endif
 " }}}
 
+" init dein
+" {{{
+let g:bundle_path = stdpath( "data" ) . "/bundle"
+
+" clone dein if not extists
+if !isdirectory( g:bundle_path . "/repos/github.com/Shougo/dein.vim" )
+    silent exec "!git clone https://github.com/Shougo/dein.vim " . g:bundle_path . "/repos/github.com/Shougo/dein.vim"
+endif
+
+if has( 'win16' ) || has( 'win32' ) || has( 'win64' )
+    let g:dein#types#git#command_path="git.exe"
+endif
+
+exec "set rtp+=" . g:bundle_path . "/repos/github.com/Shougo/dein.vim"
+" }}}
+
+" add plugins
+if dein#load_state( expand( g:bundle_path ) ) " {{{
+    call dein#begin( expand( g:bundle_path ) )
+
+    call dein#add( g:bundle_path . "/repos/github.com/Shougo/dein.vim" )
+
+    " call dein#add( "Shougo/vimproc.vim", { "build": "gmake" } )
+    call dein#add( "Shougo/unite.vim" )
+    call dein#add( "Shougo/unite-dein" )
+    call dein#add( "Shougo/neomru.vim" )
+    " call dein#add( "easymotion/vim-easymotion" )
+    call dein#add( "Shougo/unite-outline" )
+    call dein#add( "mbbill/undotree" )
+    call dein#add( "powerman/vim-plugin-viewdoc" )
+    " call dein#add( "nathanaelkane/vim-indent-guides.git" )
+    call dein#add( "mhinz/vim-signify" )
+    call dein#add( "Yggdroot/indentLine" )
+
+    " airline
+    call dein#add( "vim-airline/vim-airline" )
+    call dein#add( "vim-airline/vim-airline-themes" )
+
+    " xkbd
+    call dein#add( "lyokha/vim-xkbswitch", { "depends": "DeXP/xkb-switch-win" } )
+    call dein#add( "DeXP/xkb-switch-win" )
+
+    " treesitter
+    call dein#add( "nvim-treesitter/nvim-treesitter", { "hook_post_update": "TSUpdate" } )
+
+    " folding
+    call dein#add( "foalford/vim-markdown-folding" )
+
+    " comments
+    call dein#add( "numToStr/Comment.nvim" )
+    call dein#add( "JoosepAlviste/nvim-ts-context-commentstring" )
+
+    " other plugins
+    " call dein#add( "arecarn/vim-crunch" )
+    call dein#add( "tpope/vim-fugitive" )
+    " call dein#add( "vim-scripts/autocorrect.vim" )
+    call dein#add( "uguu-org/vim-matrix-screensaver" )
+    call dein#add( "vim-scripts/DirDiff.vim" )
+    " call dein#add( "chrisbra/NrrwRgn" )
+    call dein#add( "zhimsel/vim-stay" )
+
+    " completion
+    call dein#add( "hrsh7th/nvim-cmp" )
+    call dein#add( "hrsh7th/cmp-vsnip" )
+    call dein#add( "hrsh7th/vim-vsnip" )
+    call dein#add( "hrsh7th/cmp-calc" )
+    " call dein#add( "rafamadriz/friendly-snippets" )
+
+    " XXX disabled, because syntax/javascript.vim conflicted when used with dein
+    " call dein#add( "mattn/emmet-vim" )
+
+    " call dein#add( "vim-scripts/Marks-Browser" )
+    " call dein#add( "w0rp/ale" )
+    " call dein#add( "hexman.vim" )
+    " call dein#add( "motemen/xslate-vim" )
+    " call dein#add( "highlight.vim" )
+    " call dein#add( "tpope/vim-surround" )
+
+    " add vsnip
+    exec "set rtp=" . substitute( stdpath( "config" ) . "/vsnip," . &rtp, " ", '\\\ ', "g" )
+
+    call dein#end()
+    call dein#save_state()
+endif " }}}
+
 " plugins settings
 " unite {{{
 let g:unite_data_directory = stdpath("data") . "/unite"
@@ -78,12 +163,6 @@ else
     vnoremap <silent> <F3> <ESC>:Unite -buffer-name=MRU -toggle -prompt-direction=top -start-insert -no-restore bookmark:default-linux neomru/file<CR>
 endif
 " }}}
-
-" XXX
-lua require( "config.lazy" )
-
-
-
 
 " Shougo/neomru.vim {{{
 let g:neomru#file_mru_path = g:unite_data_directory . "/neomru/file"
@@ -152,9 +231,9 @@ let g:XkbSwitchILayout = 'US'
 if has('unix')
     let g:XkbSwitchLib = ""
 elseif has('win64')
-    " XXX let g:XkbSwitchLib = g:bundle_path . "/.cache/init.vim/.dein/bin/libxkbswitch64.dll"
+    let g:XkbSwitchLib = g:bundle_path . "/.cache/init.vim/.dein/bin/libxkbswitch64.dll"
 elseif has('win32')
-    " XXX let g:XkbSwitchLib = g:bundle_path . "/.cache/init.vim/.dein/bin/libxkbswitch32.dll"
+    let g:XkbSwitchLib = g:bundle_path . "/.cache/init.vim/.dein/bin/libxkbswitch32.dll"
 endif
 " }}}
 
@@ -196,6 +275,47 @@ nnoremap <silent> <Leader>ii :IndentLinesToggle<CR>
 inoremap <silent> <Leader>ii <ESC>:IndentLinesToggle<CR>a
 vnoremap <silent> <Leader>ii <ESC>:IndentLinesToggle<CR>gv
 " }}}
+
+" XXX
+" comments {{{
+lua <<EOF
+require( "ts_context_commentstring" ).setup( {
+    enable_autocmd = false,
+} )
+
+require( "Comment" ).setup( {
+    padding = true,
+    sticky = true,
+    ignore = "^$",
+    mappings = {
+        basic = false,
+        extra = false,
+    },
+    pre_hook = require( "ts_context_commentstring.integrations.comment_nvim" ).create_pre_hook(),
+} )
+
+local api = require( "Comment.api" )
+local config = require( "Comment.config" ):get()
+
+vim.keymap.set( { "n", "i" }, "<Leader>c", function ()
+    api.toggle.linewise.current()
+    vim.cmd( "normal! j" )
+end )
+
+vim.keymap.set( "v", "<Leader>c", api.call( "toggle.linewise", "g@" ), { expr = true } )
+vim.keymap.set( "v", "<Leader>cc", api.call( "toggle.blockwise", "g@" ), { expr = true } )
+
+local ft = require( "Comment.ft" )
+
+ft.set( "dosbatch", ":: %s" )
+
+-- XXX
+-- let g:tcomment#replacements_xml = {
+-- \   '<!--': '<!-&#45;',
+-- \   '-->': '&#45;->'
+-- \ }
+
+EOF
 
 " }}}
 
@@ -251,10 +371,144 @@ set foldlevel=99
 set foldlevelstart=0
 set foldmethod=manual
 set foldcolumn=1
+
+lua <<EOF
+require( "nvim-treesitter.install" ).prefer_git = false
+
+require( "nvim-treesitter.configs" ).setup( {
+    ensure_installed = {
+        "awk",
+        "bash",
+        "c",
+        "cmake",
+        "comment",
+        "cpp",
+        "css",
+        "csv",
+        "diff",
+        "dockerfile",
+        "editorconfig",
+        "embedded_template",
+        "forth",
+        "git_config",
+        "gitattributes",
+        "gitignore",
+        "gpg",
+        "graphql",
+        "html",
+        "ini",
+        "javascript",
+        "jsdoc",
+        "json",
+        "json5",
+        "lua",
+        "make",
+        "markdown",
+        "markdown_inline",
+        "nginx",
+        "pem",
+        "perl",
+        "po",
+        "pod",
+        "powershell",
+        "query",
+        "scss",
+        "sql",
+        "ssh_config",
+        "toml",
+        "tsv",
+        "typescript",
+        "vim",
+        "vimdoc",
+        "vue",
+        "xml",
+        "yaml"
+    },
+    sync_install = false,
+    auto_install = true,
+    highlight = {
+        enable = true,
+        additional_vim_regex_highlighting = false,
+    },
+    indent = {
+        enable = true
+    },
+    incremental_selection = {
+        enable = true,
+    --     keymaps = {
+    --         init_selection = "gnn", -- set to `false` to disable one of the mappings
+    --         node_incremental = "grn",
+    --         scope_incremental = "grc",
+    --         node_decremental = "grm",
+    --     },
+    },
+} )
+
+-- NOTE https://github.com/nvim-treesitter/nvim-treesitter/tree/master/queries
+require( "vim.treesitter.query" ).set( "javascript", "folds", [[
+    [
+        (arrow_function)
+        (function_expression)
+        (function_declaration)
+        (method_definition)
+        (generator_function)
+        (generator_function_declaration)
+        (template_string)
+        (comment)
+    ] @fold
+]] )
+
+require( "vim.treesitter.query" ).set( "vim", "folds", [[
+    [
+        (function_definition)
+        (lua_statement)
+        (ruby_statement)
+        (python_statement)
+        (perl_statement)
+        (autocmd_statement)
+    ] @fold
+]] )
+
+require( "vim.treesitter.query" ).set( "lua", "folds", [[
+    [
+        (function_declaration)
+        (function_definition)
+    ] @fold
+]] )
+
+require( "vim.treesitter.query" ).set( "bash", "folds", [[
+    [
+        (function_definition)
+        (heredoc_redirect)
+    ] @fold
+]] )
+
+vim.api.nvim_create_autocmd( { "FileType" }, {
+    callback = function ()
+        if require( "nvim-treesitter.parsers" ).has_parser() then
+            vim.bo.syntax = "off"
+            vim.wo.foldmethod = "expr"
+
+            if vim.bo.filetype == "markdown" then
+                vim.wo.foldexpr = "StackedMarkdownFolds()"
+            else
+                vim.wo.foldexpr = "nvim_treesitter#foldexpr()"
+            end
+        else
+            vim.bo.syntax = "on"
+            vim.wo.foldmethod = "syntax"
+        end
+    end
+} )
+
+EOF
 " }}}
 
 " prevent create .netrwhist
 let g:netrw_dirhistmax = 0
+
+" install missed plugins
+if dein#check_install() | call dein#install() | endif
 
 filetype plugin indent on
 set modeline
