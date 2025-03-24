@@ -249,7 +249,7 @@ func! SyntaxRefresh ()
 
     call setpos( ".", l:cursor_pos )
 
-    " unfold block under the cursor
+    " open fold under the cursor
     exec( "setlocal foldmethod=" . &foldmethod )
     normal zM
     normal zv

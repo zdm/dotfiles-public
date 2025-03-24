@@ -77,23 +77,42 @@ return {
                 },
             } )
 
-            vim.api.nvim_create_autocmd( { "FileType" }, {
-                callback = function ()
-                    if require( "nvim-treesitter.parsers" ).has_parser() then
-                        vim.bo.syntax = "off"
-                        vim.wo.foldmethod = "expr"
+            local gid = vim.api.nvim_create_augroup( "folds-updater", {} )
 
-                        if vim.bo.filetype == "markdown" then
-                            vim.wo.foldexpr = "StackedMarkdownFolds()"
-                        else
-                            vim.wo.foldexpr = "nvim_treesitter#foldexpr()"
-                        end
+            local updateFolds = function ()
+                if require( "nvim-treesitter.parsers" ).has_parser() then
+                    vim.bo.syntax = "off"
+                    vim.wo.foldmethod = "expr"
+
+                    if vim.bo.filetype == "markdown" then
+                        vim.wo.foldexpr = "StackedMarkdownFolds()"
                     else
-                        vim.bo.syntax = "on"
-                        vim.wo.foldmethod = "syntax"
+                        vim.wo.foldexpr = "nvim_treesitter#foldexpr()"
                     end
+                else
+                    vim.bo.syntax = "on"
+                    vim.wo.foldmethod = "syntax"
                 end
+
+                -- open fold under the cursor
+                vim.cmd.normal( "zv" )
+            end
+
+            vim.api.nvim_create_autocmd( { "FileType", "InsertLeave" }, {
+                group = gid,
+                callback = updateFolds
             } )
+
+            -- vim.api.nvim_create_autocmd( { "BufWinEnter", "TextChanged", "BufWritePost" }, {
+            --     group = gid,
+            --     callback = updateFolds
+            -- } )
+
+            -- vim.api.nvim_create_autocmd( { "OptionSet" }, {
+            --     group = gid,
+            --     pattern = { "buftype", "filetype", "syntax", "diff" },
+            --     callback = updateFolds
+            -- } )
         end,
 
         build = ":TSUpdate",

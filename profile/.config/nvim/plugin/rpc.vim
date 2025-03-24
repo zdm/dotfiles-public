@@ -155,7 +155,7 @@ func! s:lint_file ( type )
 
             call setpos( ".", l:cursor_pos )
 
-            " unfold block under the cursor
+            " open fold under the cursor
             lua vim.treesitter.get_parser():parse()
             exec( "setlocal foldmethod=" . l:foldmethod )
             normal zM
