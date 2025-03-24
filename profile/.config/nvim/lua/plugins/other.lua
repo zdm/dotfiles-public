@@ -27,7 +27,21 @@ return {
             -- endif
         end
     },
-    { "mhinz/vim-signify" },
+    {
+        "mhinz/vim-signify",
+        init = function ()
+            vim.g.signify_vcs_list = { "git" }
+            vim.g.signify_realtime = 1
+        end,
+        config = function ()
+            -- autocmd ColorScheme * highlight DiffAdd    term=bold cterm=bold ctermbg=22  ctermfg=Green gui=bold guibg=DarkGreen guifg=Green
+
+            -- autocmd ColorScheme * highlight DiffChange term=bold cterm=bold ctermbg=24  ctermfg=Cyan  gui=bold guibg=DarkCyan  guifg=Cyan
+
+            -- autocmd ColorScheme * highlight DiffDelete term=bold cterm=bold ctermbg=124 ctermfg=Red   gui=bold guibg=DarkRed   guifg=Red
+
+        end
+    },
     {
         "yggdroot/indentline",
         init = function ()
