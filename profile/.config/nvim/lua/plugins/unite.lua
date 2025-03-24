@@ -33,20 +33,21 @@ return {
                 --     inoremap <silent><buffer><expr> <C-CR> unite#do_action('tabswitch')
                 -- endfunction
 
-                -- nnoremap <silent> <F4> :Unite -buffer-name=buffers -toggle -prompt-direction=top -start-insert -no-restore buffer<CR>
-                -- inoremap <silent> <F4> <C-o>:Unite -buffer-name=buffers -toggle -prompt-direction=top -start-insert -no-restore buffer<CR>
-                -- vnoremap <silent> <F4> <ESC>:Unite -buffer-name=buffers -toggle -prompt-direction=top -start-insert -no-restore buffer<CR>
+                vim.keymap.set( { "n", "i", "v" }, "<F3>", function ()
+                    local os
 
-                -- if has('win16') || has('win32') || has('win64')
-                --     nnoremap <silent> <F3> :Unite -buffer-name=MRU -toggle -prompt-direction=top -start-insert -no-restore bookmark:default-windows neomru/file<CR>
-                --     inoremap <silent> <F3> <C-o>:Unite -buffer-name=MRU -toggle -prompt-direction=top -start-insert -no-restore bookmark:default-windows neomru/file<CR>
-                --     vnoremap <silent> <F3> <ESC>:Unite -buffer-name=MRU -toggle -prompt-direction=top -start-insert -no-restore bookmark:default-windows neomru/file<CR>
-                -- else
-                --     nnoremap <silent> <F3> :Unite -buffer-name=MRU -toggle -prompt-direction=top -start-insert -no-restore bookmark:default-linux neomru/file<CR>
-                --     inoremap <silent> <F3> <C-o>:Unite -buffer-name=MRU -toggle -prompt-direction=top -start-insert -no-restore bookmark:default-linux neomru/file<CR>
-                --     vnoremap <silent> <F3> <ESC>:Unite -buffer-name=MRU -toggle -prompt-direction=top -start-insert -no-restore bookmark:default-linux neomru/file<CR>
-                -- endif
+                    if vim.fn.has( "win64" ) == 1 or vim.fn.has( "win32" ) == 1 then
+                        os = "windows"
+                    else
+                        os = "linux"
+                    end
 
+                    vim.cmd( "Unite -buffer-name=MRU -toggle -prompt-direction=top -start-insert -no-restore bookmark:default-" .. os .. " neomru/file" )
+                end, { noremap = true, silent = true } )
+
+                vim.keymap.set( { "n", "i", "v" }, "<F4>", function ()
+                    vim.cmd( "Unite -buffer-name=buffers -toggle -prompt-direction=top -start-insert -no-restore buffer" )
+                end, { noremap = true, silent = true } )
             end
     },
     {
