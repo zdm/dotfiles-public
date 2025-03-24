@@ -28,6 +28,7 @@ return {
         dependencies = {
             "foalford/vim-markdown-folding"
         },
+
         config = function ()
             require( "nvim-treesitter.install" ).prefer_git = false
 
@@ -81,7 +82,7 @@ return {
                     "yaml"
                 },
                 sync_install = false,
-                auto_install = true,
+                auto_install = false,
                 highlight = {
                     enable = true,
                     additional_vim_regex_highlighting = false,
@@ -158,7 +159,7 @@ return {
             } )
         end,
 
-        build = ":TSUpdate",
+        build = ":TSUpdateSync",
     },
 
     -- comments
