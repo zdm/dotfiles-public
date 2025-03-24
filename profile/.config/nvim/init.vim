@@ -172,13 +172,12 @@ inoremap <silent> <Leader>ii <ESC>:IndentLinesToggle<CR>a
 vnoremap <silent> <Leader>ii <ESC>:IndentLinesToggle<CR>gv
 " }}}
 
-" foldind {{{
+" foldind
 set foldenable
 set foldlevel=99
 set foldlevelstart=0
 set foldmethod=manual
 set foldcolumn=1
-" }}}
 
 " prevent create .netrwhist
 let g:netrw_dirhistmax = 0
