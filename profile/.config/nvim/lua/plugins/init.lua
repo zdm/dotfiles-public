@@ -14,20 +14,19 @@ return {
     },
     { "shougo/neomru.vim" },
     { "shougo/unite-outline" },
-    { "mbbill/undotree" },
-    { "powerman/vim-plugin-viewdoc" },
-    { "mhinz/vim-signify" },
-    { "yggdroot/indentline" },
 
     -- airline
     { "vim-airline/vim-airline" },
     { "vim-airline/vim-airline-themes" },
 
+    { "mbbill/undotree" },
+    { "powerman/vim-plugin-viewdoc" },
+    { "mhinz/vim-signify" },
+    { "yggdroot/indentline" },
     { "tpope/vim-fugitive" },
     { "uguu-org/vim-matrix-screensaver" },
     { "vim-scripts/dirdiff.vim" },
     { "zhimsel/vim-stay" },
-
     {
         "lyokha/vim-xkbswitch",
         dependencies = {
