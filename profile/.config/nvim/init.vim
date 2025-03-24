@@ -400,17 +400,6 @@ let g:airline#extensions#tabline#formatter = "short_path"
 " autocmd VimEnter * call AirlineInit()
 " }}}
 
-" powerman/vim-plugin-viewdoc {{{
-let g:viewdoc_openempty = 1
-" if !exists('g:no_plugin_abbrev') && !exists('g:no_viewdoc_abbrev')
-"     cnoreabbrev <expr> h  getcmdtype()==':' && getcmdline()=='h'  ? 'ViewDocHelp'  : 'h'
-"     cnoreabbrev <expr> h! getcmdtype()==':' && getcmdline()=='h!' ? 'ViewDocHelp'  : 'h!'
-
-"     cnoreabbrev <expr> pd  getcmdtype()==':' && getcmdline()=='pd'  ? 'ViewDocPerl'  : 'pd'
-"     cnoreabbrev <expr> pd! getcmdtype()==':' && getcmdline()=='pd!' ? 'ViewDocPerl'  : 'pd!'
-" endif
-" }}}
-
 " mhinz/vim-signify {{{
 let g:signify_vcs_list = [ "git" ]
 let g:signify_realtime = 1
