@@ -335,6 +335,7 @@ endfunction
 set title " mandatory for neovim-qt
 " }}}
 
+" load plugins
 lua require( "config.lazy" )
 
 " plugins settings
@@ -373,36 +374,6 @@ else
     inoremap <silent> <F3> <C-o>:Unite -buffer-name=MRU -toggle -prompt-direction=top -start-insert -no-restore bookmark:default-linux neomru/file<CR>
     vnoremap <silent> <F3> <ESC>:Unite -buffer-name=MRU -toggle -prompt-direction=top -start-insert -no-restore bookmark:default-linux neomru/file<CR>
 endif
-" }}}
-
-" vim-airline/vim-airline {{{
-let g:airline_theme = "wombat"
-let g:airline_symbols_ascii = 1
-
-" extensions
-let g:airline#extensions#whitespace#enabled = 0
-let g:airline#extensions#coc#enabled = 0
-
-set guioptions-=e " disable gvim tabbar, comment this if tabline is not enabled
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#show_buffers = 0
-let g:airline#extensions#tabline#show_splits = 0
-let g:airline#extensions#tabline#show_tabs = 1
-let g:airline#extensions#tabline#show_tab_nr = 0
-let g:airline#extensions#tabline#show_tab_type = 0
-let g:airline#extensions#tabline#close_symbol = "×"
-let g:airline#extensions#tabline#show_close_button = 0
-let g:airline#extensions#xkblayout#enabled = 0
-
-let g:airline#extensions#tabline#formatter = "short_path"
-" let g:airline#extensions#tabline#fnamecollapse = 0
-" let g:airline#extensions#tabline#fnamemod = ':t'
-
-" customize airline sections
-" function! AirlineInit()
-    " let g:airline_section_x = airline#section#create_left(['session'])
-" endf
-" autocmd VimEnter * call AirlineInit()
 " }}}
 
 exec "runtime ginit.vim"
