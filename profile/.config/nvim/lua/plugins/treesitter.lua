@@ -96,6 +96,8 @@ return {
 
                 -- open fold under the cursor
                 vim.cmd.normal( "zv" )
+
+                vim.b.folds_update_pending = false
             end
 
             vim.api.nvim_create_autocmd( { "FileType" }, {
@@ -107,21 +109,22 @@ return {
                 group = gid,
                 pattern = "*:n",
                 callback = function( ev )
-                    -- local previousMode = ev.match:match( "(%a):" )
-                    updateFolds()
+                    if vim.b.folds_update_pending then
+                        updateFolds()
+                    end
                 end
             } )
 
-            -- vim.api.nvim_create_autocmd( { "BufWinEnter", "TextChanged", "BufWritePost" }, {
-            --     group = gid,
-            --     callback = updateFolds
-            -- } )
+            vim.api.nvim_create_autocmd( "TextChanged", {
+                group = gid,
+                callback = function ()
+                    vim.b.folds_update_pending = true
 
-            -- vim.api.nvim_create_autocmd( { "OptionSet" }, {
-            --     group = gid,
-            --     pattern = { "buftype", "filetype", "syntax", "diff" },
-            --     callback = updateFolds
-            -- } )
+                    if vim.api.nvim_get_mode().mode == "n" then
+                        updateFolds()
+                    end
+                end
+            } )
         end,
 
         build = ":TSUpdate",
