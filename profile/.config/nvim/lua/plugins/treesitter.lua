@@ -115,7 +115,7 @@ return {
                 end
             } )
 
-            -- XXX update calles too fast
+            -- XXX update called too fast
             vim.api.nvim_create_autocmd( { "TextChanged", "TextChangedI" }, {
                 group = gid,
                 callback = function ()
