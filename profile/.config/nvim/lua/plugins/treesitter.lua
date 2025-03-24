@@ -134,14 +134,15 @@ return {
                 end
             } )
 
-            vim.api.nvim_create_autocmd( "TextChanged", {
-                group = gid,
-                callback = function ()
-                    vim.b.folds_update_pending = true
+            -- XXX produces enexpected garbage
+            -- vim.api.nvim_create_autocmd( "TextChanged", {
+            --     group = gid,
+            --     callback = function ()
+            --         vim.b.folds_update_pending = true
 
-                    updateFolds()
-                end
-            } )
+            --         updateFolds()
+            --     end
+            -- } )
         end,
 
         build = ":TSUpdate",
