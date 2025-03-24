@@ -41,6 +41,12 @@ return {
             "dexp/xkb-switch-win"
         },
         init = function ()
+            vim.g.XkbSwitchEnabled = 1
+            vim.g.XkbSwitchIMappings = { "ru" }
+            vim.g.XkbSwitchIMappingsSkipFt = { "tex" }
+            vim.g.XkbSwitchNLayout = "US"
+            vim.g.XkbSwitchILayout = "US"
+
             if vim.fn.has( "win64" ) == 1 then
                 vim.g.XkbSwitchLib = vim.fn.stdpath( "data" ) .. "/lazy/xkb-switch-win/bin/libxkbswitch64.dll"
             elseif vim.fn.has( "win32" ) == 1 then
