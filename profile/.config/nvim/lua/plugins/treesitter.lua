@@ -98,9 +98,18 @@ return {
                 vim.cmd.normal( "zv" )
             end
 
-            vim.api.nvim_create_autocmd( { "FileType", "InsertLeave" }, {
+            vim.api.nvim_create_autocmd( { "FileType" }, {
                 group = gid,
                 callback = updateFolds
+            } )
+
+            vim.api.nvim_create_autocmd( "ModeChanged", {
+                group = gid,
+                pattern = "*:n",
+                callback = function( ev )
+                    -- local previousMode = ev.match:match( "(%a):" )
+                    updateFolds()
+                end
             } )
 
             -- vim.api.nvim_create_autocmd( { "BufWinEnter", "TextChanged", "BufWritePost" }, {
