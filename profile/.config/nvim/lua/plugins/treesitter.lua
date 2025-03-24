@@ -135,6 +135,6 @@ return {
             } )
         end,
 
-        build = ":TSUpdateSync",
+        build = ":TSUpdate",
     },
 }
