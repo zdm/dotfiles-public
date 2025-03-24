@@ -115,7 +115,8 @@ return {
                 end
             } )
 
-            vim.api.nvim_create_autocmd( "TextChanged", {
+            -- XXX update calles too fast
+            vim.api.nvim_create_autocmd( { "TextChanged", "TextChangedI" }, {
                 group = gid,
                 callback = function ()
                     vim.b.folds_update_pending = true
