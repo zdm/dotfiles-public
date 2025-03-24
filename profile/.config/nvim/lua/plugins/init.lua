@@ -1,6 +1,6 @@
 return {
     {
-        "Shougo/unite.vim",
+        "shougo/unite.vim",
         init = function ()
             vim.g.unite_data_directory = vim.fn.stdpath( "data" ) .. "/unite"
             vim.g.unite_source_bookmark_directory = vim.fn.stdpath( "config" ) .. "/unite/bookmark"
@@ -12,12 +12,12 @@ return {
             vim.g.unite_split_rule = "botright"
         end,
     },
-    { "Shougo/neomru.vim" },
-    { "Shougo/unite-outline" },
+    { "shougo/neomru.vim" },
+    { "shougo/unite-outline" },
     { "mbbill/undotree" },
     { "powerman/vim-plugin-viewdoc" },
     { "mhinz/vim-signify" },
-    { "Yggdroot/indentLine" },
+    { "yggdroot/indentline" },
 
     -- airline
     { "vim-airline/vim-airline" },
@@ -163,9 +163,9 @@ return {
 
     -- comments
     {
-        "numToStr/Comment.nvim",
+        "numtostr/comment.nvim",
         dependencies = {
-            "JoosepAlviste/nvim-ts-context-commentstring"
+            "joosepalviste/nvim-ts-context-commentstring"
         },
         config = function ()
             require( "ts_context_commentstring" ).setup( {
@@ -208,7 +208,7 @@ return {
 
     { "tpope/vim-fugitive" },
     { "uguu-org/vim-matrix-screensaver" },
-    { "vim-scripts/DirDiff.vim" },
+    { "vim-scripts/dirdiff.vim" },
     { "zhimsel/vim-stay" },
 
     -- completion
@@ -265,7 +265,19 @@ return {
         end
     },
 
-    -- "depends": "DeXP/xkb-switch-win"
-    -- { "lyokha/vim-xkbswitch" },
-    -- { "DeXP/xkb-switch-win" },
+    {
+        "lyokha/vim-xkbswitch",
+        dependencies = {
+            "dexp/xkb-switch-win"
+        },
+        init = function ()
+            if vim.fn.has( "win64" ) == 1 then
+                vim.g.XkbSwitchLib = vim.fn.stdpath( "data" ) .. "/lazy/xkb-switch-win/bin/libxkbswitch64.dll"
+            elseif vim.fn.has( "win32" ) == 1 then
+                vim.g.XkbSwitchLib = vim.fn.stdpath( "data" ) .. "/lazy/xkb-switch-win/bin/libxkbswitch32.dll"
+            else
+                vim.g.XkbSwitchLib = ""
+            end
+        end
+    },
 }

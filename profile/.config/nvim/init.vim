@@ -78,12 +78,6 @@ let g:neomru#file_mru_path = g:unite_data_directory . "/neomru/file"
 let g:neomru#directory_mru_path = g:unite_data_directory . "/neomru/directory"
 " }}}
 
-" vim-scripts/Marks-Browser {{{
-" nnoremap <silent> <F7> :MarksBrowser<CR>
-" inoremap <silent> <F7> <C-o>:MarksBrowser<CR>
-" vnoremap <silent> <F7> <ESC>:MarksBrowser<CR>
-" }}}
-
 " Shougo/unite-outline {{{
 nnoremap <silent> <F8> :Unite -buffer-name=outline -toggle -vertical -direction=botright -winwidth=60 -start-insert -no-restore outline<CR>
 inoremap <silent> <F8> <C-o>:Unite -buffer-name=outline -toggle -vertical -direction=botright -winwidth=60 -start-insert -no-restore outline<CR>
@@ -137,13 +131,6 @@ let g:XkbSwitchIMappings = ['ru']
 let g:XkbSwitchIMappingsSkipFt = ['tex']
 let g:XkbSwitchNLayout = 'US'
 let g:XkbSwitchILayout = 'US'
-if has('unix')
-    let g:XkbSwitchLib = ""
-elseif has('win64')
-    " XXX let g:XkbSwitchLib = g:bundle_path . "/.cache/init.vim/.dein/bin/libxkbswitch64.dll"
-elseif has('win32')
-    " XXX let g:XkbSwitchLib = g:bundle_path . "/.cache/init.vim/.dein/bin/libxkbswitch32.dll"
-endif
 " }}}
 
 " powerman/vim-plugin-viewdoc {{{
@@ -235,15 +222,15 @@ set smartcase    " use smartcase
 set nobackup
 
 " swap
-if !isdirectory(stdpath("data") . "/swap") | call mkdir(stdpath("data") . "/swap", "p", 0700) | endif
-exec "set dir=" . stdpath("data") . "/swap//"
+if !isdirectory( stdpath( "data" ) . "/swap" ) | call mkdir(stdpath("data") . "/swap", "p", 0700) | endif
+exec "set dir=" . stdpath( "data" ) . "/swap//"
 " swap is disabled
 set noswapfile
 
 " undo
 set undofile
-if !isdirectory(stdpath("data") . "/undo") | call mkdir(stdpath("data") . "/undo", "p", 0700) | endif
-exec "set undodir=" . stdpath("data") . "/undo"
+if !isdirectory( stdpath( "data" ) . "/undo" ) | call mkdir(stdpath("data") . "/undo", "p", 0700) | endif
+exec "set undodir=" . stdpath( "data" ) . "/undo"
 
 " set cryptmethod=blowfish2 " not supported in nvim
 

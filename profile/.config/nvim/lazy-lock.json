@@ -1,12 +1,4 @@
 {
-    "Comment.nvim": {
-        "branch": "master",
-        "commit": "e30b7f2008e52442154b66f7c519bfd2f1e32acb"
-    },
-    "DirDiff.vim": {
-        "branch": "master",
-        "commit": "6c111f8b10c464afa45c6b62820bf3b50828c627"
-    },
     "cmp-calc": {
         "branch": "main",
         "commit": "5947b412da67306c5b68698a02a846760059be2e"
@@ -15,7 +7,15 @@
         "branch": "main",
         "commit": "989a8a73c44e926199bfd05fa7a516d51f2d2752"
     },
-    "indentLine": {
+    "comment.nvim": {
+        "branch": "master",
+        "commit": "e30b7f2008e52442154b66f7c519bfd2f1e32acb"
+    },
+    "dirdiff.vim": {
+        "branch": "master",
+        "commit": "6c111f8b10c464afa45c6b62820bf3b50828c627"
+    },
+    "indentline": {
         "branch": "master",
         "commit": "b96a75985736da969ac38b72a7716a8c57bdde98"
     },
@@ -90,5 +90,13 @@
     "vim-vsnip": {
         "branch": "master",
         "commit": "02a8e79295c9733434aab4e0e2b8c4b7cea9f3a9"
+    },
+    "vim-xkbswitch": {
+        "branch": "master",
+        "commit": "39914ff3aa3a5678285ba4b740524351d9f5ae18"
+    },
+    "xkb-switch-win": {
+        "branch": "master",
+        "commit": "e1a7e07466fa35a81d13200eb0ce466832f53602"
     }
 }
