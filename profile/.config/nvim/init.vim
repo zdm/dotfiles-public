@@ -375,12 +375,6 @@ let g:neomru#file_mru_path = g:unite_data_directory . "/neomru/file"
 let g:neomru#directory_mru_path = g:unite_data_directory . "/neomru/directory"
 " }}}
 
-" Shougo/unite-outline {{{
-nnoremap <silent> <F8> :Unite -buffer-name=outline -toggle -vertical -direction=botright -winwidth=60 -start-insert -no-restore outline<CR>
-inoremap <silent> <F8> <C-o>:Unite -buffer-name=outline -toggle -vertical -direction=botright -winwidth=60 -start-insert -no-restore outline<CR>
-vnoremap <silent> <F8> <ESC>:Unite -buffer-name=outline -toggle -vertical -direction=botright -winwidth=60 -start-insert -no-restore outline<CR>
-" }}}
-
 " vim-airline/vim-airline {{{
 let g:airline_theme = 'wombat'
 let g:airline_symbols_ascii = 1

@@ -13,5 +13,12 @@ return {
         end,
     },
     { "shougo/neomru.vim" },
-    { "shougo/unite-outline" },
+    {
+        "shougo/unite-outline",
+        config = function ()
+            vim.keymap.set( { "n", "i", "v" }, "<F8>", function ()
+                vim.cmd( "Unite -buffer-name=outline -toggle -vertical -direction=botright -winwidth=60 -start-insert -no-restore outline" )
+            end, { noremap = true, silent = true } )
+        end
+    },
 }
