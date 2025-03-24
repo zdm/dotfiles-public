@@ -33,145 +33,6 @@ if has('win16') || has('win32') || has('win64')
 endif
 " }}}
 
-lua require( "config.lazy" )
-
-" plugins settings
-" unite {{{
-autocmd FileType unite call s:uniteCustomization()
-
-function! s:uniteCustomization ()
-    nmap <silent><buffer> <ESC> <Plug>(unite_exit)
-
-    nnoremap <silent><buffer><expr> <C-t> unite#do_action('tabopen')
-    inoremap <silent><buffer><expr> <C-t> unite#do_action('tabopen')
-
-    nnoremap <silent><buffer><expr> <C-s> unite#do_action('split')
-    inoremap <silent><buffer><expr> <C-s> unite#do_action('split')
-
-    nnoremap <silent><buffer><expr> <C-v> unite#do_action('vsplit')
-    inoremap <silent><buffer><expr> <C-v> unite#do_action('vsplit')
-
-    nnoremap <silent><buffer><expr> <C-d> unite#do_action('delete')
-    inoremap <silent><buffer><expr> <C-d> unite#do_action('delete')
-
-    nnoremap <silent><buffer><expr> <C-CR> unite#do_action('tabswitch')
-    inoremap <silent><buffer><expr> <C-CR> unite#do_action('tabswitch')
-endfunction
-
-nnoremap <silent> <F4> :Unite -buffer-name=buffers -toggle -prompt-direction=top -start-insert -no-restore buffer<CR>
-inoremap <silent> <F4> <C-o>:Unite -buffer-name=buffers -toggle -prompt-direction=top -start-insert -no-restore buffer<CR>
-vnoremap <silent> <F4> <ESC>:Unite -buffer-name=buffers -toggle -prompt-direction=top -start-insert -no-restore buffer<CR>
-
-if has('win16') || has('win32') || has('win64')
-    nnoremap <silent> <F3> :Unite -buffer-name=MRU -toggle -prompt-direction=top -start-insert -no-restore bookmark:default-windows neomru/file<CR>
-    inoremap <silent> <F3> <C-o>:Unite -buffer-name=MRU -toggle -prompt-direction=top -start-insert -no-restore bookmark:default-windows neomru/file<CR>
-    vnoremap <silent> <F3> <ESC>:Unite -buffer-name=MRU -toggle -prompt-direction=top -start-insert -no-restore bookmark:default-windows neomru/file<CR>
-else
-    nnoremap <silent> <F3> :Unite -buffer-name=MRU -toggle -prompt-direction=top -start-insert -no-restore bookmark:default-linux neomru/file<CR>
-    inoremap <silent> <F3> <C-o>:Unite -buffer-name=MRU -toggle -prompt-direction=top -start-insert -no-restore bookmark:default-linux neomru/file<CR>
-    vnoremap <silent> <F3> <ESC>:Unite -buffer-name=MRU -toggle -prompt-direction=top -start-insert -no-restore bookmark:default-linux neomru/file<CR>
-endif
-" }}}
-
-" Shougo/neomru.vim {{{
-let g:neomru#file_mru_path = g:unite_data_directory . "/neomru/file"
-let g:neomru#directory_mru_path = g:unite_data_directory . "/neomru/directory"
-" }}}
-
-" Shougo/unite-outline {{{
-nnoremap <silent> <F8> :Unite -buffer-name=outline -toggle -vertical -direction=botright -winwidth=60 -start-insert -no-restore outline<CR>
-inoremap <silent> <F8> <C-o>:Unite -buffer-name=outline -toggle -vertical -direction=botright -winwidth=60 -start-insert -no-restore outline<CR>
-vnoremap <silent> <F8> <ESC>:Unite -buffer-name=outline -toggle -vertical -direction=botright -winwidth=60 -start-insert -no-restore outline<CR>
-" }}}
-
-" mbbill/undotree {{{
-let g:undotree_WindowLayout = 2
-let g:undotree_SplitWidth = 40
-let g:undotree_SetFocusWhenToggle = 1
-let g:undotree_DiffAutoOpen = 0
-
-nnoremap <silent> <F10> :UndotreeToggle<CR>
-inoremap <silent> <F10> <C-o>:UndotreeToggle<CR>
-vnoremap <silent> <F10> <ESC>:UndotreeToggle<CR>
-" }}}
-
-" vim-airline/vim-airline {{{
-let g:airline_theme = 'wombat'
-let g:airline_symbols_ascii = 1
-
-" extensions
-let g:airline#extensions#whitespace#enabled = 0
-let g:airline#extensions#coc#enabled = 0
-
-set guioptions-=e " disable gvim tabbar, comment this if tabline is not enabled
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#show_buffers = 0
-let g:airline#extensions#tabline#show_splits = 0
-let g:airline#extensions#tabline#show_tabs = 1
-let g:airline#extensions#tabline#show_tab_nr = 0
-let g:airline#extensions#tabline#show_tab_type = 0
-let g:airline#extensions#tabline#close_symbol = '×'
-let g:airline#extensions#tabline#show_close_button = 0
-let g:airline#extensions#xkblayout#enabled = 0
-
-let g:airline#extensions#tabline#formatter = "short_path"
-" let g:airline#extensions#tabline#fnamecollapse = 0
-" let g:airline#extensions#tabline#fnamemod = ':t'
-
-" customize airline sections
-" function! AirlineInit()
-    " let g:airline_section_x = airline#section#create_left(['session'])
-" endf
-" autocmd VimEnter * call AirlineInit()
-" }}}
-
-" lyokha/vim-xkbswitch {{{
-let g:XkbSwitchEnabled = 1
-let g:XkbSwitchIMappings = ['ru']
-let g:XkbSwitchIMappingsSkipFt = ['tex']
-let g:XkbSwitchNLayout = 'US'
-let g:XkbSwitchILayout = 'US'
-" }}}
-
-" powerman/vim-plugin-viewdoc {{{
-let g:viewdoc_openempty = 1
-" if !exists('g:no_plugin_abbrev') && !exists('g:no_viewdoc_abbrev')
-"     cnoreabbrev <expr> h  getcmdtype()==':' && getcmdline()=='h'  ? 'ViewDocHelp'  : 'h'
-"     cnoreabbrev <expr> h! getcmdtype()==':' && getcmdline()=='h!' ? 'ViewDocHelp'  : 'h!'
-
-"     cnoreabbrev <expr> pd  getcmdtype()==':' && getcmdline()=='pd'  ? 'ViewDocPerl'  : 'pd'
-"     cnoreabbrev <expr> pd! getcmdtype()==':' && getcmdline()=='pd!' ? 'ViewDocPerl'  : 'pd!'
-" endif
-" }}}
-
-" nathanaelkane/vim-indent-guides.git {{{
-let g:indent_guides_auto_colors = 1
-let g:indent_guides_start_level = 2
-let g:indent_guides_guide_size = 1
-" }}}
-
-" mhinz/vim-signify {{{
-let g:signify_vcs_list = [ 'git' ]
-let g:signify_realtime = 1
-
-autocmd ColorScheme * highlight DiffAdd    term=bold cterm=bold ctermbg=22  ctermfg=Green gui=bold guibg=DarkGreen guifg=Green
-autocmd ColorScheme * highlight DiffChange term=bold cterm=bold ctermbg=24  ctermfg=Cyan  gui=bold guibg=DarkCyan  guifg=Cyan
-autocmd ColorScheme * highlight DiffDelete term=bold cterm=bold ctermbg=124 ctermfg=Red   gui=bold guibg=DarkRed   guifg=Red
-" }}}
-
-" Yggdroot/indentLine {{{
-let g:indentLine_enabled = 1 " enabled by default
-" let g:indentLine_char = '│'
-" let g:indentLine_showFirstIndentLevel = 1
-" let g:indentLine_fileType = ['pl', 'pm', 'perl', 'js']
-let g:indentLine_fileTypeExclude = ['json', 'markdown']
-let g:indentLine_faster = 1 " works faster, but issues are possible
-
-nnoremap <silent> <Leader>ii :IndentLinesToggle<CR>
-inoremap <silent> <Leader>ii <ESC>:IndentLinesToggle<CR>a
-vnoremap <silent> <Leader>ii <ESC>:IndentLinesToggle<CR>gv
-" }}}
-
 " foldind
 set foldenable
 set foldlevel=99
@@ -467,6 +328,145 @@ endfunction
 " set titlestring=%{SetTitleString()}
 
 set title " mandatory for neovim-qt
+" }}}
+
+lua require( "config.lazy" )
+
+" plugins settings
+" unite {{{
+autocmd FileType unite call s:uniteCustomization()
+
+function! s:uniteCustomization ()
+    nmap <silent><buffer> <ESC> <Plug>(unite_exit)
+
+    nnoremap <silent><buffer><expr> <C-t> unite#do_action('tabopen')
+    inoremap <silent><buffer><expr> <C-t> unite#do_action('tabopen')
+
+    nnoremap <silent><buffer><expr> <C-s> unite#do_action('split')
+    inoremap <silent><buffer><expr> <C-s> unite#do_action('split')
+
+    nnoremap <silent><buffer><expr> <C-v> unite#do_action('vsplit')
+    inoremap <silent><buffer><expr> <C-v> unite#do_action('vsplit')
+
+    nnoremap <silent><buffer><expr> <C-d> unite#do_action('delete')
+    inoremap <silent><buffer><expr> <C-d> unite#do_action('delete')
+
+    nnoremap <silent><buffer><expr> <C-CR> unite#do_action('tabswitch')
+    inoremap <silent><buffer><expr> <C-CR> unite#do_action('tabswitch')
+endfunction
+
+nnoremap <silent> <F4> :Unite -buffer-name=buffers -toggle -prompt-direction=top -start-insert -no-restore buffer<CR>
+inoremap <silent> <F4> <C-o>:Unite -buffer-name=buffers -toggle -prompt-direction=top -start-insert -no-restore buffer<CR>
+vnoremap <silent> <F4> <ESC>:Unite -buffer-name=buffers -toggle -prompt-direction=top -start-insert -no-restore buffer<CR>
+
+if has('win16') || has('win32') || has('win64')
+    nnoremap <silent> <F3> :Unite -buffer-name=MRU -toggle -prompt-direction=top -start-insert -no-restore bookmark:default-windows neomru/file<CR>
+    inoremap <silent> <F3> <C-o>:Unite -buffer-name=MRU -toggle -prompt-direction=top -start-insert -no-restore bookmark:default-windows neomru/file<CR>
+    vnoremap <silent> <F3> <ESC>:Unite -buffer-name=MRU -toggle -prompt-direction=top -start-insert -no-restore bookmark:default-windows neomru/file<CR>
+else
+    nnoremap <silent> <F3> :Unite -buffer-name=MRU -toggle -prompt-direction=top -start-insert -no-restore bookmark:default-linux neomru/file<CR>
+    inoremap <silent> <F3> <C-o>:Unite -buffer-name=MRU -toggle -prompt-direction=top -start-insert -no-restore bookmark:default-linux neomru/file<CR>
+    vnoremap <silent> <F3> <ESC>:Unite -buffer-name=MRU -toggle -prompt-direction=top -start-insert -no-restore bookmark:default-linux neomru/file<CR>
+endif
+" }}}
+
+" Shougo/neomru.vim {{{
+let g:neomru#file_mru_path = g:unite_data_directory . "/neomru/file"
+let g:neomru#directory_mru_path = g:unite_data_directory . "/neomru/directory"
+" }}}
+
+" Shougo/unite-outline {{{
+nnoremap <silent> <F8> :Unite -buffer-name=outline -toggle -vertical -direction=botright -winwidth=60 -start-insert -no-restore outline<CR>
+inoremap <silent> <F8> <C-o>:Unite -buffer-name=outline -toggle -vertical -direction=botright -winwidth=60 -start-insert -no-restore outline<CR>
+vnoremap <silent> <F8> <ESC>:Unite -buffer-name=outline -toggle -vertical -direction=botright -winwidth=60 -start-insert -no-restore outline<CR>
+" }}}
+
+" mbbill/undotree {{{
+let g:undotree_WindowLayout = 2
+let g:undotree_SplitWidth = 40
+let g:undotree_SetFocusWhenToggle = 1
+let g:undotree_DiffAutoOpen = 0
+
+nnoremap <silent> <F10> :UndotreeToggle<CR>
+inoremap <silent> <F10> <C-o>:UndotreeToggle<CR>
+vnoremap <silent> <F10> <ESC>:UndotreeToggle<CR>
+" }}}
+
+" vim-airline/vim-airline {{{
+let g:airline_theme = 'wombat'
+let g:airline_symbols_ascii = 1
+
+" extensions
+let g:airline#extensions#whitespace#enabled = 0
+let g:airline#extensions#coc#enabled = 0
+
+set guioptions-=e " disable gvim tabbar, comment this if tabline is not enabled
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_buffers = 0
+let g:airline#extensions#tabline#show_splits = 0
+let g:airline#extensions#tabline#show_tabs = 1
+let g:airline#extensions#tabline#show_tab_nr = 0
+let g:airline#extensions#tabline#show_tab_type = 0
+let g:airline#extensions#tabline#close_symbol = '×'
+let g:airline#extensions#tabline#show_close_button = 0
+let g:airline#extensions#xkblayout#enabled = 0
+
+let g:airline#extensions#tabline#formatter = "short_path"
+" let g:airline#extensions#tabline#fnamecollapse = 0
+" let g:airline#extensions#tabline#fnamemod = ':t'
+
+" customize airline sections
+" function! AirlineInit()
+    " let g:airline_section_x = airline#section#create_left(['session'])
+" endf
+" autocmd VimEnter * call AirlineInit()
+" }}}
+
+" lyokha/vim-xkbswitch {{{
+let g:XkbSwitchEnabled = 1
+let g:XkbSwitchIMappings = ['ru']
+let g:XkbSwitchIMappingsSkipFt = ['tex']
+let g:XkbSwitchNLayout = 'US'
+let g:XkbSwitchILayout = 'US'
+" }}}
+
+" powerman/vim-plugin-viewdoc {{{
+let g:viewdoc_openempty = 1
+" if !exists('g:no_plugin_abbrev') && !exists('g:no_viewdoc_abbrev')
+"     cnoreabbrev <expr> h  getcmdtype()==':' && getcmdline()=='h'  ? 'ViewDocHelp'  : 'h'
+"     cnoreabbrev <expr> h! getcmdtype()==':' && getcmdline()=='h!' ? 'ViewDocHelp'  : 'h!'
+
+"     cnoreabbrev <expr> pd  getcmdtype()==':' && getcmdline()=='pd'  ? 'ViewDocPerl'  : 'pd'
+"     cnoreabbrev <expr> pd! getcmdtype()==':' && getcmdline()=='pd!' ? 'ViewDocPerl'  : 'pd!'
+" endif
+" }}}
+
+" nathanaelkane/vim-indent-guides.git {{{
+let g:indent_guides_auto_colors = 1
+let g:indent_guides_start_level = 2
+let g:indent_guides_guide_size = 1
+" }}}
+
+" mhinz/vim-signify {{{
+let g:signify_vcs_list = [ 'git' ]
+let g:signify_realtime = 1
+
+autocmd ColorScheme * highlight DiffAdd    term=bold cterm=bold ctermbg=22  ctermfg=Green gui=bold guibg=DarkGreen guifg=Green
+autocmd ColorScheme * highlight DiffChange term=bold cterm=bold ctermbg=24  ctermfg=Cyan  gui=bold guibg=DarkCyan  guifg=Cyan
+autocmd ColorScheme * highlight DiffDelete term=bold cterm=bold ctermbg=124 ctermfg=Red   gui=bold guibg=DarkRed   guifg=Red
+" }}}
+
+" Yggdroot/indentLine {{{
+let g:indentLine_enabled = 1 " enabled by default
+" let g:indentLine_char = '│'
+" let g:indentLine_showFirstIndentLevel = 1
+" let g:indentLine_fileType = ['pl', 'pm', 'perl', 'js']
+let g:indentLine_fileTypeExclude = ['json', 'markdown']
+let g:indentLine_faster = 1 " works faster, but issues are possible
+
+nnoremap <silent> <Leader>ii :IndentLinesToggle<CR>
+inoremap <silent> <Leader>ii <ESC>:IndentLinesToggle<CR>a
+vnoremap <silent> <Leader>ii <ESC>:IndentLinesToggle<CR>gv
 " }}}
 
 exec "runtime ginit.vim"
