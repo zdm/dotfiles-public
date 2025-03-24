@@ -128,10 +128,10 @@ set nobomb
 set sessionoptions=buffers,curdir,folds,slash,tabpages,unix,winsize
 
 " views
-" exec "set viminfo='50,<100,s100,!,n" . stdpath("data") . "/.viminfo"
+" exec "set viminfo='50,<100,s100,!,n" . stdpath( "data" ) . "/.viminfo"
 
 set viewoptions=cursor,folds,options,slash,unix
-exec "set viewdir=" . stdpath("data") . "/view"
+exec "set viewdir=" . stdpath( "data" ) . "/view"
 
 " tabline
 set laststatus=2
@@ -337,43 +337,5 @@ set title " mandatory for neovim-qt
 
 " load plugins
 lua require( "config.lazy" )
-
-" plugins settings
-" unite {{{
-autocmd FileType unite call s:uniteCustomization()
-
-function! s:uniteCustomization ()
-    nmap <silent><buffer> <ESC> <Plug>(unite_exit)
-
-    nnoremap <silent><buffer><expr> <C-t> unite#do_action('tabopen')
-    inoremap <silent><buffer><expr> <C-t> unite#do_action('tabopen')
-
-    nnoremap <silent><buffer><expr> <C-s> unite#do_action('split')
-    inoremap <silent><buffer><expr> <C-s> unite#do_action('split')
-
-    nnoremap <silent><buffer><expr> <C-v> unite#do_action('vsplit')
-    inoremap <silent><buffer><expr> <C-v> unite#do_action('vsplit')
-
-    nnoremap <silent><buffer><expr> <C-d> unite#do_action('delete')
-    inoremap <silent><buffer><expr> <C-d> unite#do_action('delete')
-
-    nnoremap <silent><buffer><expr> <C-CR> unite#do_action('tabswitch')
-    inoremap <silent><buffer><expr> <C-CR> unite#do_action('tabswitch')
-endfunction
-
-nnoremap <silent> <F4> :Unite -buffer-name=buffers -toggle -prompt-direction=top -start-insert -no-restore buffer<CR>
-inoremap <silent> <F4> <C-o>:Unite -buffer-name=buffers -toggle -prompt-direction=top -start-insert -no-restore buffer<CR>
-vnoremap <silent> <F4> <ESC>:Unite -buffer-name=buffers -toggle -prompt-direction=top -start-insert -no-restore buffer<CR>
-
-if has('win16') || has('win32') || has('win64')
-    nnoremap <silent> <F3> :Unite -buffer-name=MRU -toggle -prompt-direction=top -start-insert -no-restore bookmark:default-windows neomru/file<CR>
-    inoremap <silent> <F3> <C-o>:Unite -buffer-name=MRU -toggle -prompt-direction=top -start-insert -no-restore bookmark:default-windows neomru/file<CR>
-    vnoremap <silent> <F3> <ESC>:Unite -buffer-name=MRU -toggle -prompt-direction=top -start-insert -no-restore bookmark:default-windows neomru/file<CR>
-else
-    nnoremap <silent> <F3> :Unite -buffer-name=MRU -toggle -prompt-direction=top -start-insert -no-restore bookmark:default-linux neomru/file<CR>
-    inoremap <silent> <F3> <C-o>:Unite -buffer-name=MRU -toggle -prompt-direction=top -start-insert -no-restore bookmark:default-linux neomru/file<CR>
-    vnoremap <silent> <F3> <ESC>:Unite -buffer-name=MRU -toggle -prompt-direction=top -start-insert -no-restore bookmark:default-linux neomru/file<CR>
-endif
-" }}}
 
 exec "runtime ginit.vim"
