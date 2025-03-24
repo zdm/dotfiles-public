@@ -79,16 +79,27 @@ return {
 
             local gid = vim.api.nvim_create_augroup( "folds-updater", {} )
 
-            local updateFolds = function ()
+            local updateFolds = function ( force )
+                if not force then
+                    if vim.wo.foldmethod ~= "expr" then
+                        return
+                    end
+                end
+
+                vim.wo.foldmethod = "manual"
+
                 if require( "nvim-treesitter.parsers" ).has_parser() then
                     vim.bo.syntax = "off"
-                    vim.wo.foldmethod = "expr"
 
                     if vim.bo.filetype == "markdown" then
                         vim.wo.foldexpr = "StackedMarkdownFolds()"
                     else
+                        vim.treesitter.get_parser():parse()
+
                         vim.wo.foldexpr = "nvim_treesitter#foldexpr()"
                     end
+
+                    vim.wo.foldmethod = "expr"
                 else
                     vim.bo.syntax = "on"
                     vim.wo.foldmethod = "syntax"
@@ -102,7 +113,9 @@ return {
 
             vim.api.nvim_create_autocmd( { "FileType" }, {
                 group = gid,
-                callback = updateFolds
+                callback = function ()
+                    updateFolds( true )
+                end
             } )
 
             vim.api.nvim_create_autocmd( "ModeChanged", {
@@ -115,15 +128,20 @@ return {
                 end
             } )
 
+            vim.api.nvim_create_autocmd( "TextChangedI", {
+                group = gid,
+                callback = function ()
+                    vim.b.folds_update_pending = true
+                end
+            } )
+
             -- XXX update called too fast
-            vim.api.nvim_create_autocmd( { "TextChanged", "TextChangedI" }, {
+            vim.api.nvim_create_autocmd( "TextChanged", {
                 group = gid,
                 callback = function ()
                     vim.b.folds_update_pending = true
 
-                    if vim.api.nvim_get_mode().mode == "n" then
-                        updateFolds()
-                    end
+                    updateFolds()
                 end
             } )
         end,

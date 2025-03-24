@@ -156,7 +156,7 @@ func! s:lint_file ( type )
             call setpos( ".", l:cursor_pos )
 
             " open fold under the cursor
-            lua vim.treesitter.get_parser():parse()
+            lua if require( "nvim-treesitter.parsers" ).has_parser() then vim.treesitter.get_parser():parse() end
             exec( "setlocal foldmethod=" . l:foldmethod )
             normal zM
             normal zv
