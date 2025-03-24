@@ -12,10 +12,19 @@ return {
             vim.g.unite_split_rule = "botright"
         end,
             config = function ()
-                -- autocmd FileType unite call s:uniteCustomization()
+                vim.api.nvim_create_autocmd( "FileType", {
+                    pattern = "unite",
+                    callback = function ()
+                        -- nmap <silent><buffer> <ESC> <Plug>(unite_exit)
+                        -- vim.keymap.set( "n", "<ESC>", function ()
+                        --     vim.cmd( "<Plug>(unite_exit)" )
+                        -- end, { buffer = true, silent = true } )
 
-                -- function! s:uniteCustomization ()
-                --     nmap <silent><buffer> <ESC> <Plug>(unite_exit)
+                        vim.keymap.set( { "n", "i" }, "<C-t>", function ()
+                            vim.cmd( "unite#do_action( 'tabopen' )" )
+                        end, { noremap = true, buffer = true, silent = true, expr = true } )
+                    end
+                } )
 
                 --     nnoremap <silent><buffer><expr> <C-t> unite#do_action('tabopen')
                 --     inoremap <silent><buffer><expr> <C-t> unite#do_action('tabopen')
@@ -31,7 +40,6 @@ return {
 
                 --     nnoremap <silent><buffer><expr> <C-CR> unite#do_action('tabswitch')
                 --     inoremap <silent><buffer><expr> <C-CR> unite#do_action('tabswitch')
-                -- endfunction
 
                 vim.keymap.set( { "n", "i", "v" }, "<F3>", function ()
                     local os
