@@ -15,8 +15,8 @@ return {
     {
         "shougo/neomru.vim",
         init = function ()
-            vim.g[ "neomru#file_mru_path "] = vim.g.unite_data_directory .. "/neomru/file"
-            vim.g[ "neomru#directory_mru_path "] = vim.g.unite_data_directory .. "/neomru/directory"
+            vim.g[ "neomru#file_mru_path"] = vim.g.unite_data_directory .. "/neomru/file"
+            vim.g[ "neomru#directory_mru_path"] = vim.g.unite_data_directory .. "/neomru/directory"
         end
     },
     {
