@@ -371,6 +371,7 @@ endif
 " }}}
 
 " Shougo/neomru.vim {{{
+" vim.g['my#variable'] = 1
 let g:neomru#file_mru_path = g:unite_data_directory . "/neomru/file"
 let g:neomru#directory_mru_path = g:unite_data_directory . "/neomru/directory"
 " }}}
