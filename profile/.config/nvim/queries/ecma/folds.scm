@@ -7,5 +7,4 @@
     (generator_function_declaration)
     (template_string)
     (comment)
-	(jsx_element)
 ] @fold
