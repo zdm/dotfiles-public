@@ -77,45 +77,6 @@ return {
                 },
             } )
 
-            -- NOTE https://github.com/nvim-treesitter/nvim-treesitter/tree/master/queries
-            require( "vim.treesitter.query" ).set( "javascript", "folds", [[
-                [
-                    (arrow_function)
-                    (function_expression)
-                    (function_declaration)
-                    (method_definition)
-                    (generator_function)
-                    (generator_function_declaration)
-                    (template_string)
-                    (comment)
-                ] @fold
-            ]] )
-
-            require( "vim.treesitter.query" ).set( "vim", "folds", [[
-                [
-                    (function_definition)
-                    (lua_statement)
-                    (ruby_statement)
-                    (python_statement)
-                    (perl_statement)
-                    (autocmd_statement)
-                ] @fold
-            ]] )
-
-            require( "vim.treesitter.query" ).set( "lua", "folds", [[
-                [
-                    (function_declaration)
-                    (function_definition)
-                ] @fold
-            ]] )
-
-            require( "vim.treesitter.query" ).set( "bash", "folds", [[
-                [
-                    (function_definition)
-                    (heredoc_redirect)
-                ] @fold
-            ]] )
-
             vim.api.nvim_create_autocmd( { "FileType" }, {
                 callback = function ()
                     if require( "nvim-treesitter.parsers" ).has_parser() then
