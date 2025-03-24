@@ -94,8 +94,6 @@ return {
                     if vim.bo.filetype == "markdown" then
                         vim.wo.foldexpr = "StackedMarkdownFolds()"
                     else
-                        vim.treesitter.get_parser():parse()
-
                         vim.wo.foldexpr = "nvim_treesitter#foldexpr()"
                     end
 
@@ -135,7 +133,6 @@ return {
                 end
             } )
 
-            -- XXX update called too fast
             vim.api.nvim_create_autocmd( "TextChanged", {
                 group = gid,
                 callback = function ()
