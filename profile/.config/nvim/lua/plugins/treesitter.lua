@@ -79,6 +79,7 @@ return {
 
             local gid = vim.api.nvim_create_augroup( "folds-updater", {} )
 
+            -- XXX not works when text is pasted
             local updateFolds = function ( force )
                 if not force then
                     if vim.wo.foldmethod ~= "expr" then
