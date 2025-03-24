@@ -15,31 +15,28 @@ return {
                 vim.api.nvim_create_autocmd( "FileType", {
                     pattern = "unite",
                     callback = function ()
-                        -- nmap <silent><buffer> <ESC> <Plug>(unite_exit)
-                        -- vim.keymap.set( "n", "<ESC>", function ()
-                        --     vim.cmd( "<Plug>(unite_exit)" )
-                        -- end, { buffer = true, silent = true } )
+                        vim.keymap.set( "n", "<ESC>", "<Plug>(unite_exit)", { remap = true, buffer = true, silent = true } )
 
-                        vim.keymap.set( { "n", "i" }, "<C-t>", function ()
-                            vim.cmd( "unite#do_action( 'tabopen' )" )
-                        end, { noremap = true, buffer = true, silent = true, expr = true } )
+                        -- nnoremap <silent><buffer><expr> <C-t> unite#do_action('tabopen')
+                        -- inoremap <silent><buffer><expr> <C-t> unite#do_action('tabopen')
+                        -- vim.keymap.set( { "n", "i" }, "<C-t>", function ()
+                        --     vim.api.nvim_call_function( "unite#do_action", { "tabopen" } )
+                        --     -- vim.fn[ "unite#do_action" ]( "tabopen" )
+                        -- end, { noremap = true, buffer = true, silent = true, expr = true } )
+
+                        -- nnoremap <silent><buffer><expr> <C-s> unite#do_action('split')
+                        -- inoremap <silent><buffer><expr> <C-s> unite#do_action('split')
+
+                        -- nnoremap <silent><buffer><expr> <C-v> unite#do_action('vsplit')
+                        -- inoremap <silent><buffer><expr> <C-v> unite#do_action('vsplit')
+
+                        -- nnoremap <silent><buffer><expr> <C-d> unite#do_action('delete')
+                        -- inoremap <silent><buffer><expr> <C-d> unite#do_action('delete')
+
+                        -- nnoremap <silent><buffer><expr> <C-CR> unite#do_action('tabswitch')
+                        -- inoremap <silent><buffer><expr> <C-CR> unite#do_action('tabswitch')
                     end
                 } )
-
-                --     nnoremap <silent><buffer><expr> <C-t> unite#do_action('tabopen')
-                --     inoremap <silent><buffer><expr> <C-t> unite#do_action('tabopen')
-
-                --     nnoremap <silent><buffer><expr> <C-s> unite#do_action('split')
-                --     inoremap <silent><buffer><expr> <C-s> unite#do_action('split')
-
-                --     nnoremap <silent><buffer><expr> <C-v> unite#do_action('vsplit')
-                --     inoremap <silent><buffer><expr> <C-v> unite#do_action('vsplit')
-
-                --     nnoremap <silent><buffer><expr> <C-d> unite#do_action('delete')
-                --     inoremap <silent><buffer><expr> <C-d> unite#do_action('delete')
-
-                --     nnoremap <silent><buffer><expr> <C-CR> unite#do_action('tabswitch')
-                --     inoremap <silent><buffer><expr> <C-CR> unite#do_action('tabswitch')
 
                 vim.keymap.set( { "n", "i", "v" }, "<F3>", function ()
                     local os
