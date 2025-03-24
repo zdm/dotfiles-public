@@ -120,8 +120,8 @@ return {
                     [ "<CR>" ] = cmp.mapping.confirm( { select = false } ),
                 } ),
                 sources = cmp.config.sources( {
-                    { name = 'vsnip' },
-                    { name = 'calc' },
+                    { name = "vsnip" },
+                    { name = "calc" },
                 } )
             } )
         end
