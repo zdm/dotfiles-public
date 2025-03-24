@@ -15,7 +15,22 @@ return {
     },
     { "powerman/vim-plugin-viewdoc" },
     { "mhinz/vim-signify" },
-    { "yggdroot/indentline" },
+    {
+        "yggdroot/indentline",
+        init = function ()
+            vim.g.indentLine_enabled = 1
+            -- vim.g.indentLine_char = "│"
+            -- vim.g.indentLine_showFirstIndentLevel = 1
+            -- vim.g.indentLine_fileType = [ "pl", "pm", "perl", "js" ]
+            vim.g.indentLine_fileTypeExclude = [ "json", "markdown" ]
+            vim.g.indentLine_faster = 1
+        end,
+        config = function ()
+            vim.keymap.set( { "n", "i", "v" }, "<Leader>ii", function ()
+                vim.cmd( "IndentLinesToggle" )
+            end, { noremap = true, silent = true } )
+        end
+    },
     { "tpope/vim-fugitive" },
     { "uguu-org/vim-matrix-screensaver" },
     { "vim-scripts/dirdiff.vim" },

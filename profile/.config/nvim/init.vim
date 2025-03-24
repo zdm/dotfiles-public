@@ -439,17 +439,4 @@ autocmd ColorScheme * highlight DiffChange term=bold cterm=bold ctermbg=24  cter
 autocmd ColorScheme * highlight DiffDelete term=bold cterm=bold ctermbg=124 ctermfg=Red   gui=bold guibg=DarkRed   guifg=Red
 " }}}
 
-" Yggdroot/indentLine {{{
-let g:indentLine_enabled = 1 " enabled by default
-" let g:indentLine_char = '│'
-" let g:indentLine_showFirstIndentLevel = 1
-" let g:indentLine_fileType = ['pl', 'pm', 'perl', 'js']
-let g:indentLine_fileTypeExclude = ['json', 'markdown']
-let g:indentLine_faster = 1 " works faster, but issues are possible
-
-nnoremap <silent> <Leader>ii :IndentLinesToggle<CR>
-inoremap <silent> <Leader>ii <ESC>:IndentLinesToggle<CR>a
-vnoremap <silent> <Leader>ii <ESC>:IndentLinesToggle<CR>gv
-" }}}
-
 exec "runtime ginit.vim"
