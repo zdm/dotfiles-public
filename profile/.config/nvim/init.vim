@@ -381,17 +381,6 @@ inoremap <silent> <F8> <C-o>:Unite -buffer-name=outline -toggle -vertical -direc
 vnoremap <silent> <F8> <ESC>:Unite -buffer-name=outline -toggle -vertical -direction=botright -winwidth=60 -start-insert -no-restore outline<CR>
 " }}}
 
-" mbbill/undotree {{{
-let g:undotree_WindowLayout = 2
-let g:undotree_SplitWidth = 40
-let g:undotree_SetFocusWhenToggle = 1
-let g:undotree_DiffAutoOpen = 0
-
-nnoremap <silent> <F10> :UndotreeToggle<CR>
-inoremap <silent> <F10> <C-o>:UndotreeToggle<CR>
-vnoremap <silent> <F10> <ESC>:UndotreeToggle<CR>
-" }}}
-
 " vim-airline/vim-airline {{{
 let g:airline_theme = 'wombat'
 let g:airline_symbols_ascii = 1

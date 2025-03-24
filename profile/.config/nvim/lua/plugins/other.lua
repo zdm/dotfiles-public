@@ -1,5 +1,18 @@
 return {
-    { "mbbill/undotree" },
+    {
+        "mbbill/undotree",
+        init = function ()
+            vim.g.undotree_WindowLayout = 2
+            vim.g.undotree_SplitWidth = 40
+            vim.g.undotree_SetFocusWhenToggle = 1
+            vim.g.undotree_DiffAutoOpen = 0
+        end,
+        config = function ()
+            vim.keymap.set( { "n", "i", "v" }, "<F10>", function ()
+                vim.cmd( "UndotreeToggle" )
+            end, { noremap = true, silent = true } )
+        end
+    },
     { "powerman/vim-plugin-viewdoc" },
     { "mhinz/vim-signify" },
     { "yggdroot/indentline" },
