@@ -376,7 +376,7 @@ let g:neomru#directory_mru_path = g:unite_data_directory . "/neomru/directory"
 " }}}
 
 " vim-airline/vim-airline {{{
-let g:airline_theme = 'wombat'
+let g:airline_theme = "wombat"
 let g:airline_symbols_ascii = 1
 
 " extensions
@@ -390,7 +390,7 @@ let g:airline#extensions#tabline#show_splits = 0
 let g:airline#extensions#tabline#show_tabs = 1
 let g:airline#extensions#tabline#show_tab_nr = 0
 let g:airline#extensions#tabline#show_tab_type = 0
-let g:airline#extensions#tabline#close_symbol = '×'
+let g:airline#extensions#tabline#close_symbol = "×"
 let g:airline#extensions#tabline#show_close_button = 0
 let g:airline#extensions#xkblayout#enabled = 0
 
@@ -407,10 +407,10 @@ let g:airline#extensions#tabline#formatter = "short_path"
 
 " lyokha/vim-xkbswitch {{{
 let g:XkbSwitchEnabled = 1
-let g:XkbSwitchIMappings = ['ru']
-let g:XkbSwitchIMappingsSkipFt = ['tex']
-let g:XkbSwitchNLayout = 'US'
-let g:XkbSwitchILayout = 'US'
+let g:XkbSwitchIMappings = [ "ru" ]
+let g:XkbSwitchIMappingsSkipFt = [ "tex" ]
+let g:XkbSwitchNLayout = "US"
+let g:XkbSwitchILayout = "US"
 " }}}
 
 " powerman/vim-plugin-viewdoc {{{
@@ -424,14 +424,8 @@ let g:viewdoc_openempty = 1
 " endif
 " }}}
 
-" nathanaelkane/vim-indent-guides.git {{{
-let g:indent_guides_auto_colors = 1
-let g:indent_guides_start_level = 2
-let g:indent_guides_guide_size = 1
-" }}}
-
 " mhinz/vim-signify {{{
-let g:signify_vcs_list = [ 'git' ]
+let g:signify_vcs_list = [ "git" ]
 let g:signify_realtime = 1
 
 autocmd ColorScheme * highlight DiffAdd    term=bold cterm=bold ctermbg=22  ctermfg=Green gui=bold guibg=DarkGreen guifg=Green
