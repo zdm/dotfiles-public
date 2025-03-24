@@ -370,12 +370,6 @@ else
 endif
 " }}}
 
-" Shougo/neomru.vim {{{
-" vim.g['my#variable'] = 1
-let g:neomru#file_mru_path = g:unite_data_directory . "/neomru/file"
-let g:neomru#directory_mru_path = g:unite_data_directory . "/neomru/directory"
-" }}}
-
 " vim-airline/vim-airline {{{
 let g:airline_theme = "wombat"
 let g:airline_symbols_ascii = 1
@@ -404,14 +398,6 @@ let g:airline#extensions#tabline#formatter = "short_path"
     " let g:airline_section_x = airline#section#create_left(['session'])
 " endf
 " autocmd VimEnter * call AirlineInit()
-" }}}
-
-" lyokha/vim-xkbswitch {{{
-let g:XkbSwitchEnabled = 1
-let g:XkbSwitchIMappings = [ "ru" ]
-let g:XkbSwitchIMappingsSkipFt = [ "tex" ]
-let g:XkbSwitchNLayout = "US"
-let g:XkbSwitchILayout = "US"
 " }}}
 
 " powerman/vim-plugin-viewdoc {{{

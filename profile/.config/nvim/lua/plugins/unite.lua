@@ -12,7 +12,13 @@ return {
             vim.g.unite_split_rule = "botright"
         end,
     },
-    { "shougo/neomru.vim" },
+    {
+        "shougo/neomru.vim",
+        init = function ()
+            vim.g[ "neomru#file_mru_path "] = vim.g.unite_data_directory .. "/neomru/file"
+            vim.g[ "neomru#directory_mru_path "] = vim.g.unite_data_directory .. "/neomru/directory"
+        end
+    },
     {
         "shougo/unite-outline",
         config = function ()
