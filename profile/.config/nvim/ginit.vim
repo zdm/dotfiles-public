@@ -13,26 +13,28 @@ hi PmenuThumb guifg=grey100
 set mouse=a
 
 " set editor font
-if exists(':GuiFont')
-	GuiFont Liberation Mono:h8
+if exists( ":GuiFont" )
+    GuiFont Liberation Mono:h8
 endif
 
 " disable GUI tabline
-if exists(':GuiTabline')
+if exists( ":GuiTabline" )
     GuiTabline 0
 endif
 
 " disable GUI popupmenu
-if exists(':GuiPopupmenu')
+if exists( ":GuiPopupmenu" )
     GuiPopupmenu 0
 endif
 
 " disable GUI scrollbar
-" if exists(':GuiScrollBar')
+" if exists( ":GuiScrollBar" )
 "     GuiScrollBar 0
 " endif
 
-" Right Click Context Menu (Copy-Cut-Paste)
-nnoremap <silent><RightMouse> :call GuiShowContextMenu()<CR>
-inoremap <silent><RightMouse> <Esc>:call GuiShowContextMenu()<CR>
-vnoremap <silent><RightMouse> :call GuiShowContextMenu()<CR>g
+" right click context menu (copy-cut-paste)
+if exists( ":GuiShowContextMenu" )
+    nnoremap <silent><RightMouse> :call GuiShowContextMenu()<CR>
+    inoremap <silent><RightMouse> <Esc>:call GuiShowContextMenu()<CR>
+    vnoremap <silent><RightMouse> :call GuiShowContextMenu()<CR>g
+endif

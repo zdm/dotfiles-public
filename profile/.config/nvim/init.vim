@@ -342,7 +342,8 @@ let g:sh_fold_enabled = 3
 " disable hide of double quotes in json
 let g:vim_json_conceal = 0
 
+" GUI settings
+exec "runtime ginit.vim"
+
 " load plugins
 lua require( "config.lazy" )
-
-exec "runtime ginit.vim"
