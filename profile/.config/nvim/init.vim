@@ -52,18 +52,18 @@ set cursorline
 set nocursorcolumn
 set hlsearch
 
-autocmd ColorScheme * highlight link @comment.note Todo
+autocmd ColorScheme * hi link @comment.note Todo
 
 " diff
-autocmd ColorScheme * highlight DiffAdd    term=bold cterm=bold ctermbg=22  ctermfg=Green gui=bold guibg=DarkGreen guifg=Green
-autocmd ColorScheme * highlight DiffChange term=bold cterm=bold ctermbg=24  ctermfg=Cyan  gui=bold guibg=DarkCyan  guifg=Cyan
-autocmd ColorScheme * highlight DiffDelete term=bold cterm=bold ctermbg=124 ctermfg=Red   gui=bold guibg=DarkRed   guifg=Red
+autocmd ColorScheme * hi DiffAdd    term=bold cterm=bold ctermbg=22  ctermfg=Green gui=bold guibg=DarkGreen guifg=Green
+autocmd ColorScheme * hi DiffChange term=bold cterm=bold ctermbg=24  ctermfg=Cyan  gui=bold guibg=DarkCyan  guifg=Cyan
+autocmd ColorScheme * hi DiffDelete term=bold cterm=bold ctermbg=124 ctermfg=Red   gui=bold guibg=DarkRed   guifg=Red
 
-autocmd ColorScheme * highlight CursorLine term=NONE cterm=bold ctermbg=NONE ctermfg=NONE gui=bold guibg=Grey25 guifg=NONE
+autocmd ColorScheme * hi CursorLine term=NONE cterm=bold ctermbg=NONE ctermfg=NONE gui=bold guibg=Grey25 guifg=NONE
 
-autocmd ColorScheme * highlight SignColumn term=NONE cterm=bold ctermbg=NONE ctermfg=NONE gui=bold guibg=NONE guifg=NONE
+autocmd ColorScheme * hi SignColumn term=NONE cterm=bold ctermbg=NONE ctermfg=NONE gui=bold guibg=NONE guifg=NONE
 
-autocmd ColorScheme * highlight Folded term=NONE cterm=bold ctermbg=NONE ctermfg=178 gui=NONE guibg=Grey30 guifg=Gold
+autocmd ColorScheme * hi Folded term=NONE cterm=bold ctermbg=NONE ctermfg=178 gui=NONE guibg=Grey30 guifg=Gold
 
 colorscheme desert
 
