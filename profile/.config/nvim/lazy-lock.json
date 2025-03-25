@@ -21,7 +21,7 @@
   "vim-plugin-viewdoc": { "branch": "master", "commit": "c9d4e2c3ce6c932091f500053681638f1b39870d" },
   "vim-signify": { "branch": "master", "commit": "8670143f9e12ed1cd3c9b2c54f345cdd9a4baac3" },
   "vim-stay": { "branch": "master", "commit": "f1c494a688faa932603d18ec7d41196e9c117391" },
-  "vim-vsnip": { "branch": "master", "commit": "a3319617d77c6e60c937750b3ca6cf20d3ebd884" },
+  "vim-vsnip": { "branch": "master", "commit": "74ec7991edcccabda4d1a1a55c18d412e59ce530" },
   "vim-xkbswitch": { "branch": "master", "commit": "39914ff3aa3a5678285ba4b740524351d9f5ae18" },
   "xkb-switch-win": { "branch": "master", "commit": "e1a7e07466fa35a81d13200eb0ce466832f53602" }
 }
