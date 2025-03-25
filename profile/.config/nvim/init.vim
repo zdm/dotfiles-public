@@ -330,16 +330,16 @@ let g:netrw_dirhistmax = 0
 " disable highlight for html comments
 let html_wrong_comments = 1
 
-" disable redefining tab width for yaml in default fs plugin
+" allow redefine tab width for yaml
 let g:yaml_recommended_style = 0
 
-" for .sh files highlight (make compatible with .bash)
+" make highlight for "sh" files  compatible with "bash"
 let g:is_posix = 1
 
-" configure folding for .sh scripts
+" configure folding for "sh" scripts
 let g:sh_fold_enabled = 3
 
-" disable hide of double quotes in json syntax
+" disable hide of double quotes in json
 let g:vim_json_conceal = 0
 
 " load plugins
