@@ -40,9 +40,6 @@ set foldlevelstart=0
 set foldmethod=manual
 set foldcolumn=1
 
-" prevent create .netrwhist
-let g:netrw_dirhistmax = 0
-
 filetype plugin indent on
 set modeline
 
@@ -270,14 +267,6 @@ inoremap <silent> <Leader>ss <ESC>:call SyntaxRefresh()<CR>a
 vnoremap <silent> <Leader>ss <ESC>:call SyntaxRefresh()<CR>gv
 " }}}
 
-" sessions - unite F5 menu {{{
-let g:unite_source_session_enable_auto_save = 1
-
-nnoremap <silent> <F5> :Unite -buffer-name=session -toggle -prompt-direction=top -hide-source-names session session/new<CR>
-inoremap <silent> <F5> <C-o>:Unite -buffer-name=session -toggle -prompt-direction=top -hide-source-names session session/new<CR>
-vnoremap <silent> <F5> <ESC>:Unite -buffer-name=session -toggle -prompt-direction=top -hide-source-names session session/new<CR>
-" }}}
-
 " helper - unite F2 menu {{{
 nnoremap <silent> <F2> :Unite -buffer-name=helper -toggle -prompt-direction=top -start-insert -no-restore menu:helper<CR>
 inoremap <silent> <F2> <C-o>:Unite -buffer-name=helper -toggle -prompt-direction=top -start-insert -no-restore menu:helper<CR>
@@ -334,6 +323,24 @@ endfunction
 
 set title " mandatory for neovim-qt
 " }}}
+
+" prevent create .netrwhist
+let g:netrw_dirhistmax = 0
+
+" disable highlight for html comments
+let html_wrong_comments = 1
+
+" disable redefining tab width for yaml in default fs plugin
+let g:yaml_recommended_style = 0
+
+" for .sh files highlight (make compatible with .bash)
+let g:is_posix = 1
+
+" configure folding for .sh scripts
+let g:sh_fold_enabled = 3
+
+" disable hide of double quotes in json syntax
+let g:vim_json_conceal = 0
 
 " load plugins
 lua require( "config.lazy" )
