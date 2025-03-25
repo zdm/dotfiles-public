@@ -60,8 +60,10 @@ autocmd ColorScheme * highlight DiffChange term=bold cterm=bold ctermbg=24  cter
 autocmd ColorScheme * highlight DiffDelete term=bold cterm=bold ctermbg=124 ctermfg=Red   gui=bold guibg=DarkRed   guifg=Red
 
 autocmd ColorScheme * highlight CursorLine term=NONE cterm=bold ctermbg=NONE ctermfg=NONE gui=bold guibg=Grey25 guifg=NONE
-autocmd ColorScheme * highlight SignColumn term=NONE cterm=bold ctermbg=NONE ctermfg=NONE gui=bold guibg=NONE   guifg=NONE
-autocmd ColorScheme * highlight Folded     term=NONE cterm=bold ctermbg=NONE ctermfg=178  gui=NONE guibg=Grey30 guifg=Gold
+
+autocmd ColorScheme * highlight SignColumn term=NONE cterm=bold ctermbg=NONE ctermfg=NONE gui=bold guibg=NONE guifg=NONE
+
+autocmd ColorScheme * highlight Folded term=NONE cterm=bold ctermbg=NONE ctermfg=178 gui=NONE guibg=Grey30 guifg=Gold
 
 colorscheme desert
 
