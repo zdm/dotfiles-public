@@ -59,7 +59,6 @@ autocmd ColorScheme * highlight DiffAdd    term=bold cterm=bold ctermbg=22  cter
 autocmd ColorScheme * highlight DiffChange term=bold cterm=bold ctermbg=24  ctermfg=Cyan  gui=bold guibg=DarkCyan  guifg=Cyan
 autocmd ColorScheme * highlight DiffDelete term=bold cterm=bold ctermbg=124 ctermfg=Red   gui=bold guibg=DarkRed   guifg=Red
 
-" desert
 autocmd ColorScheme * highlight CursorLine term=NONE cterm=bold ctermbg=NONE ctermfg=NONE gui=bold guibg=Grey25 guifg=NONE
 autocmd ColorScheme * highlight SignColumn term=NONE cterm=bold ctermbg=NONE ctermfg=NONE gui=bold guibg=NONE   guifg=NONE
 autocmd ColorScheme * highlight Folded     term=NONE cterm=bold ctermbg=NONE ctermfg=178  gui=NONE guibg=Grey30 guifg=Gold
@@ -70,18 +69,6 @@ hi Pmenu guifg=grey100 guibg=grey10
 hi PmenuSel gui=bold guifg=grey100 guibg=grey45
 hi PmenuSbar guifg=grey100 guibg=grey10
 hi PmenuThumb guifg=grey100
-
-" default
-" autocmd ColorScheme * highlight CursorLine term=NONE cterm=bold ctermbg=NONE ctermfg=NONE gui=bold guibg=Grey10 guifg=NONE
-" autocmd ColorScheme * highlight SignColumn term=NONE cterm=bold ctermbg=NONE ctermfg=NONE gui=bold guibg=NONE   guifg=NONE
-" autocmd ColorScheme * highlight Folded     term=NONE cterm=bold ctermbg=NONE ctermfg=NONE gui=bold guibg=NONE   guifg=Gold
-
-" colorscheme default
-
-" hi Pmenu guifg=#c0c0c0 guibg=#404080
-" hi PmenuSel gui=bold guifg=#c0c0c0 guibg=#2050d0
-" hi PmenuSbar guifg=blue guibg=darkgray
-" hi PmenuThumb guifg=#c0c0c0
 " }}}
 
 " backspace and cursor keys wrap to previous/next line
