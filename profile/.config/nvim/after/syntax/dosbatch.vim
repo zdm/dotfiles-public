@@ -1,5 +1,19 @@
-if exists( "b:current_syntax" )
-    finish
-endif
+syn keyword commentError contained FIXME BUG ERROR FIXME: BUG: ERROR:
+syn keyword commentWarning contained HACK WARNING WARN FIX HACK: WARNING: WARN: FIX:
+syn keyword commentNote contained NOTE XXX INFO DOCS PERF TEST NOTE: XXX: INFO: DOCS: PERF: TEST:
+syn keyword commentTodo contained TODO WIP TODO: WIP:
 
-syn keyword dosbatchTodo contained TODO XXX NOTE DOCS INFO
+syn match dosbatchRemComment "^rem\($\|\s.*$\)"lc=3 contains=commentError,commentWarning,commentNote,commentTodo,dosbatchSpecialChar,@dosbatchNumber,dosbatchVariable,dosbatchArgument,@Spell
+
+syn match dosbatchRemComment "^@rem\($\|\s.*$\)"lc=4 contains=commentError,commentWarning,commentNote,commentTodo,@dosbatchNumber,dosbatchVariable,dosbatchArgument,@Spell
+
+syn match dosbatchRemComment "\srem\($\|\s.*$\)"lc=4 contains=commentError,commentWarning,commentNote,commentTodo,dosbatchSpecialChar,@dosbatchNumber,dosbatchVariable,dosbatchArgument,@Spell
+
+syn match dosbatchRemComment "\s@rem\($\|\s.*$\)"lc=5 contains=commentError,commentWarning,commentNote,commentTodo,@dosbatchNumber,dosbatchVariable,dosbatchArgument,@Spell
+
+syn match dosbatchColonComment "\s*:\s*:.*$" contains=commentError,commentWarning,commentNote,commentTodo,dosbatchSpecialChar,@dosbatchNumber,dosbatchVariable,dosbatchArgument,@Spell
+
+hi link commentError DiagnosticError
+hi link commentWarning DiagnosticWarn
+hi link commentNote DiagnosticInfo
+hi link commentTodo Todo

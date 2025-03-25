@@ -52,8 +52,6 @@ set cursorline
 set nocursorcolumn
 set hlsearch
 
-autocmd ColorScheme * hi link @comment.note Todo
-
 " diff
 autocmd ColorScheme * hi DiffAdd    term=bold cterm=bold ctermbg=22  ctermfg=Green gui=bold guibg=DarkGreen guifg=Green
 autocmd ColorScheme * hi DiffChange term=bold cterm=bold ctermbg=24  ctermfg=Cyan  gui=bold guibg=DarkCyan  guifg=Cyan
