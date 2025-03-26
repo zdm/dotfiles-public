@@ -24,6 +24,9 @@ return {
             cmp.setup( {
                 snippet = {
                     expand = function ( args )
+                        -- XXX native snippet
+                        -- vim.snippet.expand( args.body )
+
                         vim.fn[ "vsnip#anonymous" ]( args.body )
                     end,
                 },
