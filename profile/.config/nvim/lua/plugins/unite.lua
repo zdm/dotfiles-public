@@ -57,6 +57,8 @@ return {
         dependencies = {
             "shougo/unite.vim"
         },
+
+        -- TODO: rename to init, https://github.com/folke/lazy.nvim/issues/1958
         config = function ()
             vim.g[ "neomru#file_mru_path"] = vim.g.unite_data_directory .. "/neomru/file"
             vim.g[ "neomru#directory_mru_path"] = vim.g.unite_data_directory .. "/neomru/directory"
