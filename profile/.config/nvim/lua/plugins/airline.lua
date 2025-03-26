@@ -9,9 +9,6 @@ return {
             vim.g[ "airline#extensions#whitespace#enabled" ] = 0
             vim.g[ "airline#extensions#coc#enabled" ] = 0
 
-            -- disable gvim tabbar, comment this if tabline is not enabled
-            -- vim.opt.guioptions:remove( { "e" } )
-
             vim.g[ "airline#extensions#tabline#enabled" ] = 1
             vim.g[ "airline#extensions#tabline#show_buffers" ] = 0
             vim.g[ "airline#extensions#tabline#show_splits" ] = 0

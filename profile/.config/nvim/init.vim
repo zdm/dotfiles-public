@@ -20,7 +20,6 @@ set encoding=utf-8
 " terminal, gui {{{
 autocmd GUIEnter * simalt ~X
 set guifont=Liberation\ Mono:h10:cRUSSIAN
-set guioptions=ceMgt
 
 set nocompatible
 
@@ -29,7 +28,7 @@ set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,a:blinkwait700-blinko
 set termguicolors
 
 if has('win16') || has('win32') || has('win64')
-    source $VIMRUNTIME/mswin.vim
+    source $VIMRUNTIME/scripts/mswin.vim
 endif
 " }}}
 
