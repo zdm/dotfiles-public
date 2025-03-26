@@ -34,6 +34,8 @@ return {
             local ft = require( "Comment.ft" )
 
             ft.set( "dosbatch", ":: %s" )
+            ft.set( "nginx", "# %s" )
+            ft.set( "powershell", "# %s" )
 
             -- XXX
             -- let g:tcomment#replacements_xml = {
