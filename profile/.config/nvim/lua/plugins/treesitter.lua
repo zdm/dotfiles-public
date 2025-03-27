@@ -113,6 +113,10 @@ return {
             vim.api.nvim_create_autocmd( { "FileType" }, {
                 group = gid,
                 callback = function ()
+                    if require( "nvim-treesitter.parsers" ).has_parser() then
+                        vim.treesitter.get_parser():parse()
+                    end
+
                     updateFolds( true )
                 end
             } )
