@@ -244,6 +244,14 @@ nnoremap <expr> <Down> v:count ? 'j' : 'gj'
 func! SyntaxRefresh ()
     let l:cursor_pos = getpos( "." )
 
+    " refresh treesitter, if used
+lua << EOF
+    if require( "utils" ).hasTreesitter( 0 ) then
+        require( "utils" ).parseTreesitter( 0, true )
+    end
+EOF
+
+    " refresh syntax, if used
     if getbufvar( "%", "&syntax" ) == "on"
         syn sync fromstart
     endif

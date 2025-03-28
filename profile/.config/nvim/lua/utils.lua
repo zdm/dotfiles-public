@@ -14,11 +14,11 @@ M.hasTreesitter = function ( bufnr )
     end
 end
 
-M.parseTreesitter = function ( bufnr )
+M.parseTreesitter = function ( bufnr, range )
     local parser = vim.treesitter.get_parser( bufnr )
 
     -- XXX https://neovim.io/doc/user/treesitter.html#LanguageTree%3Aparse()
-    parser:parse()
+    parser:parse( range )
 end
 
 return M

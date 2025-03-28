@@ -110,11 +110,11 @@ return {
                 vim.b.folds_update_pending = false
             end
 
-            vim.api.nvim_create_autocmd( { "FileType" }, {
+            vim.api.nvim_create_autocmd( "FileType", {
                 group = gid,
-                callback = function ()
-                    if require( "nvim-treesitter.parsers" ).has_parser() then
-                        vim.treesitter.get_parser():parse()
+                callback = function ( ev )
+                    if require( "utils" ).hasTreesitter( ev.buf ) then
+                        require( "utils" ).parseTreesitter( ev.buf, true )
                     end
 
                     updateFolds( true )
