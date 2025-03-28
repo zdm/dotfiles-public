@@ -247,7 +247,7 @@ func! SyntaxRefresh ()
     " refresh treesitter, if used
 lua << EOF
     if require( "utils" ).hasTreesitter( 0 ) then
-        require( "utils" ).parseTreesitter( 0, true )
+        require( "utils" ).parseTreesitter( 0 )
     end
 EOF
 
