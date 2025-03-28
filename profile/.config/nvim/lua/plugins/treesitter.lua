@@ -88,7 +88,7 @@ return {
             local gid = vim.api.nvim_create_augroup( "folds-updater", {} )
 
             -- XXX not works when text is pasted
-            local updateFolds = function ( force )
+            local updateFolds = function ( bufnr, force )
                 if not force then
                     if vim.wo.foldmethod ~= "expr" then
                         return
@@ -97,10 +97,10 @@ return {
 
                 vim.wo.foldmethod = "manual"
 
-                if require( "nvim-treesitter.parsers" ).has_parser() then
-                    vim.bo.syntax = "off"
+                if require( "utils" ).hasTreesitter( bufnr ) then
+                    vim.bo[ bufnr ].syntax = "off"
 
-                    if vim.bo.filetype == "markdown" then
+                    if vim.bo[ bufnr ].filetype == "markdown" then
                         vim.wo.foldexpr = "StackedMarkdownFolds()"
                     else
                         vim.wo.foldexpr = "nvim_treesitter#foldexpr()"
@@ -108,14 +108,14 @@ return {
 
                     vim.wo.foldmethod = "expr"
                 else
-                    vim.bo.syntax = "on"
+                    vim.bo[ bufnr ].syntax = "on"
                     vim.wo.foldmethod = "syntax"
                 end
 
                 -- open fold under the cursor
                 vim.cmd.normal( "zv" )
 
-                vim.b.folds_update_pending = false
+                vim.b[ bufnr ].folds_update_pending = false
             end
 
             vim.api.nvim_create_autocmd( "FileType", {
@@ -125,7 +125,7 @@ return {
                         require( "utils" ).parseTreesitter( ev.buf, true )
                     end
 
-                    updateFolds( true )
+                    updateFolds( ev.buf, true )
                 end
             } )
 
@@ -133,26 +133,26 @@ return {
                 group = gid,
                 pattern = "*:n",
                 callback = function( ev )
-                    if vim.b.folds_update_pending then
-                        updateFolds()
+                    if vim.b[ ev.buf ].folds_update_pending then
+                        updateFolds( ev.buf )
                     end
                 end
             } )
 
             vim.api.nvim_create_autocmd( "TextChangedI", {
                 group = gid,
-                callback = function ()
-                    vim.b.folds_update_pending = true
+                callback = function ( ev )
+                    vim.b[ ev.buf ].folds_update_pending = true
                 end
             } )
 
-            -- XXX produces enexpected garbage
+            -- XXX produces unexpected garbage
             -- vim.api.nvim_create_autocmd( "TextChanged", {
             --     group = gid,
-            --     callback = function ()
-            --         vim.b.folds_update_pending = true
+            --     callback = function ( ev )
+            --         vim.b[ ev.buf ].folds_update_pending = true
 
-            --         updateFolds()
+            --         updateFolds( ev.buf )
             --     end
             -- } )
         end,
