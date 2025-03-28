@@ -89,27 +89,33 @@ return {
 
             -- XXX not works when text is pasted
             local updateFolds = function ( bufnr, force )
+                if not bufnr then
+                    bufnr = vim.api.nvim_get_current_buf()
+                end
+
+                local winid = vim.fn.bufwinid( bufnr )
+
                 if not force then
-                    if vim.wo.foldmethod ~= "expr" then
+                    if vim.wo[ winid ].foldmethod ~= "expr" then
                         return
                     end
                 end
 
-                vim.wo.foldmethod = "manual"
+                vim.wo[ winid ].foldmethod = "manual"
 
                 if require( "utils" ).hasTreesitter( bufnr ) then
                     vim.bo[ bufnr ].syntax = "off"
 
                     if vim.bo[ bufnr ].filetype == "markdown" then
-                        vim.wo.foldexpr = "StackedMarkdownFolds()"
+                        vim.wo[ winid ].foldexpr = "StackedMarkdownFolds()"
                     else
-                        vim.wo.foldexpr = "nvim_treesitter#foldexpr()"
+                        vim.wo[ winid ].foldexpr = "nvim_treesitter#foldexpr()"
                     end
 
-                    vim.wo.foldmethod = "expr"
+                    vim.wo[ winid ].foldmethod = "expr"
                 else
                     vim.bo[ bufnr ].syntax = "on"
-                    vim.wo.foldmethod = "syntax"
+                    vim.wo[ winid ].foldmethod = "syntax"
                 end
 
                 -- open fold under the cursor
