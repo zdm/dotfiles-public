@@ -13,7 +13,7 @@ if not ( vim.uv or vim.loop ).fs_stat( lazypath ) then
 
         vim.fn.getchar()
 
-        os.exit(1)
+        os.exit( 1 )
     end
 end
 
@@ -22,6 +22,7 @@ vim.opt.rtp:prepend( lazypath )
 vim.g.mapleader = "\\"
 vim.g.maplocalleader = "\\"
 
+-- NOTE: https://lazy.folke.io/configuration
 require( "lazy" ).setup( {
     lockfile = vim.fn.stdpath( "data" ) .. "/lazy/lazy-lock.json",
     spec = {
