@@ -90,7 +90,7 @@ set noswapfile
 
 " undo
 set undofile
-if !isdirectory( stdpath( "data" ) . "/undo" ) | call mkdir(stdpath("data") . "/undo", "p", 0700) | endif
+if !isdirectory( stdpath( "data" ) . "/undo" ) | call mkdir( stdpath( "data" ) . "/undo", "p", 0700 ) | endif
 exec "set undodir=" . stdpath( "data" ) . "/undo"
 
 " set cryptmethod=blowfish2 " not supported in nvim
