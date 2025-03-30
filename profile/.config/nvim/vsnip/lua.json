@@ -1,0 +1,6 @@
+{
+    "vim.print( $1 )": {
+        "prefix": "vim.print",
+        "body": "vim.print( $1 )"
+    }
+}

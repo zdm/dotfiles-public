@@ -4,7 +4,9 @@ return {
         dependencies = {
             "hrsh7th/cmp-vsnip",
             {
-                "hrsh7th/vim-vsnip",
+                -- "hrsh7th/vim-vsnip",
+                "zdm/vim-vsnip",
+                dir = "d:/projects/zdm/vim-vsnip",
                 init = function ()
                     vim.g.vsnip_snippet_dir = vim.fn.stdpath( "config" ) .. "/vsnip"
                 end
