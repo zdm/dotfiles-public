@@ -9,6 +9,11 @@ return {
                 dir = "d:/projects/zdm/vim-vsnip",
                 init = function ()
                     vim.g.vsnip_snippet_dir = vim.fn.stdpath( "config" ) .. "/vsnip"
+
+                    vim.g.vsnip_filetypes = {
+                        [ "vue" ] = { "html", "vue/html" },
+                        [ "vue/javascript" ] = { "javascript", "vue/javascript" },
+                    }
                 end
             },
             "hrsh7th/cmp-calc",
