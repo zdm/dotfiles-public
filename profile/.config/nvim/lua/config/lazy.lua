@@ -26,13 +26,20 @@ vim.g.maplocalleader = "\\"
 -- NOTE: https://lazy.folke.io/configuration
 require( "lazy" ).setup( {
     lockfile = root .. "/lazy-lock.json",
+    defaults = {
+        lazy = false,
+    },
     spec = {
         {
             import = "plugins"
         },
     },
+    install = {
+        missing = true,
+    },
     checker = {
-        enabled = false
+        enabled = false,
+        notify = true,
     },
     change_detection = {
         enabled = true,
