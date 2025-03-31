@@ -14,7 +14,9 @@
         <link href="" type="text/css" rel="stylesheet" media="all" />
         <script src="" type="text/javascript"></script>
 
-        <style type="text/css"></style>
+        <style type="text/css">
+
+        </style>
     </head>
     <body>
         <script type="text/javascript">
@@ -22,4 +24,4 @@
         </script>
     </body>
 </html>
-" cursor: 21 27
+" cursor: 23 1
