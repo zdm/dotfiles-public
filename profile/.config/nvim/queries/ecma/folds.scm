@@ -21,6 +21,8 @@
   ; (object)
   (generator_function)
   (generator_function_declaration)
+
+  ; NOTE: additions
   (template_string)
   (comment)
 ] @fold

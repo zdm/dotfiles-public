@@ -5,5 +5,8 @@
   ; (for_statement)
   ; (while_statement)
   ; (c_style_for_statement)
-  (heredoc_redirect)
+
+  ; NOTE: additions
+  ; (heredoc_redirect)
+  (heredoc_body)
 ] @fold
