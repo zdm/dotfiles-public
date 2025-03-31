@@ -21,6 +21,8 @@ return {
 
                 -- XXX: escape commented strings
                 -- XXX: https://github.com/numToStr/Comment.nvim/issues/503
+                -- "*/" -> "*\/"
+                -- "-->" -> "--\>"
                 -- post_hook = function ( ctx )
                 -- end
             } )
@@ -46,12 +48,6 @@ return {
             ft.set( "dosbatch", ":: %s" )
             ft.set( "nginx", "# %s" )
             ft.set( "powershell", "# %s" )
-
-            -- XXX
-            -- let g:tcomment#replacements_xml = {
-            -- \   '<!--': '<!-&#45;',
-            -- \   '-->': '&#45;->'
-            -- \ }
         end,
     },
 }
