@@ -18,6 +18,11 @@ return {
                     extra = false,
                 },
                 pre_hook = require( "ts_context_commentstring.integrations.comment_nvim" ).create_pre_hook(),
+
+                -- XXX: escape commented strings
+                -- XXX: https://github.com/numToStr/Comment.nvim/issues/503
+                -- post_hook = function ( ctx )
+                -- end
             } )
 
             local api = require( "Comment.api" )
