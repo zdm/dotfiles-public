@@ -33,6 +33,11 @@ return {
                 vim.cmd( "normal! j" )
             end )
 
+            vim.keymap.set( { "n", "i" }, "<Leader>cc", function ()
+                api.toggle.blockwise.current()
+                vim.cmd( "normal! j" )
+            end )
+
             vim.keymap.set( "v", "<Leader>c", api.call( "toggle.linewise", "g@" ), { expr = true } )
             vim.keymap.set( "v", "<Leader>cc", api.call( "toggle.blockwise", "g@" ), { expr = true } )
 
