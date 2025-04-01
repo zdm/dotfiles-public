@@ -51,14 +51,14 @@ endfunc
 
 func! s:check_channel ()
 
-    " start RPC server
+    " start LSP server
     if !s:check_socket()
-        echom "Starting RPC server"
+        echom "Starting LSP server"
 
         if has( 'win16' ) || has( 'win32' ) || has( 'win64' )
-            let s:job = jobstart( "softvisio-cli.cmd rpc start" )
+            let s:job = jobstart( "softvisio-cli.cmd lsp start" )
         else
-            let s:job = jobstart( "softvisio-cli rpc start" )
+            let s:job = jobstart( "softvisio-cli lsp start" )
         endif
 
         sleep 3
@@ -72,7 +72,7 @@ func! s:check_channel ()
         if s:check_socket()
             break
         else
-            echom "Connecting to the RPC server"
+            echom "Connecting to the LSP server"
 
             sleep 1
         endif
@@ -83,7 +83,7 @@ func! s:check_channel ()
         silent! redraw
     else
         echohl ErrorMsg
-        echo "Failed to connect to the RPC server"
+        echo "Failed to connect to the LSP server"
         echohl None
     endif
 
