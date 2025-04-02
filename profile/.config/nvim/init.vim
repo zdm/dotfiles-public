@@ -42,33 +42,13 @@ set foldcolumn=1
 filetype plugin indent on
 set modeline
 
-" colors {{{
 syntax manual
 
+" colors
 set background=dark
-
 set cursorline
 set nocursorcolumn
 set hlsearch
-
-" diff
-autocmd ColorScheme * hi DiffAdd    term=bold cterm=bold ctermbg=22  ctermfg=Green gui=bold guibg=DarkGreen guifg=Green
-autocmd ColorScheme * hi DiffChange term=bold cterm=bold ctermbg=24  ctermfg=Cyan  gui=bold guibg=DarkCyan  guifg=Cyan
-autocmd ColorScheme * hi DiffDelete term=bold cterm=bold ctermbg=124 ctermfg=Red   gui=bold guibg=DarkRed   guifg=Red
-
-autocmd ColorScheme * hi CursorLine term=NONE cterm=bold ctermbg=NONE ctermfg=NONE gui=bold guibg=Grey25 guifg=NONE
-
-autocmd ColorScheme * hi SignColumn term=NONE cterm=bold ctermbg=NONE ctermfg=NONE gui=bold guibg=NONE guifg=NONE
-
-autocmd ColorScheme * hi Folded term=NONE cterm=bold ctermbg=NONE ctermfg=178 gui=NONE guibg=Grey30 guifg=Gold
-
-colorscheme desert
-
-hi Pmenu guifg=grey100 guibg=grey10
-hi PmenuSel gui=bold guifg=grey100 guibg=grey45
-hi PmenuSbar guifg=grey100 guibg=grey10
-hi PmenuThumb guifg=grey100
-" }}}
 
 " backspace and cursor keys wrap to previous/next line
 set backspace=indent,eol,start whichwrap+=<,>,[,]
