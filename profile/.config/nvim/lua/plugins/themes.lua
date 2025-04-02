@@ -66,8 +66,20 @@ vim.api.nvim_create_autocmd( "TextYankPost", {
 
 return {
     {
-        "tanvirtin/monokai.nvim",
+        "bluz71/vim-nightfly-colors",
         -- enabled = false,
+        priority = 100,
+        init = function ()
+            vim.g.nightflyCursorColor = true
+            vim.g.nightflyNormalFloat = true
+        end,
+        config = function ()
+            vim.cmd.colorscheme( "nightfly" )
+        end
+    },
+    {
+        "tanvirtin/monokai.nvim",
+        enabled = false,
         priority = 100,
         config = function ()
             require( "monokai" ).setup( {
