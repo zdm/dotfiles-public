@@ -1,13 +1,14 @@
 return {
     {
         "nvim-lualine/lualine.nvim",
+        enabled = false,
         dependencies = {
             "nvim-tree/nvim-web-devicons",
         },
         config = function ()
             require( "lualine" ).setup( {
                 options = {
-                    icons_enabled = true,
+                    icons_enabled = false,
                     theme = "auto",
                     component_separators = "", -- { left = "", right = "" },
                     section_separators = "", -- { left = "", right = "" },
@@ -50,7 +51,10 @@ return {
     },
     {
         "vim-airline/vim-airline",
-        enabled = false,
+        -- enabled = false,
+        dependencies = {
+            "vim-airline/vim-airline-themes",
+        },
         init = function ()
             vim.g.airline_theme = "wombat"
             vim.g.airline_symbols_ascii = 1
@@ -80,5 +84,4 @@ return {
             -- autocmd VimEnter * call AirlineInit()
         end
     },
-    { "vim-airline/vim-airline-themes" },
 }
