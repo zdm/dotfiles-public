@@ -12,6 +12,7 @@ let s:channel = 0
 let s:ft_type = {
     \ "javascript": "text/javascript",
     \ "typescript": "application/x-typescript",
+    \ "json": "application/json",
     \ "sh": "application/x-sh",
     \ "ant": "text/xml"
 \ }
