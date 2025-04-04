@@ -1,35 +1,21 @@
 local function configureColors ()
+    local hl = function ( name, options )
+        vim.api.nvim_set_hl( 0, name, options )
+    end
 
     -- comments
-    vim.api.nvim_set_hl( 0, "@comment.error", { bg = "#ff0000", fg = "#000000" } )
-    vim.api.nvim_set_hl( 0, "@comment.warning", { bg = "#ba8e23", fg = "#000000" } )
-    vim.api.nvim_set_hl( 0, "@comment.note", { fg = "#ae81ff" } )
-    vim.api.nvim_set_hl( 0, "@comment.todo", { bg = "#eeee00", fg = "#ff0000" } )
-    vim.api.nvim_set_hl( 0, "@string.special.url", { underline = true, fg = "#ae81ff" } )
-
-    do return end
+    hl( "@comment.error", { bg = "#ff0000", fg = "#000000" } )
+    hl( "@comment.warning", { bg = "#ba8e23", fg = "#000000" } )
+    hl( "@comment.note", { fg = "#ae81ff" } )
+    hl( "@comment.todo", { bg = "#eeee00", fg = "#ff0000" } )
+    hl( "@string.special.url", { underline = true, fg = "#ae81ff" } )
 
     -- diff
-    vim.cmd.highlight( {
-        "DiffAdd",
-        "term=bold",
-        "cterm=bold", "ctermbg=22",      "ctermfg=Green",
-        "gui=bold",   "guibg=DarkGreen", "guifg=Green"
-    } )
+    hl( "DiffAdd", { bold = true, bg = "DarkGreen", fg = "White" } )
+    hl( "DiffChange", { bold = true, bg = "DarkCyan", fg = "White" } )
+    hl( "DiffDelete", { bold = true, bg = "DarkRed", fg = "White" } )
 
-    vim.cmd.highlight( {
-        "DiffChange",
-        "term=bold",
-        "cterm=bold", "ctermbg=24",     "ctermfg=Cyan",
-        "gui=bold",   "guibg=DarkCyan", "guifg=Cyan"
-    } )
-
-    vim.cmd.highlight( {
-        "DiffDelete",
-        "term=bold",
-        "cterm=bold", "ctermbg=124",   "ctermfg=Red",
-        "gui=bold",   "guibg=DarkRed", "guifg=Red"
-    } )
+    do return end
 
     vim.cmd.highlight( {
         "CursorLine",
