@@ -1,5 +1,14 @@
 local function configureColors ()
 
+    -- comments
+    vim.api.nvim_set_hl( 0, "@comment.error", { bg = "#ff0000", fg = "#000000" } )
+    vim.api.nvim_set_hl( 0, "@comment.warning", { bg = "#ba8e23", fg = "#000000" } )
+    vim.api.nvim_set_hl( 0, "@comment.note", { fg = "#ae81ff" } )
+    vim.api.nvim_set_hl( 0, "@comment.todo", { bg = "#eeee00", fg = "#ff0000" } )
+    vim.api.nvim_set_hl( 0, "@string.special.url", { underline = true, fg = "#ae81ff" } )
+
+    do return end
+
     -- diff
     vim.cmd.highlight( {
         "DiffAdd",
@@ -49,9 +58,9 @@ local function configureColors ()
     vim.cmd.highlight( { "PmenuThumb", "guifg=grey100" } )
 end
 
--- vim.api.nvim_create_autocmd( "ColorScheme", {
---     callback = configureColors
--- } )
+vim.api.nvim_create_autocmd( "ColorScheme", {
+    callback = configureColors
+} )
 
 vim.api.nvim_create_autocmd( "TextYankPost", {
     callback = function ( ev )

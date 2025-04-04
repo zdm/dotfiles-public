@@ -13,7 +13,7 @@ syn match dosbatchRemComment "\s@rem\($\|\s.*$\)"lc=5 contains=commentError,comm
 
 syn match dosbatchColonComment "\s*:\s*:.*$" contains=commentError,commentWarning,commentNote,commentTodo,dosbatchSpecialChar,@dosbatchNumber,dosbatchVariable,dosbatchArgument,@Spell
 
-hi link commentError DiagnosticError
-hi link commentWarning DiagnosticWarn
-hi link commentNote DiagnosticInfo
-hi link commentTodo Todo
+hi link commentError @comment.error
+hi link commentWarning @comment.warning
+hi link commentNote @comment.note
+hi link commentTodo @comment.todo
