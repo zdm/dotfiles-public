@@ -1,7 +1,11 @@
 return {
-    { "tpope/vim-fugitive" },
+    {
+        "tpope/vim-fugitive",
+        enabled = false,
+    },
     {
         "mhinz/vim-signify",
+        enabled = false,
         init = function ()
             vim.g.signify_vcs_list = { "git" }
             vim.g.signify_realtime = 1
@@ -9,7 +13,7 @@ return {
     },
     {
         "lewis6991/gitsigns.nvim",
-        enabled = false,
+        -- enabled = false,
         config = function ()
             require( "gitsigns" ).setup( {
                 signs = {
