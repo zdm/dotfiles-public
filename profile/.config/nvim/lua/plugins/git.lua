@@ -12,7 +12,9 @@ return {
         end,
     },
     {
-        "lewis6991/gitsigns.nvim",
+        -- "lewis6991/gitsigns.nvim",
+        "zdm/gitsigns.nvim",
+        dir = "d:/projects/zdm/gitsigns.nvim",
         -- enabled = false,
         config = function ()
             require( "gitsigns" ).setup( {
