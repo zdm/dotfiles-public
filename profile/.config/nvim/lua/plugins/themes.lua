@@ -4,10 +4,10 @@ local function configureColors ()
     end
 
     -- comments
-    hl( "@comment.error", { bg = "#ff0000", fg = "#000000" } )
-    hl( "@comment.warning", { bg = "#ba8e23", fg = "#000000" } )
+    hl( "@comment.error", { bg = "DarkRed", fg = "White" } )
+    hl( "@comment.warning", { bg = "DarkYellow", fg = "Black" } )
     hl( "@comment.note", { fg = "#ae81ff" } )
-    hl( "@comment.todo", { bg = "#eeee00", fg = "#ff0000" } )
+    hl( "@comment.todo", { bg = "DarkYellow", fg = "DarkRed" } )
     hl( "@string.special.url", { underline = true, fg = "#ae81ff" } )
 
     -- diff
