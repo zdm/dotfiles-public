@@ -14,10 +14,12 @@ return {
     {
         -- "lewis6991/gitsigns.nvim",
         "zdm/gitsigns.nvim",
-        -- dir = "d:/projects/zdm/gitsigns.nvim",
+        dir = "d:/projects/zdm/gitsigns.nvim",
         -- enabled = false,
         config = function ()
-            require( "gitsigns" ).setup( {
+            local gitsigns = require( "gitsigns" )
+
+            gitsigns.setup( {
                 signs = {
                     add          = { text = "┃" },
                     change       = { text = "┃" },
@@ -35,16 +37,16 @@ return {
                     untracked    = { text = "┆" },
                 },
                 signs_staged_enable = true,
-                signcolumn = true,  -- Toggle with `:Gitsigns toggle_signs`
-                numhl      = true, -- Toggle with `:Gitsigns toggle_numhl`
-                linehl     = true, -- Toggle with `:Gitsigns toggle_linehl`
-                word_diff  = true, -- Toggle with `:Gitsigns toggle_word_diff`
+                signcolumn = true,
+                numhl      = true,
+                linehl     = true,
+                word_diff  = true,
                 watch_gitdir = {
                     follow_files = true
                 },
                 auto_attach = true,
                 attach_to_untracked = false,
-                current_line_blame = true, -- Toggle with `:Gitsigns toggle_current_line_blame`
+                current_line_blame = false,
                 current_line_blame_opts = {
                     virt_text = true,
                     virt_text_pos = "eol", -- "eol", "overlay", "right_align"
@@ -59,14 +61,52 @@ return {
                 status_formatter = nil, -- Use default
                 max_file_length = 40000, -- Disable if file is longer than this (in lines)
                 preview_config = {
-                    -- Options passed to nvim_open_win
                     border = "single",
                     style = "minimal",
                     relative = "cursor",
                     row = 0,
                     col = 1
                 },
+
                 debug_mode = false,
+
+                on_attach = function ( bufnr )
+                    vim.keymap.set( "n", "<Leader>g<Up>", function ()
+                            gitsigns.nav_hunk( "prev", {
+                                foldopen = true,
+                                preview = false,
+                            } )
+                        end, {
+                        buffer = bufnr
+                    } )
+
+                    vim.keymap.set( "n", "<Leader>g<Down>", function ()
+                            gitsigns.nav_hunk( "next", {
+                                foldopen = true,
+                                preview = false,
+                            } )
+                        end, {
+                        buffer = bufnr
+                    } )
+
+                    vim.keymap.set( "n", "<Leader>gb", function ()
+                            gitsigns.blame()
+                        end, {
+                        buffer = bufnr
+                    } )
+
+                    vim.keymap.set( "n", "<Leader>gd", function ()
+                            gitsigns.diffthis()
+                        end, {
+                        buffer = bufnr
+                    } )
+
+                    vim.keymap.set( "n", "<Leader>gg", function ()
+                            gitsigns.preview_hunk()
+                        end, {
+                        buffer = bufnr
+                    } )
+                end
             } )
         end,
     }
