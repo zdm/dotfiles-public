@@ -152,18 +152,22 @@ return {
                 end
             } )
 
-            vim.keymap.set( "n", "za", function ()
-                    if vim.b.folds_update_pending then
-                        updateFolds()
-                    end
+            local suffixes = { "a" }
 
-                    return "za"
-                end, {
-                    expr = true,
-                    noremap = true,
-                    silent = true,
-                }
-            )
+            for index, suffix in pairs( suffixes ) do
+                vim.keymap.set( "n", "z" .. suffix, function ()
+                        if vim.b.folds_update_pending then
+                            updateFolds()
+                        end
+
+                        return "z" .. suffix
+                    end, {
+                        expr = true,
+                        noremap = true,
+                        silent = true,
+                    }
+                )
+            end
 
         end,
 
