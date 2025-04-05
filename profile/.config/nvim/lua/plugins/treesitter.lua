@@ -152,7 +152,7 @@ return {
                 end
             } )
 
-            local suffixes = { "a" }
+            local suffixes = { "a", "A" }
 
             for index, suffix in pairs( suffixes ) do
                 vim.keymap.set( "n", "z" .. suffix, function ()
