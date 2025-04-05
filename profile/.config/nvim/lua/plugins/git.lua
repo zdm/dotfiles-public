@@ -1,21 +1,8 @@
 return {
     {
-        "tpope/vim-fugitive",
-        enabled = false,
-    },
-    {
-        "mhinz/vim-signify",
-        enabled = false,
-        init = function ()
-            vim.g.signify_vcs_list = { "git" }
-            vim.g.signify_realtime = 1
-        end,
-    },
-    {
         -- "lewis6991/gitsigns.nvim",
         "zdm/gitsigns.nvim",
-        -- dir = "d:/projects/zdm/gitsigns.nvim",
-        -- enabled = false,
+        dir = "d:/projects/zdm/gitsigns.nvim",
         config = function ()
             local gitsigns = require( "gitsigns" )
 
