@@ -145,22 +145,26 @@ return {
                 end
             } )
 
-            vim.api.nvim_create_autocmd( "TextChangedI", {
+            vim.api.nvim_create_autocmd( { "TextChanged", "TextChangedI" }, {
                 group = gid,
                 callback = function ( ev )
                     vim.b[ ev.buf ].folds_update_pending = true
                 end
             } )
 
-            -- XXX produces unexpected garbage
-            -- vim.api.nvim_create_autocmd( "TextChanged", {
-            --     group = gid,
-            --     callback = function ( ev )
-            --         vim.b[ ev.buf ].folds_update_pending = true
+            vim.keymap.set( "n", "za", function ()
+                    if vim.b.folds_update_pending then
+                        updateFolds()
+                    end
 
-            --         updateFolds( ev.buf )
-            --     end
-            -- } )
+                    return "za"
+                end, {
+                    expr = true,
+                    noremap = true,
+                    silent = true,
+                }
+            )
+
         end,
 
         build = ":TSUpdate",
