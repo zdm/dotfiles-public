@@ -2,7 +2,7 @@ return {
     {
         -- "lewis6991/gitsigns.nvim",
         "zdm/gitsigns.nvim",
-        dir = "d:/projects/zdm/gitsigns.nvim",
+        -- dir = "d:/projects/zdm/gitsigns.nvim",
         config = function ()
             local gitsigns = require( "gitsigns" )
 
