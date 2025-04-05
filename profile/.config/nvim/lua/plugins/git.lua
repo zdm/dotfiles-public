@@ -71,7 +71,7 @@ return {
                 debug_mode = false,
 
                 on_attach = function ( bufnr )
-                    vim.keymap.set( "n", "<Leader>g<PageUp>", function ()
+                    vim.keymap.set( "n", "[g", function ()
                             gitsigns.nav_hunk( "prev", {
                                 foldopen = true,
                                 preview = false,
@@ -80,7 +80,7 @@ return {
                         buffer = bufnr
                     } )
 
-                    vim.keymap.set( "n", "<Leader>g<PageDown>", function ()
+                    vim.keymap.set( "n", "]g", function ()
                             gitsigns.nav_hunk( "next", {
                                 foldopen = true,
                                 preview = false,
