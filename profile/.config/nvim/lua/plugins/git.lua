@@ -96,7 +96,9 @@ return {
                     } )
 
                     vim.keymap.set( "n", "<Leader>gd", function ()
-                            gitsigns.diffthis()
+                            gitsigns.diffthis( nil, {
+                                vertical = true,
+                            } )
                         end, {
                         buffer = bufnr
                     } )
