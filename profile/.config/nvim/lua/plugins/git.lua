@@ -73,8 +73,12 @@ return {
                 on_attach = function ( bufnr )
                     vim.keymap.set( "n", "[g", function ()
                             gitsigns.nav_hunk( "prev", {
+                                wrap = false,
+                                navigation_message = true,
                                 foldopen = true,
                                 preview = false,
+                                greedy = false,
+                                target = "all",
                             } )
                         end, {
                         buffer = bufnr
@@ -82,8 +86,12 @@ return {
 
                     vim.keymap.set( "n", "]g", function ()
                             gitsigns.nav_hunk( "next", {
+                                wrap = false,
+                                navigation_message = true,
                                 foldopen = true,
                                 preview = false,
+                                greedy = false,
+                                target = "all",
                             } )
                         end, {
                         buffer = bufnr
