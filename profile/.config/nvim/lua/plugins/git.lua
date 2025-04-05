@@ -25,8 +25,8 @@ return {
                 },
                 signs_staged_enable = true,
                 signcolumn = true,
-                numhl      = true,
-                linehl     = true,
+                numhl      = false,
+                linehl     = false,
                 word_diff  = true,
                 watch_gitdir = {
                     follow_files = true
