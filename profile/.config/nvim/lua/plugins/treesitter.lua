@@ -87,8 +87,7 @@ return {
 
             local gid = vim.api.nvim_create_augroup( "folds-updater", {} )
 
-            -- XXX not works when text is pasted
-            local updateFolds = function ( bufnr, force )
+            local updateFolds = function ( bufnr, force, no_unfold )
                 if not bufnr then
                     bufnr = vim.api.nvim_get_current_buf()
                 end
@@ -119,7 +118,9 @@ return {
                 end
 
                 -- open fold under the cursor
-                vim.cmd.normal( "zv" )
+                if not no_unfold then
+                    vim.cmd.normal( "zv" )
+                end
 
                 vim.b[ bufnr ].folds_update_pending = false
             end
@@ -157,7 +158,7 @@ return {
             for index, suffix in pairs( suffixes ) do
                 vim.keymap.set( "n", "z" .. suffix, function ()
                         if vim.b.folds_update_pending then
-                            updateFolds()
+                            updateFolds( nil, false, true )
                         end
 
                         return "z" .. suffix
