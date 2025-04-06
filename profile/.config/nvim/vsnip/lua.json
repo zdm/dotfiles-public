@@ -1,6 +1,14 @@
 {
     "vim.print( $1 )": {
-        "prefix": "vim.print",
+        "prefix": "print",
         "body": "vim.print( $1 )"
+    },
+    "vim.json.encode( $1 )": {
+        "prefix": "json.encode",
+        "body": "vim.json.encode( $1 )"
+    },
+    "vim.json.decode( $1 )": {
+        "prefix": "json.decode",
+        "body": "vim.json.decode( $1 )"
     }
 }
