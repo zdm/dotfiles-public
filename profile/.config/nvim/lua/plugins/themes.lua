@@ -62,7 +62,7 @@ vim.api.nvim_create_autocmd( "TextYankPost", {
 return {
     {
         "bluz71/vim-nightfly-colors",
-        -- enabled = false,
+        enabled = false,
         priority = 100,
         init = function ()
             vim.g.nightflyCursorColor = true
@@ -71,6 +71,25 @@ return {
         config = function ()
             vim.cmd.colorscheme( "nightfly" )
         end
+    },
+    {
+        "EdenEast/nightfox.nvim",
+        enabled = false,
+        priority = 100,
+        config = function ()
+            require( "nightfox" ).setup( {
+                options = {
+                    styles = {
+                        comments = "italic",
+                        keywords = "bold",
+                        types = "italic,bold",
+                    }
+                }
+            } )
+
+            vim.cmd.colorscheme( "nightfox" )
+            -- vim.cmd.colorscheme( "carbonfox" )
+        end,
     },
     {
         "tanvirtin/monokai.nvim",
@@ -85,7 +104,7 @@ return {
     },
     {
         "srcery-colors/srcery-vim",
-        enabled = false,
+        -- enabled = false,
         priority = 100,
         config = function ()
             vim.cmd.colorscheme( "srcery" )
