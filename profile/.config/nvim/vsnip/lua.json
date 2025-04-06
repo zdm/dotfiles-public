@@ -1,14 +1,30 @@
 {
+    "shebang": {
+        "prefix": [
+            "#!",
+            "shebang"
+        ],
+        "body": "#!/usr/bin/env lua"
+    },
     "vim.print( $1 )": {
-        "prefix": "print",
+        "prefix": [
+            "vim.print",
+            "print"
+        ],
         "body": "vim.print( $1 )"
     },
     "vim.json.encode( $1 )": {
-        "prefix": "json.encode",
+        "prefix": [
+            "vim.json.encode",
+            "json.encode"
+        ],
         "body": "vim.json.encode( $1 )"
     },
     "vim.json.decode( $1 )": {
-        "prefix": "json.decode",
+        "prefix": [
+            "vim.json.decode",
+            "json.decode"
+        ],
         "body": "vim.json.decode( $1 )"
     }
 }
