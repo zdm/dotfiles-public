@@ -55,7 +55,7 @@ return {
     {
         "shougo/neomru.vim",
         dependencies = {
-            "shougo/unite.vim"
+            "unite.vim"
         },
 
         -- TODO: rename to init, https://github.com/folke/lazy.nvim/issues/1958
@@ -67,7 +67,7 @@ return {
     {
         "shougo/unite-outline",
         dependencies = {
-            "shougo/unite.vim"
+            "unite.vim"
         },
         config = function ()
             vim.keymap.set( { "n", "i", "v" }, "<F8>", function ()

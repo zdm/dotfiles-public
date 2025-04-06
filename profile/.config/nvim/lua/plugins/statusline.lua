@@ -54,6 +54,7 @@ return {
         -- enabled = false,
         dependencies = {
             "vim-airline/vim-airline-themes",
+            "gitsigns.nvim",
         },
         init = function ()
             vim.g.airline_theme = "wombat"
