@@ -116,7 +116,7 @@ return {
             vim.g.srcery_inverse = 0
             vim.g.srcery_inverse_matches = 0
             vim.g.srcery_inverse_match_paren = 0
-            vim.g.srcery_bg = { vim.g.srcery_black, vim.g.srcery_black }
+            vim.g.srcery_bg = { "#000000", 0 }
         end,
         config = function ()
             vim.cmd.colorscheme( "srcery" )
