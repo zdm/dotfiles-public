@@ -1,9 +1,10 @@
 local priority = 100
 
+local function hl ( name, options )
+    vim.api.nvim_set_hl( 0, name, options )
+end
+
 local function configureColors ()
-    local hl = function ( name, options )
-        vim.api.nvim_set_hl( 0, name, options )
-    end
 
     -- comments
     hl( "@comment.error", { bg = "DarkRed", fg = "White" } )
@@ -111,8 +112,24 @@ return {
         "srcery-colors/srcery-vim",
         -- enabled = false,
         priority = priority,
+        init = function ()
+            vim.g.srcery_inverse = 0
+            vim.g.srcery_inverse_matches = 0
+            vim.g.srcery_inverse_match_paren = 0
+            vim.g.srcery_bg = { vim.g.srcery_black, 0 }
+        end,
         config = function ()
             vim.cmd.colorscheme( "srcery" )
+
+            hl( "CursorLine", {
+                bg = "Grey7",
+            } )
+
+            hl( "MatchParen", {
+                bold = true,
+                bg = vim.g.srcery_xgray2,
+                fg = vim.g.srcery_bright_magenta,
+            } )
         end
     },
 
