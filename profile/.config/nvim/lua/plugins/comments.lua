@@ -35,13 +35,13 @@ return {
                 vim.cmd( "normal! j" )
             end )
 
-            vim.keymap.set( { "n", "i" }, "<Leader>C", function ()
+            vim.keymap.set( { "n", "i" }, "<Leader>\\c", function ()
                 api.toggle.blockwise.current()
                 vim.cmd( "normal! j" )
             end )
 
             vim.keymap.set( "v", "<Leader>c", api.call( "toggle.linewise", "g@" ), { expr = true } )
-            vim.keymap.set( "v", "<Leader>C", api.call( "toggle.blockwise", "g@" ), { expr = true } )
+            vim.keymap.set( "v", "<Leader>\\c", api.call( "toggle.blockwise", "g@" ), { expr = true } )
 
             local ft = require( "Comment.ft" )
 
