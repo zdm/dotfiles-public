@@ -316,20 +316,11 @@ set title " mandatory for neovim-qt
 
 " folding {{{
 function! FoldText ()
-    let line = getline( v:foldstart )
-    let foldedlinecount = v:foldend - v:foldstart
+    let line = substitute( getline( v:foldstart ), '\t', repeat( " ", &tabstop ), "g" )
 
-    " let nucolwidth = &fdc + &number * &numberwidth
-    " let windowwidth = winwidth( 0 ) - nucolwidth - 3
+    let line = substitute( line, ' \+$', "", "g" )
 
-    " expand tabs into spaces
-    " let onetab = strpart( "          ", 0, &tabstop )
-    " let line = substitute( line, '\t', onetab, "g" )
-
-    " let line = strpart( line, 0, windowwidth - 12 -len( foldedlinecount ) )
-    " let fillcharcount = windowwidth - len( line ) - len( foldedlinecount )
-
-    return line . " ... (" . foldedlinecount . " lines) "
+    return line . " "
 endfunction
 
 set foldtext=FoldText()
