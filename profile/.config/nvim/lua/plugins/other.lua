@@ -34,19 +34,16 @@ return {
     },
 
     {
-        "yggdroot/indentline",
-        init = function ()
-            vim.g.indentLine_enabled = 1
-            -- vim.g.indentLine_char = "│"
-            -- vim.g.indentLine_showFirstIndentLevel = 1
-            -- vim.g.indentLine_fileType = { "pl", "pm", "perl", "js" }
-            vim.g.indentLine_fileTypeExclude = { "json", "markdown" }
-            vim.g.indentLine_faster = 1
-        end,
+        "lukas-reineke/indent-blankline.nvim",
         config = function ()
-            vim.keymap.set( { "n", "i", "v" }, "<Leader>ii", function ()
-                vim.cmd( "IndentLinesToggle" )
-            end, { noremap = true, silent = true } )
+            require( "ibl" ).setup( {
+                indent = {
+                    char = "┊"
+                },
+                scope = {
+                   enabled = false,
+                },
+            } )
         end
     },
 
