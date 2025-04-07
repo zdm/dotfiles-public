@@ -311,6 +311,27 @@ endfunction
 set title " mandatory for neovim-qt
 " }}}
 
+" folding {{{
+function! FoldText ()
+    let line = getline( v:foldstart )
+    let foldedlinecount = v:foldend - v:foldstart
+
+    " let nucolwidth = &fdc + &number * &numberwidth
+    " let windowwidth = winwidth( 0 ) - nucolwidth - 3
+
+    " expand tabs into spaces
+    " let onetab = strpart( "          ", 0, &tabstop )
+    " let line = substitute( line, '\t', onetab, "g" )
+
+    " let line = strpart( line, 0, windowwidth - 12 -len( foldedlinecount ) )
+    " let fillcharcount = windowwidth - len( line ) - len( foldedlinecount )
+
+    return line . " ... (" . foldedlinecount . " lines) "
+endfunction
+
+set foldtext=FoldText()
+" }}}
+
 " prevent create .netrwhist
 let g:netrw_dirhistmax = 0
 
