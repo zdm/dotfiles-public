@@ -52,8 +52,6 @@ return {
 
     { "uguu-org/vim-matrix-screensaver" },
 
-    { "vim-scripts/dirdiff.vim" },
-
     { "zhimsel/vim-stay" },
 
     {
