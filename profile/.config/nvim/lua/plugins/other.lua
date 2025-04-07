@@ -13,6 +13,7 @@ return {
             end, { noremap = true, silent = true } )
         end
     },
+
     {
         "powerman/vim-plugin-viewdoc",
         init = function ()
@@ -27,6 +28,7 @@ return {
             -- endif
         end
     },
+
     {
         "yggdroot/indentline",
         init = function ()
@@ -43,9 +45,13 @@ return {
             end, { noremap = true, silent = true } )
         end
     },
+
     { "uguu-org/vim-matrix-screensaver" },
+
     { "vim-scripts/dirdiff.vim" },
+
     { "zhimsel/vim-stay" },
+
     {
         "lyokha/vim-xkbswitch",
         dependencies = {

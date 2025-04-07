@@ -1,3 +1,5 @@
+local priority = 100
+
 local function configureColors ()
     local hl = function ( name, options )
         vim.api.nvim_set_hl( 0, name, options )
@@ -63,7 +65,7 @@ return {
     {
         "bluz71/vim-nightfly-colors",
         enabled = false,
-        priority = 100,
+        priority = priority,
         init = function ()
             vim.g.nightflyCursorColor = true
             vim.g.nightflyNormalFloat = true
@@ -72,10 +74,11 @@ return {
             vim.cmd.colorscheme( "nightfly" )
         end
     },
+
     {
         "EdenEast/nightfox.nvim",
         enabled = false,
-        priority = 100,
+        priority = priority,
         config = function ()
             require( "nightfox" ).setup( {
                 options = {
@@ -91,10 +94,11 @@ return {
             -- vim.cmd.colorscheme( "carbonfox" )
         end,
     },
+
     {
         "tanvirtin/monokai.nvim",
         enabled = false,
-        priority = 100,
+        priority = priority,
         config = function ()
             require( "monokai" ).setup( {
                 -- palette = require( "monokai" ).pro,
@@ -102,18 +106,20 @@ return {
             } )
         end
     },
+
     {
         "srcery-colors/srcery-vim",
         -- enabled = false,
-        priority = 100,
+        priority = priority,
         config = function ()
             vim.cmd.colorscheme( "srcery" )
         end
     },
+
     {
         "kuznetsss/meadow.nvim",
         enabled = false,
-        priority = 100,
+        priority = priority,
         config = function ()
             require( "meadow" ).setup( {
                 color_saturation = 80, -- contrast (0-100)
