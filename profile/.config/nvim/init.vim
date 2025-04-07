@@ -120,6 +120,9 @@ autocmd GUIEnter * set visualbell t_vb=
 set noautoread " don't reload modified file automatically
 autocmd FocusGained * :checktime " notify on file modified
 
+" set fill char for diff
+set fillchars+=diff:╱
+
 " open new tab with <C-t> {{{
 nnoremap <silent> <C-t> :tabnew<CR>
 inoremap <silent> <C-t> <ESC>:tabnew<CR>a

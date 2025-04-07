@@ -12,12 +12,12 @@ local function configureColors ()
     hl( "@comment.todo", { bg = "DarkYellow", fg = "DarkRed" } )
     hl( "@string.special.url", { underline = true, fg = "#ae81ff" } )
 
+    do return end
+
     -- diff
     hl( "DiffAdd", { bold = true, bg = "DarkGreen", fg = "White" } )
     hl( "DiffChange", { bold = true, bg = "DarkCyan", fg = "White" } )
     hl( "DiffDelete", { bold = true, bg = "DarkRed", fg = "White" } )
-
-    do return end
 
     vim.cmd.highlight( {
         "CursorLine",

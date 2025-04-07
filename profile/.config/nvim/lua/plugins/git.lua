@@ -60,7 +60,7 @@ return {
                 debug_mode = false,
 
                 on_attach = function ( bufnr )
-                    vim.keymap.set( "n", "[g", function ()
+                    vim.keymap.set( "n", "[c", function ()
                             gitsigns.nav_hunk( "prev", {
                                 wrap = false,
                                 navigation_message = true,
@@ -73,7 +73,7 @@ return {
                         buffer = bufnr
                     } )
 
-                    vim.keymap.set( "n", "]g", function ()
+                    vim.keymap.set( "n", "]c", function ()
                             gitsigns.nav_hunk( "next", {
                                 wrap = false,
                                 navigation_message = true,
