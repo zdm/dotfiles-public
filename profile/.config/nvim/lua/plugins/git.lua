@@ -10,12 +10,12 @@ return {
 
             gitsigns.setup( {
                 signs = {
-                    add          = { text = "+" },
-                    change       = { text = "~" },
-                    delete       = { text = "-" },
-                    topdelete    = { text = "-" },
-                    changedelete = { text = "~" },
-                    untracked    = { text = "┆" },
+                    add          = { text = "+", show_count = true },
+                    change       = { text = "~", show_count = true },
+                    delete       = { text = "-", show_count = true },
+                    topdelete    = { text = "-", show_count = true },
+                    changedelete = { text = "~", show_count = true },
+                    untracked    = { text = "┆", show_count = true },
                 },
                 signs_staged = {
                     add          = { text = "+" },
