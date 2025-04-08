@@ -68,6 +68,7 @@ editor       = nvim
 pager        = less --no-init --raw-control-chars --ignore-case --quit-on-intr --squeeze-blank-lines --quit-if-one-screen
 sshCommand   = ssh
 quotePath    = false
+ignoreCase   = true
 
 [credential "helperselector"]
 selected = <no helper>
