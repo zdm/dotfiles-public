@@ -2,6 +2,9 @@ return {
     {
         "nvim-lualine/lualine.nvim",
         -- enabled = false,
+        dependencies = {
+            "gitsigns.nvim",
+        },
         config = function ()
             require( "lualine" ).setup( {
                 options = {
@@ -10,7 +13,7 @@ return {
                     component_separators = "",
                     section_separators = "",
                     disabled_filetypes = {
-                        statusline = {},
+                        statusline = { "unite", "undotree", "help", "man" },
                         winbar = {},
                     },
                     ignore_focus = {},
@@ -34,7 +37,7 @@ return {
                 },
                 inactive_sections = {
                     lualine_a = {},
-                    lualine_b = {},
+                    lualine_b = { "branch", { "diff", colored = false }, "diagnostics" },
                     lualine_c = { { "filename", path = 4 } },
                     lualine_x = {},
                     lualine_y = { "filetype", { "encoding", show_bomb = true }, "fileformat" },
