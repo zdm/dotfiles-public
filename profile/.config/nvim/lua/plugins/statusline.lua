@@ -29,16 +29,16 @@ return {
                     lualine_b = { "branch", { "diff", colored = false }, "diagnostics" },
                     lualine_c = { "filename" },
                     lualine_x = { "filetype", "encoding", "fileformat" },
-                    lualine_y = { "progress" },
-                    lualine_z = { "location" }
+                    lualine_y = {},
+                    lualine_z = { "progress", "location" }
                 },
                 inactive_sections = {
                     lualine_a = {},
                     lualine_b = {},
                     lualine_c = { "filename" },
-                    lualine_x = { "location" },
+                    lualine_x = { "filetype", "encoding", "fileformat" },
                     lualine_y = {},
-                    lualine_z = {}
+                    lualine_z = { "progress", "location" }
                 },
                 tabline = {},
                 winbar = {},

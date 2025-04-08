@@ -1,13 +1,13 @@
 local function progress ()
-    local cur = vim.fn.line( "." )
-    local total = vim.fn.line( "$" )
+    local total_lines = vim.fn.line( "$" )
+    local line = vim.fn.line( "." )
 
-    if cur == 1 then
-        return "1%%"
-    elseif cur == total then
+    if line == 1 then
+        return "  1%%"
+    elseif line == total_lines then
         return "100%%"
     else
-        return string.format( "%2d%%%%", math.floor( cur / total * 100 ) )
+        return string.format( " %2d%%%%", math.floor( line / total_lines * 100 ) )
     end
 end
 

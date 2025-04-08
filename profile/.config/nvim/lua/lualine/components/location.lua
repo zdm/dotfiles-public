@@ -1,9 +1,9 @@
--- Copyright (c) 2020-2021 hoob3rt
--- MIT license, see LICENSE for more details.
-local function location()
-  local line = vim.fn.line('.')
-  local col = vim.fn.charcol('.')
-  return string.format('%3d:%-2d', line, col)
+local function location ()
+    local total_lines = vim.fn.line( "$" )
+    local line = vim.fn.line( "." )
+    local column = vim.fn.charcol( "." )
+
+    return string.format( "ln: %d/%d  cn:%d", total_lines, line, column )
 end
 
 return location
