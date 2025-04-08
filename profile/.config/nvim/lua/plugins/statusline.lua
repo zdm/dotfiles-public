@@ -47,13 +47,11 @@ return {
             } )
         end
     },
-
     {
         "vim-airline/vim-airline",
         enabled = false,
         dependencies = {
             "vim-airline/vim-airline-themes",
-
             "gitsigns.nvim",
         },
         init = function ()

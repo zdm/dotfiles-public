@@ -13,7 +13,6 @@ return {
             end, { noremap = true, silent = true } )
         end
     },
-
     {
         -- "powerman/vim-plugin-viewdoc",
         "zdm/vim-plugin-viewdoc",
@@ -32,7 +31,6 @@ return {
             -- endif
         end
     },
-
     {
         "lukas-reineke/indent-blankline.nvim",
         config = function ()
@@ -46,11 +44,8 @@ return {
             } )
         end
     },
-
     { "uguu-org/vim-matrix-screensaver" },
-
     { "zhimsel/vim-stay" },
-
     {
         "lyokha/vim-xkbswitch",
         dependencies = {

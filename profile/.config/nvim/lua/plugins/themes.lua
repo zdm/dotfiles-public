@@ -75,7 +75,6 @@ return {
             vim.cmd.colorscheme( "nightfly" )
         end
     },
-
     {
         "EdenEast/nightfox.nvim",
         enabled = false,
@@ -95,7 +94,6 @@ return {
             -- vim.cmd.colorscheme( "carbonfox" )
         end,
     },
-
     {
         "tanvirtin/monokai.nvim",
         enabled = false,
@@ -107,7 +105,6 @@ return {
             } )
         end
     },
-
     {
         "srcery-colors/srcery-vim",
         -- enabled = false,
@@ -133,7 +130,6 @@ return {
             } )
         end
     },
-
     {
         "kuznetsss/meadow.nvim",
         enabled = false,

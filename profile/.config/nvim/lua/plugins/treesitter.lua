@@ -4,7 +4,6 @@ return {
         dependencies = {
             "foalford/vim-markdown-folding"
         },
-
         config = function ()
             require( "nvim-treesitter.install" ).prefer_git = false
 
@@ -171,7 +170,6 @@ return {
             end
 
         end,
-
         build = ":TSUpdate",
     },
 }

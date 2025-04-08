@@ -3,7 +3,6 @@ return {
         "hrsh7th/nvim-cmp",
         dependencies = {
             "hrsh7th/cmp-vsnip",
-
             {
                 -- "hrsh7th/vim-vsnip",
                 "zdm/vim-vsnip",
@@ -18,7 +17,6 @@ return {
                     }
                 end
             },
-
             "hrsh7th/cmp-calc",
         },
         init = function ()

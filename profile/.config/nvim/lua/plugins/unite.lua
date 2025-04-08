@@ -52,7 +52,6 @@ return {
             end, { noremap = true, silent = true } )
         end
     },
-
     {
         "shougo/neomru.vim",
         dependencies = {
@@ -65,7 +64,6 @@ return {
             vim.g[ "neomru#directory_mru_path"] = vim.g.unite_data_directory .. "/neomru/directory"
         end
     },
-
     {
         "shougo/unite-outline",
         dependencies = {
