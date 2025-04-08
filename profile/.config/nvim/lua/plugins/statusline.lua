@@ -6,7 +6,7 @@ return {
             require( "lualine" ).setup( {
                 options = {
                     icons_enabled = false,
-                    theme = "wombat",
+                    theme = "material",
                     component_separators = "", -- { left = "", right = "" },
                     section_separators = "", -- { left = "", right = "" },
                     disabled_filetypes = {
@@ -26,9 +26,9 @@ return {
                 },
                 sections = {
                     lualine_a = { "mode" },
-                    lualine_b = { "branch", "diff", "diagnostics" },
+                    lualine_b = { "branch", { "diff", colored = false }, "diagnostics" },
                     lualine_c = { "filename" },
-                    lualine_x = { "encoding", "fileformat", "filetype" },
+                    lualine_x = { "filetype", "encoding", "fileformat" },
                     lualine_y = { "progress" },
                     lualine_z = { "location" }
                 },
