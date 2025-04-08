@@ -7,8 +7,8 @@ return {
                 options = {
                     icons_enabled = false,
                     theme = "material",
-                    component_separators = "", -- { left = "", right = "" },
-                    section_separators = "", -- { left = "", right = "" },
+                    component_separators = "",
+                    section_separators = "",
                     disabled_filetypes = {
                         statusline = {},
                         winbar = {},
@@ -27,17 +27,17 @@ return {
                 sections = {
                     lualine_a = { "mode" },
                     lualine_b = { "branch", { "diff", colored = false }, "diagnostics" },
-                    lualine_c = { "filename" },
-                    lualine_x = { "filetype", { "encoding", show_bomb = true }, "fileformat" },
-                    lualine_y = {},
+                    lualine_c = { { "filename", path = 4 } },
+                    lualine_x = {},
+                    lualine_y = { "filetype", { "encoding", show_bomb = true }, "fileformat" },
                     lualine_z = { "progress", "location" }
                 },
                 inactive_sections = {
                     lualine_a = {},
                     lualine_b = {},
-                    lualine_c = { "filename" },
-                    lualine_x = { "filetype", { "encoding", show_bomb = true }, "fileformat" },
-                    lualine_y = {},
+                    lualine_c = { { "filename", path = 4 } },
+                    lualine_x = {},
+                    lualine_y = { "filetype", { "encoding", show_bomb = true }, "fileformat" },
                     lualine_z = { "progress", "location" }
                 },
                 tabline = {
