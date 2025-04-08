@@ -32,16 +32,16 @@ return {
                     lualine_b = { "branch", { "diff", colored = false }, "diagnostics" },
                     lualine_c = { { "filename", path = 4 } },
                     lualine_x = {},
-                    lualine_y = { "filetype", { "encoding", show_bomb = true }, "fileformat" },
-                    lualine_z = { "progress", "location1" }
+                    lualine_y = { "filetype", { "encoding", show_bomb = true }, "fileformat-1" },
+                    lualine_z = { "progress-1", "location-1" }
                 },
                 inactive_sections = {
                     lualine_a = {},
                     lualine_b = { "branch", { "diff", colored = false }, "diagnostics" },
                     lualine_c = { { "filename", path = 4 } },
                     lualine_x = {},
-                    lualine_y = { "filetype", { "encoding", show_bomb = true }, "fileformat" },
-                    lualine_z = { "progress", "location1" }
+                    lualine_y = { "filetype", { "encoding", show_bomb = true }, "fileformat-1" },
+                    lualine_z = { "progress-1", "location-1" }
                 },
                 tabline = {
                     lualine_a = {
