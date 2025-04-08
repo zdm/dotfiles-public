@@ -1,15 +1,12 @@
 return {
     {
         "nvim-lualine/lualine.nvim",
-        enabled = false,
-        dependencies = {
-            "nvim-tree/nvim-web-devicons",
-        },
+        -- enabled = false,
         config = function ()
             require( "lualine" ).setup( {
                 options = {
                     icons_enabled = false,
-                    theme = "auto",
+                    theme = "wombat",
                     component_separators = "", -- { left = "", right = "" },
                     section_separators = "", -- { left = "", right = "" },
                     disabled_filetypes = {
@@ -20,6 +17,7 @@ return {
                     always_divide_middle = true,
                     always_show_tabline = true,
                     globalstatus = false,
+                    draw_empty = false,
                     refresh = {
                         statusline = 100,
                         tabline = 100,
@@ -52,7 +50,7 @@ return {
 
     {
         "vim-airline/vim-airline",
-        -- enabled = false,
+        enabled = false,
         dependencies = {
             "vim-airline/vim-airline-themes",
 
