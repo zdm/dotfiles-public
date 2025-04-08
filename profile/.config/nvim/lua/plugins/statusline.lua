@@ -28,7 +28,7 @@ return {
                     lualine_a = { "mode" },
                     lualine_b = { "branch", { "diff", colored = false }, "diagnostics" },
                     lualine_c = { "filename" },
-                    lualine_x = { "filetype", "encoding", "fileformat" },
+                    lualine_x = { "filetype", { "encoding", show_bomb = true }, "fileformat" },
                     lualine_y = {},
                     lualine_z = { "progress", "location" }
                 },
@@ -36,7 +36,7 @@ return {
                     lualine_a = {},
                     lualine_b = {},
                     lualine_c = { "filename" },
-                    lualine_x = { "filetype", "encoding", "fileformat" },
+                    lualine_x = { "filetype", { "encoding", show_bomb = true }, "fileformat" },
                     lualine_y = {},
                     lualine_z = { "progress", "location" }
                 },
