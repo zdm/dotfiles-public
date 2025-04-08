@@ -64,8 +64,8 @@ return {
 
             -- extensions
             vim.g[ "airline#extensions#whitespace#enabled" ] = 0
-            vim.g[ "airline#extensions#coc#enabled" ] = 0
-            vim.g[ "airline#extensions#xkblayout#enabled" ] = 0
+            vim.g[ "airline#extensions#branch#enabled" ] = 1
+            vim.g[ "airline#extensions#xkblayout#enabled" ] = 1
 
             -- tabline
             vim.g[ "airline#extensions#tabline#enabled" ] = 1
