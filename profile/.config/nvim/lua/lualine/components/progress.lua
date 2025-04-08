@@ -2,8 +2,6 @@ local function progress ()
     local total_lines = vim.fn.line( "$" )
     local line = vim.fn.line( "." )
 
-vim.print( "--- progress" )
-
     if line == 1 then
         return "1%%";
     else
