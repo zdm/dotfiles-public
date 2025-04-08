@@ -48,7 +48,7 @@ return {
                         {
                             "tabs",
                             mode = 1,
-                            path = 1,
+                            path = 0,
                             max_length = 100,
                             tab_max_length = 50,
                             use_mode_colors = true,
