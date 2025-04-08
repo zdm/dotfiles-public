@@ -2,11 +2,10 @@ return {
     {
         "hrsh7th/nvim-cmp",
         dependencies = {
+            "hrsh7th/cmp-calc",
             "hrsh7th/cmp-vsnip",
             {
-                -- "hrsh7th/vim-vsnip",
-                "zdm/vim-vsnip",
-                -- dir = "d:/projects/zdm/vim-vsnip",
+                "hrsh7th/vim-vsnip",
                 init = function ()
                     vim.g.vsnip_snippet_dir = vim.fn.stdpath( "config" ) .. "/vsnip"
 
@@ -17,7 +16,6 @@ return {
                     }
                 end
             },
-            "hrsh7th/cmp-calc",
         },
         init = function ()
             vim.o.omnifunc = "syntaxcomplete#Complete"
