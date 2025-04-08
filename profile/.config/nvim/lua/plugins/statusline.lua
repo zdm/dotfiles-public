@@ -40,7 +40,23 @@ return {
                     lualine_y = {},
                     lualine_z = { "progress", "location" }
                 },
-                tabline = {},
+                tabline = {
+                    lualine_a = {
+                        {
+                            "tabs",
+                            mode = 1,
+                            path = 1,
+                            max_length = 100,
+                            tab_max_length = 50,
+                            use_mode_colors = true,
+                        },
+                    },
+                    lualine_b = {},
+                    lualine_c = {},
+                    lualine_x = {},
+                    lualine_y = {},
+                    lualine_z = {}
+                },
                 winbar = {},
                 inactive_winbar = {},
                 extensions = {},
