@@ -128,7 +128,7 @@ return {
 
             hl( "MatchParen", {
                 bold = true,
-                bg = vim.g.srcery_xgray2,
+                bg = "Grey30",
                 fg = vim.g.srcery_bright_magenta,
             } )
         end
