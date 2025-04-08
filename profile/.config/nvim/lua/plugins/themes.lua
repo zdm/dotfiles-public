@@ -123,7 +123,7 @@ return {
             vim.cmd.colorscheme( "srcery" )
 
             hl( "CursorLine", {
-                bg = "Grey7",
+                bg = "Grey15",
             } )
 
             hl( "MatchParen", {
