@@ -19,7 +19,11 @@ M.update_status = function ( self, is_focused )
     local buf = ( not is_focused and vim.api.nvim_get_current_buf() )
     local branch = modules.git_branch.get_branch( buf )
 
-    return self.options.icon .. " " .. modules.utils.stl_escape( branch )
+    if branch and branch ~= "" then
+        return self.options.icon .. " " .. modules.utils.stl_escape( branch )
+    else
+        return
+    end
 end
 
 return M
