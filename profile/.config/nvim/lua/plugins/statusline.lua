@@ -3,6 +3,8 @@ return {
         "nvim-lualine/lualine.nvim",
         -- enabled = false,
         config = function ()
+            vim.print( vim.o.rtp )
+
             require( "lualine" ).setup( {
                 options = {
                     icons_enabled = false,
