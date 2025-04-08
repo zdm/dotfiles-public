@@ -15,11 +15,11 @@ M.init = function ( self, options )
     modules.git_branch.init()
 end
 
-M.update_status = function(_, is_focused)
+M.update_status = function ( self, is_focused )
     local buf = ( not is_focused and vim.api.nvim_get_current_buf() )
     local branch = modules.git_branch.get_branch( buf )
 
-    return "⎇ " .. modules.utils.stl_escape( branch )
+    return self.options.icon .. " " .. modules.utils.stl_escape( branch )
 end
 
 return M
