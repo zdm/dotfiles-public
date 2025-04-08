@@ -33,7 +33,7 @@ return {
                     lualine_c = { { "filename", path = 4 } },
                     lualine_x = {},
                     lualine_y = { "filetype", { "encoding", show_bomb = true }, "fileformat" },
-                    lualine_z = { "progress", "location" }
+                    lualine_z = { "progress", "location1" }
                 },
                 inactive_sections = {
                     lualine_a = {},
@@ -41,7 +41,7 @@ return {
                     lualine_c = { { "filename", path = 4 } },
                     lualine_x = {},
                     lualine_y = { "filetype", { "encoding", show_bomb = true }, "fileformat" },
-                    lualine_z = { "progress", "location" }
+                    lualine_z = { "progress", "location1" }
                 },
                 tabline = {
                     lualine_a = {
