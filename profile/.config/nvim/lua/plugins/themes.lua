@@ -112,6 +112,8 @@ return {
         init = function ()
             vim.g.srcery_italic = 0
             vim.g.srcery_underline = 0
+            vim.g.srcery_undercurl = 1
+            vim.g.srcery_strikethrough = 1
             vim.g.srcery_inverse = 0
             vim.g.srcery_inverse_matches = 0
             vim.g.srcery_inverse_match_paren = 0
