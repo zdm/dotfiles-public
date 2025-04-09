@@ -1,0 +1,1 @@
+-- NOTE: https://www.reddit.com/r/neovim/comments/1djjc6q/statuscolumn_a_beginers_guide/
