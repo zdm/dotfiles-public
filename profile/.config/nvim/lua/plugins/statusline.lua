@@ -1,7 +1,7 @@
 local diff_signs = {
-    added = "+",
-    modified = "±", -- "~",
-    removed = "-",
+    added    = "+",
+    modified = "~",
+    removed  = "-",
 }
 
 return {
