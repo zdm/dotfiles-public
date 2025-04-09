@@ -1,3 +1,12 @@
+local diff_signs = {
+    add          = { text = "+", show_count = true },
+    change       = { text = "±", show_count = true },
+    delete       = { text = "-", show_count = true },
+    topdelete    = { text = "-", show_count = true },
+    changedelete = { text = "±", show_count = true },
+    untracked    = { text = "┆", show_count = true },
+}
+
 return {
     {
         -- "lewis6991/gitsigns.nvim",
@@ -9,22 +18,8 @@ return {
             local gitsigns = require( "gitsigns" )
 
             gitsigns.setup( {
-                signs = {
-                    add          = { text = "+", show_count = true },
-                    change       = { text = "~", show_count = true },
-                    delete       = { text = "-", show_count = true },
-                    topdelete    = { text = "-", show_count = true },
-                    changedelete = { text = "~", show_count = true },
-                    untracked    = { text = "┆", show_count = true },
-                },
-                signs_staged = {
-                    add          = { text = "+" },
-                    change       = { text = "~" },
-                    delete       = { text = "-" },
-                    topdelete    = { text = "-" },
-                    changedelete = { text = "~" },
-                    untracked    = { text = "┆" },
-                },
+                signs = diff_signs,
+                signs_staged = diff_signs,
                 signs_staged_enable = true,
                 signcolumn = true,
                 numhl      = false,

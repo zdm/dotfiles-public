@@ -1,3 +1,9 @@
+local diff_signs = {
+    added = "+",
+    modified = "±", -- "~",
+    removed = "-",
+}
+
 return {
     {
         "nvim-lualine/lualine.nvim",
@@ -29,7 +35,7 @@ return {
                 },
                 sections = {
                     lualine_a = { "mode" },
-                    lualine_b = { { "branch", icon = "⎇" }, { "diff", colored = false }, "diagnostics" },
+                    lualine_b = { { "branch", icon = "⎇" }, { "diff", colored = false, symbols = diff_signs }, "diagnostics" },
                     lualine_c = { { "filename", path = 4 } },
                     lualine_x = {},
                     lualine_y = { "filetype", { "encoding", show_bomb = true }, "fileformat-1" },
@@ -37,7 +43,7 @@ return {
                 },
                 inactive_sections = {
                     lualine_a = {},
-                    lualine_b = { { "branch", icon = "⎇" }, { "diff", colored = false }, "diagnostics" },
+                    lualine_b = { { "branch", icon = "⎇" }, { "diff", colored = false, symbols = diff_signs }, "diagnostics" },
                     lualine_c = { { "filename", path = 4 } },
                     lualine_x = {},
                     lualine_y = { "filetype", { "encoding", show_bomb = true }, "fileformat-1" },

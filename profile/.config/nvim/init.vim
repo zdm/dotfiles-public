@@ -38,6 +38,7 @@ set foldlevel=99
 set foldlevelstart=0
 set foldmethod=manual
 set foldcolumn=1
+set fillchars+=foldopen:▾,foldsep:│,foldclose:▸
 
 filetype plugin indent on
 set modeline
