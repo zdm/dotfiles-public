@@ -11,14 +11,6 @@ return {
                         text = { builtin.foldfunc },
                         click = "v:lua.ScFa"
                     },
-                    -- {
-                    --     sign = {
-                    --         namespace = { "diagnostic/signs" },
-                    --         maxwidth = 2,
-                    --         auto = true
-                    --     },
-                    --     click = "v:lua.ScSa"
-                    -- },
                     {
                         sign = {
                             name = { ".*" },
