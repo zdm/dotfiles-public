@@ -21,11 +21,11 @@ local folds = function ( options )
 
     -- The line is the last line in the fold
     if foldlevel > foldlevel_after then
-        return "╰"
+        return "╰" -- "└╰++＋﹢" -- "└" -- "╰"
     end
 
     -- Line is in the middle of an open fold
-    return options.fold.sep -- "╎"
+    return "╎" -- options.fold.sep -- "╎"
 end
 
 return {
