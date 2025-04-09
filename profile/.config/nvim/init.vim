@@ -37,7 +37,7 @@ set foldenable
 set foldlevel=99
 set foldlevelstart=0
 set foldmethod=manual
-set foldcolumn=1
+set foldcolumn=auto:9
 set fillchars+=foldopen:▾,foldclose:▸,foldsep:┋
 
 filetype plugin indent on
