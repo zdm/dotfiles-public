@@ -73,11 +73,6 @@ return {
                     },
                     {
                         text = { " ", "%l", " " },
-                        condition = {
-                            builtin.not_empty,
-                            true,
-                            true,
-                        },
                         click = "v:lua.ScLa",
                     },
                 }
