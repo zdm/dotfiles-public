@@ -11,7 +11,7 @@ local folds = function ( options )
 
     -- not a fold
     if foldlevel == 0 then
-        return " "
+        return ""
     end
 
     local last_line = vim.fn.line( "$" )
@@ -52,6 +52,7 @@ end
 return {
     {
         "luukvbaal/statuscol.nvim",
+        -- enabled = false,
         config = function ()
             local builtin = require( "statuscol.builtin" )
 

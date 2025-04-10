@@ -49,7 +49,7 @@ set foldenable
 set foldlevel=99
 set foldlevelstart=0
 set foldmethod=manual
-set foldcolumn=1
+set foldcolumn=0 " auto:1 " controlled by statuscolumn
 set fillchars+=foldopen:▾,foldclose:▸,foldsep:┋
 " }}}
 
