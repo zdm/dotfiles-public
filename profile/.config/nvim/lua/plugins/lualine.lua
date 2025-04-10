@@ -22,6 +22,10 @@ return {
         },
         config = function ()
             require( "lualine" ).setup( {
+
+                -- XXX
+                -- git = vim.fn.has( "win32" ) == 1 and "git.exe" or "git",
+
                 options = {
                     icons_enabled = true,
                     theme = "material",
