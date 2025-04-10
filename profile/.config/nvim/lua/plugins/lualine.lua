@@ -7,9 +7,6 @@ local diff_signs = {
 return {
     {
         "nvim-lualine/lualine.nvim",
-        dependencies = {
-            "gitsigns.nvim",
-        },
         config = function ()
             require( "lualine" ).setup( {
                 options = {
