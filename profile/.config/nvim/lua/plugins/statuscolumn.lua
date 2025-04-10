@@ -37,10 +37,8 @@ local folds = function ( options )
     elseif foldlevel > foldlevel_after then
         if foldlevel_after == -1 then
             return signs.last
-
-        -- XXX
-        elseif foldlevel > foldlevel_after then
-            return signs.last_next
+        elseif foldlevel_after == 0 then
+            return signs.last
         else
             return signs.last_next
         end
