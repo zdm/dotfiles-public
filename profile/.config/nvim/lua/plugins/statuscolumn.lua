@@ -1,3 +1,11 @@
+local signs = {
+    close       = "▸",
+    open        = "▾",
+    sep         = "┋",
+    last_next   = "├",
+    last        = "└",
+}
+
 local folds = function ( options )
     local foldlevel = vim.fn.foldlevel( options.lnum )
 
@@ -19,30 +27,27 @@ local folds = function ( options )
 
     -- close fold
     if foldclosed ~= -1 and foldclosed == options.lnum then
-        return options.fold.close
+        return signs.close
 
     -- open fold
     elseif foldlevel > foldlevel_before or options.lnum == 1 then
-        return options.fold.open
+        return signs.open
 
     -- end fold
     elseif foldlevel > foldlevel_after then
         if foldlevel_after == -1 then
-            return "└"
+            return signs.last
 
         -- XXX
         elseif foldlevel > foldlevel_after then
-            return "├" -- "└"
+            return signs.last_next
         else
-            return "├"
-            -- return "╰"
+            return signs.last_next
         end
 
     -- fold body
     else
-        return "┋"
-        -- return options.fold.sep
-        -- return "╎"
+        return signs.sep
     end
 end
 
