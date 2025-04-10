@@ -38,16 +38,16 @@ return {
                     lualine_b = { { "branch", icon = "⎇" }, { "diff", colored = false, symbols = diff_signs }, "diagnostics" },
                     lualine_c = { { "filename", path = 4 } },
                     lualine_x = {},
-                    lualine_y = { "filetype", { "encoding", show_bomb = true }, "fileformat-1" },
-                    lualine_z = { "progress-1", "location-1" }
+                    lualine_y = { "filetype", { "encoding", show_bomb = true }, "new.fileformat" },
+                    lualine_z = { "new.progress", "new.location" }
                 },
                 inactive_sections = {
                     lualine_a = {},
                     lualine_b = { { "branch", icon = "⎇" }, { "diff", colored = false, symbols = diff_signs }, "diagnostics" },
                     lualine_c = { { "filename", path = 4 } },
                     lualine_x = {},
-                    lualine_y = { "filetype", { "encoding", show_bomb = true }, "fileformat-1" },
-                    lualine_z = { "progress-1", "location-1" }
+                    lualine_y = { "filetype", { "encoding", show_bomb = true }, "new.fileformat" },
+                    lualine_z = { "new.progress", "new.location" }
                 },
                 tabline = {
                     lualine_a = {
