@@ -52,7 +52,6 @@ end
 return {
     {
         "luukvbaal/statuscol.nvim",
-        -- enabled = false,
         config = function ()
             local builtin = require( "statuscol.builtin" )
 
@@ -64,9 +63,7 @@ return {
                     },
                     {
                         sign = {
-                            name = { ".*" },
-                            text = { ".*" },
-                            namespace = { ".*" },
+                            namespace = { "gitsigns" },
                             maxwidth = 1,
                             colwidth = 2,
                             auto = true,
@@ -76,6 +73,11 @@ return {
                     },
                     {
                         text = { " ", "%l", " " },
+                        condition = {
+                            builtin.not_empty,
+                            true,
+                            true,
+                        },
                         click = "v:lua.ScLa",
                     },
                 }
