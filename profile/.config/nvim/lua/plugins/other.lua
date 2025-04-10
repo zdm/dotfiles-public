@@ -14,11 +14,7 @@ return {
         end
     },
     {
-        -- "powerman/vim-plugin-viewdoc",
-        "zdm/vim-plugin-viewdoc",
-
-        -- dir = "d:/projects/zdm/vim-plugin-viewdoc",
-
+        "powerman/vim-plugin-viewdoc",
         init = function ()
             vim.g.viewdoc_openempty = 1
 
