@@ -18,10 +18,7 @@ return {
             local gitsigns = require( "gitsigns" )
 
             gitsigns.setup( {
-
-                -- XXX
-                -- git = vim.fn.has( "win32" ) == 1 and "git.exe" or "git",
-
+                git = vim.fn.has( "win32" ) == 1 and "git.exe" or "git",
                 signs = diff_signs,
                 signs_staged = diff_signs,
                 signs_staged_enable = true,
