@@ -8,7 +8,13 @@ local folds = function ( options )
 
     local last_line = vim.fn.line( "$" )
     local foldlevel_before = vim.fn.foldlevel( ( options.lnum - 1 ) >= 1 and options.lnum - 1 or 1 )
-    local foldlevel_after = vim.fn.foldlevel( ( options.lnum + 1 ) <= last_line and ( options.lnum + 1 ) or last_line )
+    local foldlevel_after = options.lnum == last_line
+        and -1
+        or vim.fn.foldlevel(
+            options.lnum + 1 <= last_line
+            and options.lnum + 1
+            or last_line
+        )
     local foldclosed = vim.fn.foldclosed( options.lnum )
 
     -- close fold
@@ -16,18 +22,27 @@ local folds = function ( options )
         return options.fold.close
 
     -- open fold
-    elseif foldlevel > foldlevel_before then
+    elseif foldlevel > foldlevel_before or options.lnum == 1 then
         return options.fold.open
 
     -- end fold
-    elseif foldlevel > foldlevel_after or options.lnum == last_line  then
-        -- return "╰"
-        return "└" -- "╰++＋﹢" -- "└" -- "╰"
+    elseif foldlevel > foldlevel_after then
+        if foldlevel_after == -1 then
+            return "└"
 
-    -- inside fold
+        -- XXX
+        elseif foldlevel > foldlevel_after then
+            return "├" -- "└"
+        else
+            return "├"
+            -- return "╰"
+        end
+
+    -- fold body
     else
-       return options.fold.sep
-       -- return "╎"
+        return "┋"
+        -- return options.fold.sep
+        -- return "╎"
     end
 end
 

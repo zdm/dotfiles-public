@@ -32,16 +32,26 @@ if has('win16') || has('win32') || has('win64')
 endif
 " }}}
 
-" foldind
+filetype plugin indent on
+set modeline
+
+" folding {{{
+function! FoldText ()
+    let line = substitute( getline( v:foldstart ), '\t', repeat( " ", &tabstop ), "g" )
+
+    let line = substitute( line, ' \+$', "", "g" )
+
+    return line . " "
+endfunction
+
+set foldtext=FoldText()
 set foldenable
 set foldlevel=99
 set foldlevelstart=0
 set foldmethod=manual
 set foldcolumn=1
 set fillchars+=foldopen:▾,foldclose:▸,foldsep:┋
-
-filetype plugin indent on
-set modeline
+" }}}
 
 syntax manual
 
@@ -313,18 +323,6 @@ endfunction
 " set titlestring=%{SetTitleString()}
 
 set title " mandatory for neovim-qt
-" }}}
-
-" folding {{{
-function! FoldText ()
-    let line = substitute( getline( v:foldstart ), '\t', repeat( " ", &tabstop ), "g" )
-
-    let line = substitute( line, ' \+$', "", "g" )
-
-    return line . " "
-endfunction
-
-set foldtext=FoldText()
 " }}}
 
 " prevent create .netrwhist
