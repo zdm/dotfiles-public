@@ -4,6 +4,16 @@ local diff_signs = {
     removed  = "-",
 }
 
+local function diff_source ()
+    local status = vim.b.gitsigns_status_dict or {}
+
+    return {
+        added = status.added or 0,
+        modified = status.changed or 0,
+        removed = status.removed or 0,
+    }
+end
+
 return {
     {
         "nvim-lualine/lualine.nvim",
@@ -34,7 +44,11 @@ return {
                 },
                 sections = {
                     lualine_a = { "mode" },
-                    lualine_b = { { "branch", icon = "⎇" }, { "diff", colored = false, symbols = diff_signs }, "diagnostics" },
+                    lualine_b = {
+                        { "branch", icon = "⎇" },
+                        { "diff", colored = false, symbols = diff_signs, source = diff_source },
+                        "diagnostics"
+                    },
                     lualine_c = { { "filename", path = 4 } },
                     lualine_x = {},
                     lualine_y = { "filetype", { "encoding", show_bomb = true }, "new.fileformat" },
@@ -42,7 +56,11 @@ return {
                 },
                 inactive_sections = {
                     lualine_a = {},
-                    lualine_b = { { "branch", icon = "⎇" }, { "diff", colored = false, symbols = diff_signs }, "diagnostics" },
+                    lualine_b = {
+                        { "branch", icon = "⎇" },
+                        { "diff", colored = false, symbols = diff_signs, source = diff_source },
+                        "diagnostics"
+                    },
                     lualine_c = { { "filename", path = 4 } },
                     lualine_x = {},
                     lualine_y = { "filetype", { "encoding", show_bomb = true }, "new.fileformat" },
