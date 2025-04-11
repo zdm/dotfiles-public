@@ -14,6 +14,10 @@ local function diff_source ()
     }
 end
 
+local function format_filename ( filename, ctx )
+    return string.gsub( filename, "\\", "/" )
+end
+
 return {
     {
         "nvim-lualine/lualine.nvim",
@@ -52,7 +56,11 @@ return {
                         "diagnostics"
                     },
                     lualine_c = {
-                        { "filename", path = 4 }
+                        {
+                            "filename",
+                            path = 4,
+                            fmt = format_filename,
+                        }
                     },
                     lualine_x = {},
                     lualine_y = {
@@ -73,7 +81,11 @@ return {
                         "diagnostics"
                     },
                     lualine_c = {
-                        { "filename", path = 4 }
+                        {
+                            "filename",
+                            path = 4,
+                            fmt = format_filename,
+                        }
                     },
                     lualine_x = {},
                     lualine_y = {
