@@ -293,36 +293,37 @@ vnoremap <silent> <Leader>so <ESC>:LintObfuscate<CR>
 " }}}
 
 " set titlestring {{{
-function! SetTitleString()
-    let _ = ''
+function! SetTitleString () "{{{
+    let title = ""
 
-    let name = expand('%F')
-
-    if empty(name)
-        let _ .= '[No Name]'
-
-        if &mod | let _ .= '+' | endif
-    else
-        if name =~ 'term://'
-            " Neovim Terminal
-            let _ = substitute(name, '\(term:\)//.*:\(.*\)', '\1 \2', '')
-
-            if &mod | let _ .= '+' | endif
-        else
-            let _ .= fnamemodify(name, ':p:h:t') . '/' . fnamemodify(name, ':t')
-
-            if &mod | let _ .= '+' | endif
-
-            let _ .= ' (' . fnamemodify(name, ':p:h:h') . ')'
-        endif
+    if &mod
+        let title .= "[+] "
     endif
 
-    return _
-endfunction
+    let name = expand( "%F" )
 
-" set titlestring=%{SetTitleString()}
+    " no name
+    if empty( name )
+        let title .= "[No Name]"
 
-set title " mandatory for neovim-qt
+    " neovim terminal
+    elseif name =~ "term://"
+        let title = substitute( name, '\(term:\)//.*:\(.*\)', '\1 \2', "" )
+
+    " filename
+    else
+        let title .= fnamemodify( name, ":p:h:t" ) . "/" . fnamemodify( name, ":t" )
+
+        let title .= " (" . fnamemodify( name, ":p:h:h" ) . ")"
+    endif
+
+    return title
+endfunction " }}}
+
+set titlestring=%{SetTitleString()}
+
+" mandatory for neovim-qt
+set title
 " }}}
 
 " prevent create .netrwhist
