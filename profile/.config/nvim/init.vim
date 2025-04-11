@@ -317,6 +317,8 @@ function! SetTitleString () "{{{
         let title .= " (" . fnamemodify( name, ":p:h:h" ) . ")"
     endif
 
+    let title = substitute( title, '\\', '\/', "g" )
+
     return title
 endfunction " }}}
 

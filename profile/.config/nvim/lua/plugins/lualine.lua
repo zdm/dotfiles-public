@@ -95,9 +95,9 @@ return {
                             max_length = 100,
                             tab_max_length = 50,
                             use_mode_colors = true,
-                            fmt = function ( name, ctx )
-                                return name
-                            end,
+                            -- fmt = function ( filename, ctx )
+                            --     return filename
+                            -- end,
                         },
                     },
                     lualine_b = {},
