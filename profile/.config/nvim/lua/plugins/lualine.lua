@@ -43,16 +43,27 @@ return {
                     }
                 },
                 sections = {
-                    lualine_a = { "mode" },
+                    lualine_a = {
+                        "mode"
+                    },
                     lualine_b = {
                         { "branch", icon = "⎇" },
                         { "diff", colored = false, symbols = diff_signs, source = diff_source },
                         "diagnostics"
                     },
-                    lualine_c = { { "filename", path = 4 } },
+                    lualine_c = {
+                        { "filename", path = 4 }
+                    },
                     lualine_x = {},
-                    lualine_y = { "filetype", { "encoding", show_bomb = true }, "new.fileformat" },
-                    lualine_z = { "new.progress", "new.location" }
+                    lualine_y = {
+                        "filetype",
+                        { "encoding", show_bomb = true },
+                        "new.fileformat"
+                    },
+                    lualine_z = {
+                        "new.progress",
+                        "new.location"
+                    }
                 },
                 inactive_sections = {
                     lualine_a = {},
@@ -61,10 +72,19 @@ return {
                         { "diff", colored = false, symbols = diff_signs, source = diff_source },
                         "diagnostics"
                     },
-                    lualine_c = { { "filename", path = 4 } },
+                    lualine_c = {
+                        { "filename", path = 4 }
+                    },
                     lualine_x = {},
-                    lualine_y = { "filetype", { "encoding", show_bomb = true }, "new.fileformat" },
-                    lualine_z = { "new.progress", "new.location" }
+                    lualine_y = {
+                        "filetype",
+                        { "encoding", show_bomb = true },
+                        "new.fileformat"
+                    },
+                    lualine_z = {
+                        "new.progress",
+                        "new.location"
+                    }
                 },
                 tabline = {
                     lualine_a = {
