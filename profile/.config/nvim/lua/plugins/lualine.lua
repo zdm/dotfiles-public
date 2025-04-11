@@ -49,7 +49,7 @@ return {
                         { "diff", colored = false, symbols = diff_signs, source = diff_source },
                         "diagnostics"
                     },
-                    lualine_c = { { "filename", path = 4 } },
+                    lualine_c = { { "filename", path = 0 } },
                     lualine_x = {},
                     lualine_y = { "filetype", { "encoding", show_bomb = true }, "new.fileformat" },
                     lualine_z = { "new.progress", "new.location" }
@@ -61,7 +61,7 @@ return {
                         { "diff", colored = false, symbols = diff_signs, source = diff_source },
                         "diagnostics"
                     },
-                    lualine_c = { { "filename", path = 4 } },
+                    lualine_c = { { "filename", path = 0 } },
                     lualine_x = {},
                     lualine_y = { "filetype", { "encoding", show_bomb = true }, "new.fileformat" },
                     lualine_z = { "new.progress", "new.location" }
@@ -75,6 +75,9 @@ return {
                             max_length = 100,
                             tab_max_length = 50,
                             use_mode_colors = true,
+                            fmt = function ( name, ctx )
+                                return name
+                            end,
                         },
                     },
                     lualine_b = {},
