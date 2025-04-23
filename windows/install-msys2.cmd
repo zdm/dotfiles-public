@@ -7,7 +7,6 @@ setlocal
 
 set MSYS64_LOCATION="c:\msys64"
 set MSYS64_USERPROFILE="%MSYS64_LOCATION%\home\%USERNAME%"
-set GPG_USERPROFILE="s:\gpg"
 
 winget install MSYS2.MSYS2
 winget pin add -q MSYS2.MSYS2
@@ -24,7 +23,7 @@ pacman --sync --noconfirm --needed bash ^
     pacman pacman-mirrors ^
     msys2-runtime ^
     man tar curl wget patch diffutils whois ^
-    ctags ^
+    ctags
     :: mc
 
 :: gcc
@@ -70,22 +69,7 @@ del "%APPDATA%\GitHub CLI\config.yml"
 mklink "%APPDATA%\GitHub CLI\config.yml" "%~dp0\..\profile\.config\gh\config.yml"
 
 :: gpg
-pacman --sync --noconfirm --needed gnupg
-
-rmdir /S /Q "%MSYS64_USERPROFILE%\.gnupg"
-mklink /D "%MSYS64_USERPROFILE%\.gnupg" "%GPG_USERPROFILE%"
-
-del "%GPG_USERPROFILE%\dirmngr.conf"
-mklink "%GPG_USERPROFILE%\dirmngr.conf" "%~dp0\..\profile\.gnupg\dirmngr.conf"
-
-del "%GPG_USERPROFILE%\gpg.conf"
-mklink "%GPG_USERPROFILE%\gpg.conf" "%~dp0\..\profile\.gnupg\gpg.conf"
-
-del "%GPG_USERPROFILE%\gpg-agent.conf"
-mklink "%GPG_USERPROFILE%\gpg-agent.conf" "%~dp0\..\profile\.gnupg\gpg-agent.conf"
-
-del "%GPG_USERPROFILE%\sshcontrol"
-mklink "%GPG_USERPROFILE%\sshcontrol" "%~dp0\..\profile\.gnupg\sshcontrol"
+call "%~dp0\install-gpg.cmd"
 
 :: ssh
 pacman --sync --noconfirm --needed openssh
