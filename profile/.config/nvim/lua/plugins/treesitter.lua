@@ -1,14 +1,6 @@
 return {
     {
         "nvim-treesitter/nvim-treesitter",
-        dependencies = {
-            {
-                "foalford/vim-markdown-folding",
-                init = function ()
-                    vim.g.markdown_fold_override_foldtext = 0
-                end,
-            },
-        },
         config = function ()
             require( "nvim-treesitter.install" ).prefer_git = false
 
@@ -108,13 +100,7 @@ return {
 
                 if require( "utils" ).has_treesitter( bufnr ) then
                     vim.bo[ bufnr ].syntax = "off"
-
-                    if vim.bo[ bufnr ].filetype == "markdown" then
-                        vim.wo[ winid ].foldexpr = "StackedMarkdownFolds()"
-                    else
-                        vim.wo[ winid ].foldexpr = "nvim_treesitter#foldexpr()"
-                    end
-
+                    vim.wo[ winid ].foldexpr = "nvim_treesitter#foldexpr()"
                     vim.wo[ winid ].foldmethod = "expr"
                 else
                     vim.bo[ bufnr ].syntax = "on"
