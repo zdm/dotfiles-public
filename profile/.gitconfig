@@ -5,21 +5,21 @@
 detachedHead = false
 
 [alias]
-bd    = difftool --tool bcompare --dir-diff
-b     = branch
-ci    = commit
-co    = checkout
-d     = diff
-l     = log --pretty='format:%h - %C(brightgreen)%ad [%C(brightcyan)%an] -%C(auto)%d%C(reset) %C(brightwhite)%s%C(reset)' --graph --all --date=human -n20
-l1    = log --pretty='format:%h%C(auto)%d%C(reset) - %C(brightwhite)%s%C(reset)' --graph --all -n20
-ll    = log --graph --decorate --date=relative --all --oneline -n20
-ls    = ls-files --format '%(objectmode) %(path)'
-nd    = difftool --tool nvim
-p     = push
-s     = status --short --branch
-sw    = switch
-t     = tag
-vd    = difftool --tool vim
+b        = branch
+bc       = difftool --tool bc --dir-diff
+ci       = commit
+co       = checkout
+d        = diff
+l        = log --pretty='format:%h - %C(brightgreen)%ad [%C(brightcyan)%an] -%C(auto)%d%C(reset) %C(brightwhite)%s%C(reset)' --graph --all --date=human -n20
+l1       = log --pretty='format:%h%C(auto)%d%C(reset) - %C(brightwhite)%s%C(reset)' --graph --all -n20
+ll       = log --graph --decorate --date=relative --all --oneline -n20
+ls       = ls-files --format '%(objectmode) %(path)'
+nvimdiff = difftool --tool nvim
+p        = push
+s        = status --short --branch
+sw       = switch
+t        = tag
+vimdiff  = difftool --tool vimdiff
 
 [color]
 ui = auto
@@ -74,19 +74,19 @@ ignoreCase   = true
 selected = <no helper>
 
 [diff]
-tool = nvim
+tool = nvimdiff
 
 [difftool]
 prompt = false
 
-[difftool "bcompare"]
-cmd = bcompare "$LOCAL" "$REMOTE"
+; [difftool "bc"]
+; cmd = bcompare "$LOCAL" "$REMOTE"
 
-[difftool "vim"]
-cmd = vim -d "$LOCAL" "$REMOTE"
+; [difftool "nvimdiff"]
+; cmd = nvim -d "$LOCAL" "$REMOTE"
 
-[difftool "nvim"]
-cmd = nvim -d "$LOCAL" "$REMOTE"
+; [difftool "vimdiff"]
+; cmd = vim -d "$LOCAL" "$REMOTE"
 
 [filter "lfs"]
 process  = git-lfs filter-process
@@ -112,15 +112,15 @@ defaultBranch = main
 ; allowincompletepush = true
 
 [merge]
-tool = nvim
+tool = nvimdiff
 
 [mergetool]
 prompt        = false
 keepBackup    = true
 trustExitCode = false
 
-[mergetool "bcompare"]
-cmd = bcompare "$REMOTE" "$BASE" "$LOCAL" "$MERGED"
+; [mergetool "bc"]
+; cmd = bcompare "$REMOTE" "$BASE" "$LOCAL" "$MERGED"
 
 [pull]
 rebase = false # merge (the default strategy)
