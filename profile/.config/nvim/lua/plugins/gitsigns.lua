@@ -10,8 +10,7 @@ local diff_signs = {
 return {
     {
         -- "lewis6991/gitsigns.nvim",
-        "zdm/gitsigns-patched.nvim",
-        name = "gitsigns.nvim",
+        "zdm/gitsigns.nvim",
         dev = true,
         dependencies = {
             "trouble.nvim",
