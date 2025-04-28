@@ -11,6 +11,7 @@ return {
     {
         -- "lewis6991/gitsigns.nvim",
         "zdm/gitsigns.nvim",
+        branch = "patched",
         dev = true,
         dependencies = {
             "trouble.nvim",
@@ -19,7 +20,7 @@ return {
             local gitsigns = require( "gitsigns" )
 
             gitsigns.setup( {
-                -- git = vim.fn.has( "win32" ) == 1 and "git.exe" or "git",
+                git = vim.fn.has( "win32" ) == 1 and "git.exe" or "git",
                 signs = diff_signs,
                 signs_staged = diff_signs,
                 signs_staged_enable = true,
