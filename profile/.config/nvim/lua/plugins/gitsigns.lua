@@ -11,7 +11,6 @@ return {
     {
         -- "lewis6991/gitsigns.nvim",
         "zdm/gitsigns.nvim",
-        branch = "patched",
         dev = true,
         dependencies = {
             "trouble.nvim",
