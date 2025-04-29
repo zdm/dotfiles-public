@@ -46,9 +46,11 @@ setx.exe /M PATHEXT ".com;.exe;.lnk;.bat;.cmd;.ps1;.sh;.js;.cjs;.mjs"
 setx.exe /M PATH "s:\bin;d:\apps\bin;%USERPROFILE%\.npm;d:\apps\node;c:\msys64\usr\bin;c:\msys64\mingw64\bin;%SystemRoot%\system32;%SystemRoot%"
 
 :: git
-setx /M GIT_CONFIG_COUNT 1
-setx /M GIT_CONFIG_KEY_0 merge.tool
+setx /M GIT_CONFIG_COUNT 2
+setx /M GIT_CONFIG_KEY_0 diff.tool
 setx /M GIT_CONFIG_VALUE_0 bc
+setx /M GIT_CONFIG_KEY_1 merge.tool
+setx /M GIT_CONFIG_VALUE_1 bc
 
 :: powershell
 ftype PowerShellScript="%LOCALAPPDATA%\Microsoft\WindowsApps\pwsh.exe" "%%1" %%*
