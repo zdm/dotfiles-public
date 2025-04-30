@@ -1,14 +1,14 @@
 return {
     {
         "rhysd/conflict-marker.vim",
-        enabled = false,
+        -- enabled = false,
         init = function ()
         end,
     },
     {
         "akinsho/git-conflict.nvim",
-        tag = "v2.1.0",
-        -- enabled = false,
+        version = "2.1.0",
+        enabled = false,
         config = function ()
             require( "git-conflict" ).setup( {
                 default_mappings = true,
@@ -23,13 +23,14 @@ return {
                 }
             } )
 
+            -- GitConflictResolved
             vim.api.nvim_create_autocmd( "User", {
                 pattern = "GitConflictDetected",
-                callback = function()
+                callback = function ( args )
                     vim.notify( "Conflict detected in " .. vim.fn.expand( "<afile>" ) )
 
                     vim.keymap.set( "n", "cww",
-                        function()
+                        function ()
                             engage.conflict_buster()
 
                             create_buffer_local_mappings()
