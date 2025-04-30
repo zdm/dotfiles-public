@@ -50,7 +50,7 @@ setx /M GIT_CONFIG_COUNT 2
 setx /M GIT_CONFIG_KEY_0 diff.tool
 setx /M GIT_CONFIG_VALUE_0 bc
 setx /M GIT_CONFIG_KEY_1 merge.tool
-setx /M GIT_CONFIG_VALUE_1 bc
+setx /M GIT_CONFIG_VALUE_1 nvimdiff3
 
 :: powershell
 ftype PowerShellScript="%LOCALAPPDATA%\Microsoft\WindowsApps\pwsh.exe" "%%1" %%*

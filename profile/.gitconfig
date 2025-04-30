@@ -111,7 +111,7 @@ defaultBranch = main
 ; allowincompletepush = true
 
 [merge]
-tool = nvimdiff
+tool = nvimdiff3
 
 [mergetool]
 prompt        = false
