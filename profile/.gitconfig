@@ -92,7 +92,8 @@ trustExitCode = true
 cmd = bcompare //nobackups //ro //title1=LOCAL //title2=REMOTE "$LOCAL" "$REMOTE"
 
 [difftool "nvim"]
-cmd = nvim -d "$LOCAL" "$REMOTE"
+; cmd = nvim -d "$LOCAL" "$REMOTE"
+cmd = nvim -c "DiffviewOpen \\"$LOCAL"\\ \\"$REMOTE\\""
 
 [filter "lfs"]
 process  = git-lfs filter-process
