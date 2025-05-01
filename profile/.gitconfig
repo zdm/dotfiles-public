@@ -23,20 +23,23 @@ t        = tag
 [color]
 ui = auto
 
-[color "branch"] # https://git-scm.com/docs/git-config#Documentation/git-config.txt-colorbranchltslotgt
+[color "branch"]
+# https://git-scm.com/docs/git-config#Documentation/git-config.txt-colorbranchltslotgt
 current  = bold yellow
 local    = bold green
 remote   = bold cyan
 upstream = bold magenta
 plain    = bold red
 
-[color "decorate"] # https://git-scm.com/docs/git-config#Documentation/git-config.txt-colordecorateltslotgt
+[color "decorate"]
+# https://git-scm.com/docs/git-config#Documentation/git-config.txt-colordecorateltslotgt
 branch       = white bold red
 head         = white bold red
 remoteBranch = white bold red
 tag          = bold red
 
-[color "diff"] # https://git-scm.com/docs/git-config#Documentation/git-config.txt-colordiffltslotgt
+[color "diff"]
+# https://git-scm.com/docs/git-config#Documentation/git-config.txt-colordiffltslotgt
 context    = white bold
 frag       = magenta bold
 old        = red bold
@@ -44,9 +47,11 @@ new        = green bold
 commit     = cyan bold
 whitespace = white red
 
-[color "grep"] # TODO https://git-scm.com/docs/git-config#Documentation/git-config.txt-colorgrepltslotgt
+[color "grep"]
+# TODO https://git-scm.com/docs/git-config#Documentation/git-config.txt-colorgrepltslotgt
 
-[color "status"] # https://git-scm.com/docs/git-config#Documentation/git-config.txt-colorstatusltslotgt
+[color "status"]
+# https://git-scm.com/docs/git-config#Documentation/git-config.txt-colorstatusltslotgt
 added        = bold green
 changed      = bold cyan
 untracked    = bold white
