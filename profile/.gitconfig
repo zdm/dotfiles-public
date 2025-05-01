@@ -136,11 +136,10 @@ writeToTemp     = true
 trustExitCode = true
 cmd           = bcompare //nobackups //ro //title1=LOCAL //title2=REMOTE //title3=BASE //title4=MERGED "$LOCAL" "$REMOTE" "$BASE" "$MERGED"
 
-; XXX
 [mergeTool "nvim"]
 trustExitCode = true
-; cmd           = nvim "$MERGED"
-cmd = nvim -c \"DiffviewOpen $LOCAL $REMOTE\"
+; cmd = nvim -c DiffviewOpen
+cmd           = nvim "$MERGED"
 
 [pull]
 rebase = false # merge (the default strategy)
