@@ -138,7 +138,7 @@ cmd           = bcompare //nobackups //ro //title1=LOCAL //title2=REMOTE //title
 [mergeTool "nvim"]
 trustExitCode = true
 ; cmd           = nvim "$MERGED"
-cmd            = nvim +DiffviewOpen
+cmd            = nvim +DiffviewOpen +DiffviewToggleFiles
 
 [pull]
 rebase = false # merge (the default strategy)
