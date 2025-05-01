@@ -119,7 +119,7 @@ defaultBranch = main
 
 [merge]
 guitool          = bc
-tool             = nvimdiff3
+tool             = nvim
 verifySignatures = true
 
 [mergetool]
@@ -134,8 +134,9 @@ writeToTemp     = true
 trustExitCode = true
 cmd           = bcompare //nobackups //ro //title1=LOCAL //title2=REMOTE //title3=BASE //title4=MERGED "$LOCAL" "$REMOTE" "$BASE" "$MERGED"
 
-; [mergetool "nvimdiff3"]
-; trustExitCode = true
+[mergetool "nvim"]
+trustExitCode = true
+cmd           = nvim "$MERGED"
 
 [pull]
 rebase = false # merge (the default strategy)
