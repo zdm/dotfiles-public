@@ -48,7 +48,7 @@ commit     = cyan bold
 whitespace = white red
 
 [color "grep"]
-# TODO https://git-scm.com/docs/git-config#Documentation/git-config.txt-colorgrepltslotgt
+# TODO: https://git-scm.com/docs/git-config#Documentation/git-config.txt-colorgrepltslotgt
 
 [color "status"]
 # https://git-scm.com/docs/git-config#Documentation/git-config.txt-colorstatusltslotgt
