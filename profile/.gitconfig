@@ -62,11 +62,11 @@ localBranch  = bold green
 remoteBranch = bold cyan
 
 [commit]
-gpgsign = true
+gpgSign = true
 
 [core]
-unsetenvvars =
-autocrlf     = false
+unsetEnvVars =
+autoCrLf     = false
 hooksPath    = ~/.config/git/hooks
 editor       = nvim
 pager        = less --no-init --raw-control-chars --ignore-case --quit-on-intr --squeeze-blank-lines --quit-if-one-screen
@@ -78,21 +78,21 @@ ignoreCase   = true
 selected = <no helper>
 
 [diff]
-guitool        = bc
+guiTool        = bc
 mnemonicPrefix = true
 noPrefix       = false
 tool           = nvim
 
-[difftool]
+[diffTool]
 guiDefault    = false
 prompt        = false
 trustExitCode = true
 
-[difftool "bc"]
+[diffTool "bc"]
 cmd = bcompare //nobackups //ro //title1=LOCAL //title2=REMOTE "$LOCAL" "$REMOTE"
 
 ; XXX
-[difftool "nvim"]
+[diffTool "nvim"]
 cmd = nvim -d "$LOCAL" "$REMOTE"
 ; cmd = nvim -c \"DiffviewOpen $LOCAL $REMOTE\"
 
@@ -103,7 +103,7 @@ clean    = git-lfs clean -- %f
 smudge   = git-lfs smudge -- %f
 
 [format]
-signoff = true
+signOff = true
 
 [gpg]
 format = ssh
@@ -117,14 +117,14 @@ revocationFile     = ~/.config/git/ssh/revocatied-signatures
 defaultBranch = main
 
 [lfs]
-; allowincompletepush = true
+; allowIncompletePush = true
 
 [merge]
-guitool          = bc
+guiTool          = bc
 tool             = nvim
 verifySignatures = true
 
-[mergetool]
+[mergeTool]
 guiDefault      = false
 keepBackup      = false
 keepTemporaries = false
@@ -132,11 +132,11 @@ prompt          = false
 stat            = false
 writeToTemp     = true
 
-[mergetool "bc"]
+[mergeTool "bc"]
 trustExitCode = true
 cmd           = bcompare //nobackups //ro //title1=LOCAL //title2=REMOTE //title3=BASE //title4=MERGED "$LOCAL" "$REMOTE" "$BASE" "$MERGED"
 
-[mergetool "nvim"]
+[mergeTool "nvim"]
 trustExitCode = true
 cmd           = nvim "$MERGED"
 
@@ -151,9 +151,9 @@ followTags = true
 variant = ssh
 
 [tag]
-gpgsign = true
+gpgSign = true
 
 [user]
 email      = zdm@softvisio.net
 name       = zdm
-signingkey = key::ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIP/nPzEIJ9FvODTzjuTvrk+h6b3mq1ilgsm7wQpYLVRP
+signingKey = key::ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIP/nPzEIJ9FvODTzjuTvrk+h6b3mq1ilgsm7wQpYLVRP

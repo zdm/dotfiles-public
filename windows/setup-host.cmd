@@ -47,9 +47,9 @@ setx.exe /M PATH "s:\bin;d:\apps\bin;%USERPROFILE%\.npm;d:\apps\node;c:\msys64\u
 
 :: git
 setx /M GIT_CONFIG_COUNT 2
-setx /M GIT_CONFIG_KEY_0 difftool.guiDefault
+setx /M GIT_CONFIG_KEY_0 diffTool.guiDefault
 setx /M GIT_CONFIG_VALUE_0 true
-setx /M GIT_CONFIG_KEY_1 mergetool.guiDefault
+setx /M GIT_CONFIG_KEY_1 mergeTool.guiDefault
 setx /M GIT_CONFIG_VALUE_1 false
 
 :: powershell
