@@ -1,7 +1,7 @@
 return {
     {
         "rhysd/conflict-marker.vim",
-        -- enabled = false,
+        enabled = false,
         init = function ()
         end,
     },
