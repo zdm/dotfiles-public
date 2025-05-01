@@ -14,8 +14,10 @@ l        = log --pretty='format:%h - %C(brightgreen)%ad [%C(brightcyan)%an] -%C(
 l1       = log --pretty='format:%h%C(auto)%d%C(reset) - %C(brightwhite)%s%C(reset)' --graph --all -n20
 ll       = log --graph --decorate --date=relative --all --oneline -n20
 ls       = ls-files --format '%(objectmode) %(path)'
+m        = merge
 mt       = mergetool
 p        = push
+pl       = pull
 s        = status --short --branch
 sw       = switch
 t        = tag
@@ -92,7 +94,6 @@ trustExitCode = true
 cmd = bcompare //nobackups //ro //title1=LOCAL //title2=REMOTE "$LOCAL" "$REMOTE"
 
 [diffTool "nvim"]
-; cmd = nvim -c \"DiffviewOpen $LOCAL $REMOTE\"
 cmd = nvim -d "$LOCAL" "$REMOTE"
 
 [filter "lfs"]
