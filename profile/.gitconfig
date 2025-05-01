@@ -91,7 +91,6 @@ trustExitCode = true
 [diffTool "bc"]
 cmd = bcompare //nobackups //ro //title1=LOCAL //title2=REMOTE "$LOCAL" "$REMOTE"
 
-; XXX
 [diffTool "nvim"]
 ; cmd = nvim -c \"DiffviewOpen $LOCAL $REMOTE\"
 cmd = nvim -d "$LOCAL" "$REMOTE"
@@ -138,7 +137,7 @@ cmd           = bcompare //nobackups //ro //title1=LOCAL //title2=REMOTE //title
 
 [mergeTool "nvim"]
 trustExitCode = true
-; cmd = nvim -c DiffviewOpen
+; cmd            = nvim -c DiffviewOpen
 cmd           = nvim "$MERGED"
 
 [pull]
