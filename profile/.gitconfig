@@ -93,8 +93,8 @@ cmd = bcompare //nobackups //ro //title1=LOCAL //title2=REMOTE "$LOCAL" "$REMOTE
 
 ; XXX
 [diffTool "nvim"]
-cmd = nvim -d "$LOCAL" "$REMOTE"
 ; cmd = nvim -c \"DiffviewOpen $LOCAL $REMOTE\"
+cmd = nvim -d "$LOCAL" "$REMOTE"
 
 [filter "lfs"]
 process  = git-lfs filter-process
@@ -136,9 +136,11 @@ writeToTemp     = true
 trustExitCode = true
 cmd           = bcompare //nobackups //ro //title1=LOCAL //title2=REMOTE //title3=BASE //title4=MERGED "$LOCAL" "$REMOTE" "$BASE" "$MERGED"
 
+; XXX
 [mergeTool "nvim"]
 trustExitCode = true
-cmd           = nvim "$MERGED"
+; cmd           = nvim "$MERGED"
+cmd = nvim -c \"DiffviewOpen $LOCAL $REMOTE\"
 
 [pull]
 rebase = false # merge (the default strategy)
