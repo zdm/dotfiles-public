@@ -125,7 +125,7 @@ writeToTemp     = true
 
 [mergetool "bc"]
 trustExitCode = true
-; cmd           = bcompare "$REMOTE" "$BASE" "$LOCAL" "$MERGED"
+cmd           = bcompare //nobackups //ro //title1=LOCAL //title2=REMOTE //title3=BASE //title4=MERGED "$LOCAL" "$REMOTE" "$BASE" "$MERGED"
 
 ; [mergetool "nvimdiff3"]
 ; trustExitCode = true
