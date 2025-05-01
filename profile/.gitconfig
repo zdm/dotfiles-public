@@ -111,15 +111,24 @@ defaultBranch = main
 ; allowincompletepush = true
 
 [merge]
-tool = nvimdiff3
+guitool          = bc
+tool             = nvimdiff3
+verifySignatures = true
 
 [mergetool]
-prompt        = false
-keepBackup    = true
-trustExitCode = false
+guiDefault      = false
+keepBackup      = false
+keepTemporaries = false
+prompt          = false
+stat            = false
+writeToTemp     = true
 
-; [mergetool "bc"]
-; cmd = bcompare "$REMOTE" "$BASE" "$LOCAL" "$MERGED"
+[mergetool "bc"]
+trustExitCode = true
+; cmd           = bcompare "$REMOTE" "$BASE" "$LOCAL" "$MERGED"
+
+; [mergetool "nvimdiff3"]
+; trustExitCode = true
 
 [pull]
 rebase = false # merge (the default strategy)
