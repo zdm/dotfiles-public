@@ -78,19 +78,21 @@ ignoreCase   = true
 selected = <no helper>
 
 [diff]
-tool = nvimdiff
+guitool        = bc
+mnemonicPrefix = true
+noPrefix       = false
+tool           = nvim
 
 [difftool]
-prompt = false
+guiDefault    = false
+prompt        = false
+trustExitCode = true
 
-; [difftool "bc"]
-; cmd = bcompare "$LOCAL" "$REMOTE"
+[difftool "bc"]
+cmd = bcompare //nobackups //ro //title1=LOCAL //title2=REMOTE "$LOCAL" "$REMOTE"
 
-; [difftool "nvimdiff"]
-; cmd = nvim -d "$LOCAL" "$REMOTE"
-
-; [difftool "vimdiff"]
-; cmd = vim -d "$LOCAL" "$REMOTE"
+[difftool "nvim"]
+cmd = nvim -d "$LOCAL" "$REMOTE"
 
 [filter "lfs"]
 process  = git-lfs filter-process
