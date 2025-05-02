@@ -136,6 +136,8 @@ return {
 
                     -- diff buffer
                     vim.keymap.set( { "n", "i" }, "<Leader>gd", function ()
+                            vim.cmd.tabnew( "%" )
+
                             gitsigns.diffthis( nil, {
                                 vertical = true,
                             } )
