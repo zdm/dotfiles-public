@@ -28,6 +28,11 @@ return {
                     },
                 },
             } )
+
+            -- open file history for current file
+            vim.keymap.set( { "n", "i" }, "<Leader>gh", "<CMD>DiffViewFileHistory %<CR>", {
+                buffer = bufnr
+            } )
         end
     },
 }
