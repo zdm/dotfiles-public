@@ -36,11 +36,12 @@ return {
         config = function ()
             require( "softvisio" ).setup( {
                 ignored_filetypes = {
+                    "DiffViewFiles",
                     "help",
                     "man",
                     "trouble",
-                    "unite",
                     "undotree",
+                    "unite",
                 },
             } )
         end

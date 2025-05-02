@@ -40,11 +40,12 @@ return {
                     section_separators = "",
                     disabled_filetypes = {
                         statusline = {
-                            "unite",
-                            "undotree",
+                            "DiffViewFiles",
                             "help",
                             "man",
                             "trouble",
+                            "undotree",
+                            "unite",
                         },
                         winbar = {},
                     },
