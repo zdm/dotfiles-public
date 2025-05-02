@@ -36,6 +36,7 @@ return {
         config = function ()
             require( "softvisio" ).setup( {
                 ignored_filetypes = {
+                    "DiffViewFileHistory",
                     "DiffViewFiles",
                     "help",
                     "man",

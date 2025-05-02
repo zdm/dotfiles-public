@@ -40,6 +40,7 @@ return {
                     section_separators = "",
                     disabled_filetypes = {
                         statusline = {
+                            "DiffViewFileHistory",
                             "DiffViewFiles",
                             "help",
                             "man",
