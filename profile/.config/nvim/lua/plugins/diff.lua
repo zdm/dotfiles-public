@@ -3,9 +3,9 @@ return {
         "sindrets/diffview.nvim",
         dev = true,
         config = function ()
-            local actions = require( "diffview.actions" )
+            local diffview = require( "diffview" )
 
-            require( "diffview" ).setup( {
+            diffview.setup( {
                 git_cmd = { vim.fn.has( "win32" ) == 1 and "git.exe" or "git" },
                 use_icons = false,
                 view = {
@@ -30,7 +30,9 @@ return {
             } )
 
             -- open file history for current file
-            vim.keymap.set( { "n", "i" }, "<Leader>gh", "<CMD>DiffViewFileHistory %<CR>", {
+            vim.keymap.set( { "n", "i" }, "<Leader>gh", function ()
+                diffview.file_history( nil, { "%" } )
+            end, {
                 buffer = bufnr
             } )
         end
