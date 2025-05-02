@@ -127,7 +127,7 @@ function update() {
 
             echo
             echo "### Updating: npm global packages"
-            npm ou -g
+            # npm ou -g
             npm up -g
 
             echo
