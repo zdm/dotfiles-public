@@ -27,6 +27,23 @@ return {
                         win_opts = {},
                     },
                 },
+                file_history_panel = {
+                    -- log_options = {
+                    --     git = {
+                    --         single_file = {
+                    --             diff_merges = "combined",
+                    --         },
+                    --         multi_file = {
+                    --             diff_merges = "first-parent",
+                    --         },
+                    --     },
+                    -- },
+                    win_config = {
+                        position = "bottom",
+                        height = 12,
+                        win_opts = {},
+                    },
+                },
             } )
 
             vim.keymap.set( { "n", "i" }, "<Leader>gv", function ()
