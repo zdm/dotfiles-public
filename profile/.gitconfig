@@ -10,8 +10,8 @@ ci       = commit
 co       = checkout
 d        = diff
 dt       = difftool
-l        = log --pretty='format:%h %C(brightgreen)%ad [%C(brightcyan)%an]%C(auto)%d%C(reset) %C(brightwhite)%s%C(reset)' --all --date=human -n20
-ll       = log --pretty='format:%h %C(brightgreen)%ad [%C(brightcyan)%an]%C(auto)%d%C(reset) %C(brightwhite)%s%C(reset)' --all --date=human -n20 --graph --topo-order
+l        = log --pretty='format:%h %C(brightgreen)%ad [%C(brightcyan)%an]%C(auto)%d%C(reset) %C(brightwhite)%s%C(reset)' --all --date=relative -n20
+lg       = log --pretty='format:%h %C(brightgreen)%ad [%C(brightcyan)%an]%C(auto)%d%C(reset) %C(brightwhite)%s%C(reset)' --all --date=relative -n20 --graph --topo-order
 ls       = ls-files --format '%(objectmode) %(path)'
 m        = merge
 mt       = mergetool
