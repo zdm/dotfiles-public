@@ -16,7 +16,7 @@ return {
                     },
                 },
                 file_panel = {
-                    listing_style = "list", -- "tree"
+                    listing_style = "tree", -- "list",
                     tree_options = {
                         flatten_dirs = true,
                         folder_statuses = "only_folded",  -- "never", "only_folded", "always"
