@@ -29,11 +29,19 @@ return {
                 },
             } )
 
-            -- open file history for current file
-            vim.keymap.set( { "n", "i" }, "<Leader>gh", function ()
-                diffview.file_history( nil, { "%" } )
+            vim.keymap.set( { "n", "i" }, "<Leader>gv", function ()
+                if next( require( "diffview.lib" ).views ) == nil then
+                    vim.cmd( "DiffviewOpen" )
+                else
+                    vim.cmd( "DiffviewClose" )
+                end
             end, {
-                buffer = bufnr
+                desc = "Toggle diffview"
+            } )
+
+            -- open file history for the current file
+            vim.keymap.set( { "n", "i" }, "<Leader>gh", "<CMD>DiffviewFileHistory --follow %<CR>", {
+                desc = "View file history"
             } )
         end
     },
