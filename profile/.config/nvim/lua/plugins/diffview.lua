@@ -40,7 +40,7 @@ return {
                     -- },
                     win_config = {
                         position = "bottom",
-                        height = 12,
+                        height = 10,
                         win_opts = {},
                     },
                 },
