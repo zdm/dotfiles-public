@@ -96,7 +96,7 @@ cmd = bcompare //nobackups //ro //title1=LOCAL //title2=REMOTE "$LOCAL" "$REMOTE
 cmd = nvim -d "$LOCAL" "$REMOTE"
 
 [fetch]
-prune = true
+prune = false
 
 [filter "lfs"]
 process  = git-lfs filter-process
