@@ -7,4 +7,5 @@ winget install ^
     Google.GoogleDrive ^
     TeamViewer.TeamViewer.Host ^
     VaclavSlavik.Poedit ^
-    Garmin.Express
+    Garmin.Express ^
+    "Authenticator App - OneAuth"
