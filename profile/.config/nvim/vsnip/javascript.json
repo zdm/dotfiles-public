@@ -53,5 +53,9 @@
     "if-else": {
         "prefix": "if ",
         "body": "if ( $1 ) {\n    $2\n}\nelse if ( $3 ) {\n    $4\n}\nelse {\n    $5\n}"
+    },
+    "continue": {
+        "prefix": "continue",
+        "body": "continue;$1"
     }
 }
