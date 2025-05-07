@@ -3,13 +3,6 @@ if exists("g:helper#loaded")
 endif
 let g:helper#loaded = 1
 
-command! DeinUpdate call s:dein_update()
-
-function! s:dein_update()
-    call dein#update()
-    Unite -log -wrap dein/log:!
-endfunction
-
 let g:unite_source_menu_menus.helper = {}
 let g:unite_source_menu_menus.helper.command_candidates = [
 \    ["update plugins                       - :silent! Lazy sync", "silent! Lazy sync"],

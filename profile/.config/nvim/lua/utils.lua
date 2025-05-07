@@ -8,7 +8,6 @@ M.ignored_filetypes = {
     "help",
     "man",
     "trouble",
-    "unite",
 }
 
 M.is_filetype_ignored = function ( filetype )
