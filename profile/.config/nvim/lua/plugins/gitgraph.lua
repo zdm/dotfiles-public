@@ -30,7 +30,9 @@ return {
                 function ()
                     vim.cmd.tabnew()
 
-                    require( "gitgraph" ).draw( {}, {
+                    require( "gitgraph" ).draw( {
+                        pretty = true,
+                    }, {
                         all = true,
                         max_count = 5000
                     } )
