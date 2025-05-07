@@ -28,14 +28,18 @@ return {
             {
                 "<leader>gl",
                 function ()
-                    vim.cmd.tabnew()
+                    if vim.bo.filetype == "gitgraph" then
+                        vim.cmd.tabclose()
+                    else
+                        vim.cmd.tabnew()
 
-                    require( "gitgraph" ).draw( {
-                        pretty = false,
-                    }, {
-                        all = true,
-                        max_count = 5000
-                    } )
+                        require( "gitgraph" ).draw( {
+                            pretty = false,
+                        }, {
+                            all = true,
+                            max_count = 5000
+                        } )
+                    end
                 end,
                 desc = "GitGraph - Draw",
             },
