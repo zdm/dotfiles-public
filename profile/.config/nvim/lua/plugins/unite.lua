@@ -44,12 +44,6 @@ return {
             vim.keymap.set( { "n", "i", "v" }, "<F4>", function ()
                 vim.cmd( "Unite -buffer-name=buffers -toggle -prompt-direction=top -start-insert -no-restore buffer" )
             end, { noremap = true, silent = true } )
-
-            vim.g.unite_source_session_enable_auto_save = 1
-
-            vim.keymap.set( { "n", "i", "v" }, "<F5>", function ()
-                vim.cmd( "Unite -buffer-name=session -toggle -prompt-direction=top -hide-source-names session session/new" )
-            end, { noremap = true, silent = true } )
         end
     },
     {
