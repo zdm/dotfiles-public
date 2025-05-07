@@ -97,8 +97,6 @@ set undofile
 if !isdirectory( stdpath( "data" ) . "/undo" ) | call mkdir( stdpath( "data" ) . "/undo", "p", 0700 ) | endif
 exec "set undodir=" . stdpath( "data" ) . "/undo"
 
-" set cryptmethod=blowfish2 " not supported in nvim
-
 set scrolloff=2
 set wrap         " включаем перенос строк
 " set linebreak    " перенос строк по словам, а не по буквам
@@ -286,6 +284,7 @@ let g:vim_json_conceal = 0
 " use "::" comments for "dosbatch" filetype
 let g:dosbatch_colons_comment = 1
 
+" init
 lua require( "init" )
 
 " load plugins
