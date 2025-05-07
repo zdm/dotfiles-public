@@ -38,6 +38,7 @@ return {
                 ignored_filetypes = {
                     "DiffViewFileHistory",
                     "DiffViewFiles",
+                    "gitgraph",
                     "help",
                     "man",
                     "trouble",

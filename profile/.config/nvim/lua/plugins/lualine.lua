@@ -42,6 +42,7 @@ return {
                         statusline = {
                             "DiffViewFileHistory",
                             "DiffViewFiles",
+                            "gitgraph",
                             "help",
                             "man",
                             "trouble",
