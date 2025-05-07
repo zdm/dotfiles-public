@@ -5,30 +5,29 @@ return {
         dependencies = {
             "trouble.nvim",
         },
-        lazy = false,
         cmd = "S",
         keys = {
             {
-                "<leader>sd",
-                "<esc>:S lint format<cr>",
+                "<Leader>sd",
+                "<ESC>:S lint format<CR>",
                 mode = { "n", "i", "v", "s" },
                 desc = "Lint buffer using default rules",
             },
             {
-                "<leader>sf",
-                "<esc>:S lint lint<cr>",
+                "<Leader>sf",
+                "<ESC>:S lint lint<CR>",
                 mode = { "n", "i", "v", "s" },
                 desc = "Lint buffer",
             },
             {
-                "<leader>sc",
-                "<esc>:S lint compress<cr>",
+                "<Leader>sc",
+                "<ESC>:S lint compress<CR>",
                 mode = { "n", "i", "v", "s" },
                 desc = "Compress buffer",
             },
             {
-                "<leader>so",
-                "<esc>:S lint obfuscate<cr>",
+                "<Leader>so",
+                "<ESC>:S lint obfuscate<CR>",
                 mode = { "n", "i", "v", "s" },
                 desc = "Obfuscate buffer",
             },
