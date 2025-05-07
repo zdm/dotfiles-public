@@ -27,6 +27,12 @@ return {
                 -- end
             } )
 
+            local ft = require( "Comment.ft" )
+
+            ft.set( "dosbatch", ":: %s" )
+            ft.set( "nginx", "# %s" )
+            ft.set( "powershell", "# %s" )
+
             local api = require( "Comment.api" )
             local config = require( "Comment.config" ):get()
 
@@ -43,12 +49,6 @@ return {
             vim.keymap.set( "v", "<Leader>c", api.call( "toggle.linewise", "g@" ), { expr = true } )
 
             vim.keymap.set( "v", "<Leader><Leader>c", api.call( "toggle.blockwise", "g@" ), { expr = true } )
-
-            local ft = require( "Comment.ft" )
-
-            ft.set( "dosbatch", ":: %s" )
-            ft.set( "nginx", "# %s" )
-            ft.set( "powershell", "# %s" )
         end,
     },
 }
