@@ -158,13 +158,6 @@ set fillchars+=diff:╱
 " vnoremap <silent> <C-S-K> <ESC>:+tabm<CR>gv
 " }}}
 
-" make <TAB> ident code {{{
-nnoremap <TAB>   I<TAB><ESC>
-nnoremap <S-TAB> ^i<BS><ESC>
-vnoremap <TAB>   >gv
-vnoremap <S-TAB> <gv
-" }}}
-
 " XXX
 " <C-W><C-ARROW> - move windows (not work in console) {{{
 " nnoremap <C-W><C-Left> <C-W>H
