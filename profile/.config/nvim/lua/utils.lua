@@ -8,7 +8,6 @@ M.ignored_filetypes = {
     "help",
     "man",
     "trouble",
-    "undotree",
     "unite",
 }
 
