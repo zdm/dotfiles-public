@@ -7,9 +7,9 @@ return {
         opts = {
             symbols = {
                 commit = "•",
-                commit_end = "•",
-                merge_commit = "Ⓜ",
-                merge_commit_end = "Ⓜ",
+                commit_end = "⦿",
+                merge_commit = "⦾",
+                merge_commit_end = "⦾",
             },
             format = {
                 timestamp = "%Y-%m-%d %H:%M:%S",
@@ -31,7 +31,7 @@ return {
                     vim.cmd.tabnew()
 
                     require( "gitgraph" ).draw( {
-                        pretty = true,
+                        pretty = false,
                     }, {
                         all = true,
                         max_count = 5000
