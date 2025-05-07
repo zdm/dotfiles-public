@@ -10,13 +10,19 @@ ci       = commit
 co       = checkout
 d        = diff
 dt       = difftool
+f        = fetch
 l        = log --pretty='format:%h %C(brightgreen)%ad%C(reset) %C(brightcyan)[%an]%C(reset)%C(auto)%d%C(reset) %C(brightwhite)%s%C(reset)' --all --date=relative -n20
 lg       = log --pretty='format:%h %C(brightgreen)%ad%C(reset) %C(brightcyan)[%an]%C(reset)%C(auto)%d%C(reset) %C(brightwhite)%s%C(reset)' --all --date=relative -n20 --graph --topo-order
 ls       = ls-files --format '%(objectmode) %(path)'
 m        = merge
+ma       = merge --abort
+mc       = merge --continue
 mt       = mergetool
 p        = push
 pl       = pull
+r        = revert
+ra       = revert --abort
+rc       = revert --continue
 s        = status --short --branch
 sw       = switch
 t        = tag
