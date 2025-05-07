@@ -40,10 +40,6 @@ return {
 
                 vim.cmd( "Unite -buffer-name=MRU -toggle -prompt-direction=top -start-insert -no-restore bookmark:default-" .. os .. " neomru/file" )
             end, { noremap = true, silent = true } )
-
-            vim.keymap.set( { "n", "i", "v" }, "<F4>", function ()
-                vim.cmd( "Unite -buffer-name=buffers -toggle -prompt-direction=top -start-insert -no-restore buffer" )
-            end, { noremap = true, silent = true } )
         end
     },
     {
