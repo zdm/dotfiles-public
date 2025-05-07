@@ -7,8 +7,14 @@ return {
             {
                 "<Leader>gv",
                 "<CMD>DiffviewOpen<CR>",
-                mode = { "n", "i" },
+                mode = { "n", "i", "v", "s" },
                 desc = "OPen diff view",
+            },
+            {
+                "<Leader>gh",
+                "<CMD>DiffviewFileHistory --follow %<CR>",
+                mode = { "n", "i", "v", "s" },
+                desc = "Open file history",
             },
         },
         config = function ()
@@ -53,11 +59,6 @@ return {
                         win_opts = {},
                     },
                 },
-            } )
-
-            -- open file history for the current file
-            vim.keymap.set( { "n", "i" }, "<Leader>gh", "<CMD>DiffviewFileHistory --follow %<CR>", {
-                desc = "View file history"
             } )
         end
     },

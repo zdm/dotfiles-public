@@ -153,7 +153,6 @@ return {
                             buffer = bufnr
                         }
                     )
-
                 end
             } )
         end,

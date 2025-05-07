@@ -41,6 +41,7 @@ return {
                         } )
                     end
                 end,
+                mode = { "n", "i", "v", "s" },
                 desc = "Open git graph",
             },
         },
