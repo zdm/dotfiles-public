@@ -26,6 +26,14 @@ return {
                     vim.keymap.set( { "n", "i" }, "<C-CR>", "unite#do_action( 'tabswitch' )", { noremap = true, buffer = true, silent = true, expr = true } )
                 end
             } )
-        end
+        end,
+        keys = {
+            {
+                "<F2>",
+                "<ESC>:Unite -buffer-name=helper -toggle -prompt-direction=top -start-insert -no-restore menu:helper<CR>",
+                mode = { "n", "i", "v", "s" },
+                desc = "Helper",
+            },
+        },
     },
 }
