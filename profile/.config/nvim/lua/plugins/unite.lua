@@ -64,15 +64,4 @@ return {
             vim.g[ "neomru#directory_mru_path"] = vim.g.unite_data_directory .. "/neomru/directory"
         end
     },
-    {
-        "shougo/unite-outline",
-        dependencies = {
-            "unite.vim"
-        },
-        config = function ()
-            vim.keymap.set( { "n", "i", "v" }, "<F8>", function ()
-                vim.cmd( "Unite -buffer-name=outline -toggle -vertical -direction=botright -winwidth=60 -start-insert -no-restore outline" )
-            end, { noremap = true, silent = true } )
-        end
-    },
 }
