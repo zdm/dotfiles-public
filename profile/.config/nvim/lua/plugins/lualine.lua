@@ -39,16 +39,7 @@ return {
                     component_separators = "",
                     section_separators = "",
                     disabled_filetypes = {
-                        statusline = {
-                            "DiffViewFileHistory",
-                            "DiffViewFiles",
-                            "gitgraph",
-                            "help",
-                            "man",
-                            "trouble",
-                            "undotree",
-                            "unite",
-                        },
+                        statusline = require( "utils" ).ignore_filetypes,
                         winbar = {},
                     },
                     ignore_focus = {},

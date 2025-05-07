@@ -35,16 +35,7 @@ return {
         },
         config = function ()
             require( "softvisio" ).setup( {
-                ignored_filetypes = {
-                    "DiffViewFileHistory",
-                    "DiffViewFiles",
-                    "gitgraph",
-                    "help",
-                    "man",
-                    "trouble",
-                    "undotree",
-                    "unite",
-                },
+                ignored_filetypes = require( "utils" ).ignore_filetypes,
             } )
         end
     }

@@ -1,5 +1,16 @@
 local M = {}
 
+M.ignore_filetypes = {
+    "DiffViewFileHistory",
+    "DiffViewFiles",
+    "gitgraph",
+    "help",
+    "man",
+    "trouble",
+    "undotree",
+    "unite",
+}
+
 M.has_treesitter = function ( bufnr )
     if not bufnr then
         bufnr = vim.api.nvim_get_current_buf()
