@@ -1,8 +1,8 @@
 local M = {}
 
 M.ignore_filetypes = {
-    "DiffViewFileHistory",
-    "DiffViewFiles",
+    "DiffviewFileHistory",
+    "DiffviewFiles",
     "gitgraph",
     "help",
     "man",
