@@ -30,7 +30,7 @@ return {
                 function ()
                     if vim.bo.filetype == "gitgraph" then
                         vim.cmd.tabclose()
-                    elseif require( "utils" ).ignore_filetypes[ vim.bo.filetype ] then
+                    elseif require( "utils" ).is_filetype_ignored( vim.bo.filetype ) then
                         return
                     else
                         vim.cmd.tabnew()

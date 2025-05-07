@@ -39,7 +39,7 @@ return {
                     component_separators = "",
                     section_separators = "",
                     disabled_filetypes = {
-                        statusline = require( "utils" ).ignore_filetypes,
+                        statusline = require( "utils" ).ignored_filetypes,
                         winbar = {},
                     },
                     ignore_focus = {},

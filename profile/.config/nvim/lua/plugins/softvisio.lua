@@ -35,7 +35,7 @@ return {
         },
         config = function ()
             require( "softvisio" ).setup( {
-                ignored_filetypes = require( "utils" ).ignore_filetypes,
+                ignored_filetypes = require( "utils" ).ignored_filetypes,
             } )
         end
     }
