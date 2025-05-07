@@ -6,13 +6,13 @@ return {
         },
         opts = {
             symbols = {
-                commit = "*", -- ""
-                commit_end = "",
-                merge_commit = "Ⓜ", -- "",
-                merge_commit_end = "",
+                commit = "•",
+                commit_end = "•",
+                merge_commit = "Ⓜ",
+                merge_commit_end = "Ⓜ",
             },
             format = {
-                timestamp = "%H:%M:%S %d-%m-%Y",
+                timestamp = "%Y-%m-%d %H:%M:%S",
                 fields = { "hash", "timestamp", "author", "branch_name", "tag" },
             },
             hooks = {
@@ -28,7 +28,10 @@ return {
             {
                 "<leader>gl",
                 function ()
-                    require( "gitgraph" ).draw( {}, { all = true, max_count = 5000 } )
+                    require( "gitgraph" ).draw( {}, {
+                        all = true,
+                        max_count = 5000
+                    } )
                 end,
                 desc = "GitGraph - Draw",
             },
