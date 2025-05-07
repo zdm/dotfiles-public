@@ -16,13 +16,13 @@ lg       = log --pretty='format:%h %C(brightgreen)%ad%C(reset) %C(brightcyan)[%a
 ls       = ls-files --format '%(objectmode) %(path)'
 m        = merge --no-edit
 ma       = merge --abort
-mc       = merge --continue
+mc       = merge --continue --no-edit
 mt       = mergetool
 p        = push
 pl       = pull
 r        = revert --no-edit
 ra       = revert --abort
-rc       = revert --continue
+rc       = revert --continue --no-edit
 s        = status --short --branch
 sw       = switch
 t        = tag
