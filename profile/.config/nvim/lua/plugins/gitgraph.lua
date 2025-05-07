@@ -28,6 +28,8 @@ return {
             {
                 "<leader>gl",
                 function ()
+                    vim.cmd.tabnew()
+
                     require( "gitgraph" ).draw( {}, {
                         all = true,
                         max_count = 5000
