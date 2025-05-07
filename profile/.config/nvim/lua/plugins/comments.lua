@@ -4,6 +4,44 @@ return {
         dependencies = {
             "joosepalviste/nvim-ts-context-commentstring"
         },
+        keys = {
+            {
+                "<Leader>c",
+                function ()
+                    require( "Comment.api" ).toggle.linewise.current()
+                    vim.cmd( "normal! j" )
+                end,
+                mode = { "n", "i" },
+                desc = "Toggle comment for the current line",
+            },
+            {
+                "<Leader><Leader>c",
+                function ()
+                    require( "Comment.api" ).toggle.blockwise.current()
+                    vim.cmd( "normal! j" )
+                end,
+                mode = { "n", "i" },
+                desc = "Toggle block comment for the current line",
+            },
+            {
+                "<Leader>c",
+                function ()
+                    return require( "Comment.api" ).call( "toggle.linewise", "g@" )()
+                end,
+                mode = { "v" },
+                desc = "Toggle comments for the selected lines",
+                expr = true,
+            },
+            {
+                "<Leader><Leader>c",
+                function ()
+                    return require( "Comment.api" ).call( "toggle.blockwise", "g@" )()
+                end,
+                mode = { "v" },
+                desc = "Toggle block comment for the selection",
+                expr = true,
+            },
+        },
         config = function ()
             require( "ts_context_commentstring" ).setup( {
                 enable_autocmd = false,
@@ -32,23 +70,6 @@ return {
             ft.set( "dosbatch", ":: %s" )
             ft.set( "nginx", "# %s" )
             ft.set( "powershell", "# %s" )
-
-            local api = require( "Comment.api" )
-            local config = require( "Comment.config" ):get()
-
-            vim.keymap.set( { "n", "i" }, "<Leader>c", function ()
-                api.toggle.linewise.current()
-                vim.cmd( "normal! j" )
-            end )
-
-            vim.keymap.set( { "n", "i" }, "<Leader><Leader>c", function ()
-                api.toggle.blockwise.current()
-                vim.cmd( "normal! j" )
-            end )
-
-            vim.keymap.set( "v", "<Leader>c", api.call( "toggle.linewise", "g@" ), { expr = true } )
-
-            vim.keymap.set( "v", "<Leader><Leader>c", api.call( "toggle.blockwise", "g@" ), { expr = true } )
         end,
     },
 }
