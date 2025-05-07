@@ -9,25 +9,25 @@ return {
         keys = {
             {
                 "<Leader>sd",
-                "<ESC>:S lint format<CR>",
+                "<CMD>S lint format<CR>",
                 mode = { "n", "i", "v", "s" },
                 desc = "Lint buffer using default rules",
             },
             {
                 "<Leader>sf",
-                "<ESC>:S lint lint<CR>",
+                "<CMD>S lint lint<CR>",
                 mode = { "n", "i", "v", "s" },
                 desc = "Lint buffer",
             },
             {
                 "<Leader>sc",
-                "<ESC>:S lint compress<CR>",
+                "<CMD>S lint compress<CR>",
                 mode = { "n", "i", "v", "s" },
                 desc = "Compress buffer",
             },
             {
                 "<Leader>so",
-                "<ESC>:S lint obfuscate<CR>",
+                "<CMD>S lint obfuscate<CR>",
                 mode = { "n", "i", "v", "s" },
                 desc = "Obfuscate buffer",
             },

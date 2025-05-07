@@ -2,6 +2,15 @@ return {
     {
         "sindrets/diffview.nvim",
         dev = true,
+        cmd = { "DiffviewOpen", "DiffviewFileHistory", "DiffviewClose" },
+        keys = {
+            {
+                "<Leader>gv",
+                "<CMD>DiffviewOpen<CR>",
+                mode = { "n", "i" },
+                desc = "OPen diff view",
+            },
+        },
         config = function ()
             local diffview = require( "diffview" )
 
@@ -44,16 +53,6 @@ return {
                         win_opts = {},
                     },
                 },
-            } )
-
-            vim.keymap.set( { "n", "i" }, "<Leader>gv", function ()
-                if next( require( "diffview.lib" ).views ) == nil then
-                    vim.cmd( "DiffviewOpen" )
-                else
-                    vim.cmd( "DiffviewClose" )
-                end
-            end, {
-                desc = "Toggle diffview"
             } )
 
             -- open file history for the current file

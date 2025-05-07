@@ -26,11 +26,9 @@ return {
         },
         keys = {
             {
-                "<leader>gl",
+                "<Leader>gl",
                 function ()
-                    if vim.bo.filetype == "gitgraph" then
-                        vim.cmd.tabclose()
-                    elseif require( "utils" ).is_filetype_ignored( vim.bo.filetype ) then
+                    if require( "utils" ).is_filetype_ignored( vim.bo.filetype ) then
                         return
                     else
                         vim.cmd.tabnew()
@@ -43,7 +41,7 @@ return {
                         } )
                     end
                 end,
-                desc = "GitGraph - Draw",
+                desc = "Open git graph",
             },
         },
     },
