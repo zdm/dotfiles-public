@@ -147,14 +147,15 @@ autocmd FocusGained * :checktime " notify on file modified
 " set fill char for diff
 set fillchars+=diff:╱
 
+" XXX
 " move tabs with <C-S-J>, <C-S-K> {{{
-nnoremap <silent> <C-S-J> :-tabm<CR>
-inoremap <silent> <C-S-J> <ESC>:-tabm<CR>a
-vnoremap <silent> <C-S-J> <ESC>:-tabm<CR>gv
+" nnoremap <silent> <C-S-J> :-tabm<CR>
+" inoremap <silent> <C-S-J> <ESC>:-tabm<CR>a
+" vnoremap <silent> <C-S-J> <ESC>:-tabm<CR>gv
 
-nnoremap <silent> <C-S-K> :+tabm<CR>
-inoremap <silent> <C-S-K> <ESC>:+tabm<CR>a
-vnoremap <silent> <C-S-K> <ESC>:+tabm<CR>gv
+" nnoremap <silent> <C-S-K> :+tabm<CR>
+" inoremap <silent> <C-S-K> <ESC>:+tabm<CR>a
+" vnoremap <silent> <C-S-K> <ESC>:+tabm<CR>gv
 " }}}
 
 " make <TAB> ident code {{{
@@ -162,18 +163,6 @@ nnoremap <TAB>   I<TAB><ESC>
 nnoremap <S-TAB> ^i<BS><ESC>
 vnoremap <TAB>   >gv
 vnoremap <S-TAB> <gv
-" }}}
-
-" * - highlites word under cursor {{{
-nnoremap <silent> * *N
-" }}}
-
-" <SPACE> - cleanup search highlight in NORMAL mode {{{
-nnoremap <silent> <Space> :noh<CR>
-" }}}
-
-" <CR> - switch VIM to INSERT mode {{{
-nnoremap <CR> a
 " }}}
 
 " XXX
