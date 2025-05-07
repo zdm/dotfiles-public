@@ -2,8 +2,6 @@ return {
     {
         "shougo/unite.vim",
         init = function ()
-            vim.g.unite_data_directory = vim.fn.stdpath( "data" ) .. "/unite"
-            vim.g.unite_source_bookmark_directory = vim.fn.stdpath( "config" ) .. "/unite/bookmark"
             vim.g.unite_force_overwrite_statusline = 0
             vim.g.unite_cursor_line_highlight = "CursorLine"
             vim.g.unite_source_menu_menus = vim.empty_dict()
@@ -28,30 +26,6 @@ return {
                     vim.keymap.set( { "n", "i" }, "<C-CR>", "unite#do_action( 'tabswitch' )", { noremap = true, buffer = true, silent = true, expr = true } )
                 end
             } )
-
-            vim.keymap.set( { "n", "i", "v" }, "<F3>", function ()
-                local os
-
-                if vim.fn.has( "win64" ) == 1 or vim.fn.has( "win32" ) == 1 then
-                    os = "windows"
-                else
-                    os = "linux"
-                end
-
-                vim.cmd( "Unite -buffer-name=MRU -toggle -prompt-direction=top -start-insert -no-restore bookmark:default-" .. os .. " neomru/file" )
-            end, { noremap = true, silent = true } )
-        end
-    },
-    {
-        "shougo/neomru.vim",
-        dependencies = {
-            "unite.vim"
-        },
-
-        -- TODO: rename to init, https://github.com/folke/lazy.nvim/issues/1958
-        config = function ()
-            vim.g[ "neomru#file_mru_path"] = vim.g.unite_data_directory .. "/neomru/file"
-            vim.g[ "neomru#directory_mru_path"] = vim.g.unite_data_directory .. "/neomru/directory"
         end
     },
 }

@@ -281,6 +281,7 @@ inoremap <silent> <Leader>ss <ESC>:call SyntaxRefresh()<CR>a
 vnoremap <silent> <Leader>ss <ESC>:call SyntaxRefresh()<CR>gv
 " }}}
 
+" XXX
 " helper - unite F2 menu {{{
 nnoremap <silent> <F2> :Unite -buffer-name=helper -toggle -prompt-direction=top -start-insert -no-restore menu:helper<CR>
 inoremap <silent> <F2> <C-o>:Unite -buffer-name=helper -toggle -prompt-direction=top -start-insert -no-restore menu:helper<CR>
