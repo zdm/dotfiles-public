@@ -153,6 +153,11 @@ inoremap <silent> <C-t> <ESC>:tabnew<CR>a
 vnoremap <silent> <C-t> <ESC>:<C-o>tabnew<CR>gv
 " }}}
 
+" <C-w> - close tab with
+nnoremap <silent> <C-w> :tabclose<CR>
+inoremap <silent> <C-w> <ESC>:tabclose<CR>
+vnoremap <silent> <C-w> <ESC>:tabclose<CR>
+
 " switch tabs with <C-PageUp>, <C-PageDown> {{{
 nnoremap <silent> <C-PageUp> :tabprevious<CR>
 inoremap <silent> <C-PageUp> <ESC>:tabprevious<CR>a
@@ -212,15 +217,17 @@ nnoremap <silent> <Space> :noh<CR>
 nnoremap <CR> a
 " }}}
 
+" XXX
 " <C-W><C-ARROW> - move windows (not work in console) {{{
-nnoremap <C-W><C-Left> <C-W>H
-nnoremap <C-W><C-Right> <C-W>L
-nnoremap <C-W><C-Up> <C-W>K
-nnoremap <C-W><C-Down> <C-W>J
+" nnoremap <C-W><C-Left> <C-W>H
+" nnoremap <C-W><C-Right> <C-W>L
+" nnoremap <C-W><C-Up> <C-W>K
+" nnoremap <C-W><C-Down> <C-W>J
 " }}}
 
+" XXX
 " open current buffer in the new tab {{{
-nnoremap <C-W>t <C-W>T
+" nnoremap <C-W>t <C-W>T
 " }}}
 
 " remap Up and Down to move inside visible lines {{{

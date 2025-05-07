@@ -3,6 +3,7 @@ return {
         "nvim-telescope/telescope.nvim",
         dependencies = {
         },
+        cmd = "Telescope",
         keys = {
             {
                 "<F4>",
