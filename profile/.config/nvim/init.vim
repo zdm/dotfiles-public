@@ -147,47 +147,6 @@ autocmd FocusGained * :checktime " notify on file modified
 " set fill char for diff
 set fillchars+=diff:╱
 
-" open new tab with <C-t> {{{
-nnoremap <silent> <C-t> :tabnew<CR>
-inoremap <silent> <C-t> <ESC>:tabnew<CR>a
-vnoremap <silent> <C-t> <ESC>:<C-o>tabnew<CR>gv
-" }}}
-
-" <C-w> - close tab with
-nnoremap <silent> <C-w> :tabclose<CR>
-inoremap <silent> <C-w> <ESC>:tabclose<CR>
-vnoremap <silent> <C-w> <ESC>:tabclose<CR>
-
-" switch tabs with <C-PageUp>, <C-PageDown> {{{
-nnoremap <silent> <C-PageUp> :tabprevious<CR>
-inoremap <silent> <C-PageUp> <ESC>:tabprevious<CR>a
-vnoremap <silent> <C-PageUp> <ESC>:tabprevious<CR>gv
-
-nnoremap <silent> <C-PageDown> :tabnext<CR>
-inoremap <silent> <C-PageDown> <ESC>:tabnext<CR>a
-vnoremap <silent> <C-PageDown> <ESC>:tabnext<CR>gv
-" }}}
-
-" switch tabs with <C-TAB>, <C-S-TAB> {{{
-nnoremap <silent> <C-S-TAB> :tabprevious<CR>
-inoremap <silent> <C-S-TAB> <ESC>:tabprevious<CR>a
-vnoremap <silent> <C-S-TAB> <ESC>:tabprevious<CR>gv
-
-nnoremap <silent> <C-TAB> :tabnext<CR>
-inoremap <silent> <C-TAB> <ESC>:tabnext<CR>a
-vnoremap <silent> <C-TAB> <ESC>:tabnext<CR>gv
-" }}}
-
-" move tabs with <C-S-PageUp>, <C-S-PageDown> {{{
-nnoremap <silent> <C-S-PageUp> :-tabm<CR>
-inoremap <silent> <C-S-PageUp> <ESC>:-tabm<CR>a
-vnoremap <silent> <C-S-PageUp> <ESC>:-tabm<CR>gv
-
-nnoremap <silent> <C-S-PageDown> :+tabm<CR>
-inoremap <silent> <C-S-PageDown> <ESC>:+tabm<CR>a
-vnoremap <silent> <C-S-PageDown> <ESC>:+tabm<CR>gv
-" }}}
-
 " move tabs with <C-S-J>, <C-S-K> {{{
 nnoremap <silent> <C-S-J> :-tabm<CR>
 inoremap <silent> <C-S-J> <ESC>:-tabm<CR>a
@@ -344,6 +303,8 @@ let g:vim_json_conceal = 0
 
 " use "::" comments for "dosbatch" filetype
 let g:dosbatch_colons_comment = 1
+
+lua require( "init" )
 
 " load plugins
 lua require( "config.lazy" )
