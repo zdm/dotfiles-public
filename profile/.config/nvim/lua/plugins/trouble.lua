@@ -10,9 +10,9 @@ return {
         cmd = "Trouble",
         keys = {
             {
-                "<leader>xx",
-                "<cmd>Trouble diagnostics toggle<cr>",
-                mode = { "n", "i" },
+                "<Leader>xx",
+                "<CMD>Trouble diagnostics toggle<CR>",
+                mode = { "n", "i", "v", "s" },
                 desc = "Diagnostics (Trouble)",
             },
         }

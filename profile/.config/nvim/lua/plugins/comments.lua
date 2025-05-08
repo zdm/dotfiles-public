@@ -1,3 +1,6 @@
+local toggle_linewise
+local toggle_blockwise
+
 return {
     {
         "numtostr/comment.nvim",
@@ -26,7 +29,11 @@ return {
             {
                 "<Leader>c",
                 function ()
-                    return require( "Comment.api" ).call( "toggle.linewise", "g@" )()
+                    if not toggle_linewise then
+                        toggle_linewise = require( "Comment.api" ).call( "toggle.linewise", "g@" )
+                    end
+
+                    return toggle_linewise()
                 end,
                 mode = { "v" },
                 desc = "Toggle comments for the selected lines",
@@ -35,7 +42,11 @@ return {
             {
                 "<Leader><Leader>c",
                 function ()
-                    return require( "Comment.api" ).call( "toggle.blockwise", "g@" )()
+                    if not toggle_blockwise then
+                        toggle_blockwise = require( "Comment.api" ).call( "toggle.blockwise", "g@" )
+                    end
+
+                    return toggle_blockwise()
                 end,
                 mode = { "v" },
                 desc = "Toggle block comment for the selection",
