@@ -1,6 +1,7 @@
 return {
     {
         "powerman/vim-plugin-viewdoc",
+        enabled = false,
         init = function ()
             vim.g.viewdoc_openempty = 1
 

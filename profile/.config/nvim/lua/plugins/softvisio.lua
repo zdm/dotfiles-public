@@ -3,6 +3,7 @@ return {
         "zdm/softvisio.nvim",
         dev = true,
         dependencies = {
+            "nvim-notify",
             "trouble.nvim",
         },
         cmd = "S",
