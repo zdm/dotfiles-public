@@ -32,6 +32,9 @@ return {
                 pickers = {
                     diagnostics = {
                         theme = "ivy",
+                        layout_config = {
+                            height = 10,
+                        },
                     },
                 },
                 extensions = {
