@@ -27,7 +27,10 @@ return {
             } )
         end
     },
-    { "uguu-org/vim-matrix-screensaver" },
+    {
+        "uguu-org/vim-matrix-screensaver",
+        cmd = "Matrix",
+    },
     { "zhimsel/vim-stay" },
     {
         "lyokha/vim-xkbswitch",
