@@ -28,9 +28,6 @@ return {
         -- "lewis6991/gitsigns.nvim",
         "zdm/gitsigns.nvim",
         dev = true,
-        dependencies = {
-            "telescope.nvim",
-        },
         config = function ()
             local gitsigns = require( "gitsigns" )
 
