@@ -6,6 +6,7 @@ M.ignored_filetypes = {
     "DiffviewFiles",
     "gitgraph",
     "help",
+    "man",
     "TelescopePrompt",
 }
 
