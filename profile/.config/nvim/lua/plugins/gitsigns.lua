@@ -13,7 +13,7 @@ return {
         "zdm/gitsigns.nvim",
         dev = true,
         dependencies = {
-            "trouble.nvim",
+            "telescope.nvim",
         },
         config = function ()
             local gitsigns = require( "gitsigns" )
@@ -98,12 +98,12 @@ return {
 
                     -- show hunks list
                     vim.keymap.set( { "n", "i" }, "<Leader>gx", function ()
-                            local trouble = require( "trouble" )
-
                             gitsigns.setqflist( bufnr, {
                                 use_location_list = true,
-                                open = true,
+                                open = false,
                             } )
+
+                            vim.cmd( "Telescope loclist layout_config={width=0.99}" )
 
                         end, {
                             buffer = bufnr
