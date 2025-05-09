@@ -263,6 +263,9 @@ set titlestring=%{SetTitleString()}
 set title
 " }}}
 
+" always open help in a new tab
+autocmd BufEnter *.txt if &filetype == "help" | wincmd T | endif
+
 " prevent create .netrwhist
 let g:netrw_dirhistmax = 0
 
