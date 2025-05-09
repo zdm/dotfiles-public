@@ -7,6 +7,22 @@ local diff_signs = {
     untracked    = { text = "?", show_count = true },
 }
 
+local function open_hunks_list ( bufnr )
+    local gitsigns = require( "gitsigns" )
+    local async = require( "gitsigns.async" )
+
+    async.arun( function ()
+        gitsigns.setqflist( bufnr, {
+            use_location_list = true,
+            open = false,
+        } )
+
+        async.schedule()
+
+        vim.cmd( "Telescope loclist theme=ivy layout_config={width=0.99}" )
+    end )
+end
+
 return {
     {
         -- "lewis6991/gitsigns.nvim",
@@ -98,15 +114,7 @@ return {
 
                     -- show hunks list
                     vim.keymap.set( { "n", "i" }, "<Leader>gx", function ()
-                            gitsigns.setqflist( bufnr, {
-                                use_location_list = true,
-                                open = false,
-                            } )
-
-                            -- XXX schedule
-
-                            vim.cmd( "Telescope loclist theme=ivy layout_config={width=0.99}" )
-
+                            open_hunks_list( bufnr )
                         end, {
                             buffer = bufnr
                         }
