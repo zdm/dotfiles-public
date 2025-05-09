@@ -8,7 +8,7 @@ return {
         keys = {
             {
                 "<F2>",
-                "<CMD>Telescope menu<CR>",
+                "<CMD>Telescope menu theme=ivy layout_config={height=10}<CR>",
                 mode = { "n", "i", "v" },
                 desc = "Helper menu",
             },
@@ -26,7 +26,14 @@ return {
             },
         },
         config = function ()
-            require( "telescope" ).setup( {
+            local telescope = require( "telescope" )
+
+            telescope.setup( {
+                pickers = {
+                    diagnostics = {
+                        theme = "ivy",
+                    },
+                },
                 extensions = {
                     menu = {
                         default = {
