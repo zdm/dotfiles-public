@@ -19,7 +19,7 @@ local function open_hunks_list ( bufnr )
 
         async.schedule()
 
-        vim.cmd( "Telescope loclist theme=ivy layout_config={width=0.99}" )
+        vim.cmd( "Telescope loclist layout_strategy=vertical layout_config={height=0.99,width=0.99,prompt_position=bottom,preview_height=0.6,preview_cutoff=0}" )
     end )
 end
 
