@@ -103,7 +103,9 @@ return {
                                 open = false,
                             } )
 
-                            vim.cmd( "Telescope loclist layout_config={width=0.99}" )
+                            -- XXX schedule
+
+                            vim.cmd( "Telescope loclist theme=ivy layout_config={width=0.99}" )
 
                         end, {
                             buffer = bufnr
