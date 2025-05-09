@@ -41,6 +41,7 @@ return {
                                 { "update plugins", "Lazy sync" },
                                 { "set ft=javascript", "set ft=javascript" },
                                 { "set ft=json", "set ft=json" },
+                                { "pickers", "Telescope builtin" },
                                 { "edit snippets", "VsnipOpen" },
                                 { "open buffer in the browser", "S browser" },
                                 { "spellchecker on", "setlocal spell spelllang=ru_yo,en_us" },
@@ -51,6 +52,10 @@ return {
                         },
                     },
                 },
+            } )
+
+            vim.api.nvim_set_hl( 0, "TelescopeSelection", {
+                bg = "Grey15",
             } )
         end
     },
