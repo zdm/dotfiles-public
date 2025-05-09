@@ -24,6 +24,13 @@ return {
                 mode = { "n", "i", "v" },
                 desc = "Telescope buffers",
             },
+            {
+                "<Leader>xx",
+                "<CMD>Telescope diagnostics<CR>",
+                mode = { "n", "i", "v", "s" },
+                desc = "Open diagnostics",
+            },
+
         },
         config = function ()
             local telescope = require( "telescope" )
@@ -57,6 +64,7 @@ return {
                 },
             } )
 
+            -- configure cursor line
             vim.api.nvim_set_hl( 0, "TelescopeSelection", {
                 bg = "Grey15",
             } )

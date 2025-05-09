@@ -7,7 +7,6 @@ M.ignored_filetypes = {
     "gitgraph",
     "help",
     "TelescopePrompt",
-    "trouble",
 }
 
 M.is_filetype_ignored = function ( filetype )
