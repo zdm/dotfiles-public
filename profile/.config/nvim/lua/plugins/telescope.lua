@@ -8,7 +8,7 @@ return {
         keys = {
             {
                 "<F2>",
-                "<CMD>Telescope menu theme=ivy layout_config={height=10}<CR>",
+                "<CMD>Telescope menu prompt_title=Commands theme=ivy layout_config={height=10}<CR>",
                 mode = { "n", "i", "v" },
                 desc = "Helper menu",
             },
