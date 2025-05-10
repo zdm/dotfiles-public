@@ -7,5 +7,8 @@ winget install ^
     Google.GoogleDrive ^
     TeamViewer.TeamViewer.Host ^
     VaclavSlavik.Poedit ^
-    Garmin.Express ^
+    Garmin.Express
+
+winget install --source msstore ^
+    ChatGPT ^
     "Authenticator App - OneAuth"
