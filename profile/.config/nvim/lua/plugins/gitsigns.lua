@@ -20,7 +20,7 @@ local function open_hunks_list ( bufnr )
         async.schedule()
 
         if vim.fn.exists( ":Telescope" ) > 0 then
-            vim.cmd( [[Telescope loclist prompt_title= results_title=Hunks preview_title=Hunk=\ preview layout_strategy=vertical layout_config={height=0.999,width=0.99,preview_height=0.6,preview_cutoff=0} sorting_strategy=ascending]] )
+            vim.cmd( [[Telescope loclist prompt_title= results_title=Hunks preview_title=Hunk\ preview layout_strategy=vertical layout_config={height=0.999,width=0.99,preview_height=0.6,preview_cutoff=0} sorting_strategy=ascending]] )
         end
     end )
 end
