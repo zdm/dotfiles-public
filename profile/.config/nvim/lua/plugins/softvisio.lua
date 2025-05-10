@@ -2,6 +2,9 @@ return {
     {
         "zdm/softvisio.nvim",
         dev = true,
+        dependencies = {
+            "telescope.nvim",
+        },
         cmd = "S",
         keys = {
             {

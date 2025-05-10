@@ -19,7 +19,9 @@ local function open_hunks_list ( bufnr )
 
         async.schedule()
 
-        vim.cmd( [[Telescope loclist prompt_title=Hunks results_title=Hunks theme=ivy layout_strategy=vertical layout_config={anchor=S,height=0.99,width=0.99,preview_height=0.6,preview_cutoff=0}]] )
+        if vim.fn.exists( ":Telescope" ) > 0 then
+            vim.cmd( [[Telescope loclist prompt_title=Hunks results_title=Hunks theme=ivy layout_strategy=vertical layout_config={anchor=S,height=0.99,width=0.99,preview_height=0.6,preview_cutoff=0}]] )
+        end
     end )
 end
 
