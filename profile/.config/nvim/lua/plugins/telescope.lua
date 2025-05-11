@@ -40,10 +40,20 @@ return {
                     diagnostics = {
                         sort_by = "severity",
                         line_width = "full",
-                        theme = "ivy",
+                        sorting_strategy = "ascending",
+
+                        layout_strategy = "vertical",
                         layout_config = {
-                            height = 10,
+                            height = 0.999,
+                            width = 0.99,
+                            preview_height = 0.6,
+                            preview_cutoff = 0,
                         },
+
+                        -- theme = "ivy",
+                        -- layout_config = {
+                        --     height = 10,
+                        -- },
                     },
                 },
                 extensions = {
