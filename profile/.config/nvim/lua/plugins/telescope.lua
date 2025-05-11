@@ -26,7 +26,7 @@ return {
             },
             {
                 "<Leader>xx",
-                "<CMD>Telescope diagnostics<CR>",
+                "<CMD>Telescope diagnostics bufnr=0<CR>",
                 mode = { "n", "i", "v", "s" },
                 desc = "Open diagnostics",
             },
@@ -38,6 +38,8 @@ return {
             telescope.setup( {
                 pickers = {
                     diagnostics = {
+                        sort_by = "severity",
+                        line_width = "full",
                         theme = "ivy",
                         layout_config = {
                             height = 10,
