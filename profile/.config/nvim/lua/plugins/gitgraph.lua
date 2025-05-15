@@ -1,10 +1,13 @@
 return {
     {
-        "isakbm/gitgraph.nvim",
+        -- "isakbm/gitgraph.nvim",
+        "zdm/gitgraph.nvim",
+        dev = true,
         dependencies = {
             "diffview.nvim",
         },
         opts = {
+            git_cmd = vim.fn.has( "win32" ) == 1 and "git.exe" or "git",
             symbols = {
                 commit = "•",
                 commit_end = "⦿",
