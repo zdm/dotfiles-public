@@ -9,10 +9,10 @@ return {
         opts = {
             git_cmd = vim.fn.has( "win32" ) == 1 and "git.exe" or "git",
             symbols = {
-                commit = "•",
-                commit_end = "⦿",
-                merge_commit = "⦾",
-                merge_commit_end = "⦾",
+                commit = "●", -- "●", "•",
+                commit_end = "⦿", -- "🔴", "⦿"
+                merge_commit = "⦾", -- "⨁", "Ⓜ", "⨁", "⦾"
+                merge_commit_end = "⦾", -- "⨁", "⦾"
             },
             format = {
                 timestamp = "%Y-%m-%d %H:%M:%S",
