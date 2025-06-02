@@ -1,8 +1,6 @@
 return {
     {
-        -- "isakbm/gitgraph.nvim",
-        "zdm/gitgraph.nvim",
-        dev = true,
+        "isakbm/gitgraph.nvim",
         dependencies = {
             "diffview.nvim",
         },
