@@ -27,9 +27,9 @@ set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,a:blinkwait700-blinko
 
 set termguicolors
 
-if has( "win32" )
+" if has( "win32" )
     source $VIMRUNTIME/scripts/mswin.vim
-endif
+" endif
 " }}}
 
 filetype plugin indent on
