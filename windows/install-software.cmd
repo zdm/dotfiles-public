@@ -7,7 +7,8 @@ winget install ^
     Google.GoogleDrive ^
     TeamViewer.TeamViewer.Host ^
     VaclavSlavik.Poedit ^
-    Garmin.Express
+    Garmin.Express ^
+    voidtools.Everything
 
 winget install --source msstore ^
     ChatGPT ^
