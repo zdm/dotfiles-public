@@ -19,10 +19,12 @@ winget pin add -q MSYS2.MSYS2
 pacman --sync --noconfirm --needed --refresh --sysupgrade
 
 :: tools
-pacman --sync --noconfirm --needed bash ^
+pacman --sync --noconfirm --needed ^
+    bash ^
     pacman pacman-mirrors ^
     msys2-runtime ^
     man tar curl wget patch diffutils whois ^
+    mingw-w64-x86_64-jq ^
     ctags
     :: mc
 

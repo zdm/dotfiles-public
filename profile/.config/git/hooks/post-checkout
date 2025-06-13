@@ -1,7 +1,0 @@
-#!/usr/bin/env sh
-
-set -e
-
-if [ -x "$(command -v git-lfs)" ]; then
-    git lfs post-checkout "$@"
-fi
