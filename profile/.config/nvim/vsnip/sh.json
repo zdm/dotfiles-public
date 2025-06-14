@@ -8,7 +8,7 @@
     },
     "if-else": {
         "prefix": "if ",
-        "body": "if $1; then\n    $2\nelif $3; then\n    $4\nelse\n    $6\nfi"
+        "body": "if [[ $1 ]]; then\n    $2\nelif [[ $3 ]]; then\n    $4\nelse\n    $6\nfi"
     },
     "case": {
         "prefix": "case ",
