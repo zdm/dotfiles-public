@@ -4,6 +4,6 @@ release:
 meta:
   executables:
     - "**/*.sh"
-    - "profile/bin/*"
+    - "profile/.bin/*"
     - "profile/.bashrc"
     - "profile/.config/git/hooks/**/*"
