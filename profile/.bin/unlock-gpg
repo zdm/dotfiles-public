@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+set -e
+
+/usr/bin/env bash <(curl -fsSL https://raw.githubusercontent.com/softvisio/scripts/main/unlock-gpg.sh) "@"
