@@ -107,6 +107,12 @@ cmd = nvim -d "$LOCAL" "$REMOTE"
 [fetch]
 prune = false
 
+[filter "lfs"]
+clean    = git-lfs clean -- %f
+smudge   = git-lfs smudge -- %f
+process  = git-lfs filter-process
+required = true
+
 [format]
 signOff = true
 
@@ -120,6 +126,9 @@ revocationFile     = ~/.config/git/ssh/revocatied-signatures
 
 [init]
 defaultBranch = main
+
+[lfs]
+; allowIncompletePush = true
 
 [merge]
 guiTool          = bc
