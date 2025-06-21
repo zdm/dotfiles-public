@@ -139,11 +139,22 @@ function update() {
 
 function update-dotfiles() {
 
-    # MSYS
+    # Msys
     if [ $(uname -o) = "Msys" ]; then
         echo Msys is not supported
-        return 1
-    fi
 
-    source <(curl -fsSL https://raw.githubusercontent.com/softvisio/scripts/main/update-dotfiles.sh)
+        return 1
+
+    # other OS
+    else
+        source <(curl -fsS https://raw.githubusercontent.com/softvisio/scripts/main/update-dotfiles.sh)
+    fi
+}
+
+function ssh-crypt() {
+    /usr/bin/env bash <(curl -fsS https://raw.githubusercontent.com/softvisio/scripts/main/ssh-crypt.sh) "$@"
+}
+
+function unlock-gpg() {
+    /usr/bin/env bash <(curl -fsS https://raw.githubusercontent.com/softvisio/scripts/main/unlock-gpg.sh) "$@"
 }
