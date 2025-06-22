@@ -21,5 +21,9 @@
     "for": {
         "prefix": "for ",
         "body": "for $1 in $2; do\n    $3\ndone"
+    },
+    "echo": {
+        "prefix": "echo ",
+        "body": "echo $1"
     }
 }
