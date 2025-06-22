@@ -2,4 +2,4 @@
 
 set -e
 
-rm -rf $DOTFILES_DESTINATION/.config/nvim
+# rm -rf $DOTFILES_DESTINATION/.config/nvim
