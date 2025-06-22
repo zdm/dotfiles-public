@@ -17,5 +17,9 @@
     "function": {
         "prefix": "function ",
         "body": "function $1() {\n    $2\n}"
+    },
+    "for": {
+        "prefix": "for ",
+        "body": "for $1 in $2; do\n    $3\ndone"
     }
 }
