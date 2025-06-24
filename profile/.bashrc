@@ -148,7 +148,7 @@ function update-dotfiles() {
 
     # other OS
     else
-        source <(curl -fsS https://raw.githubusercontent.com/softvisio/scripts/main/update-dotfiles.sh)
+        source <(curl -fsS "https://raw.githubusercontent.com/softvisio/scripts/main/update-dotfiles.sh")
     fi
 }
 
