@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-[ -z "$DEBIAN_FRONTEND" ] && [ -z "$PS1" ] && export DEBIAN_FRONTEND=noninteractive
+[ -z "${DEBIAN_FRONTEND:-}" ] && [ -z "${PS1:-}" ] && export DEBIAN_FRONTEND=noninteractive
 
 if [ $(uname) = "Darwin" ]; then
     export LANGUAGE=en_GB.UTF-8
@@ -13,11 +13,11 @@ else
 fi
 
 # if not running interactively, don't do anything
-[ -z "$PS1" ] && return
+[ -z "${PS1:-}" ] && return
 
 shopt -s histappend no_empty_cmd_completion
 
-[ -z "$DEBIAN_FRONTEND" ] && export DEBIAN_FRONTEND=teletype
+[ -z "${DEBIAN_FRONTEND:-}" ] && export DEBIAN_FRONTEND=teletype
 
 export TERM=xterm-256color
 export CLICOLOR=1
@@ -32,7 +32,7 @@ GPG_TTY=$(tty)
 export GPG_TTY
 
 # postgresql
-[ -z "$PGUSER" ] && export PGUSER=postgres
+[ -z "${PGUSER:-}" ] && export PGUSER=postgres
 
 # root user
 if [ "$(id -u)" == "0" ]; then
