@@ -156,11 +156,11 @@ function update-dotfiles() {
 function ssh-crypt() {
     let script
     script=$(curl -fsS "https://raw.githubusercontent.com/softvisio/scripts/main/ssh-crypt.sh")
-    /usr/bin/env bash <(echo "$script") "$@"
+    bash <(echo "$script") "$@"
 }
 
 function unlock-gpg() {
     let script
     script=$(curl -fsS "https://raw.githubusercontent.com/softvisio/scripts/main/unlock-gpg.sh")
-    /usr/bin/env bash <(echo "$script") "$@"
+    bash <(echo "$script") "$@"
 }
