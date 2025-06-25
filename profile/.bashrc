@@ -74,7 +74,6 @@ alias s="softvisio-cli"
 
 [[ -f ~/.bash_aliases ]] && . ~/.bash_aliases
 
-# XXX errors handling
 function update() {
 
     # Msys
@@ -148,14 +147,20 @@ function update-dotfiles() {
 
     # other OS
     else
-        source <(curl -fsS "https://raw.githubusercontent.com/softvisio/scripts/main/update-dotfiles.sh")
+        let script
+        script=$(curl -fsS "https://raw.githubusercontent.com/softvisio/scripts/main/update-dotfiles.sh")
+        source <(echo "$script")
     fi
 }
 
 function ssh-crypt() {
-    curl -fsS "https://raw.githubusercontent.com/softvisio/scripts/main/ssh-crypt.sh" | /usr/bin/env bash -s -- "$@"
+    let script
+    script=$(curl -fsS "https://raw.githubusercontent.com/softvisio/scripts/main/ssh-crypt.sh")
+    /usr/bin/env bash <(echo "$script") "$@"
 }
 
 function unlock-gpg() {
-    curl -fsS "https://raw.githubusercontent.com/softvisio/scripts/main/unlock-gpg.sh" | /usr/bin/env bash -s -- "$@"
+    let script
+    script=$(curl -fsS "https://raw.githubusercontent.com/softvisio/scripts/main/unlock-gpg.sh")
+    /usr/bin/env bash <(echo "$script") "$@"
 }
