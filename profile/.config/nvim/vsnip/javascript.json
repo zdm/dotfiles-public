@@ -57,5 +57,17 @@
     "continue": {
         "prefix": "continue",
         "body": "continue;$1"
+    },
+    "Symbol.iterator": {
+        "prefix": "symbol.iterator",
+        "body": "[ Symbol.iterator ] () {\n    $1\n}"
+    },
+    "Symbol.asyncIterator": {
+        "prefix": "symbol.asynciterator",
+        "body": "async [ Symbol.asyncIterator ] () {\n    $1\n}"
+    },
+    "inspect": {
+        "prefix": "inspect",
+        "body": "[ Symbol.for( \"nodejs.util.inspect.custom\" ) ] ( depth, options, inspect ) {\n    const spec = {\n        $1\n    };\n\n    return \"Class$2: \" + inspect( spec );\n}"
     }
 }
