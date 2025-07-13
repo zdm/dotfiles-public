@@ -60,16 +60,16 @@ return {
                     menu = {
                         default = {
                             items = {
-                                { "update plugins", "Lazy sync" },
+                                { "Update plugins", "Lazy sync" },
                                 { "set ft=javascript", "set ft=javascript" },
                                 { "set ft=json", "set ft=json" },
-                                { "pickers", "Telescope builtin" },
-                                { "edit snippets", "VsnipOpen" },
-                                { "open buffer in the browser", "S browser" },
+                                { "setlocal ff=unix", "setlocal ff=unix" },
+                                { "Telescope pickers", "Telescope builtin" },
+                                { "Edit snippets", "VsnipOpen" },
+                                { "Open buffer in the browser", "S browser" },
                                 { "spellchecker on", "setlocal spell spelllang=ru_yo,en_us" },
                                 { "spellchecker off", "setlocal nospell" },
-                                { "set linendings to UNIX format", "setlocal ff=unix" },
-                                { "matrix screensaver", "Matrix" },
+                                { "Matrix screensaver", "Matrix" },
                             },
                         },
                     },
