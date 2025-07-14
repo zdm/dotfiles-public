@@ -147,20 +147,20 @@ function update-dotfiles() {
 
     # other OS
     else
-        let script
+        local script
         script=$(curl -fsS "https://raw.githubusercontent.com/softvisio/scripts/main/update-dotfiles.sh")
         source <(echo "$script")
     fi
 }
 
 function ssh-crypt() {
-    let script
+    local script
     script=$(curl -fsS "https://raw.githubusercontent.com/softvisio/scripts/main/ssh-crypt.sh")
     bash <(echo "$script") "$@"
 }
 
 function unlock-gpg() {
-    let script
+    local script
     script=$(curl -fsS "https://raw.githubusercontent.com/softvisio/scripts/main/unlock-gpg.sh")
     bash <(echo "$script") "$@"
 }
