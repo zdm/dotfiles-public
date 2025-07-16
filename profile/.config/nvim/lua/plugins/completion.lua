@@ -59,6 +59,7 @@ return {
                 sources = cmp.config.sources( {
                     { name = "vsnip" },
                     { name = "calc" },
+                    { name = "emoji" },
                 } )
             } )
         end
