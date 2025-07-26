@@ -43,7 +43,7 @@ mklink /D "d:\pictures" "g:\my drive\pictures"
 setx.exe /M PATHEXT ".com;.exe;.lnk;.bat;.cmd;.ps1;.sh;.js;.cjs;.mjs"
 
 :: path
-setx.exe /M PATH "s:\bin;d:\apps\bin;d:\apps\nvm\data\current\bin;c:\msys64\usr\bin;c:\msys64\mingw64\bin;%SystemRoot%\system32;%SystemRoot%"
+setx.exe /M PATH "s:\bin;d:\apps\bin;d:\apps\fnm\data\current;c:\msys64\usr\bin;c:\msys64\mingw64\bin;%SystemRoot%\system32;%SystemRoot%"
 
 :: git
 setx /M GIT_CONFIG_COUNT 2
@@ -61,13 +61,13 @@ ftype ShellScript="c:\msys64\usr\bin\bash.exe" "%%1" %%*
 assoc .sh=ShellScript
 
 :: javascript
-ftype JavaScript="d:\apps\nvm\data\current\bin\node.exe" "%%1" %%*
+ftype JavaScript="d:\apps\fnm\data\current\node.exe" "%%1" %%*
 assoc .js=JavaScript
 assoc .cjs=JavaScript
 assoc .mjs=JavaScript
 
 :: typescript
-ftype TypeScript="d:\apps\nvm\data\current\bin\node.exe" "%%1" %%*
+ftype TypeScript="d:\apps\fnm\data\current\node.exe" "%%1" %%*
 assoc .ts=TypeScript
 assoc .tsx=TypeScript
 assoc .mts=TypeScript
