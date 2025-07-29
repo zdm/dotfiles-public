@@ -1,10 +1,11 @@
 return {
     {
-        "hrsh7th/cmp-emoji"
+        "hrsh7th/cmp-emoji",
+        enabled = false,
     },
     {
         "allaman/emoji.nvim",
-        enabled = false,
+        -- enabled = false,
         -- version = "1.0.0", -- optionally pin to a tag
         -- ft = "markdown", -- adjust to your needs
         dependencies = {
