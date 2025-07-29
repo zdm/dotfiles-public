@@ -1,11 +1,6 @@
 return {
     {
-        "hrsh7th/cmp-emoji",
-        enabled = false,
-    },
-    {
         "allaman/emoji.nvim",
-        -- enabled = false,
         -- version = "1.0.0", -- optionally pin to a tag
         -- ft = "markdown", -- adjust to your needs
         dependencies = {
@@ -16,7 +11,7 @@ return {
             "hrsh7th/nvim-cmp",
 
             -- optional for telescope integration
-            "nvim-telescope/telescope.nvim",
+            -- "nvim-telescope/telescope.nvim",
 
             -- optional for fzf-lua integration via vim.ui.select
             -- "ibhagwan/fzf-lua",
