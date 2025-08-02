@@ -51,6 +51,7 @@ for %%i in ( .json .json5 ) do (
     assoc %%i=JSON
 )
 
+:: mht
 ftype MHTWebArchive="C:\Users\zdm\AppData\Local\Vivaldi\Application\vivaldi.exe" "%%1"
 for %%i in ( .mht ) do (
     reg delete "HKEY_CURRENT_USER\Software\Classes\%%i" /f
@@ -58,6 +59,7 @@ for %%i in ( .mht ) do (
     assoc %%i=MHTWebArchive
 )
 
+:: pictures
 ftype Picture="C:\Program Files\XnViewMP\xnviewmp.exe" "%%1"
 for %%i in ( .bmp .cur .emf .gif .ico .jpeg .jpg .png .tif .tiff .wmf ) do (
     reg delete "HKEY_CURRENT_USER\Software\Classes\%%i" /f
@@ -65,6 +67,7 @@ for %%i in ( .bmp .cur .emf .gif .ico .jpeg .jpg .png .tif .tiff .wmf ) do (
     assoc %%i=Picture
 )
 
+:: perl
 :: ftype PerlScript="d:\apps\perl\perl\bin\perl.exe" "%%1" %%*
 :: for %%i in ( .pl .t ) do (
 ::     reg delete "HKEY_CURRENT_USER\Software\Classes\%%i" /f
@@ -72,6 +75,7 @@ for %%i in ( .bmp .cur .emf .gif .ico .jpeg .jpg .png .tif .tiff .wmf ) do (
 ::     assoc %%i=PerlScript
 :: )
 
+:: python
 :: ftype PythonScript="d:\apps\python\python.exe" "%%1" %%*
 :: for %%i in ( .py ) do (
 ::     reg delete "HKEY_CURRENT_USER\Software\Classes\%%i" /f
@@ -79,6 +83,7 @@ for %%i in ( .bmp .cur .emf .gif .ico .jpeg .jpg .png .tif .tiff .wmf ) do (
 ::     assoc %%i=PythonScript
 :: )
 
+:: flash
 :: ftype ShockwaveFlash="d:\apps\bin\flash.exe" "%%1"
 :: for %%i in ( .swf ) do (
 ::     reg delete "HKEY_CURRENT_USER\Software\Classes\%%i" /f
