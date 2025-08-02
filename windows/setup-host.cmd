@@ -54,28 +54,51 @@ setx /M GIT_CONFIG_VALUE_1 false
 
 :: powershell
 ftype PowerShellScript="%LOCALAPPDATA%\Microsoft\WindowsApps\pwsh.exe" "%%1" %%*
-assoc .ps1=PowerShellScript
+for %%i in ( .ps1 ) do (
+    reg delete "HKEY_CURRENT_USER\Software\Classes\%%i" /f
+    reg delete "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\%%i" /f
+    assoc %%i=PowerShellScript
+)
 
 :: bash
 ftype ShellScript="c:\msys64\usr\bin\bash.exe" "%%1" %%*
-assoc .sh=ShellScript
+for %%i in ( .sh ) do (
+    reg delete "HKEY_CURRENT_USER\Software\Classes\%%i" /f
+    reg delete "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\%%i" /f
+    assoc %%i=ShellScript
+)
 
 :: javascript
 ftype JavaScript="d:\apps\fnm\data\current\node.exe" "%%1" %%*
-assoc .js=JavaScript
-assoc .cjs=JavaScript
-assoc .mjs=JavaScript
+for %%i in ( .js .mjs .cjs ) do (
+    reg delete "HKEY_CURRENT_USER\Software\Classes\%%i" /f
+    reg delete "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\%%i" /f
+    assoc %%i=JavaScript
+)
 
 :: typescript
 ftype TypeScript="d:\apps\fnm\data\current\node.exe" "%%1" %%*
-assoc .ts=TypeScript
-assoc .tsx=TypeScript
-assoc .mts=TypeScript
-assoc .cts=TypeScript
+for %%i in ( .ts .tsx .mts .cts ) do (
+    reg delete "HKEY_CURRENT_USER\Software\Classes\%%i" /f
+    reg delete "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\%%i" /f
+    assoc %%i=TypeScript
+)
 
 :: sqlite
-ftype SQLite3="d:\apps\bin\sqlite3.exe" %%1 %%*
-assoc .sqlite=SQLite3
+ftype SQLite3="d:\apps\bin\sqlite3.exe" "%%1"
+for %%i in ( .sqlite ) do (
+    reg delete "HKEY_CURRENT_USER\Software\Classes\%%i" /f
+    reg delete "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\%%i" /f
+    assoc %%i=SQLite3
+)
+
+:: json
+ftype JSON="C:\Program Files\Neovim\bin\nvim.exe" "%%1"
+for %%i in ( .json .json5 ) do (
+    reg delete "HKEY_CURRENT_USER\Software\Classes\%%i" /f
+    reg delete "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\%%i" /f
+    assoc %%i=JSON
+)
 
 :: perl
 :: setx /M PERL_CPANM_HOME "%TEMP%\.cpanm"
@@ -85,30 +108,39 @@ assoc .sqlite=SQLite3
 :: setx /M HARNESS_SUMMARY_COLOR_FAIL "RED"
 
 :: ftype PerlScript="d:\apps\perl\perl\bin\perl.exe" "%%1" %%*
-:: assoc .pl=PerlScript
-:: assoc .t=PerlScript
+:: for %%i in ( .pl .t ) do (
+::     reg delete "HKEY_CURRENT_USER\Software\Classes\%%i" /f
+::     reg delete "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\%%i" /f
+::     assoc %%i=PerlScript
+:: )
 
-:: ftype PythonScript="d:\apps\python\python.exe" %%1 %%*
-:: assoc .py=PythonScript
+:: ftype PythonScript="d:\apps\python\python.exe" "%%1" %%*
+:: for %%i in ( .py ) do (
+::     reg delete "HKEY_CURRENT_USER\Software\Classes\%%i" /f
+::     reg delete "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\%%i" /f
+::     assoc %%i=PythonScript
+:: )
 
-:: ftype ShockwaveFlash="d:\apps\bin\flash.exe" %%1 %%*
-:: assoc .swf=ShockwaveFlash
+:: ftype ShockwaveFlash="d:\apps\bin\flash.exe" "%%1"
+:: for %%i in ( .swf ) do (
+::     reg delete "HKEY_CURRENT_USER\Software\Classes\%%i" /f
+::     reg delete "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\%%i" /f
+::     assoc %%i=ShockwaveFlash
+:: )
 
-:: ftype MHTWebArchive="d:\apps\firefox\firefox.exe" "%%1" %%*
-:: assoc .mht=MHTWebArchive
+ftype MHTWebArchive="C:\Users\zdm\AppData\Local\Vivaldi\Application\vivaldi.exe" "%%1"
+for %%i in ( .mht ) do (
+    reg delete "HKEY_CURRENT_USER\Software\Classes\%%i" /f
+    reg delete "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\%%i" /f
+    assoc %%i=MHTWebArchive
+)
 
-:: ftype XNViewMP="d:\apps\bin\xnviewmp.lnk" "%%1" %%*
-:: assoc .bmp=XNViewMP
-:: assoc .cur=XNViewMP
-:: assoc .emf=XNViewMP
-:: assoc .gif=XNViewMP
-:: assoc .ico=XNViewMP
-:: assoc .jpeg=XNViewMP
-:: assoc .jpg=XNViewMP
-:: assoc .png=XNViewMP
-:: assoc .tif=XNViewMP
-:: assoc .tiff=XNViewMP
-:: assoc .wmf=XNViewMP
+ftype Picture="C:\Program Files\XnViewMP\xnviewmp.exe" "%%1"
+for %%i in ( .bmp .cur .emf .gif .ico .jpeg .jpg .png .tif .tiff .wmf ) do (
+    reg delete "HKEY_CURRENT_USER\Software\Classes\%%i" /f
+    reg delete "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\%%i" /f
+    assoc %%i=Picture
+)
 
 :: remap "CAPSLOCK" to "F13"
 reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Keyboard Layout" /f /v "Scancode Map" /t REG_BINARY /d 00000000000000000200000064003a0000000000
