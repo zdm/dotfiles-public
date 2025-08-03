@@ -52,7 +52,7 @@ setx /M GIT_CONFIG_VALUE_0 true
 setx /M GIT_CONFIG_KEY_1 mergeTool.guiDefault
 setx /M GIT_CONFIG_VALUE_1 false
 
-call "set-default-apps.cmd"
+:: call "set-default-apps.cmd"
 
 :: perl
 :: setx /M PERL_CPANM_HOME "%TEMP%\.cpanm"
