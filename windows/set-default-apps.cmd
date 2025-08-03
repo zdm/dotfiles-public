@@ -51,6 +51,14 @@ for %%i in ( .json .json5 ) do (
     assoc %%i=JSON
 )
 
+:: xml
+ftype XML="C:\Program Files\Neovim\bin\nvim.exe" "%%1"
+for %%i in ( .xml ) do (
+    reg delete "HKEY_CURRENT_USER\Software\Classes\%%i" /f
+    reg delete "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\%%i" /f
+    assoc %%i=XML
+)
+
 :: mht
 ftype MHTWebArchive="C:\Users\zdm\AppData\Local\Vivaldi\Application\vivaldi.exe" "%%1"
 for %%i in ( .mht ) do (
