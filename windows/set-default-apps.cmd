@@ -20,6 +20,7 @@ for %%i in ( .sh ) do (
 )
 
 :: javascript
+:: BUG: ccleaner removes ftype pointed to junction point
 :: ftype JavaScript="d:\apps\fnm\data\current\node.exe" "%%1" %%*
 ftype JavaScript="d:\apps\fnm\node.exe" "%%1" %%*
 for %%i in ( .js .mjs .cjs ) do (
@@ -29,6 +30,7 @@ for %%i in ( .js .mjs .cjs ) do (
 )
 
 :: typescript
+:: BUG: ccleaner removes ftype pointed to junction point
 :: ftype TypeScript="d:\apps\fnm\data\current\node.exe" "%%1" %%*
 ftype TypeScript="d:\apps\fnm\node.exe" "%%1" %%*
 for %%i in ( .ts .tsx .mts .cts ) do (
