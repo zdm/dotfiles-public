@@ -8,7 +8,10 @@ winget install ^
     TeamViewer.TeamViewer.Host ^
     VaclavSlavik.Poedit ^
     Garmin.Express ^
-    voidtools.Everything
+    voidtools.Everything ^
+    WireGuard.WireGuard ^
+    SQLite.SQLite ^
+    Rufus.Rufus
 
 winget install --source msstore ^
     ChatGPT ^
