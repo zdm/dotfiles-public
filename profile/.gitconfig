@@ -83,6 +83,7 @@ pager        = less --no-init --raw-control-chars --ignore-case --quit-on-intr -
 sshCommand   = ssh
 quotePath    = false
 ignoreCase   = true
+symlinks     = true
 
 [credential "helperselector"]
 selected = <no helper>
