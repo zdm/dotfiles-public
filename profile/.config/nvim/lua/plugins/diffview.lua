@@ -1,6 +1,7 @@
 return {
     {
-        "sindrets/diffview.nvim",
+        -- "sindrets/diffview.nvim",
+        "softvisio/diffview.nvim",
         dev = true,
         cmd = { "DiffviewOpen", "DiffviewFileHistory", "DiffviewClose" },
         keys = {

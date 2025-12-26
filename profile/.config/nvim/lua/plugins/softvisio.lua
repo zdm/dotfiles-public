@@ -1,6 +1,6 @@
 return {
     {
-        "zdm/softvisio.nvim",
+        "softvisio/softvisio.nvim",
         dev = true,
         dependencies = {
             "telescope.nvim",

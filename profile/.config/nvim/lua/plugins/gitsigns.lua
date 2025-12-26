@@ -28,7 +28,7 @@ end
 return {
     {
         -- "lewis6991/gitsigns.nvim",
-        "zdm/gitsigns.nvim",
+        "softvisio/gitsigns.nvim",
         dev = true,
         config = function ()
             local gitsigns = require( "gitsigns" )
