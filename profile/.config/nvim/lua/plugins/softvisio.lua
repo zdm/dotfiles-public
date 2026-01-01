@@ -1,6 +1,7 @@
 return {
     {
         "softvisio/softvisio.nvim",
+        tag = "latest",
         dev = true,
         dependencies = {
             "telescope.nvim",
