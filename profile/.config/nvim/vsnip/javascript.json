@@ -76,6 +76,6 @@
     },
     "inspect": {
         "prefix": "inspect",
-        "body": "[ Symbol.for( \"nodejs.util.inspect.custom\" ) ] ( depth, options, inspect ) {\n    const spec = {\n        $1\n    };\n\n    return `${ this.constructor.name }: ${ inspect( spec ) }`;\n}"
+        "body": "[ Symbol.for( \"nodejs.util.inspect.custom\" ) ] ( depth, options, inspect ) {\n    const spec = {\n        $1\n    };\n\n    return `\\${ this.constructor.name }: \\${ inspect( spec ) }`;\n}"
     }
 }
