@@ -34,6 +34,7 @@ return {
     { "zhimsel/vim-stay" },
     {
         "lyokha/vim-xkbswitch",
+        enabled = false,
         dependencies = {
             "dexp/xkb-switch-win"
         },
