@@ -80,6 +80,7 @@ return {
 
             ft.set( "dosbatch", ":: %s" )
             ft.set( "nginx", "# %s" )
+            ft.set( "peggy", "// %s" )
             ft.set( "powershell", "# %s" )
         end,
     },

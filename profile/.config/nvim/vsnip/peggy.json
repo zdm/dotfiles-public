@@ -1,0 +1,30 @@
+{
+    "process.exit()": {
+        "prefix": "process.exit()",
+        "body": "process.exit()"
+    },
+    "console.log( $1 )": {
+        "prefix": "console.log",
+        "body": "console.log( $1 )"
+    },
+    "JSON.stringify": {
+        "prefix": "json.stringify( $1 )",
+        "body": "JSON.stringify( $1 )"
+    },
+    "JSON.parse": {
+        "prefix": "json.parse( $1 )",
+        "body": "JSON.parse( $1 )"
+    },
+    "for": {
+        "prefix": "for ",
+        "body": "for ( let n = 0; n < 1; n++ ) {\n    $1\n}"
+    },
+    "if-else": {
+        "prefix": "if ",
+        "body": "if ( $1 ) {\n    $2\n}\nelse if ( $3 ) {\n    $4\n}\nelse {\n    $5\n}"
+    },
+    "continue": {
+        "prefix": "continue",
+        "body": "continue;$1"
+    }
+}
