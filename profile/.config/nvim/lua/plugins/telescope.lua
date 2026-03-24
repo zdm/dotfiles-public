@@ -64,7 +64,7 @@ return {
                                 { "set ft=javascript", "set ft=javascript" },
                                 { "set ft=json", "set ft=json" },
                                 { "setlocal ff=unix", "setlocal ff=unix" },
-                                { "Telescope pickers", "Telescope builtin" },
+                                { "Telescope", "Telescope" },
                                 { "Telescope emoji", "Telescope emoji" },
                                 { "Edit snippets", "VsnipOpen" },
                                 { "Open buffer in the browser", "S browser" },
