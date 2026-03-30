@@ -4,7 +4,7 @@ return {
         config = function ()
             require( "nvim-treesitter.install" ).prefer_git = false
 
-            require( "nvim-treesitter.configs" ).setup( {
+            require( "nvim-treesitter.config" ).setup( {
                 -- ensure_installed = "all",
                 ensure_installed = {
                     "awk",
