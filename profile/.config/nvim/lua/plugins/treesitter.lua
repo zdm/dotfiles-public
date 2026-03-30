@@ -1,10 +1,71 @@
 return {
     {
         "nvim-treesitter/nvim-treesitter",
+        branch = "master",
+        lazy = false,
+        build = ":TSUpdate",
         config = function ()
+            -- require( "nvim-treesitter" ).setup( {
+            --     install_dir = vim.fn.stdpath( "data" ) .. "/site"
+            -- } );
+
+            -- require( "nvim-treesitter" ).install( {
+            --     "awk",
+            --     "bash",
+            --     "c",
+            --     "cmake",
+            --     "comment",
+            --     "cpp",
+            --     "css",
+            --     "csv",
+            --     "diff",
+            --     "dockerfile",
+            --     "editorconfig",
+            --     "embedded_template",
+            --     "forth",
+            --     "git_config",
+            --     "gitattributes",
+            --     "gitignore",
+            --     "gpg",
+            --     "graphql",
+            --     "html",
+            --     "ini",
+            --     "javascript",
+            --     "jsdoc",
+            --     "json",
+            --     "json5",
+            --     "lua",
+            --     "make",
+            --     "markdown",
+            --     "markdown_inline",
+            --     "nginx",
+            --     "pem",
+            --     "perl",
+            --     "php",
+            --     "po",
+            --     "pod",
+            --     "powershell",
+            --     "printf",
+            --     "python",
+            --     "query",
+            --     "readline",
+            --     "regex",
+            --     "scss",
+            --     "sql",
+            --     "ssh_config",
+            --     "toml",
+            --     "tsv",
+            --     "typescript",
+            --     "vim",
+            --     "vimdoc",
+            --     "vue",
+            --     "xml",
+            --     "yaml"
+            -- } );
+
             require( "nvim-treesitter.install" ).prefer_git = false
 
-            require( "nvim-treesitter.config" ).setup( {
+            require( "nvim-treesitter.configs" ).setup( {
                 -- ensure_installed = "all",
                 ensure_installed = {
                     "awk",
@@ -167,6 +228,5 @@ return {
             end
 
         end,
-        build = ":TSUpdate",
     },
 }
