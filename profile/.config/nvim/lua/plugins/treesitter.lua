@@ -84,7 +84,7 @@ return {
 
                 if require( "utils" ).has_treesitter( bufnr ) then
                     vim.bo[ bufnr ].syntax = "off"
-                    vim.wo[ winid ].foldexpr = "nvim_treesitter#foldexpr()"
+                    vim.wo[ winid ].foldexpr = "v:lua.vim.treesitter.foldexpr()"
                     vim.wo[ winid ].foldmethod = "expr"
                 else
                     vim.bo[ bufnr ].syntax = "on"
