@@ -5,11 +5,16 @@ return {
         lazy = false,
         build = ":TSUpdate",
         config = function ()
-            vim.env.CC = "gcc";
+            vim.env.CC = "gcc"
+
+            local install_dir = vim.fs.normalize( vim.fn.stdpath( "data" ) .. "/treesitter" )
 
             require( "nvim-treesitter" ).setup( {
-                install_dir = vim.fn.stdpath( "data" ) .. "/treesitter",
+                install_dir = install_dir,
             } );
+
+            vim.opt.rtp:remove( install_dir )
+            vim.opt.rtp:append( install_dir )
 
             require( "nvim-treesitter" ).install( {
                 "awk",
