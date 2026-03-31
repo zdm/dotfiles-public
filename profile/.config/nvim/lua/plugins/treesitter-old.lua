@@ -1,7 +1,7 @@
 return {
     {
         "nvim-treesitter/nvim-treesitter",
-        enbled = true,
+        enbled = false,
         branch = "master",
         lazy = false,
         build = ":TSUpdate",
