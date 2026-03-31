@@ -102,11 +102,19 @@ return {
             vim.api.nvim_create_autocmd( "FileType", {
                 group = gid,
                 callback = function ( ev )
-                    if require( "utils" ).has_treesitter( ev.buf ) then
-                        require( "utils" ).parse_treesitter( ev.buf, true )
-                    end
+                    local treesitter = require( "nvim-treesitter" )
+                    local language = vim.treesitter.language.get_lang( ev.match )
 
-                    updateFolds( ev.buf, true )
+                    if vim.list_contains( treesitter.get_available(), language ) then
+                        if not vim.list_contains( treesitter.get_installed(), language ) then
+                            treesitter.install( language ):wait()
+                        end
+
+                        vim.treesitter.start( ev.buf )
+                        vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+                        vim.wo.foldmethod = "expr"
+                        vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+                    end
                 end
             } )
 
@@ -114,9 +122,9 @@ return {
                 group = gid,
                 pattern = "*:n",
                 callback = function( ev )
-                    if vim.b[ ev.buf ].folds_update_pending then
-                        updateFolds( ev.buf )
-                    end
+                    -- if vim.b[ ev.buf ].folds_update_pending then
+                    --     updateFolds( ev.buf )
+                    -- end
                 end
             } )
 
