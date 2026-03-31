@@ -119,6 +119,12 @@ return {
                         vim.wo.foldmethod = "expr"
                         vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
                     end
+
+                    if require( "utils" ).has_treesitter( ev.buf ) then
+                        require( "utils" ).parse_treesitter( ev.buf, true )
+                    end
+
+                    updateFolds( ev.buf, true )
                 end
             } )
 
