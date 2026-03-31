@@ -115,16 +115,19 @@ return {
                         end
 
                         vim.treesitter.start( ev.buf )
+
                         vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
                         vim.wo.foldmethod = "expr"
-                        vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
-                    end
+                        vim.bo[ ev.buf ].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
 
-                    if require( "utils" ).has_treesitter( ev.buf ) then
                         require( "utils" ).parse_treesitter( ev.buf, true )
-                    end
 
-                    updateFolds( ev.buf, true )
+                        updateFolds( ev.buf, true )
+                    else
+                        vim.treesitter.stop( ev.buf )
+
+                        vim.bo[ ev.buf ].syntax = "on"
+                    end
                 end
             } )
 
