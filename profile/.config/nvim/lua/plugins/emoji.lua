@@ -1,6 +1,8 @@
 return {
     {
-        "allaman/emoji.nvim",
+        -- "allaman/emoji.nvim",
+        "softvisio/emoji.nvim",
+        -- dev = true,
         -- version = "1.0.0", -- optionally pin to a tag
         -- ft = "markdown", -- adjust to your needs
         dependencies = {
