@@ -92,6 +92,11 @@ return {
 
                         vim.bo[ ev.buf ].syntax = "on"
                     end
+
+                    -- update folds
+                    vim.schedule( function ()
+                        vim.cmd.normal( "zx" )
+                    end )
                 end
             } )
 
@@ -109,9 +114,8 @@ return {
                     if vim.b[ ev.buf ].folds_update_pending then
                         vim.b[ ev.buf ].folds_update_pending = false
 
+                        -- update folds
                         vim.schedule( function ()
-
-                            -- open fold under the cursor
                             vim.cmd.normal( "zx" )
                         end )
                     end
