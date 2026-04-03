@@ -39,15 +39,19 @@ end
 M.parse_treesitter = function ( bufnr, callback )
     local parser = vim.treesitter.get_parser( bufnr )
 
+    if not parser then return end
+
     -- XXX https://neovim.io/doc/user/treesitter.html#LanguageTree%3Aparse()
     parser:parse( true, callback )
 end
 
-M.update_folds = function ( bufnr, callback )
+M.update_folds = function ( bufnr )
     if M.has_treesitter( bufnr ) then
-        M.parse_treesitter( bufnr, callback )
+        M.parse_treesitter( bufnr, function ()
+            vim.cmd.normal( "zx" )
+        end )
     else
-        vim.schedule( callback )
+       vim.cmd.normal( "zx" )
     end
 end
 

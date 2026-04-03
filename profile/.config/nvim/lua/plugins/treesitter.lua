@@ -71,6 +71,8 @@ return {
 
             local gid = vim.api.nvim_create_augroup( "folds-updater", {} )
 
+            local utils = require( "utils" )
+
             vim.api.nvim_create_autocmd( "FileType", {
                 group = gid,
                 callback = function ( ev )
@@ -82,11 +84,11 @@ return {
                             treesitter.install( language ):wait()
                         end
 
+                        vim.treesitter.start( ev.buf )
+
                         vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
                         vim.wo.foldmethod = "expr"
                         vim.bo[ ev.buf ].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
-
-                        vim.treesitter.start( ev.buf )
                     else
                         vim.treesitter.stop( ev.buf )
 
@@ -94,9 +96,7 @@ return {
                     end
 
                     -- update folds
-                    require( "utils" ).update_folds( ev.buf, function ()
-                        vim.cmd.normal( "zx" )
-                    end )
+                    utils.update_folds( ev.buf )
                 end
             } )
 
@@ -115,11 +115,7 @@ return {
                         vim.b[ ev.buf ].folds_update_pending = false
 
                         -- update folds
-                        require( "utils" ).update_folds( ev.buf, function ()
-                            -- vim.cmd.normal( "zM" )
-                            vim.cmd.normal( "zv" )
-                            -- vim.cmd.normal( "zx" )
-                        end )
+                        utils.update_folds( ev.buf )
                     end
                 end
             } )

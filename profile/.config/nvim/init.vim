@@ -201,9 +201,7 @@ function! SyntaxRefresh ()
 
 lua << EOF
     -- update folds
-    require( "utils" ).update_folds( 0, function ()
-        vim.cmd.normal( "zx" )
-    end )
+    require( "utils" ).update_folds( 0 )
 EOF
 
     return
