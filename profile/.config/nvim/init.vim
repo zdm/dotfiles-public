@@ -195,29 +195,17 @@ nnoremap <expr> <Down> v:count ? 'j' : 'gj'
 
 " \ss - syntax refresh {{{
 function! SyntaxRefresh ()
-    let l:cursor_pos = getpos( "." )
-
-    " refresh treesitter, if used
-lua << EOF
-    if require( "utils" ).has_treesitter() then
-        require( "utils" ).parse_treesitter()
-    end
-EOF
-
-    " refresh syntax, if used
-    if getbufvar( "%", "&syntax" ) == "on"
-        syn sync fromstart
-    endif
-
-    call setpos( ".", l:cursor_pos )
-
-    " open fold under the cursor
-    exec( "setlocal foldmethod=" . &foldmethod )
-    normal zM
-    normal zv
 
     " center cursor on the screen
     normal zz
+
+lua << EOF
+    vim.schedule( function ()
+
+        -- open fold under the cursor
+        vim.cmd.normal( "zx" )
+    end )
+EOF
 
     return
 endfunction
