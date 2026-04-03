@@ -22,4 +22,33 @@ M.is_filetype_ignored = function ( filetype )
     return ignored_filetypes[ filetype ]
 end
 
+M.has_treesitter = function ( bufnr )
+    if not bufnr then
+        bufnr = vim.api.nvim_get_current_buf()
+    end
+
+    local highlighter = require( "vim.treesitter.highlighter" )
+
+    if highlighter.active[ bufnr ] then
+        return true
+    else
+        return false
+    end
+end
+
+M.parse_treesitter = function ( bufnr, callback )
+    local parser = vim.treesitter.get_parser( bufnr )
+
+    -- XXX https://neovim.io/doc/user/treesitter.html#LanguageTree%3Aparse()
+    parser:parse( true, callback )
+end
+
+M.update_folds = function ( bufnr, callback )
+    if M.has_treesitter( bufnr ) then
+        M.parse_treesitter( bufnr, callback )
+    else
+        vim.schedule( callback )
+    end
+end
+
 return M

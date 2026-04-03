@@ -82,26 +82,19 @@ return {
                             treesitter.install( language ):wait()
                         end
 
-                        vim.treesitter.start( ev.buf )
-
                         vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
                         vim.wo.foldmethod = "expr"
                         vim.bo[ ev.buf ].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
 
-                        -- XXX error
-                        -- update folds
-                        -- vim.treesitter.get_parser( ev.buf ).parse( true, function ()
-                        --     vim.cmd.normal( "zx" )
-                        -- end )
+                        vim.treesitter.start( ev.buf )
                     else
                         vim.treesitter.stop( ev.buf )
 
                         vim.bo[ ev.buf ].syntax = "on"
                     end
 
-                    -- XXX not reliable
                     -- update folds
-                    vim.schedule( function ()
+                    require( "utils" ).update_folds( ev.buf, function ()
                         vim.cmd.normal( "zx" )
                     end )
                 end
@@ -122,8 +115,10 @@ return {
                         vim.b[ ev.buf ].folds_update_pending = false
 
                         -- update folds
-                        vim.schedule( function ()
-                            vim.cmd.normal( "zx" )
+                        require( "utils" ).update_folds( ev.buf, function ()
+                            -- vim.cmd.normal( "zM" )
+                            vim.cmd.normal( "zv" )
+                            -- vim.cmd.normal( "zx" )
                         end )
                     end
                 end

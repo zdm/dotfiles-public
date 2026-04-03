@@ -200,9 +200,8 @@ function! SyntaxRefresh ()
     normal zz
 
 lua << EOF
-    vim.schedule( function ()
-
-        -- open fold under the cursor
+    -- update folds
+    require( "utils" ).update_folds( 0, function ()
         vim.cmd.normal( "zx" )
     end )
 EOF
