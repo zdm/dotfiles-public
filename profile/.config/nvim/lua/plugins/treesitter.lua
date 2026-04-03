@@ -95,15 +95,26 @@ return {
                 end
             } )
 
+            vim.api.nvim_create_autocmd( { "TextChanged", "TextChangedI" }, {
+                group = gid,
+                callback = function ( ev )
+                    vim.b[ ev.buf ].folds_update_pending = true
+                end
+            } )
+
             vim.api.nvim_create_autocmd( "ModeChanged", {
                 group = gid,
                 pattern = "*:n",
                 callback = function( ev )
-                    vim.schedule( function ()
+                    if vim.b[ ev.buf ].folds_update_pending then
+                        vim.b[ ev.buf ].folds_update_pending = false
 
-                        -- open fold under the cursor
-                        vim.cmd.normal( "zx" )
-                    end )
+                        vim.schedule( function ()
+
+                            -- open fold under the cursor
+                            vim.cmd.normal( "zx" )
+                        end )
+                    end
                 end
             } )
         end,
