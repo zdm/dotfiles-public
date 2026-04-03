@@ -71,38 +71,6 @@ return {
 
             local gid = vim.api.nvim_create_augroup( "folds-updater", {} )
 
-            local updateFolds = function ( bufnr, force, no_unfold )
-                if not bufnr then
-                    bufnr = vim.api.nvim_get_current_buf()
-                end
-
-                local winid = vim.fn.bufwinid( bufnr )
-
-                if not force then
-                    if vim.wo[ winid ].foldmethod ~= "expr" then
-                        return
-                    end
-                end
-
-                vim.wo[ winid ].foldmethod = "manual"
-
-                if require( "utils" ).has_treesitter( bufnr ) then
-                    vim.bo[ bufnr ].syntax = "off"
-                    vim.wo[ winid ].foldexpr = "v:lua.vim.treesitter.foldexpr()"
-                    vim.wo[ winid ].foldmethod = "expr"
-                else
-                    vim.bo[ bufnr ].syntax = "on"
-                    vim.wo[ winid ].foldmethod = "syntax"
-                end
-
-                -- open fold under the cursor
-                if not no_unfold then
-                    vim.cmd.normal( "zv" )
-                end
-
-                vim.b[ bufnr ].folds_update_pending = false
-            end
-
             vim.api.nvim_create_autocmd( "FileType", {
                 group = gid,
                 callback = function ( ev )
@@ -119,10 +87,6 @@ return {
                         vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
                         vim.wo.foldmethod = "expr"
                         vim.bo[ ev.buf ].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
-
-                        require( "utils" ).parse_treesitter( ev.buf, true )
-
-                        updateFolds( ev.buf, true )
                     else
                         vim.treesitter.stop( ev.buf )
 
@@ -135,35 +99,13 @@ return {
                 group = gid,
                 pattern = "*:n",
                 callback = function( ev )
-                    -- if vim.b[ ev.buf ].folds_update_pending then
-                    --     updateFolds( ev.buf )
-                    -- end
+                    vim.schedule( function ()
+
+                        -- open fold under the cursor
+                        vim.cmd.normal( "zx" )
+                    end )
                 end
             } )
-
-            vim.api.nvim_create_autocmd( { "TextChanged", "TextChangedI" }, {
-                group = gid,
-                callback = function ( ev )
-                    vim.b[ ev.buf ].folds_update_pending = true
-                end
-            } )
-
-            local suffixes = { "a", "A" }
-
-            for index, suffix in pairs( suffixes ) do
-                vim.keymap.set( "n", "z" .. suffix, function ()
-                        if vim.b.folds_update_pending then
-                            updateFolds( nil, false, true )
-                        end
-
-                        return "z" .. suffix
-                    end, {
-                        expr = true,
-                        noremap = true,
-                        silent = true,
-                    }
-                )
-            end
         end,
     },
 }
