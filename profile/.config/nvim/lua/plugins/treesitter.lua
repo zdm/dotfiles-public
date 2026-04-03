@@ -87,12 +87,19 @@ return {
                         vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
                         vim.wo.foldmethod = "expr"
                         vim.bo[ ev.buf ].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+
+                        -- XXX error
+                        -- update folds
+                        -- vim.treesitter.get_parser( ev.buf ).parse( true, function ()
+                        --     vim.cmd.normal( "zx" )
+                        -- end )
                     else
                         vim.treesitter.stop( ev.buf )
 
                         vim.bo[ ev.buf ].syntax = "on"
                     end
 
+                    -- XXX not reliable
                     -- update folds
                     vim.schedule( function ()
                         vim.cmd.normal( "zx" )
