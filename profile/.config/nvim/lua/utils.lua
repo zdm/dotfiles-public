@@ -49,6 +49,10 @@ M.update_folds = function ( bufnr, visible )
     if M.has_treesitter( bufnr ) then
         M.parse_treesitter( bufnr, function ()
             if visible then
+
+                -- recompile folds
+                vim.o.foldmethod = vim.o.foldmethod
+
                 vim.cmd.normal( "zv" )
             else
                 vim.cmd.normal( "zx" )
@@ -56,6 +60,10 @@ M.update_folds = function ( bufnr, visible )
         end )
     else
         if visible then
+
+            -- recompile folds
+            vim.o.foldmethod = vim.o.foldmethod
+
             vim.cmd.normal( "zv" )
         else
             vim.cmd.normal( "zx" )
