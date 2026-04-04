@@ -45,13 +45,21 @@ M.parse_treesitter = function ( bufnr, callback )
     parser:parse( true, callback )
 end
 
-M.update_folds = function ( bufnr )
+M.update_folds = function ( bufnr, visible )
     if M.has_treesitter( bufnr ) then
         M.parse_treesitter( bufnr, function ()
-            vim.cmd.normal( "zx" )
+            if visible then
+                vim.cmd.normal( "zv" )
+            else
+                vim.cmd.normal( "zx" )
+            end
         end )
     else
-       vim.cmd.normal( "zx" )
+        if visible then
+            vim.cmd.normal( "zv" )
+        else
+            vim.cmd.normal( "zx" )
+        end
     end
 end
 

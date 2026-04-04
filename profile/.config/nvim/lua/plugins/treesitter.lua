@@ -115,7 +115,7 @@ return {
                         vim.b[ ev.buf ].folds_update_pending = false
 
                         -- update folds
-                        utils.update_folds( ev.buf )
+                        utils.update_folds( ev.buf, true )
                     end
                 end
             } )
