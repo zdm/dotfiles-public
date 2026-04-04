@@ -193,25 +193,6 @@ nnoremap <expr> <Down> v:count ? 'j' : 'gj'
 " snoremap <S-Down> <C-o>gj
 " }}}
 
-" \ss - syntax refresh {{{
-function! SyntaxRefresh ()
-
-    " center cursor on the screen
-    normal zz
-
-lua << EOF
-    -- update folds
-    require( "utils" ).update_folds( 0 )
-EOF
-
-    return
-endfunction
-
-nnoremap <silent> <Leader>ss :call SyntaxRefresh()<CR>
-inoremap <silent> <Leader>ss <ESC>:call SyntaxRefresh()<CR>a
-vnoremap <silent> <Leader>ss <ESC>:call SyntaxRefresh()<CR>gv
-" }}}
-
 " set titlestring {{{
 function! SetTitleString () "{{{
     let title = ""
