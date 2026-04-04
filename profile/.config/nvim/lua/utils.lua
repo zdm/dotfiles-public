@@ -45,10 +45,10 @@ M.parse_treesitter = function ( bufnr, callback )
     parser:parse( true, callback )
 end
 
-M.update_folds = function ( bufnr, visible )
+M.update_folds = function ( bufnr, recalculate_only )
     if M.has_treesitter( bufnr ) then
         M.parse_treesitter( bufnr, function ()
-            if visible then
+            if recalculate_only then
 
                 -- recompile folds
                 vim.o.foldmethod = vim.o.foldmethod
@@ -59,7 +59,7 @@ M.update_folds = function ( bufnr, visible )
             end
         end )
     else
-        if visible then
+        if recalculate_only then
 
             -- recompile folds
             vim.o.foldmethod = vim.o.foldmethod
