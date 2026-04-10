@@ -48,7 +48,8 @@ for %%i in ( .sqlite ) do (
 )
 
 :: json
-ftype JSON="%ProgramFiles%\Neovim\bin\nvim.exe" "%%1"
+ftype JSON=
+:: ftype JSON="%ProgramFiles%\Neovim\bin\nvim.exe" "%%1"
 for %%i in ( .json .json5 ) do (
     reg delete "HKEY_CURRENT_USER\Software\Classes\%%i" /f
     reg delete "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\%%i" /f
@@ -56,7 +57,8 @@ for %%i in ( .json .json5 ) do (
 )
 
 :: xml
-ftype XML="%ProgramFiles%\Neovim\bin\nvim.exe" "%%1"
+ftype XML=
+:: ftype XML="%ProgramFiles%\Neovim\bin\nvim.exe" "%%1"
 for %%i in ( .xml ) do (
     reg delete "HKEY_CURRENT_USER\Software\Classes\%%i" /f
     reg delete "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\%%i" /f
