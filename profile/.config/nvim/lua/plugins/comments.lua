@@ -3,7 +3,9 @@ local toggle_blockwise
 
 return {
     {
-        "numtostr/comment.nvim",
+        -- "numtostr/comment.nvim",
+        "softvisio/comment.nvim",
+        dev = true,
         dependencies = {
             "joosepalviste/nvim-ts-context-commentstring"
         },
