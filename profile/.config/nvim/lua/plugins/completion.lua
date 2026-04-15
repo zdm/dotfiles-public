@@ -12,6 +12,7 @@ return {
                     vim.g.vsnip_snippet_dir = vim.fn.stdpath( "config" ) .. "/vsnip"
 
                     vim.g.vsnip_filetypes = {
+                        [ "bash" ] = { "sh" },
                         [ "html/javascript" ] = { "javascript", "html/javascript" },
                         [ "vue" ] = { "html", "vue/html" },
                         [ "vue/javascript" ] = { "javascript", "html/javascript", "vue/javascript" },
