@@ -63,7 +63,7 @@ require( "lazy" ).setup( {
         },
     },
     dev = {
-        path = vim.fn.has( "win32" ) == 1 and "d:/projects/softvisio" or "/var/local/softvisio",
+        path = vim.fn.has( "win32" ) == 1 and "d:/projects/neovim-plugins" or "/var/local/neovim-plugins",
         fallback = true,
     },
 } )

@@ -6,7 +6,7 @@ return {
             "hrsh7th/cmp-vsnip",
             {
                 -- "hrsh7th/vim-vsnip",
-                "softvisio/vim-vsnip",
+                "neovim-plugins/vim-vsnip",
                 dev = true,
                 init = function ()
                     vim.g.vsnip_snippet_dir = vim.fn.stdpath( "config" ) .. "/vsnip"

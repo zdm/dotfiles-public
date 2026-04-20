@@ -1,6 +1,6 @@
 return {
     {
-        "softvisio/softvisio.nvim",
+        "neovim-plugins/softvisio.nvim",
         tag = "latest",
         dev = true,
         dependencies = {
