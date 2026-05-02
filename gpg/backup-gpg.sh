@@ -3,7 +3,7 @@
 set -Eeuo pipefail
 trap 'echo "⚠  Error ($0:$LINENO, exit code: $?): $BASH_COMMAND" >&2' ERR
 
-location=$(dirname $0)/backup
+location=$(dirname $0)
 mkdir -p "$location"
 
 export GPG_TTY=$(tty)
@@ -32,6 +32,7 @@ function _backup_gpg_secret_key() {
     local exported_key=$(gpg --export-secret-key --pinentry-mode=loopback --batch --passphrase "$passphrase" --armor --export-options backup "$key")
     local exported_ownertrust=$(gpg --export-ownertrust | grep $(gpg --list-secret-keys --with-colons "$key" | grep "^sec:" | cut --delimiter ":" --fields 5))
 
+    # restore
     cat << EOM > $location/restore-gpg-key-$key.sh
 # restore gpg key: $key
 # backup date: $(date)
@@ -48,6 +49,8 @@ $exported_ownertrust
 EOF
 EOM
 
+    # import
+    : << 'COMMENT'
     cat << EOM > $location/import-gpg-key-$key.sh
 # import gpg key: $key
 # backup date: $(date)
@@ -63,6 +66,7 @@ cat << EOF | gpg --import-ownertrust
 $exported_ownertrust
 EOF
 EOM
+COMMENT
 }
 
 _backup_gpg_public_keys
