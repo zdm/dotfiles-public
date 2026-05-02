@@ -1,5 +1,5 @@
 # restore gpg public keys
-# backup date: Sat May  2 08:54:41 FLEDT 2026
+# backup date: Sat May  2 09:04:23 FLEDT 2026
 
 set -Eeuo pipefail
 trap 'echo "⚠  Error ($0:$LINENO, exit code: $?): $BASH_COMMAND" >&2' ERR

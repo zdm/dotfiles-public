@@ -9,7 +9,7 @@ mkdir -p "$location"
 export GPG_TTY=$(tty)
 
 function _backup_gpg_public_keys() {
-    cat << EOM > $location/restore-gpg-public-keys.sh
+    cat << EOM > $location/restore-public-keys.sh
 # restore gpg public keys
 # backup date: $(date)
 
@@ -33,7 +33,7 @@ function _backup_gpg_secret_key() {
     local exported_ownertrust=$(gpg --export-ownertrust | grep $(gpg --list-secret-keys --with-colons "$key" | grep "^sec:" | cut --delimiter ":" --fields 5))
 
     # restore
-    cat << EOM > $location/restore-gpg-key-$key.sh
+    cat << EOM > $location/restore-$key.sh
 # restore gpg key: $key
 # backup date: $(date)
 
@@ -51,7 +51,7 @@ EOM
 
     # import
     : << 'COMMENT'
-    cat << EOM > $location/import-gpg-key-$key.sh
+    cat << EOM > $location/import-$key.sh
 # import gpg key: $key
 # backup date: $(date)
 
