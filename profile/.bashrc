@@ -70,7 +70,6 @@ alias gc="gcloud"
 alias gce="gcloud compute"
 alias gcp="gcloud config configurations"
 alias s="softvisio-cli"
-alias sapi="softvisio-api"
 
 [[ -f ~/.bash_aliases ]] && . ~/.bash_aliases
 
