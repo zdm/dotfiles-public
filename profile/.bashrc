@@ -69,7 +69,7 @@ alias g="git"
 alias gc="gcloud"
 alias gce="gcloud compute"
 alias gcp="gcloud config configurations"
-alias s="softvisio-cli"
+alias s="scli"
 
 [[ -f ~/.bash_aliases ]] && . ~/.bash_aliases
 
@@ -114,11 +114,11 @@ function update() {
         apt-get autoremove -y
 
         # update resources
-        if [[ -x "$(command -v softvisio-cli)" ]]; then
+        if [[ -x "$(command -v scli)" ]]; then
 
             echo
             echo "### Updating: resources"
-            softvisio-cli workspace update-resources
+            scli workspace update-resources
         fi
 
         # npm
