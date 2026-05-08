@@ -69,12 +69,12 @@ return {
         priority = priority,
         init = function ()
             vim.g.srcery_bold = 1
-            vim.g.srcery_italic = 1
-            vim.g.srcery_underline = 1
+            vim.g.srcery_italic = 0
+            vim.g.srcery_underline = 0
             vim.g.srcery_undercurl = 1
             vim.g.srcery_strikethrough = 1
             vim.g.srcery_inverse = 0
-            vim.g.srcery_normal_float = 0
+            vim.g.srcery_normal_float = 1
             vim.g.srcery_background = "#000000"
         end,
         config = function ()
