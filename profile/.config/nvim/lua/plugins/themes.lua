@@ -70,7 +70,7 @@ return {
         init = function ()
             vim.g.srcery_bold = 1
             vim.g.srcery_italic = 0
-            vim.g.srcery_underline = 0
+            vim.g.srcery_underline = 1
             vim.g.srcery_undercurl = 1
             vim.g.srcery_strikethrough = 1
             vim.g.srcery_inverse = 0
@@ -79,6 +79,21 @@ return {
         end,
         config = function ()
             vim.cmd.colorscheme( "srcery" )
+
+            hl( "Search", {
+                bg = vim.g.srcery_gray4,
+                underline = vim.g.srcery_underline,
+            } )
+
+            hl( "IncSearch", {
+                bg = vim.g.srcery_gray4,
+                underline = vim.g.srcery_underline,
+            } )
+
+            hl( "CurSearch", {
+                bg = vim.g.srcery_gray4,
+                underline = vim.g.srcery_underline,
+            } )
 
             hl( "CursorLine", {
                 bg = "Grey15",
