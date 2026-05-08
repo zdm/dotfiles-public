@@ -64,6 +64,34 @@ vim.api.nvim_create_autocmd( "TextYankPost", {
 
 return {
     {
+        "srcery-colors/srcery-vim",
+        -- enabled = false,
+        priority = priority,
+        init = function ()
+            vim.g.srcery_bold = 1
+            vim.g.srcery_italic = 1
+            vim.g.srcery_underline = 1
+            vim.g.srcery_undercurl = 1
+            vim.g.srcery_strikethrough = 1
+            vim.g.srcery_inverse = 0
+            vim.g.srcery_normal_float = 0
+            vim.g.srcery_background = "#000000"
+        end,
+        config = function ()
+            vim.cmd.colorscheme( "srcery" )
+
+            hl( "CursorLine", {
+                bg = "Grey15",
+            } )
+
+            hl( "MatchParen", {
+                bold = true,
+                bg = "Grey30",
+                fg = vim.g.srcery_bright_magenta,
+            } )
+        end
+    },
+    {
         "bluz71/vim-nightfly-colors",
         enabled = false,
         priority = priority,
@@ -102,34 +130,6 @@ return {
             require( "monokai" ).setup( {
                 -- palette = require( "monokai" ).pro,
                 italics = false
-            } )
-        end
-    },
-    {
-        "srcery-colors/srcery-vim",
-        -- enabled = false,
-        priority = priority,
-        init = function ()
-            vim.g.srcery_italic = 0
-            vim.g.srcery_underline = 0
-            vim.g.srcery_undercurl = 1
-            vim.g.srcery_strikethrough = 1
-            vim.g.srcery_inverse = 0
-            vim.g.srcery_inverse_matches = 0
-            vim.g.srcery_inverse_match_paren = 0
-            vim.g.srcery_bg = { "#000000", 0 }
-        end,
-        config = function ()
-            vim.cmd.colorscheme( "srcery" )
-
-            hl( "CursorLine", {
-                bg = "Grey15",
-            } )
-
-            hl( "MatchParen", {
-                bold = true,
-                bg = "Grey30",
-                fg = vim.g.srcery_bright_magenta,
             } )
         end
     },
