@@ -81,17 +81,17 @@ return {
             vim.cmd.colorscheme( "srcery" )
 
             hl( "Search", {
-                bg = vim.g.srcery_gray4,
+                bg = "Grey25",
                 underline = vim.g.srcery_underline,
             } )
 
             hl( "IncSearch", {
-                bg = vim.g.srcery_gray4,
+                bg = "Grey25",
                 underline = vim.g.srcery_underline,
             } )
 
             hl( "CurSearch", {
-                bg = vim.g.srcery_gray4,
+                bg = "Grey25",
                 underline = vim.g.srcery_underline,
             } )
 
