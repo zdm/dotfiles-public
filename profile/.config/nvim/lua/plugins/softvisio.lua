@@ -9,7 +9,7 @@ return {
         cmd = "S",
         keys = {
             {
-                "<Leader>ss",
+                "<Leader>sd",
                 "<CMD>S lint lint<CR>",
                 mode = { "n", "i", "v", "s" },
                 desc = "Lint buffer",
