@@ -33,6 +33,12 @@
         "prefix": [
             "details"
         ],
-        "body": "<details>\n    <summary>$1</summary>\n\n$2\n\n</details>"
+        "body": "<details>\n    <summary>$1</summary>\n\n$2\n\n</details>\n"
+    },
+    "tabs": {
+        "prefix": [
+            "tabs"
+        ],
+        "body": "<!-- tabs:start -->\n\n#### **$1**\n\n$2\n\n#### **$3**\n\n$4\n\n<!-- tabs:end -->\n"
     }
 }
