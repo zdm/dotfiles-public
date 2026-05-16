@@ -28,5 +28,11 @@
             "> caution"
         ],
         "body": "> \\[!CAUTION]\n> $1"
+    },
+    "details": {
+        "prefix": [
+            "details"
+        ],
+        "body": "<details>\n    <summary>$1</summary>\n\n$2\n\n</details>"
     }
 }
