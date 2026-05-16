@@ -1,0 +1,32 @@
+{
+    "note": {
+        "prefix": [
+            "> note"
+        ],
+        "body": "> \\[!NOTE]\n> $1"
+    },
+    "tip": {
+        "prefix": [
+            "> tip"
+        ],
+        "body": "> \\[!TIP]\n> $1"
+    },
+    "important": {
+        "prefix": [
+            "> important"
+        ],
+        "body": "> \\[!IMPORTANT]\n> $1"
+    },
+    "warning": {
+        "prefix": [
+            "> warning"
+        ],
+        "body": "> \\[!WARNING]\n> $1"
+    },
+    "caution": {
+        "prefix": [
+            "> caution"
+        ],
+        "body": "> \\[!CAUTION]\n> $1"
+    }
+}
