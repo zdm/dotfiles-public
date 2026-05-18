@@ -1,7 +1,7 @@
 {
     "name": "@zdm/dotfiles-public",
     "private": true,
-    "homepage": "https://github.com/zdm/dotfiles-public",
+    "homepage": "https://github.com/zdm/dotfiles-public?tab=readme-ov-file#readme",
     "bugs": {
         "url": "https://github.com/zdm/dotfiles-public/issues",
         "email": "root <root@softvisio.net>"
