@@ -101,8 +101,8 @@ function update() {
         pod repo update
 
         # update global node packages
-        npm ou -g
-        npm up -g
+        npm outdated --global
+        npm update --global --dangerously-allow-all-scripts --force
 
     # Debian / Ubuntu
     elif [ $(source /etc/os-release && echo $ID_LIKE) = "debian" ]; then
@@ -126,8 +126,8 @@ function update() {
 
             echo
             echo "### Updating: npm global packages"
-            # npm ou -g
-            npm up -g
+            # npm outdated --global
+            npm update --global --dangerously-allow-all-scripts --force
 
             echo
             echo "### Clearing npm cache"
