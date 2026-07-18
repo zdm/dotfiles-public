@@ -11,7 +11,8 @@ winget install ^
     voidtools.Everything ^
     WireGuard.WireGuard ^
     SQLite.SQLite ^
-    Rufus.Rufus
+    Rufus.Rufus ^
+    GitHub.Copilot
 
 :: winget install Anthropic.ClaudeCode
 
