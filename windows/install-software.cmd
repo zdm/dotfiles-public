@@ -3,6 +3,7 @@
 :: elevate script
 call is-elevated.cmd || ( sudo -E "%~sf0" %* & exit /B )
 
+:: Anthropic.ClaudeCode
 winget install ^
     Google.GoogleDrive ^
     TeamViewer.TeamViewer.Host ^
@@ -11,9 +12,8 @@ winget install ^
     voidtools.Everything ^
     WireGuard.WireGuard ^
     SQLite.SQLite ^
-    Rufus.Rufus ^
-    Anthropic.ClaudeCode
+    Rufus.Rufus
 
+:: ChatGPT
 winget install --source msstore ^
-    ChatGPT ^
     "Authenticator App - OneAuth"
