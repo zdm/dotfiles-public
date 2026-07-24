@@ -63,6 +63,7 @@ return {
                     { name = "vsnip" },
                     { name = "calc" },
                     { name = "emoji" },
+                    { name = "copilot", group_index = 2 },
                 } )
             } )
         end
