@@ -66,7 +66,6 @@ alias df="df -h"
 alias du="du -h"
 alias d="docker"
 alias g="git"
-alias gc="gcloud"
 alias s="scli"
 
 [[ -f ~/.bash_aliases ]] && . ~/.bash_aliases
