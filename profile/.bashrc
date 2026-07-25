@@ -67,8 +67,6 @@ alias du="du -h"
 alias d="docker"
 alias g="git"
 alias gc="gcloud"
-alias gce="gcloud compute"
-alias gcp="gcloud config configurations"
 alias s="scli"
 
 [[ -f ~/.bash_aliases ]] && . ~/.bash_aliases
