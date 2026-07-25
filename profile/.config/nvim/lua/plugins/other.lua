@@ -37,7 +37,7 @@ return {
     },
     {
         "lyokha/vim-xkbswitch",
-        enabled = false,
+        -- enabled = false,
         dependencies = {
             "dexp/xkb-switch-win"
         },
