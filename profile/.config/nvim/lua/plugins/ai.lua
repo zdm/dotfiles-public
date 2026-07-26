@@ -29,7 +29,21 @@ return {
         end
     },
     {
+        -- DOCS: https://codecompanion.olimorris.dev/
+        "olimorris/codecompanion.nvim",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "nvim-treesitter/nvim-treesitter",
+        },
+        opts = {
+            opts = {
+                -- log_level = "DEBUG", -- or "TRACE"
+            },
+        },
+    },
+    {
         "copilotc-nvim/copilotchat.nvim",
+        enabled = false,
         dependencies = {
             {
                 "nvim-lua/plenary.nvim",
