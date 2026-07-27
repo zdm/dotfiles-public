@@ -8,6 +8,12 @@ return {
         -- enabled = false,
         dependencies = {
             {
+                "zbirenbaum/copilot-cmp",
+                config = function ()
+                    require( "copilot_cmp" ).setup()
+                end
+            },
+            {
                 "copilotlsp-nvim/copilot-lsp",
             },
         },
@@ -20,12 +26,6 @@ return {
                     auto_trigger = true,
                 },
             } )
-        end
-    },
-    {
-        "zbirenbaum/copilot-cmp",
-        config = function ()
-            require( "copilot_cmp" ).setup()
         end
     },
     {
