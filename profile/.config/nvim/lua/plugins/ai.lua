@@ -36,8 +36,30 @@ return {
             "nvim-treesitter/nvim-treesitter",
         },
         opts = {
+            interactions = {
+                chat = {
+                    adapter = {
+                        name = "copilot",
+                        model = "auto",
+                    },
+                    opts = {
+                        completion_provider = "cmp",
+                    }
+                },
+                cli = {
+                    agent = "copilot",
+                    agents = {
+                        copilot = {
+                            cmd = "copilot",
+                            args = {},
+                            description = "Copilot CLI",
+                            provider = "terminal",
+                        },
+                    },
+                },
+            },
             opts = {
-                -- log_level = "DEBUG", -- or "TRACE"
+                log_level = "DEBUG", -- or "TRACE"
             },
         },
     },
