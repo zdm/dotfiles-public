@@ -1,9 +1,5 @@
 return {
     {
-        "github/copilot.vim",
-        enabled = false,
-    },
-    {
         "zbirenbaum/copilot.lua",
         -- enabled = false,
         dependencies = {
@@ -31,6 +27,7 @@ return {
     {
         -- DOCS: https://codecompanion.olimorris.dev/
         "olimorris/codecompanion.nvim",
+        enabled = false,
         dependencies = {
             "nvim-lua/plenary.nvim",
             "nvim-treesitter/nvim-treesitter",
@@ -62,6 +59,10 @@ return {
                 log_level = "DEBUG", -- or "TRACE"
             },
         },
+    },
+    {
+        "github/copilot.vim",
+        enabled = false,
     },
     {
         "copilotc-nvim/copilotchat.nvim",
