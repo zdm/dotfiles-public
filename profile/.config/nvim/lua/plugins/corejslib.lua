@@ -1,6 +1,6 @@
 return {
     {
-        "neovim-plugins/softvisio.nvim",
+        "neovim-plugins/corejslib.nvim",
         tag = "latest",
         dev = true,
         dependencies = {
@@ -34,7 +34,7 @@ return {
             },
         },
         config = function ()
-            require( "softvisio" ).setup( {
+            require( "corejslib" ).setup( {
                 ignored_filetypes = require( "utils" ).ignored_filetypes,
             } )
         end

@@ -66,7 +66,7 @@ return {
             local segments = {
                 {
                     sign = {
-                        namespace = { "softvisio" },
+                        namespace = { "corejslib" },
                         maxwidth = 1,
                         colwidth = 1,
                         auto = true,

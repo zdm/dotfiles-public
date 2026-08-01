@@ -66,7 +66,7 @@ alias df="df -h"
 alias du="du -h"
 alias d="docker"
 alias g="git"
-alias s="scli"
+alias s="ccli"
 
 [[ -f ~/.bash_aliases ]] && . ~/.bash_aliases
 
@@ -111,11 +111,11 @@ function update() {
         apt-get autoremove -y
 
         # update resources
-        if [[ -x "$(command -v scli)" ]]; then
+        if [[ -x "$(command -v ccli)" ]]; then
 
             echo
             echo "### Updating: resources"
-            scli workspace update-resources
+            ccli workspace update-resources
         fi
 
         # npm
