@@ -4,13 +4,13 @@ return {
         -- enabled = false,
         dependencies = {
             {
+                "copilotlsp-nvim/copilot-lsp",
+            },
+            {
                 "zbirenbaum/copilot-cmp",
                 config = function ()
                     require( "copilot_cmp" ).setup()
                 end
-            },
-            {
-                "copilotlsp-nvim/copilot-lsp",
             },
         },
         cmd = "Copilot",
@@ -18,8 +18,17 @@ return {
         config = function ()
             require( "copilot" ).setup( {
                 suggestion = {
-                   enabled = true,
+                    enabled = true,
                     auto_trigger = true,
+                    keymap = {
+                        accept = false,
+                        accept_line = "<Leader>a",
+                        accept_word = "<Leader><Leader>a",
+                        next = false,
+                        prev = false,
+                        dismiss = "<Leader>q",
+                        toggle_auto_trigger = false,
+                    },
                 },
             } )
         end
