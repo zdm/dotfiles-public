@@ -1,40 +1,40 @@
 return {
     {
-        "neovim-plugins/corejslib.nvim",
+        "neovim-plugins/ccli.nvim",
         tag = "latest",
         dev = true,
         dependencies = {
             "telescope.nvim",
         },
-        cmd = "S",
+        cmd = "Ccli",
         keys = {
             {
                 "<Leader>sd",
-                "<CMD>S lint lint<CR>",
+                "<CMD>Ccli lint lint<CR>",
                 mode = { "n", "i", "v", "s" },
                 desc = "Lint buffer",
             },
             {
                 "<Leader>sf",
-                "<CMD>S lint format<CR>",
+                "<CMD>Ccli lint format<CR>",
                 mode = { "n", "i", "v", "s" },
                 desc = "Lint buffer using default rules",
             },
             {
                 "<Leader>sc",
-                "<CMD>S lint compress<CR>",
+                "<CMD>Ccli lint compress<CR>",
                 mode = { "n", "i", "v", "s" },
                 desc = "Compress buffer",
             },
             {
                 "<Leader>so",
-                "<CMD>S lint obfuscate<CR>",
+                "<CMD>Ccli lint obfuscate<CR>",
                 mode = { "n", "i", "v", "s" },
                 desc = "Obfuscate buffer",
             },
         },
         config = function ()
-            require( "corejslib" ).setup( {
+            require( "ccli" ).setup( {
                 ignored_filetypes = require( "utils" ).ignored_filetypes,
             } )
         end
