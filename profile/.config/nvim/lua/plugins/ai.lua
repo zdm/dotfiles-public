@@ -22,8 +22,8 @@ return {
                     auto_trigger = true,
                     keymap = {
                         accept = false,
-                        accept_line = "<Leader>a",
-                        accept_word = "<Leader><Leader>a",
+                        accept_line = "<Leader><TAB>",
+                        accept_word = "<Leader><Leader><TAB>",
                         next = false,
                         prev = false,
                         dismiss = "<Leader>q",
