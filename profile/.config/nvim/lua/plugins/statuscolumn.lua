@@ -66,7 +66,7 @@ return {
             local segments = {
                 {
                     sign = {
-                        namespace = { "ccli" },
+                        namespace = { "zcli" },
                         maxwidth = 1,
                         colwidth = 1,
                         auto = true,
