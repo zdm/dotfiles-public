@@ -14,6 +14,7 @@ winget install ^
     Rufus.Rufus ^
     GitHub.Copilot
 
+:: winget install OpenAI.Codex
 :: winget install Anthropic.ClaudeCode
 
 winget install --source msstore ^
