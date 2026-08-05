@@ -36,38 +36,41 @@ return {
     {
         -- DOCS: https://codecompanion.olimorris.dev/
         "olimorris/codecompanion.nvim",
-        enabled = false,
+        -- enabled = false,
         dependencies = {
             "nvim-lua/plenary.nvim",
             "nvim-treesitter/nvim-treesitter",
         },
-        opts = {
-            interactions = {
-                chat = {
-                    adapter = {
-                        name = "copilot",
-                        model = "auto",
+        cmd = { "CodeCompanion", "CodeCompanionChat", "CodeCompanionActions" },
+        config = function ()
+            require( "codecompanion" ).setup( {
+                interactions = {
+                    chat = {
+                        adapter = {
+                            name = "copilot",
+                            model = "auto",
+                        },
+                        opts = {
+                            completion_provider = "cmp",
+                        }
                     },
-                    opts = {
-                        completion_provider = "cmp",
-                    }
-                },
-                cli = {
-                    agent = "copilot",
-                    agents = {
-                        copilot = {
-                            cmd = "copilot",
-                            args = {},
-                            description = "Copilot CLI",
-                            provider = "terminal",
+                    cli = {
+                        agent = "copilot",
+                        agents = {
+                            copilot = {
+                                cmd = "copilot",
+                                args = {},
+                                description = "Copilot CLI",
+                                provider = "terminal",
+                            },
                         },
                     },
                 },
-            },
-            opts = {
-                log_level = "DEBUG", -- or "TRACE"
-            },
-        },
+                opts = {
+                    log_level = "DEBUG", -- or "TRACE"
+                },
+            } )
+        end,
     },
     {
         "github/copilot.vim",
