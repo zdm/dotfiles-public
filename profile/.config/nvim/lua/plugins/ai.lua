@@ -34,7 +34,6 @@ return {
         end
     },
     {
-        -- DOCS: https://codecompanion.olimorris.dev/
         "olimorris/codecompanion.nvim",
         -- enabled = false,
         dependencies = {
@@ -73,10 +72,6 @@ return {
         end,
     },
     {
-        "github/copilot.vim",
-        enabled = false,
-    },
-    {
         "copilotc-nvim/copilotchat.nvim",
         enabled = false,
         dependencies = {
@@ -84,9 +79,15 @@ return {
                 "nvim-lua/plenary.nvim",
             },
         },
-        -- build = "make tiktoken",
-        opts = {
-            -- model = "Claude Sonnet 5"
-        },
+        config = function ()
+            require( "copilotchat" ).setup( {
+                model = "auto",
+            } )
+        end,
+    },
+    {
+        -- NOTE: replaced with copilot.lua
+        "github/copilot.vim",
+        enabled = false,
     },
 }
