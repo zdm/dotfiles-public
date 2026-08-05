@@ -48,7 +48,7 @@ return {
                     chat = {
                         adapter = {
                             name = "copilot",
-                            model = "auto",
+                            -- model = "auto",
                         },
                         opts = {
                             completion_provider = "cmp",
