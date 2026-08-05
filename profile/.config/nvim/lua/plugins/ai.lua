@@ -44,11 +44,11 @@ return {
         cmd = { "CodeCompanion", "CodeCompanionChat", "CodeCompanionActions" },
         config = function ()
             require( "codecompanion" ).setup( {
-                interactions1 = {
+                interactions = {
                     chat = {
                         adapter = {
                             name = "copilot",
-                            -- model = "auto",
+                            model = "auto",
                         },
                         opts = {
                             completion_provider = "cmp",
