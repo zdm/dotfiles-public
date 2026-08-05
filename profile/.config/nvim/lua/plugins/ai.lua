@@ -40,7 +40,20 @@ return {
             "nvim-lua/plenary.nvim",
             "nvim-treesitter/nvim-treesitter",
         },
-        cmd = { "CodeCompanion", "CodeCompanionChat", "CodeCompanionActions" },
+        cmd = { "CodeCompanion", "CodeCompanionChat", "CodeCompanionCLI", "CodeCompanionActions" },
+        -- keys = {
+        --     {
+        --         "<Leader>a",
+        --         function ()
+        --             require( "codecompanion" ).cli( "#{this}", {
+        --                 focus = true,
+        --                 prompt = true,
+        --             } )
+        --         end,
+        --         mode = { "n", "i", "v" },
+        --         desc = "Add context to the CLI agent",
+        --     },
+        -- },
         config = function ()
             require( "codecompanion" ).setup( {
                 interactions = {
