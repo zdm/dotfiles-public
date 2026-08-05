@@ -44,7 +44,7 @@ return {
         cmd = { "CodeCompanion", "CodeCompanionChat", "CodeCompanionActions" },
         config = function ()
             require( "codecompanion" ).setup( {
-                interactions = {
+                interactions1 = {
                     chat = {
                         adapter = {
                             name = "copilot",
