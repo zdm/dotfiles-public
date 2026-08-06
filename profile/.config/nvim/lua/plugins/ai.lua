@@ -41,26 +41,26 @@ return {
             "nvim-treesitter/nvim-treesitter",
         },
         cmd = { "CodeCompanion", "CodeCompanionChat", "CodeCompanionCLI", "CodeCompanionActions" },
-        -- keys = {
-        --     {
-        --         "<Leader>a",
-        --         function ()
-        --             require( "codecompanion" ).cli( "#{this}", {
-        --                 focus = true,
-        --                 prompt = true,
-        --             } )
-        --         end,
-        --         mode = { "n", "i", "v" },
-        --         desc = "Add context to the CLI agent",
-        --     },
-        -- },
+        keys = {
+            {
+                "<Leader>a",
+                mode = { "n", "i", "v" },
+                desc = "Add context to the CLI agent",
+                function ()
+                    require( "codecompanion" ).cli( "#{this}", {
+                        focus = true,
+                        prompt = true,
+                    } )
+                end,
+            },
+        },
         config = function ()
             require( "codecompanion" ).setup( {
                 interactions = {
                     chat = {
                         adapter = {
                             name = "copilot",
-                            model = "auto",
+                            model = "gpt-4o", -- free plan: gpt-4o
                         },
                         opts = {
                             completion_provider = "cmp",
