@@ -4,6 +4,7 @@
 call is-elevated.cmd || ( sudo -E "%~sf0" %* & exit /B )
 
 winget install ^
+    curl.curl ^
     Google.GoogleDrive ^
     TeamViewer.TeamViewer.Host ^
     VaclavSlavik.Poedit ^
