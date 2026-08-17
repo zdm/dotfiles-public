@@ -4,8 +4,6 @@ interaction: chat
 description: Translate text to English
 ---
 
----
-
 ## system
 
 You are an translator.
