@@ -172,6 +172,32 @@ return {
                         },
                     },
                 },
+                rules = {
+                    default = {
+                        description = "Collection of common files for all projects",
+                        files = {
+                            ".clinerules",
+                            ".cursorrules",
+                            ".goosehints",
+                            ".rules",
+                            ".windsurfrules",
+                            ".github/copilot-instructions.md",
+                            "~/.copilot/copilot-instructions.md",
+                            "AGENT.md",
+                            "AGENTS.md",
+                            { path = "CLAUDE.md", parser = "claude" },
+                            { path = "CLAUDE.local.md", parser = "claude" },
+                            { path = "~/.claude/CLAUDE.md", parser = "claude" },
+                        },
+                        is_preset = true,
+                    },
+                    opts = {
+                        chat = {
+                            autoload = "default", -- The rule groups to load
+                            enabled = true,
+                        },
+                    },
+                },
                 opts = {
                     log_level = "DEBUG", -- "TRACE"
                 },
