@@ -165,6 +165,13 @@ return {
                         },
                     },
                 },
+                prompt_library = {
+                    markdown = {
+                        dirs = {
+                            vim.fn.stdpath( "config" ) .. "/ai/prompts",
+                        },
+                    },
+                },
                 opts = {
                     log_level = "DEBUG", -- "TRACE"
                 },
