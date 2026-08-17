@@ -118,6 +118,7 @@ return {
                 },
                 interactions = {
                     inline = {
+                        adapter = "copilot",
                         keymaps = {
                             -- accept_change = {
                             --     modes = { n = "ga" },
@@ -130,9 +131,9 @@ return {
                             --     opts = { nowait = true },
                             -- },
                         },
-                        adapter = "copilot",
                     },
                     chat = {
+                        adapter = "copilot",
                         keymaps = {
                             send = {
                                 modes = {
@@ -148,7 +149,6 @@ return {
                                 description = "Insert edits into a file",
                             },
                         },
-                        adapter = "copilot",
                         opts = {
                             completion_provider = "cmp",
                         }
@@ -166,7 +166,7 @@ return {
                     },
                 },
                 opts = {
-                    log_level = "DEBUG", -- or "TRACE"
+                    log_level = "DEBUG", -- "TRACE"
                 },
             } )
         end,
