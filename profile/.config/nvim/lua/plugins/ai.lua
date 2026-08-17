@@ -219,7 +219,7 @@ return {
             },
         },
         config = function ()
-            require( "copilotchat" ).setup( {
+            require( "CopilotChat" ).setup( {
                 model = "auto",
             } )
         end,
