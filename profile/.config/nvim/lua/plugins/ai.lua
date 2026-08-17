@@ -74,6 +74,12 @@ return {
                 mode = { "n", "i", "v" },
                 desc = "[Ai] Execute CodeCompanionChat",
             },
+            {
+                "<Leader>as",
+                "<cmd>CodeCompanionActions<cr>",
+                mode = { "n", "i", "v" },
+                desc = "[Ai] Execute CodeCompanionActions",
+            },
             -- {
             --     "<Leader>a",
             --     mode = { "n", "i", "v" },
