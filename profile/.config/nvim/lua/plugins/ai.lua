@@ -1,10 +1,8 @@
 vim.api.nvim_create_user_command( "Ai", function ( opts )
     local range = ""
 
-    if vim.api.nvim_get_mode().mode == "v" then
+    if opts.range > 0 then
         range = "'<,'>"
-    elseif opts.range > 0 then
-        range = opts.line1 .. "," .. opts.line2
     else
         range = "%"
     end
@@ -58,13 +56,13 @@ return {
         keys = {
             {
                 "<Leader>aa",
-                "<cmd>CodeCompanion<cr>",
+                "<cmd>Ai<cr>",
                 mode = { "n", "i" },
                 desc = "[Ai] Execute CodeCompanion",
             },
             {
                 "<Leader>aa",
-                ":CodeCompanion<cr>",
+                ":Ai<cr>",
                 mode = { "v" },
                 desc = "[Ai] Execute CodeCompanion",
             },
