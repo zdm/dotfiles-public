@@ -3,8 +3,8 @@ name: Translate buffer to English
 interaction: chat
 description: Translate text from buffer to English
 opts:
-  alias: te
-  auto_submit: true
+    alias: te
+    auto_submit: true
 ---
 
 ## system
