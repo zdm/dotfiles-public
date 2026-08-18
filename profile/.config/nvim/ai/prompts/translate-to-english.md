@@ -2,6 +2,9 @@
 name: Translate to English
 interaction: chat
 description: Translate text to English
+opts:
+    alias: translate2
+    auto_submit: true
 ---
 
 ## system
