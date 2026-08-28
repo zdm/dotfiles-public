@@ -4,7 +4,7 @@
             "#!",
             "shebang"
         ],
-        "body": "#!/usr/bin/env lua"
+        "body": "#!/usr/bin/env -S lua"
     },
     "vim.print( $1 )": {
         "prefix": [

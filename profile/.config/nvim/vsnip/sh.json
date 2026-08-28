@@ -4,7 +4,7 @@
             "#!",
             "shebang"
         ],
-        "body": "#!/usr/bin/env bash\n\nset -Eeuo pipefail\ntrap 'echo \"⚠  Error (\\$0:\\$LINENO, exit code: \\$?): \\$BASH_COMMAND\" >&2' ERR\n\n$1"
+        "body": "#!/usr/bin/env -S bash\n\nset -Eeuo pipefail\ntrap 'echo \"⚠  Error (\\$0:\\$LINENO, exit code: \\$?): \\$BASH_COMMAND\" >&2' ERR\n\n$1"
     },
     "if-else": {
         "prefix": "if ",

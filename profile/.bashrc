@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env -S bash
 
 [ -z "${DEBIAN_FRONTEND:-}" ] && [ -z "${PS1:-}" ] && export DEBIAN_FRONTEND=noninteractive
 
