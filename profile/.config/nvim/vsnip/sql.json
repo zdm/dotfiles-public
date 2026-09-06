@@ -1,0 +1,10 @@
+{
+    "function": {
+        "prefix": "CREATE FUNCTION",
+        "body": "CREATE FUNCTION $1 ( p_ text ) RETURNS text AS \\$\\$\nDECLARE\n    v_ text;\nBEGIN\n    RETURN v_;\nEND;\n\\$\\$ LANGUAGE plpgsql;"
+    },
+    "trigger": {
+        "prefix": "CREATE TRIGGER",
+        "body": "CREATE FUNCTION $1_after_update_or_delete_trigger () RETURNS TRIGGER AS \\$\\$\nDECLARE\n    v_ text;\nBEGIN\n    RETURN NULL;\nEND;\n\\$\\$ LANGUAGE plpgsql;\n\nCREATE TRIGGER $2_after_update_or_delete AFTER UPDATE OR DELETE ON $3_table FOR EACH ROW EXECUTE FUNCTION $4_after_update_or_delete_trigger();"
+    }
+}
