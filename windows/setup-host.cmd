@@ -43,7 +43,7 @@ mklink /D "d:\pictures" "g:\my drive\pictures"
 setx /M PATHEXT ".com;.exe;.lnk;.bat;.cmd;.ps1;.sh;.js;.cjs;.mjs"
 
 :: path
-setx /M PATH "s:\bin;d:\apps\bin;d:\apps\fnm\data\current;c:\msys64\usr\bin;c:\msys64\mingw64\bin;%SystemRoot%\system32;%SystemRoot%"
+setx /M PATH "s:\bin;d:\apps\bin;d:\apps\fnm\data\current;c:\msys64\usr\bin;c:\msys64\mingw64\bin;%SystemRoot%\system32;%SystemRoot%;%SystemRoot%\system32\WindowsPowerShell\v1.0"
 
 :: git
 setx /M GIT_CONFIG_COUNT 2
