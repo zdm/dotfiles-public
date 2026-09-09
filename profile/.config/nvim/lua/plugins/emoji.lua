@@ -6,7 +6,7 @@ return {
         dependencies = {
 
             -- optional for nvim-cmp integration
-            "hrsh7th/nvim-cmp",
+            -- "hrsh7th/nvim-cmp",
 
             -- optional for telescope integration
             -- "nvim-telescope/telescope.nvim",

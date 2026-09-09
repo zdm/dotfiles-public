@@ -1,9 +1,14 @@
 return {
     {
-        "hrsh7th/nvim-cmp",
+        "saghen/blink.cmp",
+        version = "*",
         dependencies = {
+            "saghen/blink.lib",
+            "allaman/emoji.nvim",
             "hrsh7th/cmp-calc",
-            "hrsh7th/cmp-vsnip",
+            "saghen/blink.compat",
+            "https://codeberg.org/FelipeLema/bink-cmp-vsnip.git",
+            "fang2hou/blink-copilot",
             {
                 -- "hrsh7th/vim-vsnip",
                 "neovim-plugins/vim-vsnip",
@@ -19,54 +24,93 @@ return {
                     }
                 end
             },
+
+            -- optional: provides snippets for the snippet source
+            -- "rafamadriz/friendly-snippets",
         },
-        init = function ()
-            vim.o.omnifunc = "syntaxcomplete#Complete"
-            vim.o.completeopt = "menuone,noselect"
-            vim.opt.complete:remove( { "i" } )
-            vim.opt.iskeyword:append( { ":" } )
+        build = function()
+            require( "blink.cmp" ).build():pwait()
         end,
-        config = function ()
-            local cmp = require( "cmp" )
-
-            cmp.setup( {
-                snippet = {
-                    expand = function ( args )
-                        -- XXX native snippet
-                        -- vim.snippet.expand( args.body )
-
-                        vim.fn[ "vsnip#anonymous" ]( args.body )
-                    end,
+        opts = {
+            keymap = {
+                preset = "none",
+                [ "<C-Up>" ] = { "select_prev" },
+                [ "<C-Down>" ] = { "show", "select_next" },
+                [ "<CR>" ] = { "accept", "fallback" },
+            },
+            completion = {
+                documentation = {
+                    auto_show = true,
                 },
-                mapping = cmp.mapping.preset.insert( {
-                    [ "<Up>" ] = function ( fallback )
-                        if cmp.visible() then
-                            cmp.abort()
-                        end
+                list = {
+                    selection = {
+                        preselect = false,
+                        auto_insert = false,
+                    },
+                },
+            },
+            snippets = {
+                preset = "vsnip"
+            },
+            sources = {
+                default = {
+                    "snippets",
+                    "emoji",
+                    "calc",
+                    "codecompanion",
+                    "copilot",
+                    "lsp",
 
-                        fallback()
-                    end,
-                    [ "<Down>" ] = function ( fallback )
-                        if cmp.visible() then
-                            cmp.abort()
-                        end
+                    -- "buffer",
+                    -- "path",
+                },
+                providers = {
+                    snippets = {
+                        min_keyword_length = 1,
+                        -- should_show_items = function(ctx)
 
-                        fallback()
-                    end,
-                    [ "<C-Up>" ] = cmp.mapping.select_prev_item( { behavior = cmp.SelectBehavior.Select } ),
-                    [ "<C-Down>" ] = cmp.mapping.select_next_item( { behavior = cmp.SelectBehavior.Select } ),
-                    [ "<C-Space>" ] = cmp.mapping.complete(),
-                    [ "<C-e>" ] = cmp.mapping.abort(),
-                    [ "<CR>" ] = cmp.mapping.confirm( { select = false } ),
-                } ),
-                sources = cmp.config.sources( {
-                    { name = "vsnip" },
-                    { name = "calc" },
-                    { name = "emoji" },
-                    { name = "copilot", group_index = 2 },
-                    { name = "codecompanion" },
-                } )
-            } )
-        end
+                        --     -- Hide snippets when the menu is triggered by an empty or non-matching context
+                        --     return ctx.trigger.initial_kind ~= "trigger_character"
+                        -- end,
+                    },
+                    emoji = {
+                        name = "emoji",
+                        module = "blink.compat.source",
+                        transform_items = function ( ctx, items )
+                            local kind = require( "blink.cmp.types" ).CompletionItemKind.Text
+
+                            for i = 1, #items do
+                                items[i].kind = kind
+                            end
+
+                            return items
+                        end,
+                    },
+                    calc = {
+                        name = "calc",
+                        module = "blink.compat.source",
+                    },
+                    codecompanion = {
+                        name = "CodeCompanion",
+                        module = "codecompanion.providers.completion.blink",
+                        enabled = true,
+                    },
+                    copilot = {
+                        name = "copilot",
+                        module = "blink-copilot",
+                        score_offset = 100,
+                        async = true,
+                    },
+                },
+            },
+            fuzzy = {
+                implementation = "rust",
+                max_typos = 0,
+                frecency = {
+                    enabled = true,
+                },
+                use_proximity = true,
+            }
+        },
     },
 }

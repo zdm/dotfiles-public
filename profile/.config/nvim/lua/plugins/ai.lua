@@ -15,22 +15,17 @@ return {
         "zbirenbaum/copilot.lua",
         -- enabled = false,
         dependencies = {
-            {
-                "copilotlsp-nvim/copilot-lsp",
-            },
-            {
-                "zbirenbaum/copilot-cmp",
-                config = function ()
-                    require( "copilot_cmp" ).setup()
-                end
-            },
+            "copilotlsp-nvim/copilot-lsp",
         },
         cmd = "Copilot",
         event = "InsertEnter",
         config = function ()
             require( "copilot" ).setup( {
+                panel = {
+                    enabled = false
+                },
                 suggestion = {
-                    enabled = true,
+                    enabled = false, -- we are using blink.cmp
                     auto_trigger = true,
                     keymap = {
                         accept = false,
@@ -154,7 +149,7 @@ return {
                             },
                         },
                         opts = {
-                            completion_provider = "cmp",
+                            completion_provider = "blink",
                         }
                     },
                     cli = {
