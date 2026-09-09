@@ -25,7 +25,7 @@ return {
                 desc = "Telescope buffers",
             },
             {
-                "<Leader>xx",
+                "<Leader>d",
                 "<CMD>Telescope diagnostics bufnr=0<CR>",
                 mode = { "n", "i", "v", "s" },
                 desc = "Open diagnostics",
