@@ -1,8 +1,8 @@
 mount component:
-  prefix: mount dialog
+  trigger: mount dialog
   body: const cmp = await this.$mount( ${1:component} );
 upload:
-  prefix: upload
+  trigger: upload
   body: |-
     async upload ( e ) {
         const button = e.detail.sender,

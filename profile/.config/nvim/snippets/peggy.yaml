@@ -1,17 +1,17 @@
 console.log( $1 ):
-  prefix: console.log
+  trigger: console.log
   body: console.log( $1 )
 continue:
-  prefix: continue
+  trigger: continue
   body: continue;$1
 for:
-  prefix: for
+  trigger: for
   body: |-
     for ( let n = 0; n < 1; n++ ) {
         $1
     }
 if-else:
-  prefix: if
+  trigger: if
   body: |-
     if ( $1 ) {
         $2
@@ -23,11 +23,11 @@ if-else:
         $5
     }
 JSON.parse:
-  prefix: json.parse( $1 )
+  trigger: json.parse( $1 )
   body: JSON.parse( $1 )
 JSON.stringify:
-  prefix: json.stringify( $1 )
+  trigger: json.stringify( $1 )
   body: JSON.stringify( $1 )
 process.exit():
-  prefix: process.exit()
+  trigger: process.exit()
   body: process.exit()

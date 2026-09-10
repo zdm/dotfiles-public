@@ -1,35 +1,35 @@
 "#core/$1":
-  prefix: "#core"
+  trigger: "#core"
   body: "#core/$1"
 console.log( $1 ):
-  prefix: console.log
+  trigger: console.log
   body: console.log( $1 )
 continue:
-  prefix: continue
+  trigger: continue
   body: continue;$1
 eslint-disable:
-  prefix: eslint-disable
+  trigger: eslint-disable
   body: /* eslint-disable $1 */
 eslint-disable-line:
-  prefix: eslint-disable-line
+  trigger: eslint-disable-line
   body: // eslint-disable-line $1
 eslint-disable-next-line:
-  prefix: eslint-disable-next-line
+  trigger: eslint-disable-next-line
   body: // eslint-disable-next-line $1
 for:
-  prefix: for
+  trigger: for
   body: |-
     for ( let n = 0; n < 1; n++ ) {
         $1
     }
 function:
-  prefix: function
+  trigger: function
   body: |-
     function $1 () {
         $2
     }
 if-else:
-  prefix: if
+  trigger: if
   body: |-
     if ( $1 ) {
         $2
@@ -41,10 +41,10 @@ if-else:
         $5
     }
 import $1 from "$2";:
-  prefix: import
+  trigger: import
   body: import $1 from "$2";
 inspect:
-  prefix: inspect
+  trigger: inspect
   body: |-
     [ Symbol.for( "nodejs.util.inspect.custom" ) ] ( depth, options, inspect ) {
         const spec = {
@@ -54,39 +54,39 @@ inspect:
         return `\${ this.constructor.name }: \${ inspect( spec ) }`;
     }
 JSON.parse:
-  prefix: json.parse( $1 )
+  trigger: json.parse( $1 )
   body: JSON.parse( $1 )
 JSON.stringify:
-  prefix: json.stringify( $1 )
+  trigger: json.stringify( $1 )
   body: JSON.stringify( $1 )
 process.exit():
-  prefix: process.exit()
+  trigger: process.exit()
   body: process.exit()
 shebang:
-  prefix:
+  trigger:
     - "#!"
     - shebang
   body: "#!/usr/bin/env -S node"
 Symbol.asyncDispose:
-  prefix: symbol.asyncDispose
+  trigger: symbol.asyncDispose
   body: |-
     async [ Symbol.asyncDispose ] () {
         $1
     }
 Symbol.asyncIterator:
-  prefix: symbol.asynciterator
+  trigger: symbol.asynciterator
   body: |-
     async [ Symbol.asyncIterator ] () {
         $1
     }
 Symbol.dispose:
-  prefix: symbol.dispose
+  trigger: symbol.dispose
   body: |-
     [ Symbol.dispose ] () {
         $1
     }
 Symbol.iterator:
-  prefix: symbol.iterator
+  trigger: symbol.iterator
   body: |-
     [ Symbol.iterator ] () {
         $1

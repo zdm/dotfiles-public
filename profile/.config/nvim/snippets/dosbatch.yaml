@@ -1,24 +1,24 @@
 "%~dp0":
-  prefix: "%~dp0"
+  trigger: "%~dp0"
   body: "%~dp0"
 "%~sf0":
-  prefix: "%~sf0"
+  trigger: "%~sf0"
   body: "%~sf0"
 "%APPDATA%":
-  prefix: "%APPDATA%"
+  trigger: "%APPDATA%"
   body: "%APPDATA%"
 "%LOCALAPPDATA%":
-  prefix: "%LOCALAPPDATA%"
+  trigger: "%LOCALAPPDATA%"
   body: "%LOCALAPPDATA%"
 "%ProgramData%":
-  prefix: "%ProgramData%"
+  trigger: "%ProgramData%"
   body: "%ProgramData%"
 "%ProgramFiles%":
-  prefix: "%ProgramFiles%"
+  trigger: "%ProgramFiles%"
   body: "%ProgramFiles%"
 "%USERNAME%":
-  prefix: "%USERNAME%"
+  trigger: "%USERNAME%"
   body: "%USERNAME%"
 "%USERPROFILE%":
-  prefix: "%USERPROFILE%"
+  trigger: "%USERPROFILE%"
   body: "%USERPROFILE%"

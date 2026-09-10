@@ -1,5 +1,5 @@
 function:
-  prefix: CREATE FUNCTION
+  trigger: CREATE FUNCTION
   body: |-
     CREATE FUNCTION $1 ( p_ text ) RETURNS text AS \$\$
     DECLARE
@@ -9,7 +9,7 @@ function:
     END;
     \$\$ LANGUAGE plpgsql;
 trigger:
-  prefix: CREATE TRIGGER
+  trigger: CREATE TRIGGER
   body: |-
     CREATE FUNCTION $1_after_update_or_delete_trigger () RETURNS TRIGGER AS \$\$
     DECLARE

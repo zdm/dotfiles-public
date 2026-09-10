@@ -1,11 +1,11 @@
 caution:
-  prefix:
+  trigger:
     - "> caution"
   body: |-
     > \[!CAUTION]
     > $1
 details:
-  prefix:
+  trigger:
     - details
   body: |-
     <details>
@@ -15,19 +15,19 @@ details:
 
     </details>
 important:
-  prefix:
+  trigger:
     - "> important"
   body: |-
     > \[!IMPORTANT]
     > $1
 note:
-  prefix:
+  trigger:
     - "> note"
   body: |-
     > \[!NOTE]
     > $1
 tabs:
-  prefix:
+  trigger:
     - tabs
   body: |-
     <!-- tabs:start -->
@@ -42,13 +42,13 @@ tabs:
 
     <!-- tabs:end -->
 tip:
-  prefix:
+  trigger:
     - "> tip"
   body: |-
     > \[!TIP]
     > $1
 warning:
-  prefix:
+  trigger:
     - "> warning"
   body: |-
     > \[!WARNING]

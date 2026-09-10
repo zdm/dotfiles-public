@@ -1,23 +1,23 @@
 for-index:
-  prefix: for index
+  trigger: for index
   body: |-
     for n = $1, $2, 1 do
         $3
     end
 for-pairs:
-  prefix: for pairs
+  trigger: for pairs
   body: |-
     for key, value in pairs( $1 ) do
         $2
     end
 function:
-  prefix: function
+  trigger: function
   body: |-
     function $1 ()
         $2
     end
 if-else:
-  prefix: if
+  trigger: if
   body: |-
     if $1 then
         $2
@@ -27,22 +27,22 @@ if-else:
         $5
     end
 shebang:
-  prefix:
+  trigger:
     - "#!"
     - shebang
   body: "#!/usr/bin/env -S lua"
 vim.json.decode( $1 ):
-  prefix:
+  trigger:
     - vim.json.decode
     - json.decode
   body: vim.json.decode( $1 )
 vim.json.encode( $1 ):
-  prefix:
+  trigger:
     - vim.json.encode
     - json.encode
   body: vim.json.encode( $1 )
 vim.print( $1 ):
-  prefix:
+  trigger:
     - vim.print
     - print
   body: vim.print( $1 )

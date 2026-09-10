@@ -1,5 +1,5 @@
 case:
-  prefix: case
+  trigger: case
   body: |-
     case "\$1" in
         $1)
@@ -10,22 +10,22 @@ case:
             ;;
     esac
 echo:
-  prefix: echo
+  trigger: echo
   body: echo $1
 for:
-  prefix: for
+  trigger: for
   body: |-
     for $1 in $2; do
         $3
     done
 function:
-  prefix: function
+  trigger: function
   body: |-
     function $1() {
         $2
     }
 if-else:
-  prefix: if
+  trigger: if
   body: |-
     if [[ $1 ]]; then
         $2
@@ -35,7 +35,7 @@ if-else:
         $6
     fi
 shebang:
-  prefix:
+  trigger:
     - "#!"
     - shebang
   body: |-
