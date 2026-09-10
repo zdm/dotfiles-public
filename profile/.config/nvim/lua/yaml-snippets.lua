@@ -31,8 +31,8 @@ local function get_language_at_cursor ( bufnr )
     end
 
     local languages = {
-        language = "",
-        injected_language = "",
+        language = nil,
+        injected_language = nil,
     }
 
     local resolved_from_treesitter = false
@@ -67,7 +67,11 @@ local function get_language_at_cursor ( bufnr )
 
     -- file not parsed with treesitter (or no language resolved at cursor)
     if not resolved_from_treesitter then
-        languages.language = vim.bo[ bufnr ].filetype or ""
+        local filetype = vim.bo[ bufnr ].filetype
+
+        if filetype ~= "" then
+            languages.language = filetype
+        end
     end
 
     language_at_cursor_cache_by_buf[ bufnr ] = {
@@ -98,8 +102,8 @@ local function load_snippets ( snippets_path )
             snippets = {
                 snip_b = {
                     trigger = "snip_b",
-                    body = "console.log('Snippet A - JS Only', ${1:value});$0",
-                    description = "Only displays in standalone JS files",
+                    body = "console.log('Snippet B - HTML script only', ${1:value});$0",
+                    description = "Only displays inside <script> in HTML files",
                 }
             },
         },
@@ -111,8 +115,8 @@ local function load_snippets ( snippets_path )
             snippets = {
                 snip_c = {
                     trigger = "snip_c",
-                    body = "console.log('Snippet A - JS Only', ${1:value});$0",
-                    description = "Only displays in standalone JS files",
+                    body = "console.log('Snippet C - Vue script only', ${1:value});$0",
+                    description = "Only displays inside <script> in Vue files",
                 }
             },
         },
@@ -204,7 +208,7 @@ function M.new ()
 end
 
 function M:enabled ()
-    return supported_filetypes[ get_language_at_cursor().language ] == true
+    return supported_filetypes[ vim.bo.filetype ] == true
 end
 
 function M:get_trigger_characters ()
