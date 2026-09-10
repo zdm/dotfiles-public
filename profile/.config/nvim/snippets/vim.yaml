@@ -1,11 +1,11 @@
 function:
-  prefix: "function "
+  prefix: function
   body: |-
     function! $1 ()
         $2
     endfunction
 if-else:
-  prefix: "if "
+  prefix: if
   body: |-
     if $1
         $2

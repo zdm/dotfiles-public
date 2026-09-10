@@ -10,7 +10,7 @@ shebang:
 
     $1
 if-else:
-  prefix: "if "
+  prefix: if
   body: |-
     if [[ $1 ]]; then
         $2
@@ -20,7 +20,7 @@ if-else:
         $6
     fi
 case:
-  prefix: "case "
+  prefix: case
   body: |-
     case "\$1" in
         $1)
@@ -31,17 +31,17 @@ case:
             ;;
     esac
 function:
-  prefix: "function "
+  prefix: function
   body: |-
     function $1() {
         $2
     }
 for:
-  prefix: "for "
+  prefix: for
   body: |-
     for $1 in $2; do
         $3
     done
 echo:
-  prefix: "echo "
+  prefix: echo
   body: echo $1

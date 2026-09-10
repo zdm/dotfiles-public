@@ -19,13 +19,13 @@ vim.json.decode( $1 ):
     - json.decode
   body: vim.json.decode( $1 )
 function:
-  prefix: "function "
+  prefix: function
   body: |-
     function $1 ()
         $2
     end
 if-else:
-  prefix: "if "
+  prefix: if
   body: |-
     if $1 then
         $2

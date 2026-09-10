@@ -11,13 +11,13 @@ JSON.parse:
   prefix: json.parse( $1 )
   body: JSON.parse( $1 )
 for:
-  prefix: "for "
+  prefix: for
   body: |-
     for ( let n = 0; n < 1; n++ ) {
         $1
     }
 if-else:
-  prefix: "if "
+  prefix: if
   body: |-
     if ( $1 ) {
         $2

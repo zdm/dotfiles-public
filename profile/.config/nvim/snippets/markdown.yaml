@@ -31,7 +31,7 @@ caution:
 details:
   prefix:
     - details
-  body: |
+  body: |-
     <details>
         <summary>$1</summary>
 
@@ -41,7 +41,7 @@ details:
 tabs:
   prefix:
     - tabs
-  body: |
+  body: |-
     <!-- tabs:start -->
 
     #### **$1**
