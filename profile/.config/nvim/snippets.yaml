@@ -188,7 +188,7 @@ markdown:
       trigger:
         - "> caution"
       body: |-
-        > \[!CAUTION]
+        > \\[!CAUTION]
         > $1
     details:
       trigger:
@@ -204,13 +204,13 @@ markdown:
       trigger:
         - "> important"
       body: |-
-        > \[!IMPORTANT]
+        > \\[!IMPORTANT]
         > $1
     note:
       trigger:
         - "> note"
       body: |-
-        > \[!NOTE]
+        > \\[!NOTE]
         > $1
     tabs:
       trigger:
@@ -231,13 +231,13 @@ markdown:
       trigger:
         - "> tip"
       body: |-
-        > \[!TIP]
+        > \\[!TIP]
         > $1
     warning:
       trigger:
         - "> warning"
       body: |-
-        > \[!WARNING]
+        > \\[!WARNING]
         > $1
 
 peggy:
