@@ -1,5 +1,12 @@
+local is_treesitter_available = pcall( require, "nvim-treesitter.util" )
 local ts_lang_cache = {}
 
+-- Maps vim `filetype` to its treesitter language name, only where the two
+-- differ (e.g. filetype "vimscript" -> lang "vim"). Anything not listed
+-- here is assumed to share its name between filetype and lang.
+local filetype_to_lang = {}
+
+-- XXX remove
 local function get_ts_injection_lang ()
     local buf = vim.api.nvim_get_current_buf()
     local row, col = unpack( vim.api.nvim_win_get_cursor( 0 ) )
@@ -29,14 +36,58 @@ local function get_ts_injection_lang ()
     return lang
 end
 
--- Maps vim `filetype` to its treesitter language name, only where the two
--- differ (e.g. filetype "vimscript" -> lang "vim"). Anything not listed
--- here is assumed to share its name between filetype and lang.
-local filetype_to_lang = {}
-
+-- XXX remove
 local function get_base_lang ()
     local filetype = vim.bo.filetype
     return filetype_to_lang[ filetype ] or filetype
+end
+
+-- XXX
+-- if injected_laguage is defined and has snippets for injected_language - use this snippets only
+-- if laguage is defined and has snippets for language - use this snippets only
+local function get_language_at_cursor ( bufnr )
+    if not bufnr then
+        bufnr = vim.api.nvim_get_current_buf()
+    end
+
+    local languages = {
+        language = "",
+        injected_language = "",
+    }
+
+    if is_treesitter_available then
+        local cur_node = vim.treesitter.get_node( { bufnr = bufnr } )
+
+        -- file parsed with treesitter
+        if cur_node then
+            local parser = vim.treesitter.get_parser( bufnr )
+            local language_tree_at_cursor = parser:language_for_range( { cur_node:range() } )
+            local language_at_cursor = language_tree_at_cursor:lang()
+
+            -- has language at cursor
+            if language_at_cursor then
+                languages.language = language_at_cursor
+
+                local parent_language_tree = language_tree_at_cursor:parent()
+
+                -- has parent language
+                if parent_language_tree then
+                    local parent_language = parent_language_tree:lang()
+
+                    if parent_language then
+                        languages.injected_language = parent_language .. "/" .. language_at_cursor
+                    end
+                end
+
+                return languages
+            end
+        end
+    end
+
+    -- file not parsed with treesitter
+    languages.language = vim.bo[ bufnr ].filetype or ""
+
+    return languages
 end
 
 -- Every language a buffer could resolve to right now: its own base
@@ -105,6 +156,7 @@ end
 -- embed other languages we have snippets for (e.g. vue/markdown/html can
 -- inject javascript). Add a filetype here whenever a new host language
 -- needs to reach the shared groups via injection.
+-- XXX must be filled dynamically from snippers
 local host_filetypes = {
     javascript = true,
     typescript = true,

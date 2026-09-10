@@ -2,15 +2,6 @@ local M = {}
 local loaded_filetypes = {}
 local treesitter_is_available = pcall( require, "nvim-treesitter.util" )
 
--- XXX
--- [ "bash" ] = { "sh" },
--- [ "html/javascript" ] = { "javascript", "html/javascript" },
--- [ "vue" ] = { "html", "vue/html" },
--- [ "vue/javascript" ] = { "javascript", "html/javascript", "vue/javascript" },
---
--- root level active for filetyoe
--- second level
-
 -- private
 local function get_parser_filetype ( lang )
     if lang then
