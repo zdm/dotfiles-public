@@ -225,7 +225,7 @@ local function load_snippets ( snippets_path )
                     insertTextFormat = INSERT_TEXT_FORMAT_SNIPPET,
                     documentation = {
                         kind = "markdown",
-                        value = snippet_data.description,
+                        value = snippet_data.description or snippet_data.body,
                     },
                 } )
             else
@@ -237,7 +237,7 @@ local function load_snippets ( snippets_path )
                         insertTextFormat = INSERT_TEXT_FORMAT_SNIPPET,
                         documentation = {
                             kind = "markdown",
-                            value = snippet_data.description,
+                            value = snippet_data.description or snippet_data.body,
                         },
                     } )
                 end

@@ -93,10 +93,10 @@ javascript:
             return `\${ this.constructor.name }: \${ inspect( spec ) }`;
         }
     JSON.parse:
-      trigger: json.parse( $1 )
+      trigger: JSON.parse( $1 )
       body: JSON.parse( $1 )
     JSON.stringify:
-      trigger: json.stringify( $1 )
+      trigger: JSON.stringify( $1 )
       body: JSON.stringify( $1 )
     process.exit():
       trigger: process.exit()
