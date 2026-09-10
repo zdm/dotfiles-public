@@ -167,19 +167,13 @@ lua:
         - shebang
       body: "#!/usr/bin/env -S lua"
     vim.json.decode( $1 ):
-      trigger:
-        - vim.json.decode
-        - json.decode
+      trigger: vim.json.decode
       body: vim.json.decode( $1 )
     vim.json.encode( $1 ):
-      trigger:
-        - vim.json.encode
-        - json.encode
+      trigger: vim.json.encode
       body: vim.json.encode( $1 )
     vim.print( $1 ):
-      trigger:
-        - vim.print
-        - print
+      trigger: vim.print
       body: vim.print( $1 )
 
 markdown:
