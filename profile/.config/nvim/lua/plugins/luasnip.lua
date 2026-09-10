@@ -36,6 +36,8 @@ function M.load_snippets_for_ft ( filetype, snippets_dir )
                     {
                         name = name,
                         trig = snip.prefix,
+                        dscr = snip.description or name,
+                        condition = M.create_condition( filetype ),
                     },
                     snip.body
                 )
@@ -45,6 +47,8 @@ function M.load_snippets_for_ft ( filetype, snippets_dir )
                         {
                             name = name .. "/" .. prefix,
                             trig = prefix,
+                            dscr = snip.description or name,
+                            condition = M.create_condition( filetype ),
                         },
                         snip.body
                     )
@@ -58,6 +62,12 @@ function M.load_snippets_for_ft ( filetype, snippets_dir )
     luasnip.add_snippets( filetype, snippets )
 
     loaded_filetypes[ filetype ] = true
+end
+
+function M.create_condition ( filetype )
+    return function ()
+        return true
+    end
 end
 
 function M.setup( opts )
