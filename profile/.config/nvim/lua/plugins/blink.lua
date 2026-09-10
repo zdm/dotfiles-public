@@ -7,6 +7,7 @@ return {
             "saghen/blink.compat",
             "allaman/emoji.nvim",
             "hrsh7th/cmp-calc",
+            "l3mon4d3/luasnip",
             "fang2hou/blink-copilot",
 
             -- XXX
@@ -53,8 +54,8 @@ return {
             },
             snippets = {
                 -- XXX
-                -- preset = "luasnip",
-                preset = "vsnip"
+                preset = "luasnip",
+                -- preset = "vsnip"
             },
             sources = {
                 default = {
