@@ -9,6 +9,84 @@ vim.api.nvim_create_autocmd( "BufWipeout", {
     end,
 } )
 
+local function find_language_tree_at_point ( language_tree, row, col )
+    for _, tree in ipairs( language_tree:trees() ) do
+        local srow, scol, erow, ecol = tree:root():range()
+
+        local after_start = ( row > srow ) or ( row == srow and col >= scol )
+        local before_end = ( row < erow ) or ( row == erow and col <= ecol )
+
+        if after_start and before_end then
+            return language_tree
+        end
+    end
+
+    for _, child_tree in pairs( language_tree:children() ) do
+        local found = find_language_tree_at_point( child_tree, row, col )
+
+        if found then
+            return found
+        end
+    end
+
+    return nil
+end
+
+local function resolve_language_tree ( parser, bufnr, row, col )
+    local cur_node = vim.treesitter.get_node( { bufnr = bufnr, pos = { row, col } } )
+
+    -- fast path: language_for_range already resolves correctly
+    if cur_node then
+        local language_tree = parser:language_for_range( { cur_node:range() } )
+
+        if language_tree ~= parser then
+            return language_tree
+        end
+    end
+
+    -- root tree was returned - walk injected children directly and check
+    -- if the point falls inside one of them, instead of trusting cur_node's
+    -- possibly too-wide range
+    local found_tree = nil
+
+    for _, child_tree in pairs( parser:children() ) do
+        found_tree = find_language_tree_at_point( child_tree, row, col )
+
+        if found_tree then
+            break;
+        end
+    end
+
+    if found_tree then
+        return found_tree
+    end
+
+    -- nothing injected covers the point - likely a fence-delimiter line, or
+    -- the language alias was never registered so no child tree exists at
+    -- all; fall back to reading the info_string ourselves
+    local node = cur_node
+
+    while node do
+        if node:type() == "fenced_code_block" then
+            for child in node:iter_children() do
+                if child:type() == "info_string" then
+                    local text = vim.treesitter.get_node_text( child, bufnr )
+                    local resolved_lang = vim.treesitter.language.get_lang( text ) or text
+
+                    return {
+                        lang = function () return resolved_lang end,
+                        parent = function () return parser end,
+                    }
+                end
+            end
+        end
+
+        node = node:parent()
+    end
+
+    return parser
+end
+
 local function get_language_at_cursor ( bufnr )
     if not bufnr then
         bufnr = vim.api.nvim_get_current_buf()
@@ -38,12 +116,11 @@ local function get_language_at_cursor ( bufnr )
     local resolved_from_treesitter = false
 
     if is_treesitter_available then
-        local cur_node = vim.treesitter.get_node( { bufnr = bufnr } )
+        local ok, parser = pcall( vim.treesitter.get_parser, bufnr )
 
         -- file parsed with treesitter
-        if cur_node then
-            local parser = vim.treesitter.get_parser( bufnr )
-            local language_tree_at_cursor = parser:language_for_range( { cur_node:range() } )
+        if ok and parser then
+            local language_tree_at_cursor = resolve_language_tree( parser, bufnr, row, col )
             local language_at_cursor = language_tree_at_cursor:lang()
 
             -- has language at cursor
