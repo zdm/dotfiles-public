@@ -1,27 +1,3 @@
-note:
-  prefix:
-    - "> note"
-  body: |-
-    > \[!NOTE]
-    > $1
-tip:
-  prefix:
-    - "> tip"
-  body: |-
-    > \[!TIP]
-    > $1
-important:
-  prefix:
-    - "> important"
-  body: |-
-    > \[!IMPORTANT]
-    > $1
-warning:
-  prefix:
-    - "> warning"
-  body: |-
-    > \[!WARNING]
-    > $1
 caution:
   prefix:
     - "> caution"
@@ -38,6 +14,18 @@ details:
     $2
 
     </details>
+important:
+  prefix:
+    - "> important"
+  body: |-
+    > \[!IMPORTANT]
+    > $1
+note:
+  prefix:
+    - "> note"
+  body: |-
+    > \[!NOTE]
+    > $1
 tabs:
   prefix:
     - tabs
@@ -53,3 +41,15 @@ tabs:
     $4
 
     <!-- tabs:end -->
+tip:
+  prefix:
+    - "> tip"
+  body: |-
+    > \[!TIP]
+    > $1
+warning:
+  prefix:
+    - "> warning"
+  body: |-
+    > \[!WARNING]
+    > $1

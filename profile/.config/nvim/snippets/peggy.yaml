@@ -1,15 +1,9 @@
-process.exit():
-  prefix: process.exit()
-  body: process.exit()
 console.log( $1 ):
   prefix: console.log
   body: console.log( $1 )
-JSON.stringify:
-  prefix: json.stringify( $1 )
-  body: JSON.stringify( $1 )
-JSON.parse:
-  prefix: json.parse( $1 )
-  body: JSON.parse( $1 )
+continue:
+  prefix: continue
+  body: continue;$1
 for:
   prefix: for
   body: |-
@@ -28,6 +22,12 @@ if-else:
     else {
         $5
     }
-continue:
-  prefix: continue
-  body: continue;$1
+JSON.parse:
+  prefix: json.parse( $1 )
+  body: JSON.parse( $1 )
+JSON.stringify:
+  prefix: json.stringify( $1 )
+  body: JSON.stringify( $1 )
+process.exit():
+  prefix: process.exit()
+  body: process.exit()

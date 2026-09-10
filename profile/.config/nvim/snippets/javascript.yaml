@@ -1,35 +1,21 @@
-shebang:
-  prefix:
-    - "#!"
-    - shebang
-  body: "#!/usr/bin/env -S node"
-process.exit():
-  prefix: process.exit()
-  body: process.exit()
-console.log( $1 ):
-  prefix: console.log
-  body: console.log( $1 )
-JSON.stringify:
-  prefix: json.stringify( $1 )
-  body: JSON.stringify( $1 )
-JSON.parse:
-  prefix: json.parse( $1 )
-  body: JSON.parse( $1 )
-import $1 from "$2";:
-  prefix: import
-  body: import $1 from "$2";
 "#core/$1":
   prefix: "#core"
   body: "#core/$1"
-eslint-disable-next-line:
-  prefix: eslint-disable-next-line
-  body: // eslint-disable-next-line $1
-eslint-disable-line:
-  prefix: eslint-disable-line
-  body: // eslint-disable-line $1
+console.log( $1 ):
+  prefix: console.log
+  body: console.log( $1 )
+continue:
+  prefix: continue
+  body: continue;$1
 eslint-disable:
   prefix: eslint-disable
   body: /* eslint-disable $1 */
+eslint-disable-line:
+  prefix: eslint-disable-line
+  body: // eslint-disable-line $1
+eslint-disable-next-line:
+  prefix: eslint-disable-next-line
+  body: // eslint-disable-next-line $1
 for:
   prefix: for
   body: |-
@@ -54,13 +40,37 @@ if-else:
     else {
         $5
     }
-continue:
-  prefix: continue
-  body: continue;$1
-Symbol.iterator:
-  prefix: symbol.iterator
+import $1 from "$2";:
+  prefix: import
+  body: import $1 from "$2";
+inspect:
+  prefix: inspect
   body: |-
-    [ Symbol.iterator ] () {
+    [ Symbol.for( "nodejs.util.inspect.custom" ) ] ( depth, options, inspect ) {
+        const spec = {
+            $1
+        };
+
+        return `\${ this.constructor.name }: \${ inspect( spec ) }`;
+    }
+JSON.parse:
+  prefix: json.parse( $1 )
+  body: JSON.parse( $1 )
+JSON.stringify:
+  prefix: json.stringify( $1 )
+  body: JSON.stringify( $1 )
+process.exit():
+  prefix: process.exit()
+  body: process.exit()
+shebang:
+  prefix:
+    - "#!"
+    - shebang
+  body: "#!/usr/bin/env -S node"
+Symbol.asyncDispose:
+  prefix: symbol.asyncDispose
+  body: |-
+    async [ Symbol.asyncDispose ] () {
         $1
     }
 Symbol.asyncIterator:
@@ -75,19 +85,9 @@ Symbol.dispose:
     [ Symbol.dispose ] () {
         $1
     }
-Symbol.asyncDispose:
-  prefix: symbol.asyncDispose
+Symbol.iterator:
+  prefix: symbol.iterator
   body: |-
-    async [ Symbol.asyncDispose ] () {
+    [ Symbol.iterator ] () {
         $1
-    }
-inspect:
-  prefix: inspect
-  body: |-
-    [ Symbol.for( "nodejs.util.inspect.custom" ) ] ( depth, options, inspect ) {
-        const spec = {
-            $1
-        };
-
-        return `\${ this.constructor.name }: \${ inspect( spec ) }`;
     }
