@@ -1,0 +1,16 @@
+function:
+  prefix: "function "
+  body: |-
+    function! $1 ()
+        $2
+    endfunction
+if-else:
+  prefix: "if "
+  body: |-
+    if $1
+        $2
+    elseif $3
+        $4
+    else
+        $5
+    endif

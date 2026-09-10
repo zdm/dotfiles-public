@@ -1,0 +1,55 @@
+note:
+  prefix:
+    - "> note"
+  body: |-
+    > \[!NOTE]
+    > $1
+tip:
+  prefix:
+    - "> tip"
+  body: |-
+    > \[!TIP]
+    > $1
+important:
+  prefix:
+    - "> important"
+  body: |-
+    > \[!IMPORTANT]
+    > $1
+warning:
+  prefix:
+    - "> warning"
+  body: |-
+    > \[!WARNING]
+    > $1
+caution:
+  prefix:
+    - "> caution"
+  body: |-
+    > \[!CAUTION]
+    > $1
+details:
+  prefix:
+    - details
+  body: |
+    <details>
+        <summary>$1</summary>
+
+    $2
+
+    </details>
+tabs:
+  prefix:
+    - tabs
+  body: |
+    <!-- tabs:start -->
+
+    #### **$1**
+
+    $2
+
+    #### **$3**
+
+    $4
+
+    <!-- tabs:end -->

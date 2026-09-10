@@ -1,0 +1,48 @@
+shebang:
+  prefix:
+    - "#!"
+    - shebang
+  body: "#!/usr/bin/env -S lua"
+vim.print( $1 ):
+  prefix:
+    - vim.print
+    - print
+  body: vim.print( $1 )
+vim.json.encode( $1 ):
+  prefix:
+    - vim.json.encode
+    - json.encode
+  body: vim.json.encode( $1 )
+vim.json.decode( $1 ):
+  prefix:
+    - vim.json.decode
+    - json.decode
+  body: vim.json.decode( $1 )
+function:
+  prefix: "function "
+  body: |-
+    function $1 ()
+        $2
+    end
+if-else:
+  prefix: "if "
+  body: |-
+    if $1 then
+        $2
+    elseif $3 then
+        $4
+    else
+        $5
+    end
+for-pairs:
+  prefix: for pairs
+  body: |-
+    for key, value in pairs( $1 ) do
+        $2
+    end
+for-index:
+  prefix: for index
+  body: |-
+    for n = $1, $2, 1 do
+        $3
+    end
