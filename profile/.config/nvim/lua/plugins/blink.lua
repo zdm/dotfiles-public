@@ -4,11 +4,13 @@ return {
         version = "*",
         dependencies = {
             "saghen/blink.lib",
+            "saghen/blink.compat",
             "allaman/emoji.nvim",
             "hrsh7th/cmp-calc",
-            "saghen/blink.compat",
-            "https://codeberg.org/FelipeLema/bink-cmp-vsnip.git",
             "fang2hou/blink-copilot",
+
+            -- XXX
+            "https://codeberg.org/FelipeLema/bink-cmp-vsnip.git",
             {
                 -- "hrsh7th/vim-vsnip",
                 "neovim-plugins/vim-vsnip",
@@ -50,6 +52,8 @@ return {
                 },
             },
             snippets = {
+                -- XXX
+                -- preset = "luasnip",
                 preset = "vsnip"
             },
             sources = {
