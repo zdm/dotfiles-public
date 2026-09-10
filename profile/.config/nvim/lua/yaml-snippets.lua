@@ -87,6 +87,8 @@ end
 local function load_snippets ( snippets_path )
     local yaml = require( "tinyyaml" )
 
+    supported_filetypes = {}
+
     local file = io.open( snippets_path, "r" )
     if not file then return {} end
 
@@ -101,8 +103,6 @@ local function load_snippets ( snippets_path )
 
     local kinds = require( "blink.cmp.types" ).CompletionItemKind
     local snippets = {}
-
-    supported_filetypes = {}
 
     for language, language_data in pairs( data ) do
         local slash_pos = string.find( language, "/" )
