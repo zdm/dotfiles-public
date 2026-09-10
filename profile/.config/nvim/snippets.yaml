@@ -185,14 +185,12 @@ lua:
 markdown:
   snippets:
     caution:
-      trigger:
-        - "> caution"
+      trigger: caution
       body: |-
         > \\[!CAUTION]
         > $1
     details:
-      trigger:
-        - details
+      trigger: details
       body: |-
         <details>
             <summary>$1</summary>
@@ -201,20 +199,17 @@ markdown:
 
         </details>
     important:
-      trigger:
-        - "> important"
+      trigger: important
       body: |-
         > \\[!IMPORTANT]
         > $1
     note:
-      trigger:
-        - "> note"
+      trigger: note
       body: |-
         > \\[!NOTE]
         > $1
     tabs:
-      trigger:
-        - tabs
+      trigger: tabs
       body: |-
         <!-- tabs:start -->
 
@@ -228,14 +223,12 @@ markdown:
 
         <!-- tabs:end -->
     tip:
-      trigger:
-        - "> tip"
+      trigger: tip
       body: |-
         > \\[!TIP]
         > $1
     warning:
-      trigger:
-        - "> warning"
+      trigger: warning
       body: |-
         > \\[!WARNING]
         > $1
