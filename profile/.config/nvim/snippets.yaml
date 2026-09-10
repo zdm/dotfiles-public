@@ -318,13 +318,7 @@ sh:
       trigger:
         - "#!"
         - shebang
-      body: |-
-        #!/usr/bin/env -S bash
-
-        set -Eeuo pipefail
-        trap 'echo "⚠  Error (\$0:\$LINENO, exit code: \$?): \$BASH_COMMAND" >&2' ERR
-
-        $1
+      body: "#!/usr/bin/env -S bash\n\nset -Eeuo pipefail\ntrap 'echo \"⚠  Error (\\$0:\\$LINENO, exit code: \\$?): \\$BASH_COMMAND\" >&2' ERR\n\n$1"
 
 sql:
   snippets:
