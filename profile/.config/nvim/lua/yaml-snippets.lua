@@ -1,50 +1,8 @@
+local INSERT_TEXT_FORMAT_SNIPPET = 2
 local is_treesitter_available = pcall( require, "nvim-treesitter.util" )
-local ts_lang_cache = {}
+local supported_filetypes
 
--- Maps vim `filetype` to its treesitter language name, only where the two
--- differ (e.g. filetype "vimscript" -> lang "vim"). Anything not listed
--- here is assumed to share its name between filetype and lang.
-local filetype_to_lang = {}
-
--- XXX remove
-local function get_ts_injection_lang ()
-    local buf = vim.api.nvim_get_current_buf()
-    local row, col = unpack( vim.api.nvim_win_get_cursor( 0 ) )
-
-    row = row - 1
-
-    local changedtick = vim.api.nvim_buf_get_changedtick( buf )
-
-    if ts_lang_cache.buf == buf
-        and ts_lang_cache.changedtick == changedtick
-        and ts_lang_cache.row == row
-        and ts_lang_cache.col == col
-    then
-        return ts_lang_cache.lang
-    end
-
-    local ok, parser = pcall( vim.treesitter.get_parser, buf )
-    local lang = nil
-
-    if ok and parser then
-        local lang_tree = parser:language_for_range( { row, col, row, col } )
-        if lang_tree then lang = lang_tree:lang() end
-    end
-
-    ts_lang_cache = { buf = buf, changedtick = changedtick, row = row, col = col, lang = lang }
-
-    return lang
-end
-
--- XXX remove
-local function get_base_lang ()
-    local filetype = vim.bo.filetype
-    return filetype_to_lang[ filetype ] or filetype
-end
-
--- XXX
--- if injected_laguage is defined and has snippets for injected_language - use this snippets only
--- if laguage is defined and has snippets for language - use this snippets only
+-- XXX add cache?
 local function get_language_at_cursor ( bufnr )
     if not bufnr then
         bufnr = vim.api.nvim_get_current_buf()
@@ -90,133 +48,135 @@ local function get_language_at_cursor ( bufnr )
     return languages
 end
 
--- Every language a buffer could resolve to right now: its own base
--- language, plus whatever treesitter says is injected at the cursor
--- (if the buffer embeds other languages, e.g. Vue/Markdown/HTML).
-local function active_langs ()
-    local langs = { [ get_base_lang() ] = true }
-
-    local injected_lang = get_ts_injection_lang()
-    if injected_lang then
-        langs[ injected_lang ] = true
-    end
-
-    return langs
-end
-
--- Returns the raw snippet-group data. Static for now, but kept as its own
--- function (called once from M.new()) so it can later be swapped for
--- something that reads snippets from disk, a plugin option, etc. without
--- touching anything else in this module.
-local function load_snippets ()
-    return {
-
-        -- Snippets ONLY for standalone .js files
-        javascript_pure = {
-            langs = { "javascript" },
+-- XXX expand prefix array
+-- XXX override by name / prefix ???
+local function load_snippets ( snippets_path )
+    local data = {
+        javascript = {
             snippets = {
-                {
-                    prefix = "snipa",
+                snip_a = {
+                    prefix = "snip_a",
                     body = "console.log('Snippet A - JS Only', ${1:value});$0",
                     description = "Only displays in standalone JS files",
-                },
+                }
             },
         },
-
-        -- Snippets shared between .js files and any embedded/injected JS
-        -- (Vue <script>, Markdown code fences, HTML <script>, etc.)
-        javascript_shared = {
-            langs = { "javascript" },
+        [ "html/javascript" ] = {
+            inherit = {
+                "javascript",
+            },
             snippets = {
-                {
-                    prefix = "snipb",
-                    body = "console.log('Snippet B - Shared', ${1:value});$0",
-                    description = "Displays in JS files and JS injections",
-                },
+                snip_b = {
+                    prefix = "snip_b",
+                    body = "console.log('Snippet A - JS Only', ${1:value});$0",
+                    description = "Only displays in standalone JS files",
+                }
             },
         },
-
-        -- Example of a second language group, to show the pattern generalizes
-        -- beyond javascript/vue.
-        lua_pure = {
-            langs = { "lua" },
+        [ "vue/javascript" ] = {
+            inherit = {
+                "javascript",
+                "html/javascript",
+            },
             snippets = {
-                {
-                    prefix = "snipc",
-                    body = "vim.notify( \"${1:message}\" )$0",
-                    description = "Only displays in Lua files/injections",
-                },
+                snip_c = {
+                    prefix = "snip_c",
+                    body = "console.log('Snippet A - JS Only', ${1:value});$0",
+                    description = "Only displays in standalone JS files",
+                }
             },
         },
     }
-end
 
--- Filetypes this source should run for at all — either because there are
--- snippets targeting that language directly, or because that filetype can
--- embed other languages we have snippets for (e.g. vue/markdown/html can
--- inject javascript). Add a filetype here whenever a new host language
--- needs to reach the shared groups via injection.
--- XXX must be filled dynamically from snippers
-local host_filetypes = {
-    javascript = true,
-    typescript = true,
-    lua = true,
-    vue = true,
-    markdown = true,
-    html = true,
-}
+    local kinds = require( "blink.cmp.types" ).CompletionItemKind
+    local snippets = {}
 
-local function active_snippet_groups ( snippet_groups )
-    local langs = active_langs()
-    local groups = {}
+    supported_filetypes = {}
 
-    for _, group in pairs( snippet_groups ) do
-        for _, lang in ipairs( group.langs ) do
-            if langs[ lang ] then
-                table.insert( groups, group )
-                break
+    for language, language_data in pairs( data ) do
+        local slash_pos = string.find( language, "/" )
+
+        if slash_pos then
+            supported_filetypes[ string.sub( language, 1, slash_pos - 1 ) ] = true
+        else
+            supported_filetypes[ language ] = true
+        end
+
+        if language_data.snippets then
+            for snippet_name, snippet_data in pairs( language_data.snippets ) do
+                snippets[ language ] = snippets[ language ] or {}
+
+                snippets[ language ][ snippet_name ] = snippet_data
+            end
+        end
+
+        if language_data.inherit then
+            for index, inherit_language in ipairs( language_data.inherit ) do
+                if data[ inherit_language ] and data[ inherit_language ].snippets then
+                    for snippet_name, snippet_data in pairs( data[ inherit_language ].snippets ) do
+                        snippets[ language ] = snippets[ language ] or {}
+
+                        snippets[ language ][ snippet_name ] = snippet_data
+                    end
+                end
             end
         end
     end
 
-    return groups
+    local result = {}
+
+    for language, language_data in pairs( snippets ) do
+        for snippet_name, snippet_data in pairs( language_data ) do
+            result[ language ] = result[ language ] or {}
+
+            table.insert( result[ language ], {
+                label = snippet_data.prefix,
+                kind = kinds.Snippet,
+                insertText = snippet_data.body,
+                insertTextFormat = INSERT_TEXT_FORMAT_SNIPPET,
+                documentation = {
+                    kind = "markdown",
+                    value = snippet_data.description,
+                },
+            } )
+        end
+    end
+
+    return result
 end
 
 local M = {}
+
 M.__index = M
 
 function M.new ()
-    return setmetatable( { snippet_groups = load_snippets() }, M )
+    local snippets_path = vim.fn.stdpath( "config" ) .. "/snippets.yaml"
+
+    return setmetatable( {
+        snippets_path = snippets_path,
+        snippets = load_snippets( snippets_path ),
+    }, M )
 end
 
+-- XXX get lang at cursor
 function M:enabled ()
-    return host_filetypes[ vim.bo.filetype ] == true
+    return supported_filetypes[ vim.bo.filetype ] == true
 end
 
 function M:get_trigger_characters ()
     return {}
 end
 
-local INSERT_TEXT_FORMAT_SNIPPET = 2
-
 function M:get_completions ( ctx, callback )
-    local kinds = require( "blink.cmp.types" ).CompletionItemKind
+    local languages = get_language_at_cursor()
+    local items
 
-    local items = {}
-
-    for _, group in ipairs( active_snippet_groups( self.snippet_groups ) ) do
-        for _, snip in ipairs( group.snippets ) do
-            table.insert( items, {
-                label = snip.prefix,
-                kind = kinds.Snippet,
-                insertText = snip.body,
-                insertTextFormat = INSERT_TEXT_FORMAT_SNIPPET,
-                documentation = {
-                    kind = "markdown",
-                    value = snip.description,
-                },
-            } )
-        end
+    if languages.injected_language and self.snippets[ languages.injected_language ] then
+        items = self.snippets[ languages.injected_language ]
+    elseif languages.language and self.snippets[ languages.language ] then
+        items = self.snippets[ languages.language ]
+    else
+        items = {}
     end
 
     callback( {
@@ -226,7 +186,6 @@ function M:get_completions ( ctx, callback )
         items = items,
     } )
 
-    -- no async work in flight, nothing to cancel
     return function () end
 end
 
