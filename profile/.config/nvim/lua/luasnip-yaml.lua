@@ -1,12 +1,13 @@
+local M = {}
+local loaded_filetypes = {}
+local treesitter_is_available = pcall( require, "nvim-treesitter.util" )
+
 -- [ "bash" ] = { "sh" },
 -- [ "html/javascript" ] = { "javascript", "html/javascript" },
 -- [ "vue" ] = { "html", "vue/html" },
 -- [ "vue/javascript" ] = { "javascript", "html/javascript", "vue/javascript" },
 
-local M = {}
-local loaded_filetypes = {}
-local is_available = pcall( require, "nvim-treesitter.util" )
-
+-- private
 local function get_parser_filetype ( lang )
   if lang then
 
@@ -19,6 +20,27 @@ local function get_parser_filetype ( lang )
   else
     return ""
   end
+end
+
+-- public
+function M.setup( options )
+    local snippets_dir
+
+    if options then
+        snippets_dir = options.path
+    end
+
+    if not snippets_dir then
+        snippets_dir = vim.fn.stdpath( "config" ) .. "/snippets"
+    end
+
+    vim.api.nvim_create_autocmd( "FileType", {
+        pattern = "*",
+        callback = function( ev )
+            M.load_snippets_for_ft( "global", snippets_dir )
+            M.load_snippets_for_ft( ev.match, snippets_dir )
+        end,
+    })
 end
 
 function M.load_snippets_for_ft ( filetype, snippets_dir )
@@ -91,7 +113,7 @@ function M.get_ft_at_cursor ( bufnr )
     injected_filetype = "",
   }
 
-  if is_available then
+  if treesitter_is_available then
     local cur_node = vim.treesitter.get_node( { bufnr = bufnr } )
 
     if cur_node then
@@ -123,26 +145,6 @@ function M.get_ft_at_cursor ( bufnr )
   filetypes.filetype = vim.bo[ bufnr ].filetype or ""
 
   return filetypes
-end
-
-function M.setup( options )
-    local snippets_dir
-
-    if options then
-        snippets_dir = options.path
-    end
-
-    if not snippets_dir then
-        snippets_dir = vim.fn.stdpath( "config" ) .. "/snippets"
-    end
-
-    vim.api.nvim_create_autocmd( "FileType", {
-        pattern = "*",
-        callback = function( ev )
-            M.load_snippets_for_ft( "global", snippets_dir )
-            M.load_snippets_for_ft( ev.match, snippets_dir )
-        end,
-    })
 end
 
 return M
