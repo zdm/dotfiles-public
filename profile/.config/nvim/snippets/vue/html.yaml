@@ -1,9 +1,0 @@
-ext-dialog:
-  trigger: ext-dialog
-  body: "<ext-dialog title=\"\" width=\"90%\" height=\"90%\" scrollable=\"true\" closable=\"true\" draggable=\"false\" closeAction=\"hide\" hideOnMaskTap=\"true\" layout=\"fit\">\n\t$1\n</ext-dialog>"
-ext-file:
-  trigger: ext-file
-  body: <ext-filebutton text="Upload" @change="upload"/>
-grid:
-  trigger: ext-grid
-  body: "<ext-grid layout=\"fit\" plugins='[{\"type\":\"gridviewoptions\"},{\"type\":\"gridsummaryrow\"},{\"type\":\"listpaging\",\"noMoreRecordsText\":\"\",\"autoPaging\":false}]' itemConfig='{\"viewmodel\":true}' multicolumnSort=\"true\" @ready=\"gridReady\">\n\t$1\n</ext-grid>"

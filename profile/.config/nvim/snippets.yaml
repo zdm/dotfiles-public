@@ -1,0 +1,403 @@
+bash:
+  inherit: [sh]
+
+dosbatch:
+  snippets:
+    "%~dp0":
+      trigger: "%~dp0"
+      body: "%~dp0"
+    "%~sf0":
+      trigger: "%~sf0"
+      body: "%~sf0"
+    "%APPDATA%":
+      trigger: "%APPDATA%"
+      body: "%APPDATA%"
+    "%LOCALAPPDATA%":
+      trigger: "%LOCALAPPDATA%"
+      body: "%LOCALAPPDATA%"
+    "%ProgramData%":
+      trigger: "%ProgramData%"
+      body: "%ProgramData%"
+    "%ProgramFiles%":
+      trigger: "%ProgramFiles%"
+      body: "%ProgramFiles%"
+    "%USERNAME%":
+      trigger: "%USERNAME%"
+      body: "%USERNAME%"
+    "%USERPROFILE%":
+      trigger: "%USERPROFILE%"
+      body: "%USERPROFILE%"
+
+html/javascript:
+  inherit: [javascript]
+  snippets:
+    alert( $1 ):
+      trigger: alert
+      body: alert( $1 )
+
+javascript:
+  snippets:
+    "#core/$1":
+      trigger: "#core"
+      body: "#core/$1"
+    console.log( $1 ):
+      trigger: console.log
+      body: console.log( $1 )
+    continue:
+      trigger: continue
+      body: continue;$1
+    eslint-disable:
+      trigger: eslint-disable
+      body: /* eslint-disable $1 */
+    eslint-disable-line:
+      trigger: eslint-disable-line
+      body: // eslint-disable-line $1
+    eslint-disable-next-line:
+      trigger: eslint-disable-next-line
+      body: // eslint-disable-next-line $1
+    for:
+      trigger: for
+      body: |-
+        for ( let n = 0; n < 1; n++ ) {
+            $1
+        }
+    function:
+      trigger: function
+      body: |-
+        function $1 () {
+            $2
+        }
+    if-else:
+      trigger: if
+      body: |-
+        if ( $1 ) {
+            $2
+        }
+        else if ( $3 ) {
+            $4
+        }
+        else {
+            $5
+        }
+    import $1 from "$2";:
+      trigger: import
+      body: import $1 from "$2";
+    inspect:
+      trigger: inspect
+      body: |-
+        [ Symbol.for( "nodejs.util.inspect.custom" ) ] ( depth, options, inspect ) {
+            const spec = {
+                $1
+            };
+
+            return `\${ this.constructor.name }: \${ inspect( spec ) }`;
+        }
+    JSON.parse:
+      trigger: json.parse( $1 )
+      body: JSON.parse( $1 )
+    JSON.stringify:
+      trigger: json.stringify( $1 )
+      body: JSON.stringify( $1 )
+    process.exit():
+      trigger: process.exit()
+      body: process.exit()
+    shebang:
+      trigger:
+        - "#!"
+        - shebang
+      body: "#!/usr/bin/env -S node"
+    Symbol.asyncDispose:
+      trigger: symbol.asyncDispose
+      body: |-
+        async [ Symbol.asyncDispose ] () {
+            $1
+        }
+    Symbol.asyncIterator:
+      trigger: symbol.asynciterator
+      body: |-
+        async [ Symbol.asyncIterator ] () {
+            $1
+        }
+    Symbol.dispose:
+      trigger: symbol.dispose
+      body: |-
+        [ Symbol.dispose ] () {
+            $1
+        }
+    Symbol.iterator:
+      trigger: symbol.iterator
+      body: |-
+        [ Symbol.iterator ] () {
+            $1
+        }
+
+lua:
+  snippets:
+    for-index:
+      trigger: for index
+      body: |-
+        for n = $1, $2, 1 do
+            $3
+        end
+    for-pairs:
+      trigger: for pairs
+      body: |-
+        for key, value in pairs( $1 ) do
+            $2
+        end
+    function:
+      trigger: function
+      body: |-
+        function $1 ()
+            $2
+        end
+    if-else:
+      trigger: if
+      body: |-
+        if $1 then
+            $2
+        elseif $3 then
+            $4
+        else
+            $5
+        end
+    shebang:
+      trigger:
+        - "#!"
+        - shebang
+      body: "#!/usr/bin/env -S lua"
+    vim.json.decode( $1 ):
+      trigger:
+        - vim.json.decode
+        - json.decode
+      body: vim.json.decode( $1 )
+    vim.json.encode( $1 ):
+      trigger:
+        - vim.json.encode
+        - json.encode
+      body: vim.json.encode( $1 )
+    vim.print( $1 ):
+      trigger:
+        - vim.print
+        - print
+      body: vim.print( $1 )
+
+markdown:
+  snippets:
+    caution:
+      trigger:
+        - "> caution"
+      body: |-
+        > \[!CAUTION]
+        > $1
+    details:
+      trigger:
+        - details
+      body: |-
+        <details>
+            <summary>$1</summary>
+
+        $2
+
+        </details>
+    important:
+      trigger:
+        - "> important"
+      body: |-
+        > \[!IMPORTANT]
+        > $1
+    note:
+      trigger:
+        - "> note"
+      body: |-
+        > \[!NOTE]
+        > $1
+    tabs:
+      trigger:
+        - tabs
+      body: |-
+        <!-- tabs:start -->
+
+        #### **$1**
+
+        $2
+
+        #### **$3**
+
+        $4
+
+        <!-- tabs:end -->
+    tip:
+      trigger:
+        - "> tip"
+      body: |-
+        > \[!TIP]
+        > $1
+    warning:
+      trigger:
+        - "> warning"
+      body: |-
+        > \[!WARNING]
+        > $1
+
+peggy:
+  snippets:
+    console.log( $1 ):
+      trigger: console.log
+      body: console.log( $1 )
+    continue:
+      trigger: continue
+      body: continue;$1
+    for:
+      trigger: for
+      body: |-
+        for ( let n = 0; n < 1; n++ ) {
+            $1
+        }
+    if-else:
+      trigger: if
+      body: |-
+        if ( $1 ) {
+            $2
+        }
+        else if ( $3 ) {
+            $4
+        }
+        else {
+            $5
+        }
+    JSON.parse:
+      trigger: json.parse( $1 )
+      body: JSON.parse( $1 )
+    JSON.stringify:
+      trigger: json.stringify( $1 )
+      body: JSON.stringify( $1 )
+    process.exit():
+      trigger: process.exit()
+      body: process.exit()
+
+sh:
+  snippets:
+    case:
+      trigger: case
+      body: |-
+        case "\$1" in
+            $1)
+                exit 0$2
+                ;;
+            *)
+                exit 1
+                ;;
+        esac
+    echo:
+      trigger: echo
+      body: echo $1
+    for:
+      trigger: for
+      body: |-
+        for $1 in $2; do
+            $3
+        done
+    function:
+      trigger: function
+      body: |-
+        function $1() {
+            $2
+        }
+    if-else:
+      trigger: if
+      body: |-
+        if [[ $1 ]]; then
+            $2
+        elif [[ $3 ]]; then
+            $4
+        else
+            $6
+        fi
+    shebang:
+      trigger:
+        - "#!"
+        - shebang
+      body: |-
+        #!/usr/bin/env -S bash
+
+        set -Eeuo pipefail
+        trap 'echo "⚠  Error (\$0:\$LINENO, exit code: \$?): \$BASH_COMMAND" >&2' ERR
+
+        $1
+
+sql:
+  snippets:
+    function:
+      trigger: CREATE FUNCTION
+      body: |-
+        CREATE FUNCTION $1 ( p_ text ) RETURNS text AS \$\$
+        DECLARE
+            v_ text;
+        BEGIN
+            RETURN v_;
+        END;
+        \$\$ LANGUAGE plpgsql;
+    trigger:
+      trigger: CREATE TRIGGER
+      body: |-
+        CREATE FUNCTION $1_after_update_or_delete_trigger () RETURNS TRIGGER AS \$\$
+        DECLARE
+            v_ text;
+        BEGIN
+            RETURN NULL;
+        END;
+        \$\$ LANGUAGE plpgsql;
+
+        CREATE TRIGGER $2_after_update_or_delete AFTER UPDATE OR DELETE ON $3_table FOR EACH ROW EXECUTE FUNCTION $4_after_update_or_delete_trigger();
+
+vim:
+  snippets:
+    function:
+      trigger: function
+      body: |-
+        function! $1 ()
+            $2
+        endfunction
+    if-else:
+      trigger: if
+      body: |-
+        if $1
+            $2
+        elseif $3
+            $4
+        else
+            $5
+        endif
+
+vue/html:
+  snippets:
+    ext-dialog:
+      trigger: ext-dialog
+      body: "<ext-dialog title=\"\" width=\"90%\" height=\"90%\" scrollable=\"true\" closable=\"true\" draggable=\"false\" closeAction=\"hide\" hideOnMaskTap=\"true\" layout=\"fit\">\n\t$1\n</ext-dialog>"
+    ext-file:
+      trigger: ext-file
+      body: <ext-filebutton text="Upload" @change="upload"/>
+    grid:
+      trigger: ext-grid
+      body: "<ext-grid layout=\"fit\" plugins='[{\"type\":\"gridviewoptions\"},{\"type\":\"gridsummaryrow\"},{\"type\":\"listpaging\",\"noMoreRecordsText\":\"\",\"autoPaging\":false}]' itemConfig='{\"viewmodel\":true}' multicolumnSort=\"true\" @ready=\"gridReady\">\n\t$1\n</ext-grid>"
+
+vue/javascript:
+  inherit: [javascript, html/javascript]
+  snippets:
+    mount component:
+      trigger: mount dialog
+      body: const cmp = await this.$mount( ${1:component} );
+    upload:
+      trigger: upload
+      body: |-
+        async upload ( e ) {
+            const button = e.detail.sender,
+                file = button.getFiles()[0];
+
+            const upload = this.$api.upload( "test/upload", file, {}, upload => {
+                console.log( upload.progressText );
+            } );
+
+            const res = await upload.start();
+        }
