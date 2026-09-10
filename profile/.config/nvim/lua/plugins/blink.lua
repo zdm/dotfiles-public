@@ -67,24 +67,24 @@ local function active_snippet_groups ()
     return {}
 end
 
-local yaml_snippets_source = {}
-yaml_snippets_source.__index = yaml_snippets_source
+local M = {}
+M.__index = M
 
-function yaml_snippets_source.new ()
-    return setmetatable( {}, yaml_snippets_source )
+function M.new ()
+    return setmetatable( {}, M )
 end
 
-function yaml_snippets_source:enabled ()
+function M:enabled ()
     return vim.bo.filetype == "javascript" or vim.bo.filetype == "vue"
 end
 
-function yaml_snippets_source:get_trigger_characters ()
+function M:get_trigger_characters ()
     return {}
 end
 
 local INSERT_TEXT_FORMAT_SNIPPET = 2
 
-function yaml_snippets_source:get_completions ( ctx, callback )
+function M:get_completions ( ctx, callback )
     local kinds = require( "blink.cmp.types" ).CompletionItemKind
 
     local items = {}
@@ -115,7 +115,7 @@ function yaml_snippets_source:get_completions ( ctx, callback )
     return function () end
 end
 
-package.loaded[ "yaml_snippets_source" ] = yaml_snippets_source
+package.loaded[ "yaml_snippets_source" ] = M
 
 return {
     {
