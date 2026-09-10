@@ -53,7 +53,7 @@ local function load_snippets ( snippets_path )
         javascript = {
             snippets = {
                 snip_a = {
-                    prefix = "snip_a",
+                    trigger = "snip_a",
                     body = "console.log('Snippet A - JS Only', ${1:value});$0",
                     description = "Only displays in standalone JS files",
                 }
@@ -65,7 +65,7 @@ local function load_snippets ( snippets_path )
             },
             snippets = {
                 snip_b = {
-                    prefix = "snip_b",
+                    trigger = "snip_b",
                     body = "console.log('Snippet A - JS Only', ${1:value});$0",
                     description = "Only displays in standalone JS files",
                 }
@@ -78,7 +78,7 @@ local function load_snippets ( snippets_path )
             },
             snippets = {
                 snip_c = {
-                    prefix = "snip_c",
+                    trigger = "snip_c",
                     body = "console.log('Snippet A - JS Only', ${1:value});$0",
                     description = "Only displays in standalone JS files",
                 }
@@ -127,9 +127,9 @@ local function load_snippets ( snippets_path )
         for snippet_name, snippet_data in pairs( language_data ) do
             result[ language ] = result[ language ] or {}
 
-            if type( snippet_data.prefix ) == "string" then
+            if type( snippet_data.trigger ) == "string" then
                 table.insert( result[ language ], {
-                    label = snippet_data.prefix,
+                    label = snippet_data.trigger,
                     kind = kinds.Snippet,
                     insertText = snippet_data.body,
                     insertTextFormat = INSERT_TEXT_FORMAT_SNIPPET,
@@ -139,9 +139,9 @@ local function load_snippets ( snippets_path )
                     },
                 } )
             else
-                for index, prefix in ipairs( snippet_data.prefix ) do
+                for index, trigger in ipairs( snippet_data.trigger ) do
                     table.insert( result[ language ], {
-                        label = prefix,
+                        label = trigger,
                         kind = kinds.Snippet,
                         insertText = snippet_data.body,
                         insertTextFormat = INSERT_TEXT_FORMAT_SNIPPET,
