@@ -1,17 +1,41 @@
 local INSERT_TEXT_FORMAT_SNIPPET = 2
 local is_treesitter_available = pcall( require, "nvim-treesitter.util" )
 local supported_filetypes
+local language_at_cursor_cache_by_buf = {}
 
--- XXX add cache?
+vim.api.nvim_create_autocmd( "BufWipeout", {
+    callback = function ( args )
+        language_at_cursor_cache_by_buf[ args.buf ] = nil
+    end,
+} )
+
 local function get_language_at_cursor ( bufnr )
     if not bufnr then
         bufnr = vim.api.nvim_get_current_buf()
+    end
+
+    local row, col = unpack( vim.api.nvim_win_get_cursor( 0 ) )
+
+    row = row - 1
+
+    local changedtick = vim.api.nvim_buf_get_changedtick( bufnr )
+
+    local cached = language_at_cursor_cache_by_buf[ bufnr ]
+
+    if cached
+        and cached.changedtick == changedtick
+        and cached.row == row
+        and cached.col == col
+    then
+        return cached.languages
     end
 
     local languages = {
         language = "",
         injected_language = "",
     }
+
+    local resolved_from_treesitter = false
 
     if is_treesitter_available then
         local cur_node = vim.treesitter.get_node( { bufnr = bufnr } )
@@ -25,6 +49,7 @@ local function get_language_at_cursor ( bufnr )
             -- has language at cursor
             if language_at_cursor then
                 languages.language = language_at_cursor
+                resolved_from_treesitter = true
 
                 local parent_language_tree = language_tree_at_cursor:parent()
 
@@ -36,14 +61,21 @@ local function get_language_at_cursor ( bufnr )
                         languages.injected_language = parent_language .. "/" .. language_at_cursor
                     end
                 end
-
-                return languages
             end
         end
     end
 
-    -- file not parsed with treesitter
-    languages.language = vim.bo[ bufnr ].filetype or ""
+    -- file not parsed with treesitter (or no language resolved at cursor)
+    if not resolved_from_treesitter then
+        languages.language = vim.bo[ bufnr ].filetype or ""
+    end
+
+    language_at_cursor_cache_by_buf[ bufnr ] = {
+        changedtick = changedtick,
+        row = row,
+        col = col,
+        languages = languages,
+    }
 
     return languages
 end
@@ -171,9 +203,8 @@ function M.new ()
     }, M )
 end
 
--- XXX get lang at cursor
 function M:enabled ()
-    return supported_filetypes[ vim.bo.filetype ] == true
+    return supported_filetypes[ get_language_at_cursor().language ] == true
 end
 
 function M:get_trigger_characters ()
