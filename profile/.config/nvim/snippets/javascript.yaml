@@ -25,25 +25,25 @@ eslint-disable-next-line:
   prefix: eslint-disable-next-line
   body: // eslint-disable-next-line $1
 eslint-disable-line:
-  prefix: "eslint-disable-line "
+  prefix: eslint-disable-line
   body: // eslint-disable-line $1
 eslint-disable:
   prefix: eslint-disable
   body: /* eslint-disable $1 */
 for:
-  prefix: "for "
+  prefix: for
   body: |-
     for ( let n = 0; n < 1; n++ ) {
         $1
     }
 function:
-  prefix: "function "
+  prefix: function
   body: |-
     function $1 () {
         $2
     }
 if-else:
-  prefix: "if "
+  prefix: if
   body: |-
     if ( $1 ) {
         $2
