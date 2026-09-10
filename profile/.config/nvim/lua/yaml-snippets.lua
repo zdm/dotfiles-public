@@ -85,42 +85,19 @@ local function get_language_at_cursor ( bufnr )
 end
 
 local function load_snippets ( snippets_path )
-    local data = {
-        javascript = {
-            snippets = {
-                snip_a = {
-                    trigger = "snip_a",
-                    body = "console.log('Snippet A - JS Only', ${1:value});$0",
-                    description = "Only displays in standalone JS files",
-                }
-            },
-        },
-        [ "html/javascript" ] = {
-            inherit = {
-                "javascript",
-            },
-            snippets = {
-                snip_b = {
-                    trigger = "snip_b",
-                    body = "console.log('Snippet B - HTML script only', ${1:value});$0",
-                    description = "Only displays inside <script> in HTML files",
-                }
-            },
-        },
-        [ "vue/javascript" ] = {
-            inherit = {
-                "javascript",
-                "html/javascript",
-            },
-            snippets = {
-                snip_c = {
-                    trigger = "snip_c",
-                    body = "console.log('Snippet C - Vue script only', ${1:value});$0",
-                    description = "Only displays inside <script> in Vue files",
-                }
-            },
-        },
-    }
+    local yaml = require( "tinyyaml" )
+
+    local file = io.open( snippets_path, "r" )
+    if not file then return {} end
+
+    local content = file:read( "*all" )
+    file:close()
+
+    local success, data = pcall( yaml.parse, content )
+    if not success or type( data ) ~= "table" then
+        -- vim.notify( "Failed to parse YAML snippet file: " .. path, vim.log.levels.ERROR )
+        return {}
+    end
 
     local kinds = require( "blink.cmp.types" ).CompletionItemKind
     local snippets = {}
