@@ -1,8 +1,13 @@
+-- [ "bash" ] = { "sh" },
+-- [ "html/javascript" ] = { "javascript", "html/javascript" },
+-- [ "vue" ] = { "html", "vue/html" },
+-- [ "vue/javascript" ] = { "javascript", "html/javascript", "vue/javascript" },
+
 local M = {}
 local loaded_filetypes = {}
 
 function M.load_snippets_for_ft ( filetype, snippets_dir )
-    local ls = require( "luasnip" )
+    local luasnip = require( "luasnip" )
     local yaml = require( "tinyyaml" )
 
     if loaded_filetypes[ filetype ] then return end
@@ -27,7 +32,7 @@ function M.load_snippets_for_ft ( filetype, snippets_dir )
             local parsed_snippet
 
             if type( snip.prefix ) == "string" then
-                parsed_snippet = ls.parser.parse_snippet(
+                parsed_snippet = luasnip.parser.parse_snippet(
                     {
                         name = name,
                         trig = snip.prefix,
@@ -36,7 +41,7 @@ function M.load_snippets_for_ft ( filetype, snippets_dir )
                 )
             else
                 for index, prefix in ipairs( snip.prefix ) do
-                    parsed_snippet = ls.parser.parse_snippet(
+                    parsed_snippet = luasnip.parser.parse_snippet(
                         {
                             name = name .. "/" .. prefix,
                             trig = prefix,
@@ -50,7 +55,7 @@ function M.load_snippets_for_ft ( filetype, snippets_dir )
         end
     end
 
-    ls.add_snippets( filetype, snippets )
+    luasnip.add_snippets( filetype, snippets )
 
     loaded_filetypes[ filetype ] = true
 end
@@ -61,8 +66,8 @@ function M.setup( opts )
     vim.api.nvim_create_autocmd( "FileType", {
         pattern = "*",
         callback = function( ev )
-            M.load_snippets_for_ft( ev.match, snippets_dir )
             M.load_snippets_for_ft( "global", snippets_dir )
+            M.load_snippets_for_ft( ev.match, snippets_dir )
         end,
     })
 end

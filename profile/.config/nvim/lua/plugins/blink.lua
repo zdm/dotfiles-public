@@ -10,24 +10,6 @@ return {
             "l3mon4d3/luasnip",
             "fang2hou/blink-copilot",
 
-            -- XXX
-            "https://codeberg.org/FelipeLema/bink-cmp-vsnip.git",
-            {
-                -- "hrsh7th/vim-vsnip",
-                "neovim-plugins/vim-vsnip",
-                dev = true,
-                init = function ()
-                    vim.g.vsnip_snippet_dir = vim.fn.stdpath( "config" ) .. "/vsnip"
-
-                    vim.g.vsnip_filetypes = {
-                        [ "bash" ] = { "sh" },
-                        [ "html/javascript" ] = { "javascript", "html/javascript" },
-                        [ "vue" ] = { "html", "vue/html" },
-                        [ "vue/javascript" ] = { "javascript", "html/javascript", "vue/javascript" },
-                    }
-                end
-            },
-
             -- optional: provides snippets for the snippet source
             -- "rafamadriz/friendly-snippets",
         },
@@ -53,9 +35,7 @@ return {
                 },
             },
             snippets = {
-                -- XXX
                 preset = "luasnip",
-                -- preset = "vsnip"
             },
             sources = {
                 default = {
