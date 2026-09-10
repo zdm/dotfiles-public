@@ -109,7 +109,7 @@ end
 function M.create_show_condition ( filetype )
     return function ()
         local filetypes = M.get_ft_at_cursor()
-        vim.print( "---", filetypes )
+        -- vim.print( "---", filetypes )
 
         return true
     end
