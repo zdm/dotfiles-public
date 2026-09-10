@@ -48,8 +48,6 @@ local function get_language_at_cursor ( bufnr )
     return languages
 end
 
--- XXX expand prefix array
--- XXX override by name / prefix ???
 local function load_snippets ( snippets_path )
     local data = {
         javascript = {
@@ -102,14 +100,6 @@ local function load_snippets ( snippets_path )
             supported_filetypes[ language ] = true
         end
 
-        if language_data.snippets then
-            for snippet_name, snippet_data in pairs( language_data.snippets ) do
-                snippets[ language ] = snippets[ language ] or {}
-
-                snippets[ language ][ snippet_name ] = snippet_data
-            end
-        end
-
         if language_data.inherit then
             for index, inherit_language in ipairs( language_data.inherit ) do
                 if data[ inherit_language ] and data[ inherit_language ].snippets then
@@ -121,6 +111,14 @@ local function load_snippets ( snippets_path )
                 end
             end
         end
+
+        if language_data.snippets then
+            for snippet_name, snippet_data in pairs( language_data.snippets ) do
+                snippets[ language ] = snippets[ language ] or {}
+
+                snippets[ language ][ snippet_name ] = snippet_data
+            end
+        end
     end
 
     local result = {}
@@ -129,16 +127,31 @@ local function load_snippets ( snippets_path )
         for snippet_name, snippet_data in pairs( language_data ) do
             result[ language ] = result[ language ] or {}
 
-            table.insert( result[ language ], {
-                label = snippet_data.prefix,
-                kind = kinds.Snippet,
-                insertText = snippet_data.body,
-                insertTextFormat = INSERT_TEXT_FORMAT_SNIPPET,
-                documentation = {
-                    kind = "markdown",
-                    value = snippet_data.description,
-                },
-            } )
+            if type( snippet_data.prefix ) == "string" then
+                table.insert( result[ language ], {
+                    label = snippet_data.prefix,
+                    kind = kinds.Snippet,
+                    insertText = snippet_data.body,
+                    insertTextFormat = INSERT_TEXT_FORMAT_SNIPPET,
+                    documentation = {
+                        kind = "markdown",
+                        value = snippet_data.description,
+                    },
+                } )
+            else
+                for index, prefix in ipairs( snippet_data.prefix ) do
+                    table.insert( result[ language ], {
+                        label = prefix,
+                        kind = kinds.Snippet,
+                        insertText = snippet_data.body,
+                        insertTextFormat = INSERT_TEXT_FORMAT_SNIPPET,
+                        documentation = {
+                            kind = "markdown",
+                            value = snippet_data.description,
+                        },
+                    } )
+                end
+            end
         end
     end
 
