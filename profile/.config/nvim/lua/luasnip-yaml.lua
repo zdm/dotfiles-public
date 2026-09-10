@@ -2,10 +2,14 @@ local M = {}
 local loaded_filetypes = {}
 local treesitter_is_available = pcall( require, "nvim-treesitter.util" )
 
+-- XXX
 -- [ "bash" ] = { "sh" },
 -- [ "html/javascript" ] = { "javascript", "html/javascript" },
 -- [ "vue" ] = { "html", "vue/html" },
 -- [ "vue/javascript" ] = { "javascript", "html/javascript", "vue/javascript" },
+--
+-- root level active for filetyoe
+-- second level
 
 -- private
 local function get_parser_filetype ( lang )
@@ -74,7 +78,7 @@ function M.load_snippets_for_ft ( filetype, snippets_dir )
                         name = name,
                         trig = snip.trigger,
                         dscr = snip.description or name,
-                        condition = M.create_condition( filetype ),
+                        show_condition = M.create_show_condition( filetype ),
                     },
                     snip.body
                 )
@@ -85,7 +89,7 @@ function M.load_snippets_for_ft ( filetype, snippets_dir )
                             name = name .. "/" .. trigger,
                             trig = trigger,
                             dscr = snip.description or name,
-                            condition = M.create_condition( filetype ),
+                            show_condition = M.create_show_condition( filetype ),
                         },
                         snip.body
                     )
@@ -96,18 +100,36 @@ function M.load_snippets_for_ft ( filetype, snippets_dir )
         end
     end
 
-    luasnip.add_snippets( filetype, snippets )
+    -- luasnip.add_snippets( filetype, snippets )
+    luasnip.add_snippets( "all", snippets )
 
     loaded_filetypes[ filetype ] = true
 end
 
-function M.create_condition ( filetype )
+function M.create_show_condition ( filetype )
     return function ()
+        local filetypes = M.get_ft_at_cursor()
+        vim.print( "---", filetypes )
+
         return true
     end
 end
 
 function M.get_ft_at_cursor ( bufnr )
+    if not bufnr then
+        bufnr = vim.api.nvim_get_current_buf()
+    end
+
+    local tick = vim.b[ bufnr ].changedtick
+    local cursor = vim.api.nvim_win_get_cursor( 0 )
+    local id = tick .. "/" .. cursor[ 1 ] .. "/" .. cursor[ 2 ]
+
+    local cache = vim.b[ bufnr ].luasnip_cache;
+
+    if cache and cache.id == id then
+        return cache.filetypes
+    end
+
     local filetypes = {
         filetype = "",
         injected_filetype = "",
@@ -137,14 +159,24 @@ function M.get_ft_at_cursor ( bufnr )
                     end
                 end
 
+                vim.b[ bufnr ].luasnip_cache = {
+                    id = id,
+                    filetypes = filetypes,
+                }
+
                 return filetypes
             end
         end
-  end
+    end
 
-  filetypes.filetype = vim.bo[ bufnr ].filetype or ""
+    filetypes.filetype = vim.bo[ bufnr ].filetype or ""
 
-  return filetypes
+    vim.b[ bufnr ].luasnip_cache = {
+        id = id,
+        filetypes = filetypes,
+    }
+
+    return filetypes
 end
 
 return M

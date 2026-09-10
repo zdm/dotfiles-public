@@ -66,7 +66,6 @@ return {
                                 { "setlocal ff=unix", "setlocal ff=unix" },
                                 { "Telescope", "Telescope" },
                                 { "Telescope emoji", "Telescope emoji" },
-                                { "Edit snippets", "VsnipOpen" },
                                 { "Open buffer in the browser", "S browser" },
                                 { "spellchecker on", "setlocal spell spelllang=ru_yo,en_us" },
                                 { "spellchecker off", "setlocal nospell" },
