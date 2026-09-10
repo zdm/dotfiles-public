@@ -370,7 +370,7 @@ vim:
             $5
         endif
 
-vue/html:
+vue:
   snippets:
     ext-dialog:
       trigger: ext-dialog
