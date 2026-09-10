@@ -65,25 +65,25 @@ function M.load_snippets_for_ft ( filetype, snippets_dir )
     local snippets = {}
 
     for name, snip in pairs( parsed_data ) do
-        if snip.prefix and snip.body then
+        if snip.trigger and snip.body then
             local parsed_snippet
 
-            if type( snip.prefix ) == "string" then
+            if type( snip.trigger ) == "string" then
                 parsed_snippet = luasnip.parser.parse_snippet(
                     {
                         name = name,
-                        trig = snip.prefix,
+                        trig = snip.trigger,
                         dscr = snip.description or name,
                         condition = M.create_condition( filetype ),
                     },
                     snip.body
                 )
             else
-                for index, prefix in ipairs( snip.prefix ) do
+                for index, trigger in ipairs( snip.trigger ) do
                     parsed_snippet = luasnip.parser.parse_snippet(
                         {
-                            name = name .. "/" .. prefix,
-                            trig = prefix,
+                            name = name .. "/" .. trigger,
+                            trig = trigger,
                             dscr = snip.description or name,
                             condition = M.create_condition( filetype ),
                         },
