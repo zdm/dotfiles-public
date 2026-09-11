@@ -1,3 +1,5 @@
+vim.o.selection = "inclusive"
+
 -- open tab
 vim.keymap.set( { "n", "i", "v" }, "<C-t>", "<CMD>:tabnew<CR>", {
     desc = "Open new tab",
