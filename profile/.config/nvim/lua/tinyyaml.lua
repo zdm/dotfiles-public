@@ -306,13 +306,16 @@ local function parseblockstylestring(line, lines, indent)
   local endline = -1
   for i = 1, #lines do
     local ln = lines[i]
-    local idt = countindent(ln)
-    if idt <= indent then
-      break
-    end
     if ln == '' then
+      -- A blank line is content, not a terminator: countindent('') is
+      -- always 0, so testing it against `indent` would end the block
+      -- at the very first blank line even mid-block.
       tinsert(s, '')
     else
+      local idt = countindent(ln)
+      if idt <= indent then
+        break
+      end
       if firstindent == -1 then
         firstindent = idt
       elseif idt < firstindent then
@@ -358,6 +361,11 @@ local function parseblockstylestring(line, lines, indent)
     if s[i] == '' then
       tremove(s, i)
       eonl = eonl + 1
+    else
+      -- Stop at the first non-blank entry: only a contiguous run of
+      -- blank lines at the very end is "trailing"; blank lines in the
+      -- middle of the block are content and must be kept.
+      break
     end
   end
   if striptrailing then
@@ -696,9 +704,64 @@ function parsemap(line, lines, indent)
 end
 
 
+-- Detect a line that is (or ends in) a block-scalar indicator, e.g.
+-- 'key: |-', '- |', '>', '|+'. Returns the indicator token, or nil.
+local function blockindicatortoken(line)
+  local trimmed = rtrim(line)
+  local tok = smatch(trimmed, '([|>][%+%-]?)$')
+  if not tok then
+    return nil
+  end
+  local before = rtrim(ssub(trimmed, 1, #trimmed - #tok))
+  if before == '' then
+    return tok
+  end
+  local last = ssub(before, #before, #before)
+  if last == ':' or last == '-' then
+    return tok
+  end
+  return nil
+end
+
+-- Scan @lines for block-scalar (|, |-, |+, >, >-, >+) bodies and return a
+-- set of line indices that belong to one, keyed by original line number.
+-- Lines inside a block scalar must never be dropped as "empty" (blank or
+-- comment-only), since inside a block scalar '#' has no special meaning
+-- and blank lines are significant content.
+local function protectedblockscalarlines(lines)
+  local protect = {}
+  local i = 1
+  while i <= #lines do
+    if blockindicatortoken(lines[i]) then
+      local baseindent = countindent(lines[i])
+      local j = i + 1
+      while j <= #lines do
+        -- Mirror parseblockstylestring's own scan: a blank line never
+        -- ends the block (only a non-blank line indented no more than
+        -- the indicator line does), so protect blank lines here too
+        -- rather than stopping at the first one.
+        local ln = lines[j]
+        if ln ~= '' then
+          local idt = countindent(ln)
+          if idt <= baseindent then
+            break
+          end
+        end
+        protect[j] = true
+        j = j + 1
+      end
+      i = j
+    else
+      i = i + 1
+    end
+  end
+  return protect
+end
+
 -- : (list<str>)->dict
 local function parsedocuments(lines)
-  lines = select(lines, function(s) return not isemptyline(s) end)
+  local protect = protectedblockscalarlines(lines)
+  lines = select(lines, function(s, i) return protect[i] or not isemptyline(s) end)
 
   if sfind(lines[1], '^%%YAML') then tremove(lines, 1) end
 
