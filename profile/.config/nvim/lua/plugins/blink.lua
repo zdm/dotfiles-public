@@ -24,8 +24,6 @@ return {
             "allaman/emoji.nvim",
             "hrsh7th/cmp-calc",
             "fang2hou/blink-copilot",
-
-            -- optional: provides snippets for the snippet source
             -- "rafamadriz/friendly-snippets",
         },
         build = function ()
@@ -93,9 +91,9 @@ return {
                         module = "blink.compat.source",
                     },
                     codecompanion = {
+                        enabled = true,
                         name = "CodeCompanion",
                         module = "codecompanion.providers.completion.blink",
-                        enabled = true,
                     },
                     copilot = {
                         name = "copilot",
