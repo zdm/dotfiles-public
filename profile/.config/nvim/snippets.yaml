@@ -374,7 +374,7 @@ vue/javascript:
   snippets:
     mount component:
       trigger: mount dialog
-      body: const cmp = await this.$mount( ${1:component} );
+      body: const cmp = await this.\$mount( ${1:component} );
     upload:
       trigger: upload
       body: |-
@@ -382,7 +382,7 @@ vue/javascript:
             const button = e.detail.sender,
                 file = button.getFiles()[0];
 
-            const upload = this.$api.upload( "test/upload", file, {}, upload => {
+            const upload = this.\$api.upload( "test/upload", file, {}, upload => {
                 console.log( upload.progressText );
             } );
 
