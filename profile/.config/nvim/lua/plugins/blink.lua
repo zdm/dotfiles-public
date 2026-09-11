@@ -1,3 +1,19 @@
+vim.api.nvim_create_autocmd( "ModeChanged", {
+    pattern = "*:s",
+    callback = function ()
+        if vim.snippet.active() then
+            vim.o.selection = "inclusive"
+        end
+    end,
+})
+
+vim.api.nvim_create_autocmd( "ModeChanged", {
+    pattern = "s:*",
+    callback = function ()
+        vim.o.selection = "exclusive"
+    end,
+})
+
 return {
     {
         "saghen/blink.cmp",
