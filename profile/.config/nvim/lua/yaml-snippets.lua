@@ -32,16 +32,113 @@ local function find_language_tree_at_point ( language_tree, row, col )
     return nil
 end
 
-local function resolve_language_tree ( parser, bufnr, row, col )
-    local cur_node = vim.treesitter.get_node( { bufnr = bufnr, pos = { row, col } } )
+local function get_fenced_code_block_lang ( node, bufnr )
+    for child in node:iter_children() do
+        if child:type() == "info_string" then
+            local text = vim.treesitter.get_node_text( child, bufnr )
 
-    -- fast path: language_for_range already resolves correctly
-    if cur_node then
-        local language_tree = parser:language_for_range( { cur_node:range() } )
-
-        if language_tree ~= parser then
-            return language_tree
+            return vim.treesitter.language.get_lang( text ) or text
         end
+    end
+
+    return nil
+end
+
+local function resolve_language_tree ( parser, bufnr, row, col )
+    -- ignore_injections defaults to true, which would keep cur_node inside
+    -- whatever tree "parser" itself belongs to (e.g. markdown) and never
+    -- let its ancestors cross into an injected tree (e.g. javascript) at
+    -- all - the walk below needs an actual node from the deepest tree that
+    -- structurally exists, so injections must not be ignored here
+    local cur_node = vim.treesitter.get_node( { bufnr = bufnr, pos = { row, col }, ignore_injections = false } )
+
+    -- the language tree that cur_node's range structurally belongs to
+    -- (e.g. "javascript" for a fenced code block inside markdown, or just
+    -- "parser" itself if there's no injection at this point at all). Used
+    -- both as the fast-path result and as the reported parent below, since
+    -- that is the correct *immediate* parent - not the outer "parser" arg,
+    -- which may be several injection levels further up (e.g. "markdown").
+    local immediate_tree = parser
+
+    if cur_node then
+        immediate_tree = parser:language_for_range( { cur_node:range() } ) or parser
+    end
+
+    -- walk up from the node first, before trusting immediate_tree - if the
+    -- cursor sits inside a tagged template literal or a fenced code block,
+    -- that ancestor is the most specific language available. An
+    -- empty/whitespace-only tagged template has no string_fragment node for
+    -- the injection query to match, so no child tree is ever created for
+    -- it; immediate_tree would then stop one injection level too shallow
+    -- (e.g. resolving to "javascript" instead of "sql" inside `` sql`` ``,
+    -- because that's as deep as the injection metadata goes). Checking this
+    -- first means a real, already-parsed injection (which resolves to the
+    -- same language via its tag anyway) never has to reach the fast path
+    -- below, and an absent one still gets the right answer.
+    local node = cur_node
+
+    while node do
+        if node:type() == "fenced_code_block" then
+            local resolved_lang = get_fenced_code_block_lang( node, bufnr )
+
+            if resolved_lang then
+                return {
+                    lang = function () return resolved_lang end,
+                    parent = function () return immediate_tree end,
+                }
+            end
+
+        elseif node:type() == "template_string" then
+            local call_node = node:parent()
+
+            if call_node and call_node:type() == "call_expression" then
+                local tag_node = call_node:field( "function" )[ 1 ]
+
+                if tag_node and tag_node:type() == "identifier" then
+                    local text = vim.treesitter.get_node_text( tag_node, bufnr )
+                    local resolved_lang = vim.treesitter.language.get_lang( text ) or text
+
+                    return {
+                        lang = function () return resolved_lang end,
+                        parent = function () return immediate_tree end,
+                    }
+                end
+            end
+        end
+
+        node = node:parent()
+    end
+
+    -- fast path: immediate_tree already resolves correctly
+    if immediate_tree ~= parser then
+        return immediate_tree
+    end
+
+    -- immediate_tree resolution failed entirely - the point falls in a
+    -- region a child tree's own parsed nodes don't reach (e.g. a blank
+    -- leading/trailing line inside a fenced code block), even though the
+    -- block structurally still contains it. cur_node above may already
+    -- belong to that child tree, and node:parent() can never walk back out
+    -- of it to reach an enclosing fenced_code_block in the host tree.
+    -- Re-fetching the node with injections ignored guarantees a node that
+    -- lives in the host tree, so the same check can still find it here.
+    local host_node = vim.treesitter.get_node( { bufnr = bufnr, pos = { row, col }, ignore_injections = true } )
+
+    node = host_node
+
+    while node do
+        if node:type() == "fenced_code_block" then
+            local resolved_lang = get_fenced_code_block_lang( node, bufnr )
+
+            if resolved_lang then
+                return {
+                    lang = function () return resolved_lang end,
+                    parent = function () return immediate_tree end,
+                }
+            end
+        end
+
+        node = node:parent()
     end
 
     -- root tree was returned - walk injected children directly and check
@@ -59,29 +156,6 @@ local function resolve_language_tree ( parser, bufnr, row, col )
 
     if found_tree then
         return found_tree
-    end
-
-    -- nothing injected covers the point - likely a fence-delimiter line, or
-    -- the language alias was never registered so no child tree exists at
-    -- all; fall back to reading the info_string ourselves
-    local node = cur_node
-
-    while node do
-        if node:type() == "fenced_code_block" then
-            for child in node:iter_children() do
-                if child:type() == "info_string" then
-                    local text = vim.treesitter.get_node_text( child, bufnr )
-                    local resolved_lang = vim.treesitter.language.get_lang( text ) or text
-
-                    return {
-                        lang = function () return resolved_lang end,
-                        parent = function () return parser end,
-                    }
-                end
-            end
-        end
-
-        node = node:parent()
     end
 
     return parser
