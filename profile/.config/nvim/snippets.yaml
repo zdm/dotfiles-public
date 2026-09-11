@@ -81,7 +81,7 @@ javascript:
         }
     import $1 from "$2";:
       trigger: import
-      body: import $1 from "$2";
+      body: import ${1:name} from "${2:module}";
     inspect:
       trigger: inspect
       body: |-

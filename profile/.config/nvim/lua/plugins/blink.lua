@@ -21,6 +21,8 @@ return {
                 [ "<C-Up>" ] = { "select_prev", "fallback" },
                 [ "<C-Down>" ] = { "show", "select_next", "fallback" },
                 [ "<CR>" ] = { "accept", "fallback" },
+                [ "<Tab>" ] = { "snippet_forward", "fallback" },
+                [ "<S-Tab>" ] = { "snippet_backward", "fallback" },
             },
             completion = {
                 documentation = {
