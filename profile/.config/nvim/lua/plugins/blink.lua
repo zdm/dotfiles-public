@@ -91,9 +91,11 @@ return {
                         module = "blink.compat.source",
                     },
                     codecompanion = {
-                        enabled = true,
                         name = "CodeCompanion",
                         module = "codecompanion.providers.completion.blink",
+                        enabled = function()
+                            return vim.bo.filetype == "codecompanion"
+                        end,
                     },
                     copilot = {
                         name = "copilot",
