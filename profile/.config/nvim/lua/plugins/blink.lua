@@ -93,7 +93,7 @@ return {
                     codecompanion = {
                         name = "CodeCompanion",
                         module = "codecompanion.providers.completion.blink",
-                        enabled = function()
+                        enabled = function ()
                             return vim.bo.filetype == "codecompanion"
                         end,
                     },
