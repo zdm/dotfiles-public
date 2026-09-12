@@ -1,5 +1,5 @@
 # vim: ft=dosini
-# https://git-scm.com/docs/git-config
+# DOCS: https://git-scm.com/docs/git-config
 
 [advice]
 detachedHead = false
@@ -75,14 +75,14 @@ remoteBranch = bold cyan
 gpgSign = true
 
 [core]
-unsetEnvVars =
+; unsetEnvVars = PERL5LIB
 autoCrLf     = false
 hooksPath    = ~/.config/git/hooks
 editor       = nvim
 pager        = less --no-init --raw-control-chars --ignore-case --quit-on-intr --squeeze-blank-lines --quit-if-one-screen
 sshCommand   = ssh
 quotePath    = false
-ignoreCase   = true
+; ignoreCase   = true
 symlinks     = true
 
 [credential "helperselector"]
