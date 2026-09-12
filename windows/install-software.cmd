@@ -15,10 +15,9 @@ winget install ^
     Rufus.Rufus ^
     GitHub.Copilot
 
-:: winget install OpenAI.Codex
 :: winget install Anthropic.ClaudeCode
+:: winget install OpenAI.Codex
 
 winget install --source msstore ^
-    "Authenticator App - OneAuth"
-
-:: winget install --source msstore ChatGPT
+    "Authenticator App - OneAuth" ^
+    ChatGPT
