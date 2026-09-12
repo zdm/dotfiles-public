@@ -110,7 +110,7 @@ return {
             vim.api.nvim_create_autocmd( "ModeChanged", {
                 group = gid,
                 pattern = "*:n",
-                callback = function( ev )
+                callback = function ( ev )
                     if vim.b[ ev.buf ].folds_update_pending then
                         vim.b[ ev.buf ].folds_update_pending = false
 
