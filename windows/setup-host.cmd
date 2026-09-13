@@ -40,7 +40,7 @@ mklink /D "d:\music" "g:\my drive\music"
 rmdir /Q /S "d:\pictures"
 mklink /D "d:\pictures" "g:\my drive\pictures"
 
-setx /M PATHEXT ".com;.exe;.lnk;.bat;.cmd;.ps1;.sh;.js;.cjs;.mjs"
+setx /M PATHEXT ".com;.exe;.lnk;.bat;.cmd;.ps1;.sh"
 
 :: path
 setx /M PATH "s:\bin;d:\apps\bin;d:\apps\fnm\data\current;c:\msys64\usr\bin;c:\msys64\mingw64\bin;%SystemRoot%\system32;%SystemRoot%;%SystemRoot%\system32\WindowsPowerShell\v1.0"
