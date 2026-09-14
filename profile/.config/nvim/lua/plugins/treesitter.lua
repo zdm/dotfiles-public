@@ -31,6 +31,7 @@ return {
                 "forth",
                 "git_config",
                 "gitattributes",
+                "gitcommit",
                 "gitignore",
                 "gpg",
                 "graphql",
