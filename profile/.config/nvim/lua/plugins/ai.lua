@@ -14,6 +14,7 @@ return {
     {
         "zbirenbaum/copilot.lua",
         -- enabled = false,
+        version = "*",
         dependencies = {
             "copilotlsp-nvim/copilot-lsp",
         },
@@ -43,6 +44,7 @@ return {
     {
         "olimorris/codecompanion.nvim",
         -- enabled = false,
+        version = "*",
         dependencies = {
             "nvim-lua/plenary.nvim",
             "nvim-treesitter/nvim-treesitter",
