@@ -97,29 +97,29 @@ return {
                     end
 
                     -- update folds
-                    utils.update_folds( ev.buf )
+                    -- utils.update_folds( ev.buf )
                 end
             } )
 
-            vim.api.nvim_create_autocmd( { "TextChanged", "TextChangedI" }, {
-                group = gid,
-                callback = function ( ev )
-                    vim.b[ ev.buf ].folds_update_pending = true
-                end
-            } )
+            -- vim.api.nvim_create_autocmd( { "TextChanged", "TextChangedI" }, {
+            --     group = gid,
+            --     callback = function ( ev )
+            --         vim.b[ ev.buf ].folds_update_pending = true
+            --     end
+            -- } )
 
-            vim.api.nvim_create_autocmd( "ModeChanged", {
-                group = gid,
-                pattern = "*:n",
-                callback = function ( ev )
-                    if vim.b[ ev.buf ].folds_update_pending then
-                        vim.b[ ev.buf ].folds_update_pending = false
+            -- vim.api.nvim_create_autocmd( "ModeChanged", {
+            --     group = gid,
+            --     pattern = "*:n",
+            --     callback = function ( ev )
+            --         if vim.b[ ev.buf ].folds_update_pending then
+            --             vim.b[ ev.buf ].folds_update_pending = false
 
-                        -- update folds
-                        utils.update_folds( ev.buf, true )
-                    end
-                end
-            } )
+            --             -- update folds
+            --             utils.update_folds( ev.buf, true )
+            --         end
+            --     end
+            -- } )
         end,
     },
 }
