@@ -6,13 +6,13 @@ return {
         dependencies = {
 
             -- optional for nvim-cmp integration
-            -- "hrsh7th/nvim-cmp",
+            -- "nvim-cmp",
 
             -- optional for telescope integration
-            -- "nvim-telescope/telescope.nvim",
+            -- "telescope.nvim",
 
             -- optional for fzf-lua integration via vim.ui.select
-            -- "ibhagwan/fzf-lua",
+            -- "fzf-lua",
         },
         config = function ()
             require( "emoji" ).setup( {

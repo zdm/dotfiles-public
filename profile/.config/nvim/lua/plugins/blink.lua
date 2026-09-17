@@ -21,7 +21,7 @@ return {
         dependencies = {
             "saghen/blink.lib",
             "saghen/blink.compat",
-            "allaman/emoji.nvim",
+            "emoji.nvim",
             "hrsh7th/cmp-calc",
             "fang2hou/blink-copilot",
             -- "rafamadriz/friendly-snippets",

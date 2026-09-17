@@ -47,7 +47,7 @@ return {
         version = "*",
         dependencies = {
             "nvim-lua/plenary.nvim",
-            "nvim-treesitter/nvim-treesitter",
+            "nvim-treesitter",
         },
         cmd = { "CodeCompanion", "CodeCompanionChat", "CodeCompanionCLI", "CodeCompanionActions" },
         keys = {
