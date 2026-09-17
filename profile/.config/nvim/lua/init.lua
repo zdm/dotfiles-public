@@ -45,7 +45,7 @@ vim.keymap.set( { "n" }, "<CR>", "a", {
     desc = "Switch to INSERT mode",
 } )
 
--- indent / unindent
+-- indent / unindent lines
 vim.keymap.set( { "n" }, "<TAB>", "I<TAB><ESC>", {
     desc = "Indent line under cursor",
 } )
@@ -54,10 +54,18 @@ vim.keymap.set( { "n" }, "<S-TAB>", "^i<BS><ESC>", {
     desc = "Unindent line under cursor",
 } )
 
-vim.keymap.set( { "v" }, "<TAB>", ">gv", {
+vim.keymap.set( { "s" }, "<TAB>", "<C-g>>gv<C-g>", {
+    desc = "Indent line under cursor",
+} )
+
+vim.keymap.set( { "s" }, "<S-TAB>", "<C-g><gv<C-g>", {
+    desc = "Unindent line under cursor",
+} )
+
+vim.keymap.set( { "x" }, "<TAB>", ">gv", {
     desc = "Indent selected lines",
 } )
 
-vim.keymap.set( { "v" }, "<S-TAB>", "<gv", {
+vim.keymap.set( { "x" }, "<S-TAB>", "<gv", {
     desc = "Unindent selected lines",
 } )
