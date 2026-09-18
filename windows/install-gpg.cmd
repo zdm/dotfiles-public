@@ -10,7 +10,8 @@ set MSYS64_USERPROFILE="%MSYS64_LOCATION%\home\%USERNAME%"
 set GPG_USERPROFILE="d:\apps\gpg\gpg"
 
 :: gpg
-pacman --sync --noconfirm --needed gnupg
+pacman --sync --noconfirm --needed ^
+    gnupg
 
 rmdir /S /Q "%MSYS64_USERPROFILE%\.gnupg"
 mklink /D "%MSYS64_USERPROFILE%\.gnupg" "%GPG_USERPROFILE%"
