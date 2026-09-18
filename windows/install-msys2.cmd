@@ -80,7 +80,8 @@ mklink "%APPDATA%\GitHub CLI\config.yml" "%~dp0\..\profile\.config\gh\config.yml
 call "%~dp0\install-gpg.cmd"
 
 :: ssh
-pacman --sync --noconfirm --needed openssh
+pacman --sync --noconfirm --needed ^
+    openssh
 
 mkdir "%MSYS64_USERPROFILE%\.ssh"
 
