@@ -23,7 +23,8 @@ pacman --sync --noconfirm --needed ^
     bash ^
     pacman pacman-mirrors ^
     msys2-runtime ^
-    man tar curl wget patch diffutils whois unzip ^
+    man tar wget patch diffutils whois unzip ^
+    mingw-w64-x86_64-curl ^
     mingw-w64-x86_64-jq ^
     ctags
     :: mc
