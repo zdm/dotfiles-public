@@ -29,7 +29,8 @@ pacman --sync --noconfirm --needed ^
     mingw-w64-x86_64-diffutils ^
     mingw-w64-x86_64-unzip ^
     mingw-w64-x86_64-jq ^
-    mingw-w64-x86_64-ctags
+    mingw-w64-x86_64-ctags ^
+    mingw64/mingw-w64-x86_64-sqlite3
     :: mc
 
 :: gcc

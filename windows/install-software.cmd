@@ -10,7 +10,6 @@ winget install ^
     Garmin.Express ^
     voidtools.Everything ^
     WireGuard.WireGuard ^
-    SQLite.SQLite ^
     Rufus.Rufus ^
     GitHub.Copilot
 
