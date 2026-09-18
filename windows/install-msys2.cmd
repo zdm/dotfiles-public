@@ -52,16 +52,16 @@ pacman --sync --noconfirm --needed ^
     git-crypt ^
     filter-repo
 
-del "%MSYS64_USERPROFILE%\.gitconfig"
-mklink "%MSYS64_USERPROFILE%\.gitconfig" "%~dp0\..\profile\.gitconfig"
+del "%USERPROFILE%\.gitconfig"
+mklink "%USERPROFILE%\.gitconfig" "%~dp0\..\profile\.gitconfig"
 
-mkdir "%MSYS64_USERPROFILE%\.config\git"
+mkdir "%USERPROFILE%\.config\git"
 
-rmdir /S /Q "%MSYS64_USERPROFILE%\.config\git\hooks"
-mklink /D "%MSYS64_USERPROFILE%\.config\git\hooks" "%~dp0\..\profile\.config\git\hooks"
+rmdir /S /Q "%USERPROFILE%\.config\git\hooks"
+mklink /D "%USERPROFILE%\.config\git\hooks" "%~dp0\..\profile\.config\git\hooks"
 
-rmdir /S /Q "%MSYS64_USERPROFILE%\.config\git\ssh"
-mklink /D "%MSYS64_USERPROFILE%\.config\git\ssh" "%~dp0\..\profile\.config\git\ssh"
+rmdir /S /Q "%USERPROFILE%\.config\git\ssh"
+mklink /D "%USERPROFILE%\.config\git\ssh" "%~dp0\..\profile\.config\git\ssh"
 
 :: github-cli
 pacman --sync --noconfirm --needed ^
