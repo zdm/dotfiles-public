@@ -23,14 +23,18 @@ pacman --sync --noconfirm --needed ^
     bash ^
     pacman pacman-mirrors ^
     msys2-runtime ^
-    man tar wget patch diffutils whois unzip ^
+    man tar patch whois ^
     mingw-w64-x86_64-curl ^
+    mingw-w64-x86_64-wget ^
+    mingw-w64-x86_64-diffutils ^
+    mingw-w64-x86_64-unzip ^
     mingw-w64-x86_64-jq ^
-    ctags
+    mingw-w64-x86_64-ctags
     :: mc
 
 :: gcc
-pacman --sync --noconfirm --needed mingw-w64-x86_64-gcc
+pacman --sync --noconfirm --needed ^
+    mingw-w64-x86_64-gcc
 
 :: bash
 del "%MSYS64_USERPROFILE%\.bashrc"
