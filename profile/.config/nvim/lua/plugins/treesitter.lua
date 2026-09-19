@@ -2,6 +2,9 @@ return {
     {
         "nvim-treesitter/nvim-treesitter",
         lazy = false,
+        dependencies = {
+            "zcli.nvim",
+        },
         build = ":TSUpdate",
         config = function ()
             vim.env.CC = "gcc"
@@ -72,8 +75,6 @@ return {
 
             local gid = vim.api.nvim_create_augroup( "folds-updater", {} )
 
-            local utils = require( "utils" )
-
             vim.api.nvim_create_autocmd( "FileType", {
                 group = gid,
                 callback = function ( ev )
@@ -97,7 +98,7 @@ return {
                     end
 
                     -- update folds
-                    -- utils.update_folds( ev.buf )
+                    require( "zcli/utils" ).update_folds( ev.buf )
                 end
             } )
 
@@ -116,7 +117,7 @@ return {
             --             vim.b[ ev.buf ].folds_update_pending = false
 
             --             -- update folds
-            --             utils.update_folds( ev.buf, true )
+            --             require( "zcli/utils" ).update_folds( ev.buf )
             --         end
             --     end
             -- } )
