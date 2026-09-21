@@ -57,16 +57,19 @@ pacman --sync --noconfirm --needed ^
     filter-repo
     :: mingw-w64-x86_64-git-lfs
 
-del "%MSYS64_USERPROFILE%\.gitconfig"
-mklink "%MSYS64_USERPROFILE%\.gitconfig" "%~dp0\..\profile\.gitconfig"
+set GIT_USERPROFILE=%MSYS64_USERPROFILE%
+:: set GIT_USERPROFILE=%USERPROFILE%
 
-mkdir "%MSYS64_USERPROFILE%\.config\git"
+del "%GIT_USERPROFILE%\.gitconfig"
+mklink "%GIT_USERPROFILE%\.gitconfig" "%~dp0\..\profile\.gitconfig"
 
-rmdir /S /Q "%MSYS64_USERPROFILE%\.config\git\hooks"
-mklink /D "%MSYS64_USERPROFILE%\.config\git\hooks" "%~dp0\..\profile\.config\git\hooks"
+mkdir "%GIT_USERPROFILE%\.config\git"
 
-rmdir /S /Q "%MSYS64_USERPROFILE%\.config\git\ssh"
-mklink /D "%MSYS64_USERPROFILE%\.config\git\ssh" "%~dp0\..\profile\.config\git\ssh"
+rmdir /S /Q "%GIT_USERPROFILE%\.config\git\hooks"
+mklink /D "%GIT_USERPROFILE%\.config\git\hooks" "%~dp0\..\profile\.config\git\hooks"
+
+rmdir /S /Q "%GIT_USERPROFILE%\.config\git\ssh"
+mklink /D "%GIT_USERPROFILE%\.config\git\ssh" "%~dp0\..\profile\.config\git\ssh"
 
 :: github-cli
 pacman --sync --noconfirm --needed ^
