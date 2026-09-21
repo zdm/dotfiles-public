@@ -26,9 +26,9 @@ return {
             "fang2hou/blink-copilot",
             -- "rafamadriz/friendly-snippets",
         },
-        build = function ()
-            require( "blink.cmp" ).build():pwait()
-        end,
+        -- build = function ()
+        --     require( "blink.cmp" ).build():pwait()
+        -- end,
         config = function ()
             require( "blink.cmp" ).setup( {
                 keymap = {
