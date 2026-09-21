@@ -30,7 +30,8 @@ pacman --sync --noconfirm --needed ^
     mingw-w64-x86_64-unzip ^
     mingw-w64-x86_64-jq ^
     mingw-w64-x86_64-ctags ^
-    mingw64/mingw-w64-x86_64-sqlite3
+    mingw64/mingw-w64-x86_64-sqlite3 ^
+    mingw-w64-x86_64-libtree-sitter
     :: mc
 
 :: gcc
@@ -66,18 +67,4 @@ mklink "%APPDATA%\GitHub CLI\config.yml" "%~dp0\..\profile\.config\gh\config.yml
 call "%~dp0\install-gpg.cmd"
 
 :: ssh
-pacman --sync --noconfirm --needed ^
-    openssh
-
-mkdir "%MSYS64_USERPROFILE%\.ssh"
-
-del "%MSYS64_USERPROFILE%\.ssh\config"
-mklink "%MSYS64_USERPROFILE%\.ssh\config" "%~dp0\..\profile\.ssh\config"
-
-setx /M MSYS winsymlinks:nativestrict
-setx /M LANGUAGE C.UTF-8
-setx /M LANG C.UTF-8
-setx /M LC_ALL C.UTF-8
-
-FOR /F "delims=" %i IN ( 'gpgconf --list-dirs agent-ssh-socket' ) DO set SSH_AUTH_SOCK=%i
-setx /M SSH_AUTH_SOCK "%SSH_AUTH_SOCK%"
+call "%~dp0\install-ssh.cmd"
