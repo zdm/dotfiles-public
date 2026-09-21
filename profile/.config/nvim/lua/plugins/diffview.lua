@@ -1,8 +1,6 @@
 return {
     {
-        -- "sindrets/diffview.nvim",
-        "neovim-plugins/diffview.nvim",
-        dev = true,
+        "sindrets/diffview.nvim",
         cmd = { "DiffviewOpen", "DiffviewFileHistory", "DiffviewClose" },
         keys = {
             {
