@@ -9,6 +9,8 @@ set MSYS64_LOCATION="c:\msys64"
 set MSYS64_USERPROFILE="%MSYS64_LOCATION%\home\%USERNAME%"
 set GPG_USERPROFILE="d:\apps\gpg\gpg"
 
+:: winget install GnuPG.GnuPG
+
 :: gpg
 pacman --sync --noconfirm --needed ^
     gnupg

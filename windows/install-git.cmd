@@ -7,14 +7,19 @@ setlocal
 
 set MSYS64_LOCATION="c:\msys64"
 set MSYS64_USERPROFILE="%MSYS64_LOCATION%\home\%USERNAME%"
-set GIT_USERPROFILE=%MSYS64_USERPROFILE%
-:: set GIT_USERPROFILE=%USERPROFILE%
+:: set GIT_USERPROFILE=%MSYS64_USERPROFILE%
+set GIT_USERPROFILE=%USERPROFILE%
+
+:: winget install AGWA.git-crypt
+
+:: pacman -Rns mingw-w64-x86_64-git mingw-w64-x86_64-git-lfs
+:: pacman -Rns git-crypt
 
 pacman --sync --noconfirm --needed ^
-    git ^
-    git-crypt ^
-    filter-repo
-    :: mingw-w64-x86_64-git-lfs
+    mingw-w64-x86_64-git ^
+    mingw-w64-x86_64-git-lfs
+    :: git-crypt ^
+    :: filter-repo ^
 
 del "%GIT_USERPROFILE%\.gitconfig"
 mklink "%GIT_USERPROFILE%\.gitconfig" "%~dp0\..\profile\.gitconfig"
