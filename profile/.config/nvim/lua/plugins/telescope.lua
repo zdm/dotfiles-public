@@ -14,7 +14,7 @@ return {
             },
             {
                 "<F3>",
-                "<CMD>Telescope find_files<CR>",
+                "<CMD>Telescope<CR>",
                 mode = { "n", "i", "v" },
                 desc = "Telescope files",
             },
@@ -64,8 +64,7 @@ return {
                                 { "set ft=javascript", "set ft=javascript" },
                                 { "set ft=json", "set ft=json" },
                                 { "setlocal ff=unix", "setlocal ff=unix" },
-                                { "Telescope", "Telescope" },
-                                { "Telescope emoji", "Telescope emoji" },
+                                { "Emoji", "Telescope emoji" },
                                 { "Open buffer in the browser", "Zcli browser" },
                                 { "spellchecker on", "setlocal spell spelllang=ru_yo,en_us" },
                                 { "spellchecker off", "setlocal nospell" },
