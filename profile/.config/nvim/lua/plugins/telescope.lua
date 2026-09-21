@@ -66,7 +66,7 @@ return {
                                 { "setlocal ff=unix", "setlocal ff=unix" },
                                 { "Telescope", "Telescope" },
                                 { "Telescope emoji", "Telescope emoji" },
-                                { "Open buffer in the browser", "S browser" },
+                                { "Open buffer in the browser", "Zcli browser" },
                                 { "spellchecker on", "setlocal spell spelllang=ru_yo,en_us" },
                                 { "spellchecker off", "setlocal nospell" },
                                 { "Matrix screensaver", "Matrix" },
