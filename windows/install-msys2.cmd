@@ -51,25 +51,7 @@ del "%MSYS64_USERPROFILE%\.config\mc\ini"
 mklink "%MSYS64_USERPROFILE%\.config\mc\ini" "%~dp0\..\profile\.config\mc\ini"
 
 :: git
-pacman --sync --noconfirm --needed ^
-    git ^
-    git-crypt ^
-    filter-repo
-    :: mingw-w64-x86_64-git-lfs
-
-set GIT_USERPROFILE=%MSYS64_USERPROFILE%
-:: set GIT_USERPROFILE=%USERPROFILE%
-
-del "%GIT_USERPROFILE%\.gitconfig"
-mklink "%GIT_USERPROFILE%\.gitconfig" "%~dp0\..\profile\.gitconfig"
-
-mkdir "%GIT_USERPROFILE%\.config\git"
-
-rmdir /S /Q "%GIT_USERPROFILE%\.config\git\hooks"
-mklink /D "%GIT_USERPROFILE%\.config\git\hooks" "%~dp0\..\profile\.config\git\hooks"
-
-rmdir /S /Q "%GIT_USERPROFILE%\.config\git\ssh"
-mklink /D "%GIT_USERPROFILE%\.config\git\ssh" "%~dp0\..\profile\.config\git\ssh"
+call "%~dp0\install-git.cmd"
 
 :: github-cli
 pacman --sync --noconfirm --needed ^
