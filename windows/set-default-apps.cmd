@@ -40,7 +40,7 @@ for %%i in ( .ts .tsx .mts .cts ) do (
 )
 
 :: sqlite
-ftype SQLite3="d:\apps\bin\sqlite3.exe" "%%1"
+ftype SQLite3="c:\msys64\mingw64\bin\sqlite3.exe" "%%1"
 for %%i in ( .sqlite ) do (
     reg delete "HKEY_CURRENT_USER\Software\Classes\%%i" /f
     reg delete "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\%%i" /f
