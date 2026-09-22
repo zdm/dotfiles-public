@@ -39,7 +39,7 @@ return {
     {
         "folke/sidekick.nvim",
         -- enabled = false,
-        keys1 = {
+        keys = {
             {
                 "<tab>",
                 function ()
