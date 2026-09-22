@@ -12,6 +12,10 @@ winget install ^
     WireGuard.WireGuard ^
     voidtools.Everything
 
+:: npm install -g @github/copilot
+:: npm install -g @anthropic-ai/claude-code
+:: npm install -g @openai/codex
+
 :: winget install Anthropic.ClaudeCode
 :: winget install OpenAI.Codex
 
