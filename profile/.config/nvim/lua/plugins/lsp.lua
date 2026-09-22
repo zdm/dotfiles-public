@@ -58,7 +58,8 @@ return {
             },
             {
                 "<leader>aa",
-                function () require( "sidekick.cli" ).toggle() end,
+                function () require( "sidekick.cli" ).toggle( { name = "copilot", focus = true } ) end,
+                -- function () require( "sidekick.cli" ).toggle() end,
                 desc = "Sidekick Toggle CLI",
             },
             {
@@ -96,19 +97,17 @@ return {
                 mode = { "n", "x" },
                 desc = "Sidekick Select Prompt",
             },
-            -- {
-            --     "<leader>ac",
-            --     function () require( "sidekick.cli" ).toggle( { name = "claude", focus = true } ) end,
-            --     desc = "Sidekick Toggle Claude",
-            -- },
         },
         opts = {
-            cli = {
-                mux = {
-                    backend = "zellij",
-                    enabled = true,
-                },
+            nes = {
+                enabled = false,
             },
+            -- cli = {
+            --     mux = {
+            --         enabled = true,
+            --         backend = "zellij",
+            --     },
+            -- },
         },
     },
 }

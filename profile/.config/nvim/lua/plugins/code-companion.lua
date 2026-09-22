@@ -13,14 +13,14 @@ end, { nargs = "*", range = true } )
 return {
     {
         "olimorris/codecompanion.nvim",
-        -- enabled = false,
+        enabled = false,
         version = "*",
         dependencies = {
             "nvim-lua/plenary.nvim",
             "nvim-treesitter",
         },
         cmd = { "CodeCompanion", "CodeCompanionChat", "CodeCompanionCLI", "CodeCompanionActions" },
-        keys = {
+        keys1 = {
             {
                 "<Leader>aa",
                 "<cmd>Ai<cr>",

@@ -59,7 +59,7 @@ return {
                         "yaml_snippets",
                         "emoji",
                         "calc",
-                        "codecompanion",
+                        -- "codecompanion",
                         "copilot",
                         "lsp",
 
