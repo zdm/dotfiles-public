@@ -5,8 +5,8 @@ call is-elevated.cmd || ( sudo -E "%~sf0" %* & exit /B )
 
 setlocal
 
-set MSYS64_LOCATION="c:\msys64"
-set MSYS64_USERPROFILE="%MSYS64_LOCATION%\home\%USERNAME%"
+set MSYS64_ROOT="c:\msys64"
+set MSYS64_USERPROFILE="%MSYS64_ROOT%\home\%USERNAME%"
 
 pacman --sync --noconfirm --needed ^
     openssh
