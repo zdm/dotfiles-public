@@ -8,6 +8,11 @@ setlocal
 set MSYS64_LOCATION="c:\msys64"
 set MSYS64_USERPROFILE="%MSYS64_LOCATION%\home\%USERNAME%"
 
+setx /M MSYS winsymlinks:nativestrict
+setx /M LANGUAGE C.UTF-8
+setx /M LANG C.UTF-8
+setx /M LC_ALL C.UTF-8
+
 winget install MSYS2.MSYS2
 winget pin add -q MSYS2.MSYS2
 

@@ -16,10 +16,5 @@ mkdir "%MSYS64_USERPROFILE%\.ssh"
 del "%MSYS64_USERPROFILE%\.ssh\config"
 mklink "%MSYS64_USERPROFILE%\.ssh\config" "%~dp0\..\profile\.ssh\config"
 
-setx /M MSYS winsymlinks:nativestrict
-setx /M LANGUAGE C.UTF-8
-setx /M LANG C.UTF-8
-setx /M LC_ALL C.UTF-8
-
 FOR /F "delims=" %%i IN ( 'gpgconf --list-dirs agent-ssh-socket' ) DO set SSH_AUTH_SOCK=%%i
-setx /M SSH_AUTH_SOCK "%SSH_AUTH_SOCK%"
+setx SSH_AUTH_SOCK "%SSH_AUTH_SOCK%"
