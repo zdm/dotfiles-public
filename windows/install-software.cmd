@@ -4,13 +4,13 @@
 call is-elevated.cmd || ( sudo -E "%~sf0" %* & exit /B )
 
 winget install ^
-    Google.GoogleDrive ^
-    TeamViewer.TeamViewer.Host ^
     Garmin.Express ^
-    voidtools.Everything ^
-    WireGuard.WireGuard ^
+    GitHub.Copilot ^
+    Google.GoogleDrive ^
     Rufus.Rufus ^
-    GitHub.Copilot
+    TeamViewer.TeamViewer.Host ^
+    WireGuard.WireGuard ^
+    voidtools.Everything
 
 :: winget install Anthropic.ClaudeCode
 :: winget install OpenAI.Codex
