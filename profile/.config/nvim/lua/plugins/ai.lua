@@ -12,36 +12,6 @@ end, { nargs = "*", range = true } )
 
 return {
     {
-        "zbirenbaum/copilot.lua",
-        -- enabled = false,
-        version = "*",
-        dependencies = {
-            "copilotlsp-nvim/copilot-lsp",
-        },
-        cmd = "Copilot",
-        event = "InsertEnter",
-        config = function ()
-            require( "copilot" ).setup( {
-                panel = {
-                    enabled = false
-                },
-                suggestion = {
-                    enabled = false, -- we are using blink.cmp
-                    auto_trigger = true,
-                    keymap = {
-                        accept = false,
-                        accept_line = "<Leader><TAB>",
-                        accept_word = "<Leader><Leader><TAB>",
-                        next = false,
-                        prev = false,
-                        dismiss = "<Leader>q",
-                        toggle_auto_trigger = false,
-                    },
-                },
-            } )
-        end
-    },
-    {
         "olimorris/codecompanion.nvim",
         -- enabled = false,
         version = "*",
