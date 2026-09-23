@@ -3,18 +3,16 @@ vim.api.nvim_create_user_command( "MasonFullUpdate", function ()
 
     vim.notify( "Updating Mason registry..." );
 
-    registry.update( function ( success, updated_packages )
+    registry.update( function ( success )
         if not success then
             vim.notify( "Mason registry update failed", vim.log.levels.ERROR );
+        else
+            vim.notify( "Mason registry updated" );
 
-            return;
+            vim.cmd( "Mason" );
         end
-
-        vim.notify( "Registry updated, updating tools..." );
-
-        vim.cmd( "MasonToolsUpdate" );
     end );
-end, {} );
+end, {} )
 
 return {
     {
@@ -32,25 +30,6 @@ return {
                 "copilot",
             },
         },
-    },
-    {
-        "WhoIsSethDaniel/mason-tool-installer.nvim",
-        dependencies = {
-            "mason.nvim",
-        },
-        cmd = { "MasonToolsUpdate" },
-        event = "VeryLazy",
-        config = function ()
-            require( "mason-tool-installer" ).setup( {
-                ensure_installed = {
-                    "copilot-language-server",
-                },
-                auto_update = false,
-                run_on_start = false,
-                start_delay = 3000,
-                debounce_hours = 24,
-            } );
-        end,
     },
     {
         "copilotlsp-nvim/copilot-lsp",
