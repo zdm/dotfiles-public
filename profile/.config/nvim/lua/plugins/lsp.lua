@@ -6,13 +6,13 @@ return {
     {
         "williamboman/mason-lspconfig.nvim",
         dependencies = {
-            "williamboman/mason.nvim",
+            "mason.nvim",
         },
         opts = {
+            automatic_enable = false,
             ensure_installed = {
                 "copilot",
             },
-            automatic_enable = false,
         },
     },
     {
@@ -43,7 +43,7 @@ return {
             {
                 "<tab>",
                 function ()
-                    if not require("sidekick").nes_jump_or_apply() then
+                    if not require( "sidekick" ).nes_jump_or_apply() then
                         return "<Tab>"
                     end
                 end,
@@ -64,9 +64,8 @@ return {
             },
             {
                 "<leader>as",
-                function () require( "sidekick.cli" ).select() end,
-                -- Or to select only installed tools:
-                -- require( "sidekick.cli" ).select( { filter = { installed = true } } )
+                function () require( "sidekick.cli" ).select( { filter = { installed = true } } ) end,
+                -- function () require( "sidekick.cli" ).select() end,
                 desc = "Select CLI",
             },
             {
