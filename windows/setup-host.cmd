@@ -45,13 +45,6 @@ setx /M PATHEXT ".com;.exe;.lnk;.bat;.cmd;.ps1;.sh"
 :: path
 setx /M PATH "s:\bin;d:\apps\bin;d:\apps\fnm\data\current;c:\msys64\mingw64\bin;c:\msys64\usr\bin;%SystemRoot%\system32;%SystemRoot%;%SystemRoot%\system32\WindowsPowerShell\v1.0"
 
-:: git
-setx /M GIT_CONFIG_COUNT 2
-setx /M GIT_CONFIG_KEY_0 diffTool.guiDefault
-setx /M GIT_CONFIG_VALUE_0 true
-setx /M GIT_CONFIG_KEY_1 mergeTool.guiDefault
-setx /M GIT_CONFIG_VALUE_1 false
-
 call "set-default-apps.cmd"
 
 :: perl
