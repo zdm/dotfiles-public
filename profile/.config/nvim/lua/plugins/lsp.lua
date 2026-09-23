@@ -33,6 +33,10 @@ return {
             -- end, { expr = true } )
         end,
         config = function ()
+            -- vim.lsp.config( "copilot_ls", {
+            --     cmd = { vim.fn.exepath( "copilot-language-server" ), "--stdio" },
+            -- } )
+
             vim.lsp.enable( "copilot_ls" )
         end,
     },
@@ -99,7 +103,7 @@ return {
         },
         opts = {
             nes = {
-                enabled = false,
+                -- enabled = false,
             },
             -- cli = {
             --     mux = {
