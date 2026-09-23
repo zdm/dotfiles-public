@@ -16,6 +16,25 @@ return {
         },
     },
     {
+        "WhoIsSethDaniel/mason-tool-installer.nvim",
+        dependencies = {
+            "mason.nvim",
+        },
+        cmd = { "MasonToolsUpdate" },
+        event = "VeryLazy",
+        config = function ()
+            require( "mason-tool-installer" ).setup( {
+                ensure_installed = {
+                    "copilot-language-server",
+                },
+                auto_update = false,
+                run_on_start = false,
+                start_delay = 3000,
+                debounce_hours = 24,
+            } );
+        end,
+    },
+    {
         "copilotlsp-nvim/copilot-lsp",
         enabled = false,
         init = function ()
