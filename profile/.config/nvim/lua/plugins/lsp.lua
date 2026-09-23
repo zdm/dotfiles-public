@@ -38,7 +38,7 @@ return {
         dependencies = {
             "mason.nvim",
         },
-        cmd = { "MasonToolsUpdate", "MasonFullUpdate" },
+        cmd = { "MasonToolsUpdate" },
         event = "VeryLazy",
         config = function ()
             require( "mason-tool-installer" ).setup( {
