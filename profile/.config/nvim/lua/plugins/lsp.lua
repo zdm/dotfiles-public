@@ -17,6 +17,7 @@ return {
     },
     {
         "copilotlsp-nvim/copilot-lsp",
+        enabled = false,
         init = function ()
             vim.g.copilot_nes_debounce = 500
 
@@ -39,6 +40,7 @@ return {
     {
         "folke/sidekick.nvim",
         -- enabled = false,
+        lazy = false,
         keys = {
             {
                 "<tab>",
@@ -98,9 +100,9 @@ return {
             },
         },
         opts = {
-            nes = {
-                enabled = false,
-            },
+            -- nes = {
+            --     enabled = false,
+            -- },
             -- cli = {
             --     mux = {
             --         enabled = true,
