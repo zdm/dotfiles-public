@@ -99,12 +99,12 @@ return {
         },
         opts = {
             nes = {
-                -- enabled = false,
+                enabled = false,
             },
             -- cli = {
             --     mux = {
             --         enabled = true,
-            --         backend = "zellij",
+            --         backend = "tmux",
             --     },
             -- },
         },
