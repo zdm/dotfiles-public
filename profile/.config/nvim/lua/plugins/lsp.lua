@@ -1,3 +1,21 @@
+vim.api.nvim_create_user_command( "MasonFullUpdate", function ()
+    local registry = require( "mason-registry" );
+
+    vim.notify( "Updating Mason registry..." );
+
+    registry.update( function ( success, updated_packages )
+        if not success then
+            vim.notify( "Mason registry update failed", vim.log.levels.ERROR );
+
+            return;
+        end
+
+        vim.notify( "Registry updated, updating tools..." );
+
+        vim.cmd( "MasonToolsUpdate" );
+    end );
+end, {} );
+
 return {
     {
         "williamboman/mason.nvim",
@@ -20,7 +38,7 @@ return {
         dependencies = {
             "mason.nvim",
         },
-        cmd = { "MasonToolsUpdate" },
+        cmd = { "MasonToolsUpdate", "MasonFullUpdate" },
         event = "VeryLazy",
         config = function ()
             require( "mason-tool-installer" ).setup( {

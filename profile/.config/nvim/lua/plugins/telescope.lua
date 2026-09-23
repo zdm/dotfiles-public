@@ -61,7 +61,7 @@ return {
                         default = {
                             items = {
                                 { "Update plugins", "Lazy sync" },
-                                { "Mason tools update", "MasonToolsUpdate" },
+                                { "Mason tools update", "MasonFullUpdate" },
                                 { "set ft=javascript", "set ft=javascript" },
                                 { "set ft=json", "set ft=json" },
                                 { "setlocal ff=unix", "setlocal ff=unix" },
