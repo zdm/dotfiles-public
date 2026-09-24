@@ -95,6 +95,7 @@ In the `{file}`:
 
 - Do not try to run any tools, except read and write files.
 - Add missing translations.
+- Remove old unused messages and translations.
 - Check and fix existsing translations.
 - If source message spelling is not valid:
     - Update message in the source code (by references in `#:`) and in the `po` file.
