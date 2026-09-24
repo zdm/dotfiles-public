@@ -14,6 +14,8 @@ vim.api.nvim_create_user_command( "MasonFullUpdate", function ()
     end );
 end, {} )
 
+local DEFAULT_TOOL = "copilot"
+
 return {
     {
         "williamboman/mason.nvim",
@@ -76,30 +78,33 @@ return {
             },
             {
                 "<leader>aa",
-                function () require( "sidekick.cli" ).toggle( { name = "copilot", focus = true } ) end,
+                function () require( "sidekick.cli" ).toggle( { name = DEFAULT_TOOL, focus = true } ) end,
                 -- function () require( "sidekick.cli" ).toggle() end,
+                mode = { "n", "i", "v" },
                 desc = "Sidekick Toggle CLI",
             },
             {
                 "<leader>as",
                 function () require( "sidekick.cli" ).select( { filter = { installed = true } } ) end,
-                -- function () require( "sidekick.cli" ).select() end,
+                mode = { "n", "i", "v" },
                 desc = "Select CLI",
             },
             {
                 "<leader>ad",
                 function () require( "sidekick.cli" ).close() end,
+                mode = { "n", "i", "v" },
                 desc = "Detach a CLI Session",
             },
             {
                 "<leader>at",
                 function () require( "sidekick.cli" ).send( { msg = "{this}" } ) end,
-                mode = { "x", "n" },
+                mode = { "n", "i", "v" },
                 desc = "Send This",
             },
             {
                 "<leader>af",
                 function () require( "sidekick.cli" ).send( { msg = "{file}" } ) end,
+                mode = { "n", "i", "v" },
                 desc = "Send File",
             },
             {
@@ -110,15 +115,15 @@ return {
             },
             {
                 "<leader>ap",
-                function () require( "sidekick.cli" ).prompt() end,
-                mode = { "n", "x" },
+                function () require( "sidekick.cli" ).prompt( { name = DEFAULT_TOOL } ) end,
+                mode = { "n", "i", "v" },
                 desc = "Sidekick Select Prompt",
             },
         },
         opts = {
             cli = {
                 prompts = {
-                    -- te = "Translate this to English",
+                    spelling = "Check spelling in the {this} and update the source.",
                 },
                 picker = "telescope",
                 mux = {
