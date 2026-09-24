@@ -2,6 +2,7 @@ return {
     {
         "nvim-telescope/telescope.nvim",
         dependencies = {
+            "nvim-telescope/telescope-ui-select.nvim",
             "octarect/telescope-menu.nvim",
         },
         cmd = "Telescope",
@@ -73,6 +74,9 @@ return {
                             },
                         },
                     },
+                    [ "ui-select" ] = {
+                        require( "telescope.themes" ).get_dropdown( {} )
+                    },
                 },
             } )
 
@@ -80,6 +84,8 @@ return {
             vim.api.nvim_set_hl( 0, "TelescopeSelection", {
                 bg = "Grey15",
             } )
+
+            telescope.load_extension( "ui-select" )
         end
     },
 }
