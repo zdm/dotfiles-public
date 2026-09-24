@@ -25,7 +25,7 @@ pacman --sync --noconfirm --needed --refresh --sysupgrade
 
 :: tools
 pacman --sync --noconfirm --needed ^
-    bash ^
+    bash tmux ^
     pacman pacman-mirrors ^
     msys2-runtime ^
     man tar patch whois ^
