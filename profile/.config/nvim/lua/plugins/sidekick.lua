@@ -70,7 +70,18 @@ return {
             },
             {
                 "<leader>ap",
-                function () require( "sidekick.cli" ).prompt( { name = DEFAULT_TOOL } ) end,
+                function ()
+                    require( "sidekick.cli" ).prompt( {
+                        cb = function ( msg )
+                            if msg then
+                                require( "sidekick.cli" ).send( {
+                                    msg = msg,
+                                    name = DEFAULT_TOOL,
+                                } )
+                            end
+                        end,
+                    } )
+                end,
                 mode = { "n", "i", "v" },
                 desc = "Sidekick Select Prompt",
             },
@@ -78,7 +89,18 @@ return {
         opts = {
             cli = {
                 prompts = {
-                    spelling = "Check spelling in the {this} and update the source.",
+                    [ "check-spelling" ] = "Check spelling in the {this} and update the source.",
+                    translate = [[
+In the `{file}`:
+
+- Do not try to run any tools, except read and write files.
+- Add missing translations.
+- Check and fix existsing translations.
+- If source message spelling is not valid:
+    - Update message in the source code (by references in `#:`) and in the `po` file.
+    - If this was not possible:
+        - add `fuzzy` tag and create comment with description.
+]],
                 },
                 picker = "telescope",
                 mux = {
