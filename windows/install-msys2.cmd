@@ -60,13 +60,7 @@ mklink "%MSYS64_USERPROFILE%\.config\mc\ini" "%~dp0\..\profile\.config\mc\ini"
 call "%~dp0\install-git.cmd"
 
 :: github-cli
-pacman --sync --noconfirm --needed ^
-    mingw-w64-x86_64-github-cli
-
-mkdir "%APPDATA%\GitHub CLI"
-
-del "%APPDATA%\GitHub CLI\config.yml"
-mklink "%APPDATA%\GitHub CLI\config.yml" "%~dp0\..\profile\.config\gh\config.yml"
+call "%~dp0\install-github-cli.cmd"
 
 :: gpg
 call "%~dp0\install-gpg.cmd"
