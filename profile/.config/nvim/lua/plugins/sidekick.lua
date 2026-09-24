@@ -17,15 +17,24 @@ return {
                 desc = "Goto/Apply Next Edit Suggestion",
             },
             {
-                "<c-.>",
-                function () require( "sidekick.cli" ).focus() end,
-                desc = "Sidekick Focus",
-                mode = { "n", "t", "i", "x" },
+                "<leader>aa",
+                function ()
+                    require( "sidekick.cli" ).show( {
+                        name = DEFAULT_TOOL,
+                        focus = true,
+                    } )
+                end,
+                mode = { "n", "i", "v" },
+                desc = "Sidekick Show / Focus on CLI",
             },
             {
-                "<leader>aa",
-                function () require( "sidekick.cli" ).toggle( { name = DEFAULT_TOOL, focus = true } ) end,
-                -- function () require( "sidekick.cli" ).toggle() end,
+                "<leader>aq",
+                function ()
+                    require( "sidekick.cli" ).toggle( {
+                        name = DEFAULT_TOOL,
+                        focus = true,
+                    } )
+                end,
                 mode = { "n", "i", "v" },
                 desc = "Sidekick Toggle CLI",
             },
