@@ -68,7 +68,6 @@ return {
                         "yaml_snippets",
                         "emoji",
                         "calc",
-                        -- "codecompanion",
                         "copilot",
                         "lsp",
 
@@ -100,13 +99,6 @@ return {
                             name = "calc",
                             module = "blink.compat.source",
                         },
-                        -- codecompanion = {
-                        --     name = "CodeCompanion",
-                        --     module = "codecompanion.providers.completion.blink",
-                        --     enabled = function ()
-                        --         return vim.bo.filetype == "codecompanion"
-                        --     end,
-                        -- },
                         copilot = {
                             name = "copilot",
                             module = "blink-copilot",
