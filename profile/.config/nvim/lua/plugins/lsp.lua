@@ -120,8 +120,12 @@ return {
                 enabled = true,
             },
             cli = {
+                prompts = {
+                    -- te = "Translate this to English",
+                },
+                picker = "telescope",
                 mux = {
-                    enabled = true,
+                    enabled = false,
                     backend = "tmux",
                 },
             },
