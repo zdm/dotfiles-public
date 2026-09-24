@@ -116,9 +116,6 @@ return {
             },
         },
         opts = {
-            nes = {
-                enabled = true,
-            },
             cli = {
                 prompts = {
                     -- te = "Translate this to English",
@@ -128,6 +125,9 @@ return {
                     enabled = false,
                     backend = "tmux",
                 },
+            },
+            nes = {
+                enabled = true,
             },
         },
     },
