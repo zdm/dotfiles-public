@@ -36,7 +36,16 @@ return {
                     [ "<C-Up>" ] = { "show", "select_prev", "fallback" },
                     [ "<C-Down>" ] = { "show", "select_next", "fallback" },
                     [ "<CR>" ] = { "accept", "fallback" },
-                    [ "<Tab>" ] = { "snippet_forward", "fallback" },
+                    [ "<Tab>" ] = {
+                        "snippet_forward",
+                        function()
+                            return require( "sidekick" ).nes_jump_or_apply()
+                        end,
+                        function()
+                            return vim.lsp.inline_completion.get()
+                        end,
+                        "fallback",
+                    },
                     [ "<S-Tab>" ] = { "snippet_backward", "fallback" },
                 },
                 completion = {

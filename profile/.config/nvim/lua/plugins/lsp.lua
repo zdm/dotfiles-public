@@ -116,15 +116,15 @@ return {
             },
         },
         opts = {
-            -- nes = {
-            --     enabled = false,
-            -- },
-            -- cli = {
-            --     mux = {
-            --         enabled = true,
-            --         backend = "tmux",
-            --     },
-            -- },
+            nes = {
+                enabled = true,
+            },
+            cli = {
+                mux = {
+                    enabled = true,
+                    backend = "tmux",
+                },
+            },
         },
     },
 }
