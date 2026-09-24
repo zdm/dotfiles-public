@@ -46,13 +46,13 @@ vim.keymap.set( { "n" }, "<CR>", "a", {
 } )
 
 -- indent / unindent lines
-vim.keymap.set( { "n" }, "<TAB>", "I<TAB><ESC>", {
-    desc = "Indent line under cursor",
-} )
+-- vim.keymap.set( { "n" }, "<TAB>", "I<TAB><ESC>", {
+--     desc = "Indent line under cursor",
+-- } )
 
-vim.keymap.set( { "n" }, "<S-TAB>", "^i<BS><ESC>", {
-    desc = "Unindent line under cursor",
-} )
+-- vim.keymap.set( { "n" }, "<S-TAB>", "^i<BS><ESC>", {
+--     desc = "Unindent line under cursor",
+-- } )
 
 vim.keymap.set( { "s" }, "<TAB>", "<C-g>>gv<C-g>", {
     desc = "Indent line under cursor",
