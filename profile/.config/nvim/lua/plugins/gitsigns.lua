@@ -84,7 +84,8 @@ return {
                                 target = "all",
                             } )
                         end, {
-                            buffer = bufnr
+                            buffer = bufnr,
+                            desc = "Previous hunk",
                         }
                     )
 
@@ -99,7 +100,8 @@ return {
                                 target = "all",
                             } )
                         end, {
-                            buffer = bufnr
+                            buffer = bufnr,
+                            desc = "Next hunk",
                         }
                     )
 
@@ -107,7 +109,8 @@ return {
                     vim.keymap.set( { "n", "i" }, "<Leader>gg", function ()
                             gitsigns.preview_hunk()
                         end, {
-                            buffer = bufnr
+                            buffer = bufnr,
+                            desc = "Preview hunk",
                         }
                     )
 
@@ -115,7 +118,8 @@ return {
                     vim.keymap.set( { "n", "i" }, "<Leader>gx", function ()
                             open_hunks_list( bufnr )
                         end, {
-                            buffer = bufnr
+                            buffer = bufnr,
+                            desc = "Show hunks list",
                         }
                     )
 
@@ -123,7 +127,8 @@ return {
                     vim.keymap.set( { "n", "i" }, "<Leader>gs", function ()
                             gitsigns.select_hunk()
                         end, {
-                            buffer = bufnr
+                            buffer = bufnr,
+                            desc = "Select hunk",
                         }
                     )
 
@@ -131,7 +136,8 @@ return {
                     vim.keymap.set( { "n", "i" }, "<Leader>ga", function ()
                             gitsigns.stage_hunk()
                         end, {
-                            buffer = bufnr
+                            buffer = bufnr,
+                            desc = "Stage / unstage hunk",
                         }
                     )
 
@@ -139,7 +145,8 @@ return {
                     vim.keymap.set( { "n", "i" }, "<Leader>gr", function ()
                             gitsigns.reset_hunk()
                         end, {
-                            buffer = bufnr
+                            buffer = bufnr,
+                            desc = "Reset hunk",
                         }
                     )
 
@@ -151,7 +158,8 @@ return {
                                 vertical = true,
                             } )
                         end, {
-                            buffer = bufnr
+                            buffer = bufnr,
+                            desc = "Diff buffer",
                         }
                     )
 
@@ -159,7 +167,8 @@ return {
                     vim.keymap.set( { "n", "i" }, "<Leader>gb", function ()
                             gitsigns.blame()
                         end, {
-                            buffer = bufnr
+                            buffer = bufnr,
+                            desc = "Blame buffer",
                         }
                     )
                 end
