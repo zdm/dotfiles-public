@@ -97,11 +97,9 @@ return {
                 local content = file:read( "*all" )
                 file:close()
 
-                local success
-
-                success, prompts = pcall( yaml.parse, content )
-                if not success or type( data ) ~= "table" then
-                    -- vim.notify( "Failed to parse YAML snippet file: " .. path, vim.log.levels.ERROR )
+                local success, data = pcall( yaml.parse, content )
+                if success and type( data ) == "table" then
+                    prompts = data
                 end
             end
 
