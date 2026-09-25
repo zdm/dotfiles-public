@@ -86,29 +86,38 @@ return {
                 desc = "Sidekick Select Prompt",
             },
         },
-        opts = {
-            cli = {
-                prompts = {
-                    [ "check-spelling" ] = "Check spelling in the {this} and update the source.",
-                    translate = [[
-In the `{file}`:
-- Do not try to run any tools, except read and write files.
-- Add missing translations, remove old unused messages and translations. Check and fix existsing translations.
-- If source message spelling is not valid:
-    - Update message in the source code (by references in `#:`) and in the `po` file.
-    - If this was not possible:
-        - add `fuzzy` tag and create comment with description.
-]],
+        config = function ()
+            local prompts
+            local prompts_path = vim.fn.stdpath( "config" ) .. "/prompts.yaml"
+
+            local file = io.open( prompts_path, "r" )
+            if file then
+                local yaml = require( "tinyyaml" )
+
+                local content = file:read( "*all" )
+                file:close()
+
+                local success
+
+                success, prompts = pcall( yaml.parse, content )
+                if not success or type( data ) ~= "table" then
+                    -- vim.notify( "Failed to parse YAML snippet file: " .. path, vim.log.levels.ERROR )
+                end
+            end
+
+            require( "sidekick" ).setup( {
+                cli = {
+                    prompts = prompts,
+                    picker = "telescope",
+                    mux = {
+                        enabled = false,
+                        backend = "tmux",
+                    },
                 },
-                picker = "telescope",
-                mux = {
-                    enabled = false,
-                    backend = "tmux",
+                nes = {
+                    enabled = true,
                 },
-            },
-            nes = {
-                enabled = true,
-            },
-        },
+            } )
+        end,
     },
 }
