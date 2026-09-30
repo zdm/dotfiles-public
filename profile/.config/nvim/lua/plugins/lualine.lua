@@ -75,8 +75,14 @@ return {
                             fmt = format_filename,
                         },
                         {
+                            -- sidekick.status
                             function ()
                                 return " "
+                            end,
+                            cond = function ()
+                                local status = require( "sidekick.status" )
+
+                                return status.get() ~= nil
                             end,
                             color = function ()
                                 local status = require( "sidekick.status" ).get()
@@ -85,15 +91,11 @@ return {
                                     return status.kind == "Error" and "DiagnosticError" or status.busy and "DiagnosticWarn" or "Special"
                                 end
                             end,
-                            cond = function ()
-                                local status = require( "sidekick.status" )
-
-                                return status.get() ~= nil
-                            end,
                         },
                     },
                     lualine_x = {
                         {
+                            -- sidekick.cli
                             function ()
                                 local status = require( "sidekick.status" ).cli()
 
