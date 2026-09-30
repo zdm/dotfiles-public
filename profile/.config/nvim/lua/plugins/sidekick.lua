@@ -115,6 +115,12 @@ return {
                 nes = {
                     enabled = true,
                 },
+                copilot = {
+                    status = {
+                        -- turn off copilot status/limit notifications
+                        level = vim.log.levels.OFF,
+                    },
+                },
             } )
         end,
     },
