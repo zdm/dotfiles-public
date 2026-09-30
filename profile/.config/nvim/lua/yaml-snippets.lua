@@ -264,10 +264,10 @@ local function load_snippets ( snippets_path )
             supported_filetypes[ language ] = true
         end
 
-        if language_data.inherit then
-            for index, inherit_language in ipairs( language_data.inherit ) do
-                if data[ inherit_language ] and data[ inherit_language ].snippets then
-                    for snippet_name, snippet_data in pairs( data[ inherit_language ].snippets ) do
+        if language_data.include then
+            for index, include_language in ipairs( language_data.include ) do
+                if data[ include_language ] and data[ include_language ].snippets then
+                    for snippet_name, snippet_data in pairs( data[ include_language ].snippets ) do
                         snippets[ language ] = snippets[ language ] or {}
 
                         snippets[ language ][ snippet_name ] = snippet_data

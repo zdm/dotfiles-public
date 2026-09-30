@@ -1,5 +1,5 @@
 bash:
-  inherit: [sh]
+  include: [sh]
 
 dosbatch:
   snippets:
@@ -29,7 +29,7 @@ dosbatch:
       body: "%USERPROFILE%"
 
 html/javascript:
-  inherit: [javascript]
+  include: [javascript]
   snippets:
     alert( $1 ):
       trigger: alert
@@ -370,7 +370,7 @@ vue:
       body: "<ext-grid layout=\"fit\" plugins='[{\"type\":\"gridviewoptions\"},{\"type\":\"gridsummaryrow\"},{\"type\":\"listpaging\",\"noMoreRecordsText\":\"\",\"autoPaging\":false}]' itemConfig='{\"viewmodel\":true}' multicolumnSort=\"true\" @ready=\"gridReady\">\n\t$1\n</ext-grid>"
 
 vue/javascript:
-  inherit: [javascript, html/javascript]
+  include: [javascript, html/javascript]
   snippets:
     mount component:
       trigger: mount dialog
