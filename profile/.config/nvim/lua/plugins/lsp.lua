@@ -54,14 +54,10 @@ return {
                 local state = vim.b[ vim.api.nvim_get_current_buf() ].nes_state;
 
                 if not state then
-                    return "<Tab>";
-                end
-
-                if nes.walk_cursor_start_edit() then
                     return;
-                end
-
-                if nes.apply_pending_nes() then
+                elseif nes.walk_cursor_start_edit() then
+                    return;
+                elseif nes.apply_pending_nes() then
                     nes.walk_cursor_end_edit();
                 end
             end, {
