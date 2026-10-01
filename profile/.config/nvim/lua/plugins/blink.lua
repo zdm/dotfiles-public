@@ -37,13 +37,13 @@ return {
                     [ "<C-Down>" ] = { "show", "select_next", "fallback" },
                     [ "<CR>" ] = { "accept", "fallback" },
                     [ "<Tab>" ] = {
-                        "snippet_forward",
-                        function()
+                        function ()
                             return require( "sidekick" ).nes_jump_or_apply()
                         end,
-                        function()
+                        function ()
                             return vim.lsp.inline_completion.get()
                         end,
+                        "snippet_forward",
                         "fallback",
                     },
                     [ "<S-Tab>" ] = { "snippet_backward", "fallback" },
@@ -103,6 +103,7 @@ return {
                             name = "copilot",
                             module = "blink-copilot",
                             async = true,
+                            score_offset = 100,
                         },
                     },
                 },
