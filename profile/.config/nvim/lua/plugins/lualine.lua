@@ -77,6 +77,20 @@ return {
                     },
                     lualine_x = {
                         {
+                            -- sidekick.cli
+                            function ()
+                                local status = require( "sidekick.status" ).cli()
+
+                                return " " .. ( #status > 1 and #status or "" )
+                            end,
+                            cond = function ()
+                                return #require( "sidekick.status" ).cli() > 0
+                            end,
+                            color = function ()
+                                return "Special"
+                            end,
+                        },
+                        {
                             -- sidekick.status
                             function ()
                                 return " "
@@ -92,20 +106,6 @@ return {
                                 if status then
                                     return status.kind == "Error" and "DiagnosticError" or status.busy and "DiagnosticWarn" or "Special"
                                 end
-                            end,
-                        },
-                        {
-                            -- sidekick.cli
-                            function ()
-                                local status = require( "sidekick.status" ).cli()
-
-                                return " " .. ( #status > 1 and #status or "" )
-                            end,
-                            cond = function ()
-                                return #require( "sidekick.status" ).cli() > 0
-                            end,
-                            color = function ()
-                                return "Special"
                             end,
                         },
                     },
