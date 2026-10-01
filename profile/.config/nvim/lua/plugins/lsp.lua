@@ -20,10 +20,13 @@ return {
         opts = {},
     },
     {
+        "neovim/nvim-lspconfig",
+    },
+    {
         "mason-org/mason-lspconfig.nvim",
         dependencies = {
             "mason.nvim",
-            "neovim/nvim-lspconfig",
+            "nvim-lspconfig",
         },
         opts = {
             ensure_installed = {
@@ -40,39 +43,47 @@ return {
         "copilotlsp-nvim/copilot-lsp",
         -- enabled = false,
         dependencies = {
-            "neovim/nvim-lspconfig",
+            "mason-lspconfig.nvim",
+        },
+        event = "VeryLazy",
+        keys = {
+            {
+                "<Tab>",
+                function ()
+                    local nes = require( "copilot-lsp.nes" )
+                    local state = vim.b[ vim.api.nvim_get_current_buf() ].nes_state
+
+                    if not state then
+                        return;
+                    elseif nes.walk_cursor_start_edit() then
+                        return;
+                    elseif nes.apply_pending_nes() then
+                        nes.walk_cursor_end_edit();
+                    end
+                end,
+                mode = { "n" },
+                desc = "Accept Copilot NES suggestion",
+                expr = true,
+            },
+            {
+                "<Esc>",
+                function ()
+                    local nes = require( "copilot-lsp.nes" )
+
+                    if not nes.clear() then
+                        return "<Esc>";
+                    end
+                end,
+                mode = { "n" },
+                desc = "Clear Copilot NES suggestion",
+                expr = true,
+            },
         },
         init = function ()
             vim.g.copilot_nes_debounce = 100
         end,
         config = function ()
             vim.lsp.enable( "copilot_ls" )
-
-            local nes = require( "copilot-lsp.nes" );
-
-            vim.keymap.set( { "n" }, "<Tab>", function ()
-                local state = vim.b[ vim.api.nvim_get_current_buf() ].nes_state;
-
-                if not state then
-                    return;
-                elseif nes.walk_cursor_start_edit() then
-                    return;
-                elseif nes.apply_pending_nes() then
-                    nes.walk_cursor_end_edit();
-                end
-            end, {
-                desc = "Accept Copilot NES suggestion",
-                expr = true,
-            } );
-
-            vim.keymap.set( { "n" }, "<Esc>", function ()
-                if not nes.clear() then
-                    return "<Esc>";
-                end
-            end, {
-                desc = "Clear Copilot NES suggestion",
-                expr = true,
-            } );
         end,
     },
 }
