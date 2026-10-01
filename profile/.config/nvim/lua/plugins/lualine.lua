@@ -58,22 +58,6 @@ return {
                         "mode"
                     },
                     lualine_b = {
-                        { "branch", icon = "" },
-                        { "diff", colored = false, symbols = diff_signs, source = diff_source },
-                        {
-                            "diagnostics",
-                            -- sources = { "nvim_diagnostic", "nvim_workspace_diagnostic", "nvim_lsp" },
-                            symbols = diagnostics_signs,
-                            colored = false,
-                            always_visible = false,
-                        },
-                    },
-                    lualine_c = {
-                        {
-                            "filename",
-                            path = 4,
-                            fmt = format_filename,
-                        },
                         {
                             -- sidekick.status
                             function ()
@@ -91,6 +75,22 @@ return {
                                     return status.kind == "Error" and "DiagnosticError" or status.busy and "DiagnosticWarn" or "Special"
                                 end
                             end,
+                        },
+                        { "branch", icon = "" },
+                        { "diff", colored = false, symbols = diff_signs, source = diff_source },
+                        {
+                            "diagnostics",
+                            -- sources = { "nvim_diagnostic", "nvim_workspace_diagnostic", "nvim_lsp" },
+                            symbols = diagnostics_signs,
+                            colored = false,
+                            always_visible = false,
+                        },
+                    },
+                    lualine_c = {
+                        {
+                            "filename",
+                            path = 4,
+                            fmt = format_filename,
                         },
                     },
                     lualine_x = {
