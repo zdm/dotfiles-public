@@ -43,30 +43,18 @@ return {
             "neovim/nvim-lspconfig",
         },
         init = function ()
-            vim.g.copilot_nes_debounce = 500
+            vim.g.copilot_nes_debounce = 100
         end,
         config = function ()
             vim.lsp.enable( "copilot_ls" )
 
             local nes = require( "copilot-lsp.nes" );
 
-            local feed = function ( keys )
-                vim.api.nvim_feedkeys(
-                    vim.api.nvim_replace_termcodes( keys, true, false, true ),
-                    "n",
-                    false
-                );
-            end;
-
-            vim.keymap.set( { "n", "i" }, "<Tab>", function ()
+            vim.keymap.set( { "n" }, "<Tab>", function ()
                 local state = vim.b[ vim.api.nvim_get_current_buf() ].nes_state;
 
                 if not state then
-                    nes.request_nes( "copilot_ls" )
-
-                    feed( "<Tab>" );
-
-                    return;
+                    return "<Tab>";
                 end
 
                 if nes.walk_cursor_start_edit() then
@@ -75,19 +63,20 @@ return {
 
                 if nes.apply_pending_nes() then
                     nes.walk_cursor_end_edit();
-
-                    -- Даём серверу получить didChange, затем просим следующую правку
-                    vim.defer_fn( function ()
-                        nes.request_nes( "copilot_ls" );
-                    end, 100 );
                 end
-            end, { [ "desc" ] = "Accept Copilot NES suggestion" } );
+            end, {
+                desc = "Accept Copilot NES suggestion",
+                expr = true,
+            } );
 
-            vim.keymap.set( "n", "<Esc>", function ()
+            vim.keymap.set( { "n" }, "<Esc>", function ()
                 if not nes.clear() then
-                    feed( "<Esc>" );
+                    return "<Esc>";
                 end
-            end, { [ "desc" ] = "Clear Copilot NES suggestion" } );
+            end, {
+                desc = "Clear Copilot NES suggestion",
+                expr = true,
+            } );
         end,
     },
 }
