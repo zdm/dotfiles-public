@@ -57,7 +57,7 @@ return {
                         "yaml_snippets",
                         "emoji",
                         "calc",
-                        -- "copilot",
+                        "copilot",
                         "lsp",
 
                         -- "buffer",
