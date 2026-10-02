@@ -41,7 +41,7 @@ return {
     },
     {
         "copilotlsp-nvim/copilot-lsp",
-        -- enabled = false,
+        enabled = false,
         dependencies = {
             "mason-lspconfig.nvim",
         },
