@@ -6,7 +6,7 @@ call is-elevated.cmd || ( sudo -E "%~sf0" %* & exit /B )
 setlocal
 
 pacman --sync --noconfirm --needed ^
-    mingw-w64-x86_64-github-cli
+    mingw-w64-ucrt-x86_64-github-cli
 
 mkdir "%APPDATA%\GitHub CLI"
 
