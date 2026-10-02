@@ -67,3 +67,6 @@ call "%~dp0\install-gpg.cmd"
 
 :: ssh
 call "%~dp0\install-ssh.cmd"
+
+:: neovim
+call "%~dp0\install-neovim.cmd"
