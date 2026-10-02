@@ -29,19 +29,19 @@ pacman --sync --noconfirm --needed ^
     pacman pacman-mirrors ^
     msys2-runtime ^
     man tar patch whois ^
-    mingw-w64-x86_64-curl ^
-    mingw-w64-x86_64-wget ^
-    mingw-w64-x86_64-diffutils ^
-    mingw-w64-x86_64-unzip ^
-    mingw-w64-x86_64-jq ^
-    mingw-w64-x86_64-ctags ^
-    mingw64/mingw-w64-x86_64-sqlite3 ^
-    mingw-w64-x86_64-libtree-sitter
+    mingw-w64-ucrt-x86_64-curl ^
+    mingw-w64-ucrt-x86_64-wget ^
+    mingw-w64-ucrt-x86_64-diffutils ^
+    mingw-w64-ucrt-x86_64-unzip ^
+    mingw-w64-ucrt-x86_64-jq ^
+    mingw-w64-ucrt-x86_64-ctags ^
+    mingw-w64-ucrt-x86_64-sqlite3 ^
+    mingw-w64-ucrt-x86_64-tree-sitter
     :: mc
 
 :: gcc
 pacman --sync --noconfirm --needed ^
-    mingw-w64-x86_64-gcc
+    mingw-w64-ucrt-x86_64-gcc
 
 :: bash
 del "%MSYS64_USERPROFILE%\.bashrc"
