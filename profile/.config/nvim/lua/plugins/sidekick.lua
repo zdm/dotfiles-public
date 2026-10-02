@@ -120,7 +120,7 @@ return {
                     -- enabled = false,
                     diff = {
                         inline = false,
-                        show = "always",
+                        show = "cursor", -- "always",
                     },
                 },
                 copilot = {
