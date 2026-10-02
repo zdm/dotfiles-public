@@ -23,7 +23,12 @@ return {
             "saghen/blink.compat",
             "emoji.nvim",
             "hrsh7th/cmp-calc",
-            "fang2hou/blink-copilot",
+            {
+                "fang2hou/blink-copilot",
+                dependencies = {
+                    "mason-lspconfig.nvim",
+                },
+            },
             -- "rafamadriz/friendly-snippets",
         },
         -- build = function ()
