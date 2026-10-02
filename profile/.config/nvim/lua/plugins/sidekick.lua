@@ -118,6 +118,10 @@ return {
                 },
                 nes = {
                     -- enabled = false,
+                    diff = {
+                        inline = false,
+                        show = "always",
+                    },
                 },
                 copilot = {
                     status = {
