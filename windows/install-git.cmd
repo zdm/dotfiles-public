@@ -20,8 +20,8 @@ setx GIT_CONFIG_KEY_4 gpg.ssh.revocationFile
 setx GIT_CONFIG_VALUE_4 "%USERPROFILE%\.config\git\ssh\revocatied-signatures"
 
 pacman --sync --noconfirm --needed ^
-    mingw-w64-x86_64-git ^
-    mingw-w64-x86_64-git-lfs ^
+    mingw-w64-ucrt-x86_64-git ^
+    mingw-w64-ucrt-x86_64-git-lfs ^
     git-crypt
     filter-repo
 
