@@ -1,6 +1,9 @@
 check-spelling: |-
   Check spelling in the {this} and update the source.
 
+prune-old-copilot-sessions: |-
+  /sessions prune --older-than 1
+
 translate-po-file: |-
   In the `{file}`:
   - Do not try to run any tools, except read and write files.
