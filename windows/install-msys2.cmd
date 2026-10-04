@@ -36,7 +36,8 @@ pacman --sync --noconfirm --needed ^
     mingw-w64-ucrt-x86_64-jq ^
     mingw-w64-ucrt-x86_64-ctags ^
     mingw-w64-ucrt-x86_64-sqlite3 ^
-    mingw-w64-ucrt-x86_64-tree-sitter
+    mingw-w64-ucrt-x86_64-tree-sitter ^
+    mingw-w64-ucrt-x86_64-rufus
     :: mc
 
 :: gcc
