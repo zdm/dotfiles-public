@@ -28,13 +28,20 @@ return {
             "mason.nvim",
             "nvim-lspconfig",
         },
-        opts = {
-            ensure_installed = {
-                "copilot",
-            },
-            automatic_enable = {
-                "copilot",
-            },
-        },
+        config = function ()
+            require( "mason-lspconfig" ).setup( {
+                ensure_installed = {
+                    -- "copilot",
+                },
+                automatic_enable = {
+                    -- "copilot",
+                    exclude = {
+                        "copilot",
+                    },
+                },
+            } );
+
+            vim.lsp.enable( "copilot" );
+        end,
     },
 }
