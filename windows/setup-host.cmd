@@ -9,7 +9,6 @@ call "%APPS_PATH%\bin\is-elevated.cmd"
 
 :: not elevated
 if ERRORLEVEL 1 (
-
     "%APPS_PATH%\bin\hstart.exe" /ELEVATE /D="%~dp0" "cmd.exe /C ""%~sf0" %*
 
     exit /B
@@ -40,6 +39,7 @@ mklink /D "d:\music" "g:\my drive\music"
 rmdir /Q /S "d:\pictures"
 mklink /D "d:\pictures" "g:\my drive\pictures"
 
+:: pathext
 setx /M PATHEXT ".com;.exe;.lnk;.bat;.cmd;.ps1;.sh"
 
 :: path
@@ -48,11 +48,11 @@ setx /M PATH "s:\bin;d:\apps\bin;d:\apps\fnm\data\current;c:\msys64\ucrt64\bin;c
 call "set-default-apps.cmd"
 
 :: perl
-:: setx /M PERL_CPANM_HOME "%TEMP%\.cpanm"
-:: setx /M PERL_CPANM_OPT "--metacpan --from https://cpan.metacpan.org/"
-:: setx /M HARNESS_OPTIONS "c"
-:: setx /M HARNESS_SUMMARY_COLOR_SUCCESS "GREEN"
-:: setx /M HARNESS_SUMMARY_COLOR_FAIL "RED"
+:: setx PERL_CPANM_HOME "%TEMP%\.cpanm"
+:: setx PERL_CPANM_OPT "--metacpan --from https://cpan.metacpan.org/"
+:: setx HARNESS_OPTIONS "c"
+:: setx HARNESS_SUMMARY_COLOR_SUCCESS "GREEN"
+:: setx HARNESS_SUMMARY_COLOR_FAIL "RED"
 
 :: remap "CAPSLOCK" to "F13"
 reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Keyboard Layout" /f /v "Scancode Map" /t REG_BINARY /d 00000000000000000200000064003a0000000000
