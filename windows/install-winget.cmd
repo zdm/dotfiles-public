@@ -6,7 +6,6 @@ call is-elevated.cmd || ( sudo -E "%~sf0" %* & exit /B )
 winget install ^
     Garmin.Express ^
     Google.GoogleDrive ^
-    Mozilla.Thunderbird ^
     TeamViewer.TeamViewer.Host ^
     WireGuard.WireGuard ^
     voidtools.Everything
