@@ -1,5 +1,6 @@
 check-spelling: |-
-  Check spelling in the {this} and update the source.
+  Check the spelling in {file} and update the source.
+  Do not try to execute any commands, only read and write files are allowed.
 
 prune-old-copilot-sessions: |-
   /sessions prune --older-than 1
