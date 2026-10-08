@@ -16,10 +16,6 @@ setx /M LC_ALL C.UTF-8
 winget install MSYS2.MSYS2
 winget pin add -q MSYS2.MSYS2
 
-:: start msys2 shell
-:: initialize pacman environment, needed to run once
-:: msys2_shell.bat
-
 :: sync package list and perform system upgrade
 pacman --sync --noconfirm --needed --refresh --sysupgrade
 
