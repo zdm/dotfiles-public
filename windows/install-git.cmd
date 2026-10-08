@@ -21,6 +21,8 @@ setx GIT_CONFIG_VALUE_4 "%USERPROFILE%\.config\git\ssh\revocatied-signatures"
 
 pacman --sync --noconfirm --needed ^
     mingw-w64-ucrt-x86_64-git ^
+    mingw-w64-ucrt-x86_64-git-doc-man ^
+    mingw-w64-ucrt-x86_64-git-doc-html ^
     mingw-w64-ucrt-x86_64-git-lfs ^
     git-crypt
     filter-repo
