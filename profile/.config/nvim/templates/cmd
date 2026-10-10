@@ -8,4 +8,4 @@ setlocal
 pushd "%~dp0"
 
 
-" cursor: 9 1
+" cursor: 10 1

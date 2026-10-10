@@ -69,3 +69,5 @@ vim.keymap.set( { "x" }, "<TAB>", ">gv", {
 vim.keymap.set( { "x" }, "<S-TAB>", "<gv", {
     desc = "Unindent selected lines",
 } )
+
+require( "templates" ).setup()
