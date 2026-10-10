@@ -254,7 +254,7 @@ let g:vim_json_conceal = 0
 let g:dosbatch_colons_comment = 1
 
 " init
-lua require( "init" )
+lua require( "config/keymap" )
 
 " load plugins
-lua require( "config.lazy" )
+lua require( "config/lazy" )
