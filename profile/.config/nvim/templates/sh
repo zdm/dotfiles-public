@@ -3,4 +3,5 @@
 set -Eeuo pipefail
 trap 'echo "⚠  Error ($0:$LINENO, exit code: $?): $BASH_COMMAND" >&2' ERR
 
+
 " cursor: 6 1"
