@@ -63,4 +63,6 @@ function M.setup ()
     end, { nargs = 1 } )
 end
 
+M.setup()
+
 return M
