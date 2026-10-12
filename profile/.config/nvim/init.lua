@@ -159,6 +159,9 @@ vim.api.nvim_create_autocmd( "FocusGained", {
 -- set fill char for diff
 vim.opt.fillchars:append( { diff = "╱" } )
 
+vim.opt.langmap = "ёйцукенгшщзхъфывапролджэячсмитьбю;`qwertyuiop[]asdfghjkl\\;'zxcvbnm\\,.,"
+    .. "ЁЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ;~QWERTYUIOP{}ASDFGHJKL:\"ZXCVBNM<>";
+
 -- XXX
 -- move tabs with <C-S-J>, <C-S-K> {{{
 -- vim.keymap.set( "n", "<C-S-J>", "<Cmd>-tabm<CR>", { silent = true } )
