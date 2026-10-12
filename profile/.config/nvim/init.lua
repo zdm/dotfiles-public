@@ -31,19 +31,10 @@ else
 end
 
 vim.o.langmenu = "none"
-vim.o.encoding = "utf-8"
 -- }}}
 
 -- terminal, gui {{{
-vim.api.nvim_create_autocmd( "GUIEnter", {
-    group = augroup,
-    pattern = "*",
-    command = "simalt ~X",
-} )
-
 -- vim.o.guifont = "LiterationMono Nerd Font:h10:cRUSSIAN"
-
-vim.o.compatible = false
 
 vim.o.guicursor = "n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,sm:block-blinkwait175-blinkoff150-blinkon175"
 
@@ -54,7 +45,6 @@ vim.o.termguicolors = true
 -- end
 -- }}}
 
-vim.cmd( "filetype plugin indent on" )
 vim.o.modeline = true
 
 -- folding {{{
@@ -159,13 +149,6 @@ vim.o.showtabline = 2
 -- disable bell
 vim.o.errorbells = false
 vim.o.visualbell = true
-vim.cmd( "set t_vb=" )
-
-vim.api.nvim_create_autocmd( "GUIEnter", {
-    group = augroup,
-    pattern = "*",
-    command = "set visualbell t_vb=",
-} )
 
 vim.o.autoread = false -- don't reload modified file automatically
 
