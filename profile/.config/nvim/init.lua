@@ -21,13 +21,10 @@ end
 local data = vim.fn.stdpath( "data" )
 
 -- language, encoding {{{
-vim.env.LANG = "en"
-
 if vim.fn.has( "win32" ) == 1 then
     vim.cmd( "language English" )
 else
-    -- language C.UTF-8
-    -- language en_GB.UTF-8
+    vim.cmd( "silent! language messages C" )
 end
 
 vim.o.langmenu = "none"
