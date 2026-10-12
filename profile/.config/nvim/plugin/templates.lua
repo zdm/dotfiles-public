@@ -6,6 +6,23 @@ local function find_template ( name )
     return vim.api.nvim_get_runtime_file( "templates/" .. name, false )[ 1 ]
 end
 
+local function ensure_position ( y, x )
+    local count = vim.fn.line( "$" )
+
+    if y > count then
+        vim.api.nvim_buf_set_lines( 0, count, count, false, vim.fn["repeat"]( { "" }, y - count ) )
+    end
+
+    if x > 0 then
+        local row = y > 0 and y or vim.fn.line( "." )
+        local line = vim.fn.getline( row )
+
+        if #line < x then
+            vim.fn.setline( row, line .. string.rep( " ", x - #line ) )
+        end
+    end
+end
+
 local function apply_cursor_marker ()
     local last = vim.fn.getline( "$" )
 
@@ -18,6 +35,7 @@ local function apply_cursor_marker ()
 
     vim.cmd( "silent! $foldopen!" )
     vim.cmd( "silent $delete _" )
+    ensure_position( y, x )
     vim.fn.cursor( y, x )
 end
 
