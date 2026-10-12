@@ -1,9 +1,0 @@
-ia uft utf
-ia uft8 utf8
-ia бдует будет
-ia бдудут будут
-ia прилодения прилодения
-ia прилодение приложение
-ia fasle false
-ia udmp dump
-ia dumo dump
