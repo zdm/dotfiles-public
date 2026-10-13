@@ -78,6 +78,11 @@ return {
             vim.api.nvim_create_autocmd( "FileType", {
                 group = gid,
                 callback = function ( ev )
+                    -- skip service buffers (blink.cmp menu/docs, floating windows, terminals, etc.)
+                    if vim.bo[ ev.buf ].buftype ~= "" or vim.startswith( ev.match, "blink-cmp" ) then
+                        return
+                    end
+
                     local treesitter = require( "nvim-treesitter" )
                     local language = vim.treesitter.language.get_lang( ev.match )
 
