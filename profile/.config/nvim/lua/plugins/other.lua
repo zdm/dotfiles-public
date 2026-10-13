@@ -21,15 +21,8 @@ return {
         -- enabled = false,
     },
     {
-        "keaising/im-select.nvim",
-        enabled = false,
-        config = function ()
-            require( "im_select" ).setup( {} )
-        end,
-    },
-    {
         "lyokha/vim-xkbswitch",
-        -- enabled = false,
+        enabled = false,
         dependencies = {
             "dexp/xkb-switch-win"
         },
