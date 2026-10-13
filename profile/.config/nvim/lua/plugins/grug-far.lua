@@ -20,7 +20,7 @@ return {
             local options = {
                 windowCreationCommand = "tabnew",
                 prefills = {
-                    flags = "--multiline",
+                    flags = "--context=1 --multiline",
                     filesFilter = "!**/node_modules/**\n!**/.git/**",
                 },
                 -- engines = {
