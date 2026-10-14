@@ -4,7 +4,7 @@ vim.keymap.set( { "n", "i", "v" }, "<C-t>", "<CMD>:tabnew<CR>", {
 } )
 
 -- close tab
-vim.keymap.set( { "n", "i", "v" }, "<C-w>", "<CMD>:tabclose<CR>", {
+vim.keymap.set( { "n", "i", "v" }, "<C-w><C-w>", "<CMD>:tabclose<CR>", {
     desc = "Close tab",
 } )
 
@@ -23,11 +23,14 @@ vim.keymap.set( { "n", "i", "v" }, "<C-TAB>", "<CMD>:tabnext<CR>", {
     desc = "Next tab",
 } )
 
--- move tabs
+-- move tab left
+-- XXX not work
 vim.keymap.set( { "n", "i", "v" }, "<C-S-PageUp>", "<CMD>:-tabm<CR>", {
     desc = "Move tab left",
 } )
 
+-- move tab right
+-- XXX not work
 vim.keymap.set( { "n", "i", "v" }, "<C-S-PageDown>", "<CMD>:+tabm<CR>", {
     desc = "Move tab right",
 } )

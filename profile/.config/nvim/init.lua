@@ -147,7 +147,8 @@ vim.o.showtabline = 2
 vim.o.errorbells = false
 vim.o.visualbell = true
 
-vim.o.autoread = false -- don't reload modified file automatically
+-- don't reload modified file automatically
+vim.o.autoread = false
 
 -- notify on file modified
 vim.api.nvim_create_autocmd( "FocusGained", {
