@@ -19,7 +19,7 @@ return {
                 windowCreationCommand = "tabnew",
                 prefills = {
                     flags = "--hidden --context=1 --multiline",
-                    filesFilter = "!**/node_modules/**\n!**/.git/**",
+                    filesFilter = "!**/.git/**\n!**/node_modules/**",
                     paths = current_dir(),
                 },
             } )
