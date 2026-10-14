@@ -67,7 +67,7 @@ return {
                                 { "set ft=javascript", "set ft=javascript" },
                                 { "set ft=json", "set ft=json" },
                                 { "setlocal ff=unix", "setlocal ff=unix" },
-                                { "ripgrep", "GrugFar" },
+                                { "ripgrep", "Grep" },
                                 { "Emoji", "Telescope emoji" },
                                 { "Open buffer in the browser", "Zcli browser" },
                                 { "spellchecker on", "setlocal spell spelllang=ru_yo,en_us" },
