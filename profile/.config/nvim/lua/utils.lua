@@ -3,9 +3,11 @@ local ignored_filetypes
 local M = {}
 
 M.ignored_filetypes = {
+    "blink-cmp",
     "DiffviewFileHistory",
     "DiffviewFiles",
     "gitgraph",
+    "grug-far",
     "help",
     "man",
     "TelescopePrompt",
