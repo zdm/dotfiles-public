@@ -43,6 +43,9 @@ return {
                     filesFilter = "!**/.git/**\n!**/node_modules/**",
                     paths = current_dir(),
                 },
+                openTargetWindow  = {
+                    preferredLocation  = "right",
+                },
             } )
         end
     },
