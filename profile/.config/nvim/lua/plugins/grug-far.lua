@@ -1,3 +1,5 @@
+local DEFAULT_FLAGS = "--hidden --context=1 --multiline";
+
 local function current_dir ()
     local buf_name = vim.api.nvim_buf_get_name( 0 )
 
@@ -8,10 +10,6 @@ local function current_dir ()
     end
 
     return ( dir:gsub( "\\", "/" ) );
-end
-
-local function escape_regex ( text )
-    return ( text:gsub( "[\\.+*?()|%[%]{}^$#&%-~]", "\\%0" ) );
 end
 
 return {
@@ -27,7 +25,8 @@ return {
                 if opts.range > 0 then
                     local lines = vim.api.nvim_buf_get_lines( 0, opts.line1 - 1, opts.line2, false );
 
-                    prefills.search = ( escape_regex( table.concat( lines, "\n" ) ):gsub( "\n", "\\n" ) );
+                    prefills.search = table.concat( lines, "\n" );
+                    prefills.flags = DEFAULT_FLAGS .. " --fixed-strings";
                 end
 
                 require( "grug-far" ).open( {
@@ -39,7 +38,7 @@ return {
             require( "grug-far" ).setup( {
                 windowCreationCommand = "tabnew",
                 prefills = {
-                    flags = "--hidden --context=1 --multiline",
+                    flags = DEFAULT_FLAGS,
                     filesFilter = "!**/.git/**\n!**/node_modules/**",
                     paths = current_dir(),
                 },
