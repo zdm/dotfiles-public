@@ -103,7 +103,9 @@ return {
                     end
 
                     -- update folds
-                    require( "zcli/utils" ).update_folds( ev.buf )
+                    vim.schedule( function ()
+                        require( "zcli/utils" ).update_folds( ev.buf )
+                    end )
                 end
             } )
 
