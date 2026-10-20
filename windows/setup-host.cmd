@@ -45,6 +45,8 @@ setx /M PATHEXT ".com;.exe;.lnk;.bat;.cmd;.ps1;.sh"
 :: path
 setx /M PATH "s:\bin;d:\apps\bin;d:\apps\fnm\data\current;c:\msys64\ucrt64\bin;c:\msys64\usr\bin;%SystemRoot%\system32;%SystemRoot%;%SystemRoot%\system32\WindowsPowerShell\v1.0"
 
+setx /M EDITOR nvim
+
 call "set-default-apps.cmd"
 
 :: perl
