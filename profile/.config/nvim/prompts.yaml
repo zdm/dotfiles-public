@@ -4,3 +4,6 @@ check-spelling: |-
 
 prune-old-copilot-sessions: |-
   /sessions prune --older-than 1
+
+review-branch: |-
+  /review against main Focus on bugs, regressions, security issues, and edge cases. Do not modify files.
