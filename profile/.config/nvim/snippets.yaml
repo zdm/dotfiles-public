@@ -103,7 +103,6 @@ javascript:
       body: process.exit()
     shebang:
       trigger:
-        - "#!"
         - shebang
       body: "#!/usr/bin/env -S node"
     Symbol.asyncDispose:
@@ -163,7 +162,6 @@ lua:
         end
     shebang:
       trigger:
-        - "#!"
         - shebang
       body: "#!/usr/bin/env -S lua"
     vim.json.decode( $1 ):
@@ -303,7 +301,6 @@ sh:
         fi
     shebang:
       trigger:
-        - "#!"
         - shebang
       body: |-
         #!/usr/bin/env -S bash
