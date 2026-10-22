@@ -71,10 +71,12 @@ return {
                     providers = {
                         snippets = {
                             min_keyword_length = 1,
+                            score_offset = 100,
                         },
                         yaml_snippets = {
                             name = "yaml_snippets",
                             module = "yaml-snippets",
+                            score_offset = 100,
                         },
                         emoji = {
                             name = "emoji",
@@ -97,7 +99,7 @@ return {
                             name = "copilot",
                             module = "blink-copilot",
                             async = true,
-                            -- score_offset = 100,
+                            score_offset = 50,
                         },
                     },
                 },
