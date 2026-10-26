@@ -18,7 +18,7 @@ if vim.env.XDG_DATA_HOME == nil or vim.env.XDG_DATA_HOME == "" then
     vim.env.XDG_DATA_HOME = vim.fn.fnamemodify( vim.fn.stdpath( "data" ), ":h" )
 end
 
-local data = vim.fn.stdpath( "data" )
+local dataDir = vim.fn.stdpath( "data" )
 
 -- language, encoding {{{
 if vim.fn.has( "win32" ) == 1 then
@@ -95,15 +95,15 @@ vim.o.smartcase = true  -- use smartcase
 vim.o.backup = false
 
 -- swap
-ensure_dir( data .. "/swap" )
-vim.o.directory = data .. "/swap//"
+ensure_dir( dataDir .. "/swap" )
+vim.o.directory = dataDir .. "/swap//"
 -- swap is disabled
 vim.o.swapfile = false
 
 -- undo
 vim.o.undofile = true
-ensure_dir( data .. "/undo" )
-vim.o.undodir = data .. "/undo"
+ensure_dir( dataDir .. "/undo" )
+vim.o.undodir = dataDir .. "/undo"
 
 vim.o.scrolloff = 2
 vim.o.wrap = true         -- включаем перенос строк
@@ -117,8 +117,8 @@ vim.o.number = true -- show line numbers
 vim.o.mouse = "a"
 
 -- spelling && keyboard layout {{{
-ensure_dir( data .. "/spell" )
-vim.o.spellfile = data .. "/spell/default.add"
+ensure_dir( dataDir .. "/spell" )
+vim.o.spellfile = dataDir .. "/spell/default.add"
 vim.o.mousemodel = "popup_setpos"
 vim.o.imsearch = -1
 -- }}}
@@ -129,15 +129,6 @@ vim.o.fileformats = "unix,dos"
 vim.o.fileformat = "unix"
 vim.o.bomb = false
 -- }}}
-
--- session
-vim.o.sessionoptions = "buffers,curdir,folds,slash,tabpages,unix,winsize"
-
--- views
--- vim.cmd( "set viminfo='50,<100,s100,!,n" .. data .. "/.viminfo" )
-
-vim.o.viewoptions = "cursor,folds,options,slash,unix"
-vim.o.viewdir = data .. "/view"
 
 -- tabline
 vim.o.laststatus = 2
@@ -229,6 +220,7 @@ vim.g.vim_json_conceal = 0
 vim.g.dosbatch_colons_comment = 1
 
 -- init
+require( "config/state" )
 require( "config/keymap" )
 
 -- load plugins

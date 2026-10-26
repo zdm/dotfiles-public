@@ -18,7 +18,7 @@ return {
     },
     {
         "zhimsel/vim-stay",
-        -- enabled = false,
+        enabled = false,
     },
     {
         "lyokha/vim-xkbswitch",
