@@ -7,9 +7,7 @@
 -- }
 
 -- views
-vim.o.viewdir = vim.fn.stdpath( "data" ) .. "/view"
--- vim.opt.viewoptions:append( { "cursor", "folds", "options" } )
-vim.o.viewoptions = {
+vim.opt.viewoptions = {
     "cursor",
     "folds",
     "options",
@@ -18,7 +16,7 @@ vim.o.viewoptions = {
 }
 
 -- session
-vim.o.sessionoptions = {
+vim.opt.sessionoptions = {
     "buffers",
     "curdir",
     "folds",

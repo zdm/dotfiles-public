@@ -4,22 +4,6 @@ _G.Config = {}
 
 local augroup = vim.api.nvim_create_augroup( "init", { clear = true } )
 
-local function ensure_dir ( path )
-    if vim.fn.isdirectory( path ) == 0 then
-        vim.fn.mkdir( path, "p", tonumber( "700", 8 ) )
-    end
-end
-
-if vim.env.XDG_CONFIG_HOME == nil or vim.env.XDG_CONFIG_HOME == "" then
-    vim.env.XDG_CONFIG_HOME = vim.fn.fnamemodify( vim.fn.stdpath( "config" ), ":h" )
-end
-
-if vim.env.XDG_DATA_HOME == nil or vim.env.XDG_DATA_HOME == "" then
-    vim.env.XDG_DATA_HOME = vim.fn.fnamemodify( vim.fn.stdpath( "data" ), ":h" )
-end
-
-local dataDir = vim.fn.stdpath( "data" )
-
 -- language, encoding {{{
 if vim.fn.has( "win32" ) == 1 then
     vim.cmd( "language English" )
@@ -95,15 +79,10 @@ vim.o.smartcase = true  -- use smartcase
 vim.o.backup = false
 
 -- swap
-ensure_dir( dataDir .. "/swap" )
-vim.o.directory = dataDir .. "/swap//"
--- swap is disabled
-vim.o.swapfile = false
+-- vim.o.swapfile = false
 
 -- undo
 vim.o.undofile = true
-ensure_dir( dataDir .. "/undo" )
-vim.o.undodir = dataDir .. "/undo"
 
 vim.o.scrolloff = 2
 vim.o.wrap = true         -- включаем перенос строк
@@ -117,8 +96,7 @@ vim.o.number = true -- show line numbers
 vim.o.mouse = "a"
 
 -- spelling && keyboard layout {{{
-ensure_dir( dataDir .. "/spell" )
-vim.o.spellfile = dataDir .. "/spell/default.add"
+vim.o.spellfile = vim.fn.stdpath( "data" ) .. "/spell/default.add"
 vim.o.mousemodel = "popup_setpos"
 vim.o.imsearch = -1
 -- }}}
