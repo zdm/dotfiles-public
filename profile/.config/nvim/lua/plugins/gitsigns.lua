@@ -7,6 +7,8 @@ local diff_signs = {
     untracked    = { text = "?", show_count = true },
 }
 
+local staged_diff_signs = diff_signs
+
 local function open_hunks_list ( bufnr )
     local gitsigns = require( "gitsigns" )
     local async = require( "gitsigns.async" )
@@ -36,8 +38,8 @@ return {
             gitsigns.setup( {
                 git_cmd = vim.fn.has( "win32" ) == 1 and "git.exe" or "git",
                 signs = diff_signs,
-                signs_staged = diff_signs,
-                signs_staged_enable = true,
+                signs_staged = staged_diff_signs,
+                signs_staged_enable = false,
                 signcolumn = true,
                 numhl      = false,
                 linehl     = false,
