@@ -79,7 +79,7 @@ vim.o.smartcase = true  -- use smartcase
 vim.o.backup = false
 
 -- swap
--- vim.o.swapfile = false
+vim.o.swapfile = false
 
 -- undo
 vim.o.undofile = true
