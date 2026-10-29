@@ -65,6 +65,7 @@ return {
                                 { "Update plugins", "Lazy sync" },
                                 { "Update Mason tools", "MasonFullUpdate" },
                                 { "set ft=javascript", "set ft=javascript" },
+                                { "set ft=markdown", "set ft=markdown" },
                                 { "set ft=json", "set ft=json" },
                                 { "setlocal ff=unix", "setlocal ff=unix" },
                                 { "ripgrep", "Grep" },
