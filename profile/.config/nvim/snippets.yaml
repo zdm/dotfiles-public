@@ -129,6 +129,15 @@ javascript:
         [ Symbol.iterator ] () {
             $1
         }
+    Temporal.Now.instant():
+      trigger: Temporal.Now.instant
+      body: Temporal.Now.instant()
+    Temporal.Instant.from():
+      trigger: Temporal.Instant.from
+      body: Temporal.Instant.from( $1 )
+    Temporal.Instant.fromEpochMilliseconds():
+      trigger: Temporal.Instant.fromEpochMilliseconds
+      body: Temporal.Instant.fromEpochMilliseconds( $1 )
 
 lua:
   snippets:
