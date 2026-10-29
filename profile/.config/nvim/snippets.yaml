@@ -132,6 +132,9 @@ javascript:
     Temporal.Now.instant():
       trigger: Temporal.Now.instant
       body: Temporal.Now.instant()
+    Temporal.Now.instant().epochMilliseconds:
+      trigger: Temporal.Now.instant().epochMilliseconds
+      body: Temporal.Now.instant().epochMilliseconds
     Temporal.Instant.from():
       trigger: Temporal.Instant.from
       body: Temporal.Instant.from( $1 )
