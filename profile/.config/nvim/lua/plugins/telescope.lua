@@ -72,7 +72,7 @@ return {
                                 { "Open buffer in the browser", "Zcli browser" },
                                 { "spellchecker on", "setlocal spell spelllang=ru_yo,en_us" },
                                 { "spellchecker off", "setlocal nospell" },
-                                { "Matrix screensaver", "Matrix" },
+                                { "Matrix screensaver", "lua vim.schedule( function () vim.cmd( 'VimatrixOpen' ) end )" },
                             },
                         },
                     },

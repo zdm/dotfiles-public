@@ -13,8 +13,9 @@ return {
         end
     },
     {
-        "uguu-org/vim-matrix-screensaver",
-        cmd = "Matrix",
+        "wolfwfr/vimatrix.nvim",
+        cmd = "VimatrixOpen",
+        opts = {},
     },
     {
         "zhimsel/vim-stay",
