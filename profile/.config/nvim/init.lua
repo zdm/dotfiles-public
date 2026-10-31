@@ -4,7 +4,7 @@ _G.Config = {}
 
 local augroup = vim.api.nvim_create_augroup( "init", { clear = true } )
 
--- language, encoding {{{
+-- language, encoding
 if vim.fn.has( "win32" ) == 1 then
     vim.cmd( "language English" )
 else
@@ -12,19 +12,22 @@ else
 end
 
 vim.o.langmenu = "none"
--- }}}
 
--- terminal, gui {{{
+-- terminal, gui
 -- vim.o.guifont = "LiterationMono Nerd Font:h10:cRUSSIAN"
 
-vim.o.guicursor = "n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,sm:block-blinkwait175-blinkoff150-blinkon175"
+vim.opt.guicursor = {
+    "n-v-c:block",
+    "i-ci-ve:ver25",
+    "r-cr:hor20",
+    "o:hor50",
+    "a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor",
+    "sm:block-blinkwait175-blinkoff150-blinkon175",
+}
 
 vim.o.termguicolors = true
 
--- if vim.fn.has( "win32" ) == 1 then
-    vim.cmd.source( vim.env.VIMRUNTIME .. "/scripts/mswin.vim" )
--- end
--- }}}
+vim.cmd.source( vim.env.VIMRUNTIME .. "/scripts/mswin.vim" )
 
 vim.o.modeline = true
 
