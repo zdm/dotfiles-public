@@ -18,7 +18,7 @@ return {
                 "<F3>",
                 "<CMD>Telescope<CR>",
                 mode = { "n", "i", "v" },
-                desc = "Telescope files",
+                desc = "Telescope",
             },
             {
                 "<F4>",
