@@ -50,10 +50,10 @@ javascript:
       trigger: eslint-disable
       body: /* eslint-disable $1 */
     eslint-disable-line:
-      trigger: eslint-disable-line
+      trigger: // eslint-disable-line
       body: // eslint-disable-line $1
     eslint-disable-next-line:
-      trigger: eslint-disable-next-line
+      trigger: // eslint-disable-next-line
       body: // eslint-disable-next-line $1
     for:
       trigger: for
@@ -130,16 +130,13 @@ javascript:
             $1
         }
     Temporal.Now.instant():
-      trigger: Temporal.Now.instant
+      trigger: Temporal.Now.instant()
       body: Temporal.Now.instant()
-    Temporal.Now.instant().epochMilliseconds:
-      trigger: Temporal.Now.instant().epochMilliseconds
-      body: Temporal.Now.instant().epochMilliseconds
     Temporal.Instant.from():
-      trigger: Temporal.Instant.from
+      trigger: Temporal.Instant.from()
       body: Temporal.Instant.from( $1 )
     Temporal.Instant.fromEpochMilliseconds():
-      trigger: Temporal.Instant.fromEpochMilliseconds
+      trigger: Temporal.Instant.fromEpochMilliseconds()
       body: Temporal.Instant.fromEpochMilliseconds( $1 )
 
 lua:
