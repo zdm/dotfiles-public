@@ -13,11 +13,6 @@ return {
         end
     },
     {
-        "wolfwfr/vimatrix.nvim",
-        cmd = "VimatrixOpen",
-        opts = {},
-    },
-    {
         "zhimsel/vim-stay",
         enabled = false,
     },
