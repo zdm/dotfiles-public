@@ -69,7 +69,7 @@ return {
                                 { "set ft=markdown", "set ft=markdown" },
                                 { "set ft=yaml", "set ft=yaml" },
                                 { "setlocal ff=unix", "setlocal ff=unix" },
-                                { "ripgrep", "Grep" },
+                                { "ripgrep", function () vim.cmd( "Grep" ) end },
                                 { "Emoji", "Telescope emoji" },
                                 { "Open buffer in the browser", "Zcli browser" },
                                 { "spellchecker on", "setlocal spell spelllang=ru_yo,en_us" },
